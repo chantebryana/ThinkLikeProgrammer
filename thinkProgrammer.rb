@@ -36,3 +36,7 @@ for value in triangleArray
   print "#" * value
   print "\n"
 end
+
+=begin
+I don't know how to represent this in a program, but the mathematical equation for this sideways triangle, if represented on an x- / y-axis graph would be the following: y = -|x-4| + 4 
+=end
