@@ -29,3 +29,10 @@ while y > 0
     print "\n"
 	y -= 1
 end 
+
+triangleArray = [1, 2, 3, 4, 3, 2, 1]
+
+for value in triangleArray 
+  print "#" * value
+  print "\n"
+end
