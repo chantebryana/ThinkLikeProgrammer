@@ -1,7 +1,7 @@
 print "Enter a digit then press ENTER: "
-digit = gets.to_i
+digit = gets
 
-digitArray = digit.to_s.chars.map(&:to_i)
+digitArray = digit.chars.map(&:to_i)
 
 digitArray.each_with_index do |value, index|
   valueDouble = 0
@@ -24,7 +24,14 @@ digitArray.each_with_index do |value, index|
 	  masterArray << valueSum 
 	end
   end 
-  masterArray.map {|value| print "masterArray: " + value.to_s + ", "}
+  masterArray.map do |value| 
+    print "masterArray: " + value.to_s + ", "
+  end 
+  masterSum = 0
+  masterArray.each do |value| 
+    masterSum += value
+  end 
+  print "masterSum: " + masterSum.to_s + "\n"
 end
 
 sum = 0
