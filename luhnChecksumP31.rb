@@ -10,7 +10,6 @@ digitArray.each do |a|
   sum+=a
 end
 print sum.to_s + "\n"
-# I could also use "inject"
 
 digitArray.each_with_index do |value, index|
   valueDouble = 0
@@ -21,7 +20,6 @@ digitArray.each_with_index do |value, index|
     print value.to_s + ", "
 	if valueDouble > 9
 	  valueArray = valueDouble.to_s.chars.map(&:to_i)
-#valueArray.each {|i| print i.to_s + ", "}
 	  valueArray.each do |a| 
 	    valueSum += a 
       end
@@ -29,4 +27,3 @@ digitArray.each_with_index do |value, index|
 	end
   end 
 end
-
