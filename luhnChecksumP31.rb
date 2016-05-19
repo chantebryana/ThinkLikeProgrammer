@@ -7,21 +7,24 @@ digitArray.each_with_index do |value, index|
   valueDouble = 0
   valueArray = []
   valueSum = 0
+  masterArray = []
   if index % 2 == 0
-    print "even indeces: " + value.to_s + "\n"
-  end
-  if index % 2 == 1
+    masterArray << value
+#    print "even indeces: " + value.to_s + "\n"
+  elsif index % 2 == 1
     valueDouble = value * 2
-    print "odd indeces: " + value.to_s + "\n"
-	print "valueDouble: " + valueDouble.to_s + "\n"
+#    print "odd indeces: " + value.to_s + "\n"
+#	print "valueDouble: " + valueDouble.to_s + "\n"
 	if valueDouble > 9
 	  valueArray = valueDouble.to_s.chars.map(&:to_i)
-	  valueArray.each do |a| 
-	    valueSum += a 
-      end
-	  print "valueSum: " + valueSum.to_s + "\n"
+	    valueArray.each do |a| 
+	      valueSum += a 
+        end
+#	  print "valueSum: " + valueSum.to_s + "\n"
+	  masterArray << valueSum 
 	end
   end 
+  masterArray.map {|value| print "masterArray: " + value.to_s + ", "}
 end
 
 sum = 0
