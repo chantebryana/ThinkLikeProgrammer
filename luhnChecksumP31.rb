@@ -28,6 +28,7 @@ digitArray.each_with_index do |value, index|
   masterArray.each do |value| 
     $masterSum += value
   end 
+# add verification check:  
   print "masterArray value: " + masterArray.join("") + "\n"
 end
 print "masterSum: " + $masterSum.to_s + "\n"
