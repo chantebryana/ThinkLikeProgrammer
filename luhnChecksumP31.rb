@@ -3,13 +3,14 @@ digit = gets.to_i
 
 digitArray = digit.to_s.chars.map(&:to_i)
 
+$masterSum = 0
 digitArray.each_with_index do |value, index|
 # define internal variables
   valueDouble = 0
   valueArray = []
   valueSum = 0
   masterArray = []
-  masterSum = 0
+#  masterSum = 0
 # begin interal loops
   if index % 2 == 0
     masterArray << value
@@ -31,11 +32,18 @@ digitArray.each_with_index do |value, index|
 #    print "masterArray: " + value.to_s + ", "
 #  end 
   masterArray.each do |value| 
-    masterSum += value
+    $masterSum += value
   end 
-  print "masterSum: " + masterSum.to_s + "\n"
+end
+print "masterSum: " + $masterSum.to_s + "\n"
+
+if $masterSum % 10 == 0
+  print "Success! Data passes the test! \n"
+else 
+  print "Dope! Data failed. \n"
 end
 
+=begin
 sum = 0
 digitArray.each do |a|
   sum+=a
@@ -44,3 +52,4 @@ print "sum.to_s: " + sum.to_s + "\n"
 
 digitDouble = digit * 2
 print "digitDouble: " + digitDouble.to_s + "\n"
+=end
