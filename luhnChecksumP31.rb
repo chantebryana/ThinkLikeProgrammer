@@ -1,13 +1,16 @@
 print "Enter a digit then press ENTER: "
-digit = gets
+digit = gets.to_i 
 
-digitArray = digit.chars.map(&:to_i)
+digitArray = digit.to_s.chars.map(&:to_i)
 
 digitArray.each_with_index do |value, index|
+# define internal variables
   valueDouble = 0
   valueArray = []
   valueSum = 0
   masterArray = []
+  masterSum = 0
+# begin interal loops
   if index % 2 == 0
     masterArray << value
 #    print "even indeces: " + value.to_s + "\n"
@@ -24,10 +27,9 @@ digitArray.each_with_index do |value, index|
 	  masterArray << valueSum 
 	end
   end 
-  masterArray.map do |value| 
-    print "masterArray: " + value.to_s + ", "
-  end 
-  masterSum = 0
+#  masterArray.map do |value| 
+#    print "masterArray: " + value.to_s + ", "
+#  end 
   masterArray.each do |value| 
     masterSum += value
   end 
