@@ -17,10 +17,12 @@ digitArray.each_with_index do |value, index|
     valueDouble = value * 2
 	if valueDouble > 9
 	  valueArray = valueDouble.to_s.chars.map(&:to_i)
-	    valueArray.each do |a| 
-	      valueSum += a 
+	    valueArray.each do |value| 
+	      valueSum += value 
         end
 	  masterArray << valueSum 
+	else 
+	  masterArray << valueDouble 
 	end
   end 
   masterArray.each do |value| 
