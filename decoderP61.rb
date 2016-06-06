@@ -17,10 +17,11 @@ message = "Hello World!"
 messageCode = [35, 27, 32, 39, 39, 42, 27, 14, 9, 50, 27, 42, 45, 39, 31, 27, 10]
 
 
-=begin
-capsArray.each_with_index do |value, index|
-  if userInput % 27 == index + 1 
-    print value + "\n"
+
+capsArray.each_with_index do |valueCaps, indexCaps|
+  inputArray.map do |valueInput|
+    if valueInput.to_i % 27 == indexCaps + 1 
+	  print valueCaps + "\n"
+	end 
   end 
 end 
-=end
