@@ -1,5 +1,8 @@
-print "User, enter a integer, then press Enter: "
-userInput = gets.to_i
+print "User, enter integers separated by a comma and a space (eg, \"12, 31, 527\"), \nthen press Enter: "
+inputArray = gets.split(", ")
+
+#inputArray << gets.to_i 
+inputArray.map {|x| print x + "\n"}
 
 symbolArray = ["!", "?", ",", ".", " ", ";", "\"", "\'"]
 #symbolArray.each {|i| print i + "\n"}
@@ -14,9 +17,10 @@ message = "Hello World!"
 messageCode = [35, 27, 32, 39, 39, 42, 27, 14, 9, 50, 27, 42, 45, 39, 31, 27, 10]
 
 
-
+=begin
 capsArray.each_with_index do |value, index|
   if userInput % 27 == index + 1 
     print value + "\n"
   end 
 end 
+=end
