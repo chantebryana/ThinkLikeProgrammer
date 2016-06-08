@@ -1,5 +1,5 @@
 print "User, enter positive integers separated by a comma and a space \n"
-  + "(eg, \"12, 31, 527\"), then press Enter: "
+print "(eg, \"12, 31, 527\"), then press Enter: "
 inputArray = gets.split(", ")
 
 #inputArray << gets.to_i 
@@ -17,28 +17,58 @@ downArray = %w[a b c d e f g h i j k l m n o p q r s t u v w x y z]
 message = "Hello World!"
 messageCode = [35, 27, 32, 39, 39, 42, 27, 14, 9, 50, 27, 42, 45, 39, 31, 27, 10]
 
+def capsFunc 
+  capsArray.each_with_index do |valueCaps, indexCaps|
+    inputArray.map do |valueInput|
+  	  if valueInput.to_i % 27 == indexCaps + 1 
+	    print valueCaps
+	  end 
+	end 
+  end 
+end 
+
+def downFunc 
+  downArray.each_with_index do |valueDown, indexDown|
+    inputArray.map do |valueInput|
+  	  if valueInput.to_i % 27 == indexDown + 1 
+	    print valueDown
+	  end 
+	end 
+  end 
+end 
+
+def symbolFunc 
+  capsArray.each_with_index do |valueSymbol, indexSymbol|
+    inputArray.map do |valueInput|
+  	  if valueInput.to_i % 27 == indexSymbol + 1 
+	    print valueSymbol
+	  end 
+	end 
+  end 
+end 
+
 mode = 1 
 
 if mode == 1 
-  if integer % 27 == 0
+  if valueInput.to_i % 27 == 0
     mode = 2
-  elsif integer % 27 < 0
+  elsif valueInput.to_i % 27 > 0
     capsFunc 
   else 
     print "capsError!"
   end 
 elsif mode == 2  
-  if integer % 27 == 0
+  if valueInput.to_i % 27 == 0
     mode = 3  
-  elsif integer % 27 < 0
+  elsif valueInput.to_i % 27 == indexDown + 1 
     downFunc 
   else 
     print "downError!"
   end
 elsif mode == 3 
-  if integer % 9 == 0
+  if valueInput.to_i % 9 == 0
     mode = 1 
-  elsif integer % 9 < 0
+  elsif valueInput.to_i % 9 == indexSymbol + 1
     symbolFunc 
   else
     print "symbolError!"
@@ -46,11 +76,3 @@ elsif mode == 3
 else 
   print "modeError!"
 end
-
-capsArray.each_with_index do |valueCaps, indexCaps|
-  inputArray.map do |valueInput|
-    if valueInput.to_i % 27 == indexCaps + 1 
-	  print valueCaps + "\n"
-	end 
-  end 
-end 
