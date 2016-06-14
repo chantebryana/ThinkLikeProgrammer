@@ -38,6 +38,15 @@ inputArray.map do |valueInput|
 		break 
 	  end 
 	end 
+  elsif mode == 3  
+    symbolArray.each_with_index do |valueSymbol, indexSymbol| 
+	  if valueInput.to_i % 9 == indexSymbol + 1 
+	    print valueSymbol + "\n"
+	  elsif valueInput.to_i % 9 == 0 
+	    mode = 1 
+		break 
+	  end 
+	end  
   end 
 end 
 
