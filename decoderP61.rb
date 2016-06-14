@@ -20,12 +20,23 @@ messageCode = [35, 27, 32, 39, 39, 42, 27, 14, 9, 50, 27, 42, 45, 39, 31, 27, 10
 mode = 1 
 
 inputArray.map do |valueInput| 
-  capsArray.each_with_index do |valueCaps, indexCaps| 
-    if valueInput.to_i % 27 == indexCaps + 1 
-	  print valueCaps + "\n"
-	elsif valueInput.to_i % 27 == 0
-	  mode = 2 
-	  break 
+  if mode == 1 
+	capsArray.each_with_index do |valueCaps, indexCaps| 
+	  if valueInput.to_i % 27 == indexCaps + 1 
+		print valueCaps + "\n"
+	  elsif valueInput.to_i % 27 == 0
+		mode = 2 
+		break 
+	  end 
+	end 
+  elsif mode == 2 
+    downArray.each_with_index do |valueDown, indexDown| 
+	  if valueInput.to_i % 27 == indexDown + 1 
+	    print valueDown + "\n"
+	  elsif valueInput.to_i % 27 == 0 
+	    mode = 3 
+		break 
+	  end 
 	end 
   end 
 end 
