@@ -1,3 +1,5 @@
+GIT BASH ISN'T CONNECTING TO SERVER!!
+
 Hello World!
 35, 27, 32, 39, 39, 42, 27, 14, 9, 50, 27, 42, 45, 39, 31, 27, 10
 
