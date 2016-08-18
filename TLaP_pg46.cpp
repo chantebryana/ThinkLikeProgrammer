@@ -7,9 +7,10 @@ int main () {
   while (newLine < 5) {
     int hashRepeat = 5;
     while (hashRepeat > 0) {
-      cout << "#\n";
+      cout << "#";
       hashRepeat--;
     }
+    cout << "\n";
     newLine++;
   }
   return 0;
