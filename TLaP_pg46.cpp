@@ -3,10 +3,10 @@ using std::cin;
 using std::cout;
 
 int main () {
-  int x = 5;
-  while (x > 0) {
+  int newLine = 5;
+  while (newLine > 0) {
     cout << "#\n";
-    --x;
+    newLine--;
   }
   return 0;
 } 
