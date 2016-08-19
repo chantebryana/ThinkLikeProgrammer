@@ -3,15 +3,15 @@ using std::cin;
 using std::cout;
 
 int main () {
-  int newLine = 0;
-  while (newLine < 5) {
-    int hashRepeat = 4;
+  int newLine = 5;
+  while (newLine > 0) {
+    int hashRepeat = 5;
     while (hashRepeat > 0) {
       cout << "#";
       hashRepeat--;
     }
     cout << "\n";
-    newLine++;
+    newLine--;
   }
   return 0;
 } 
