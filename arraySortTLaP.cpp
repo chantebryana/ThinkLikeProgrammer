@@ -14,7 +14,6 @@ int main () {
   int intArray[ARRAY_SIZE] = {87, 28, 100, 78, 84, 98, 75, 81, 68};
   for (int i = 0; i <= ARRAY_SIZE; i++) {
     cout << "Unsorted array: " << intArray[i] << "\n";
-    return 0;
   }
 /*
   qsort(intArray, ARRAY_SIZE, sizeof(int), compareFunc);
