@@ -12,7 +12,7 @@ int main () {
   cout << "Hello Terminal\n";
   const int ARRAY_SIZE = 10;
   int intArray[ARRAY_SIZE] = {87, 28, 100, 78, 84, 98, 75, 81, 68};
-  for (int i = 0; i <= ARRAY_SIZE; i++) {
+  for (int i = 0; i < ARRAY_SIZE - 1; i++) {
     cout << "Unsorted array: " << intArray[i] << "\n";
   }
 /*
