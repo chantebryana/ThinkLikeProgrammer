@@ -23,7 +23,6 @@ int main () {
   qsort(intArray, ARRAY_SIZE, sizeof(int), compareFunc); //sort that array: call to compareFunc function at top of page
   for (int i = 0; i < ARRAY_SIZE; i++) {
     cout << intArray[i] << "\n";
-    return 0;
   }
 //*/
 return 0;
