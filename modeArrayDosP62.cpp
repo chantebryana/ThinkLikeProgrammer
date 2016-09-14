@@ -14,7 +14,7 @@ int main () {
 	//print out unsorted responses 
 	cout << "Unsorted survey responses: ";
 	for (i = 0; i < A_LENGTH; i++) {
-		cout << i << " ";		
+		cout << surveyResponses[i] << " ";		
 	}
 	cout << "\n";
 	return 0;
