@@ -23,5 +23,13 @@ int main () {
 		cout << surveyResponses[i] << " ";		
 	}
 	cout << "\n";
+	//sort the unsorted responses with qsort; use compareFunc defined above 
+	qsort(surveyResponses, A_LENGTH, sizeof(int), compareFunc);
+	//print out sorted responses!
+	cout << "Sorted survey responses: ";
+	for (i = 0; i < A_LENGTH; i++) {
+		cout << surveyResponses[i] << " ";		
+	}
+	cout << "\n";
 	return 0;
 } 
