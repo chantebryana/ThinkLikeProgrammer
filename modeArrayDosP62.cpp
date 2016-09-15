@@ -5,8 +5,14 @@ using std::cout;
 
 //define junk for later 
 int i;
-int result = 0;
 const int A_LENGTH = 19;
+
+//define comparison function for qsort
+int compareFunc(const void *voidA, const void *voidB) {
+	int *intA = (int *)(voidA);
+	int *intB = (int *)(voidB);
+	return *intA - *intB;
+}
 
 int main () {
 	//create unsorted array of survey responses 
