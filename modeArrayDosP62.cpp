@@ -6,12 +6,32 @@ using std::cout;
 //define junk for later 
 int i;
 const int A_LENGTH = 19;
+int ones, twos, threes, fours, fives = 0;
 
 //define comparison function for qsort
 int compareFunc(const void *voidA, const void *voidB) {
 	int *intA = (int *)(voidA);
 	int *intB = (int *)(voidB);
 	return *intA - *intB;
+}
+
+//how many of each number in survey responses?
+int eachNumCount (int array) {
+	for (i = 0; i < A_LENGTH; i++) {
+		if (array[i] == 1) {
+			ones ++;
+		} else if (array[i] == 2) {
+			twos ++;
+		} else if (array[i] == 3) {
+			threes ++;
+		} else if (array[i] == 4) {
+			fours ++;
+		} else if (array[i] == 5) {
+			fives ++;
+		} else {
+			cout << "Unexpected error!\n";
+		}
+	}
 }
 
 int main () {
@@ -32,5 +52,14 @@ int main () {
 		cout << surveyResponses[i] << " ";		
 	}
 	cout << "\n";
+	//tally each response type 
+	eachNumCount (surveyResponses);
+	//print out tally of each response type 
+	cout << "Tally of Survey Responses:\n";
+	cout << "Ones: " << ones << "\n";
+	cout << "Twos: " << twos << "\n";
+	cout << "Threes: " << threes << "\n";
+	cout << "Fours: " << fours << "\n";
+	cout << "Fives: " << fives << "\n";
 	return 0;
 } 
