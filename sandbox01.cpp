@@ -6,7 +6,7 @@ int firstArray[] = {5, 10, 15};
 int secondArray[] = {2, 4, 6, 8, 10};
 
 //iterating through array function 
-void printArray (int arg[], int length) {
+void printArray (int *arg, int length) {
 	for (int n = 0; n < length; n++) {
 		cout << arg[n] << " ";
 	}
