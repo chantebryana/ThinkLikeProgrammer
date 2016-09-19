@@ -17,7 +17,7 @@ int compareFunc(const void *voidA, const void *voidB) {
 
 /*
 //how many of each number in survey responses?
-int eachNumCount (int array) {
+int eachNumCount (int array[i]) {
 	for (i = 0; i < A_LENGTH; i++) {
 		if (array[i] == 1) {
 			ones ++;
