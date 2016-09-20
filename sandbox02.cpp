@@ -14,7 +14,7 @@ void arrPrint(int *array) {
 
 //call the arrPrint function in main 
 int main () {
-	arrPrint(tallyArr);
+	arrPrint(&(*tallyArr));
 	cout << "\n";
 	return 0;
 }
