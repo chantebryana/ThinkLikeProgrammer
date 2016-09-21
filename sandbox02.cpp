@@ -1,5 +1,4 @@
 #include <iostream>
-//#define find_this and_replace_it_with_this ==> re using const int ARRAY_LENGTH as a number throughout the code
 using namespace std;
 
 //define those arrays!!
