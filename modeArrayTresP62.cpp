@@ -6,6 +6,7 @@ using std::cout;
 //define junk for later 
 int i;
 const int A_LENGTH = 19;
+const int RESPONSE_LENGTH = 5;
 int ones, twos, threes, fours, fives = 0;
 
 //define comparison function for qsort
@@ -17,8 +18,8 @@ int compareFunc(const void *voidA, const void *voidB) {
 
 ///*
 //how many of each number in survey responses?
-void eachNumCount (int *array) {
-	for (i = 0; i < A_LENGTH; i++) {
+void eachNumCount (int *array, int length) {
+	for (i = 0; i < length; i++) {
 		if (array[i] == 1) {
 			ones ++;
 		} else if (array[i] == 2) {
@@ -55,7 +56,7 @@ int main () {
 	}
 	cout << "\n";
 	//tally each response type 
-	eachNumCount (surveyResponses);
+	eachNumCount (surveyResponses, A_LENGTH);
 	//print out tally of each response type 
 	cout << "Tally of Survey Responses:\n";
 	cout << "    Ones: " << ones << "\n";
