@@ -26,15 +26,15 @@ int compareFunc(const void *voidA, const void *voidB) {
 void eachNumCount (int *array, int length) {
 	for (i = 0; i < length; i++) {
 		if (array[i] == 1) {
-			ones ++;
+			tallyArray[0]++;
 		} else if (array[i] == 2) {
-			twos ++;
+			tallyArray[1] ++;
 		} else if (array[i] == 3) {
-			threes ++;
+			tallyArray[2] ++;
 		} else if (array[i] == 4) {
-			fours ++;
+			tallyArray[3] ++;
 		} else if (array[i] == 5) {
-			fives ++;
+			tallyArray[4] ++;
 		} else {
 			cout << "Unexpected error!\n";
 		}
@@ -60,11 +60,13 @@ int main () {
 	//tally each response type 
 	eachNumCount (surveyResponses, A_LENGTH);
 	//print out tally of each response type 
+	/*	
 	cout << "Tally of Survey Responses:\n";
 	cout << "    Ones: " << ones << "\n";
 	cout << "    Twos: " << twos << "\n";
 	cout << "  Threes: " << threes << "\n";
 	cout << "   Fours: " << fours << "\n";
 	cout << "   Fives: " << fives << "\n";
+	*/
 	return 0;
 } 
