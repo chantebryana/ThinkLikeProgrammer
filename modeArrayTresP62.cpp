@@ -46,6 +46,13 @@ int main () {
 	}
 	cout << "\n";
 	//tally each response type 
-	eachNumCount (surveyResponses, A_LENGTH);
+	eachNumCount (surveyResponses, A_LENGTH);	
+	//print out tallied answers; results of eachNumCount function
+	cout << "Tally of Survey Responses:\n";
+	cout << "  Ones: " << tallyArray[0] << "\n";
+	cout << "  Twos: " << tallyArray[1] << "\n";
+	cout << "Threes: " << tallyArray[2] << "\n";
+	cout << " Fours: " << tallyArray[3] << "\n";
+	cout << " Fives: " << tallyArray[4] << "\n";
 	return 0;
 } 
