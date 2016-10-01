@@ -31,7 +31,7 @@ int main () {
 	};
 	
 	//sort the unsorted responses with qsort; use compareFunc defined above 
-	qsort(studentArray, ARRAY_SIZE, sizeof(int), compareFunc);
+	qsort(studentArray.grade, ARRAY_SIZE, sizeof(int), compareFunc);
 	
 	return 0;
 }
