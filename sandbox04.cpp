@@ -34,14 +34,12 @@ int main () {
 	//qsort(studentArray, ARRAY_SIZE, sizeof(int), compareFunc);
 	
 	//practice printing struct array
-		int highest = studentArray[0].grade;
-		string best = "";
+		int highPosition = 0;
 		for (int i = 1; i < ARRAY_SIZE; i++) {
-			if (studentArray[i].grade > highest) 
-				highest = studentArray[i].grade;
-				best = studentArray[i].name;
+			if (studentArray[i].grade > studentArray[highPosition].grade) 
+				highPosition = i;
 		} 
-		cout << "Best student: " << best << "; " << highest << " points\n";
+		cout << "Best student: " << studentArray[highPosition].name << ", grade: " << studentArray[highPosition].grade << "\n";
 
 	return 0;
 }
