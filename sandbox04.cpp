@@ -34,9 +34,9 @@ int main () {
 	qsort(studentArray, ARRAY_SIZE, sizeof(struct student), compareFunc);
 	
 	//practice printing struct array
-	cout << "Sorted grades: ";
+	cout << "IDs based on sorted grades: ";
 	for (int i = 1; i < ARRAY_SIZE; i++) {
-		cout << studentArray[i].grade << " ";
+		cout << studentArray[i].studentID << " ";
 	} 
 	cout << "\n";
 
