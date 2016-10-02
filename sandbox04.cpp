@@ -31,15 +31,14 @@ int main () {
 	};
 	
 	//sort the unsorted responses with qsort; use compareFunc defined above 
-	//qsort(studentArray, ARRAY_SIZE, sizeof(int), compareFunc);
+	qsort(studentArray, ARRAY_SIZE, sizeof(struct student), compareFunc);
 	
 	//practice printing struct array
-	int highPosition = 0;
+	cout << "Sorted grades: ";
 	for (int i = 1; i < ARRAY_SIZE; i++) {
-		if (studentArray[i].grade > studentArray[highPosition].grade) 
-			highPosition = i;
+		cout << studentArray[i].grade << " ";
 	} 
-	cout << "Best student: " << studentArray[highPosition].name << ", " << studentArray[highPosition].grade << " points\n";
+	cout << "\n";
 
 	return 0;
 }
