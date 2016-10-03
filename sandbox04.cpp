@@ -4,9 +4,11 @@ using namespace std;
 
 //define comparison function for qsort
 int compareFunc(const void *voidA, const void *voidB) {
-	int *intA = (int *)(voidA -> studentID);
-	int *intB = (int *)(voidB -> studentID);
-	return *intA - *intB;
+	const struct studentA *p1 = voidA;
+	const struct studentA *p2 = voidB;
+	//int *intA = (int *)(voidA -> studentID);
+	//int *intB = (int *)(voidB -> studentID);
+	return (p1->studentID) - (p2->studentID);
 }
 
 int main () {
