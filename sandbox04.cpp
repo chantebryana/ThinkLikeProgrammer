@@ -47,7 +47,7 @@ int main () {
 	};
 	
 	//sort the unsorted responses with qsort; use compareFunc defined above 
-	qsort(studentArray, ARRAY_SIZE, sizeof(struct student), compareFunc);
+	qsort((void *)studentArray, ARRAY_SIZE, sizeof(struct student), compareFunc);
 	
 	//practice printing struct array
 	cout << "IDs based on sorted grades: ";
