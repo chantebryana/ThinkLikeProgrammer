@@ -3,12 +3,26 @@
 using namespace std;
 
 //define comparison function for qsort
+/*
 int compareFunc(const void *voidA, const void *voidB) {
 	const struct studentA *p1 = voidA;
 	const struct studentA *p2 = voidB;
 	//int *intA = (int *)(voidA -> studentID);
 	//int *intB = (int *)(voidB -> studentID);
 	return (p1->studentID) - (p2->studentID);
+}
+*/
+
+//copying compareFunc from http://stackoverflow.com/questions/19993684/c-qsort-inside-function-on-array-of-structs 
+int compareFunc(const void *v1, const void *v2){
+	const struct student *p1 = v1;
+	const struct student *p2 = v2;
+	if (p1->studentID > p2->studentID)
+		return(+1);
+	else if (p1->studentID < p2->studentID)
+		return(-1);
+	else
+		return(0);
 }
 
 int main () {
