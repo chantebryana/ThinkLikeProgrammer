@@ -4,8 +4,8 @@ using namespace std;
 
 //define comparison function for qsort
 int compareFunc(const void *voidA, const void *voidB) {
-	int *intA = (int *)(voidA);
-	int *intB = (int *)(voidB);
+	int *intA = (int *)(voidA -> studentID);
+	int *intB = (int *)(voidB -> studentID);
 	return *intA - *intB;
 }
 
@@ -35,8 +35,8 @@ int main () {
 	
 	//practice printing struct array
 	cout << "IDs based on sorted grades: ";
-	for (int i = 1; i < ARRAY_SIZE; i++) {
-		cout << studentArray[i].studentID << " ";
+	for (int i = 0; i < ARRAY_SIZE; i++) {
+		cout << studentArray[i].grade << " ";
 	} 
 	cout << "\n";
 
