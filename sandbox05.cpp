@@ -9,7 +9,7 @@ int main () {
 	int *p1 = &a[1];
 	
 	//printing it out
-	cout << p0 << " " << p1 << " \n";
+	cout << &p0 << " " << &p1 << " \n";
 	
 	return 0;
 }
