@@ -17,6 +17,12 @@ int main () {
 	int *p0 = &a[0]; //declare and define pointer 
 	int *p1 = &a[1]; //declare and define pointer 
 	
+	//sorting???
+	if (a[0] > a[1]) {
+		p0 = &a[1];
+		p1 = &a[0];
+	}
+	
 	//calling sorting function
 	//sort(*a, p0, p1);
 	
