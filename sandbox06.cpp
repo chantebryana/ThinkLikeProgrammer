@@ -36,7 +36,7 @@ int main () {
 	
 	//printing it out
 	for (int i = 0; i < 2; i++) {
-		cout << a[i] << " ";
+		cout << pa[i] << " ";
 	}
 	cout << "\n"; 
 	
