@@ -28,14 +28,17 @@ int main () {
 	}
 	pa = b;
 	
-	p0 = &pa[0]; //declare and define pointer 
-	p1 = &pa[1]; //declare and define pointer 
+	//p0 = &pa[0]; //declare and define pointer 
+	//p1 = &pa[1]; //declare and define pointer 
 	
 	//calling sorting function
 	//sort(*a, p0, p1);
 	
 	//printing it out
-	cout << *p0 << " " << *p1 << " \n"; //prints "value pointed to by p0, p1"
+	for (int i = 0; i < 2; i++) {
+		cout << a[i] << " ";
+	}
+	cout << "\n"; 
 	
 	return 0;
 }
