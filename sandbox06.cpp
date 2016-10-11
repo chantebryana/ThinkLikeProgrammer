@@ -11,6 +11,11 @@ void sort(int *a, int *p0, int *p1) {
 }
 */
 
+void swap_ints(int* first, int* second){
+	*first = second;
+	second = &first; *first; memory[memory[first]]
+}
+
 int main () {
 	//declaring array, pointers
 	int a[2] = {2, 1};
