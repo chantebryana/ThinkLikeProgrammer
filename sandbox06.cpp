@@ -3,9 +3,9 @@
 using namespace std;
 
 void switch (int* pA, *pB) {
-	int crane = pB;
-	pB = pA;
-	pA = crane;
+	int crane = *pB;
+	*pB = *pA;
+	*pA = crane;
 }
 
 int main () {
