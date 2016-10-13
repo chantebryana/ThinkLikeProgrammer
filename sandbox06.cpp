@@ -2,7 +2,7 @@
 #include <cstdlib>
 using namespace std;
 
-void switch (int* pA, *pB) {
+void switchFunc (int* pA, *pB) {
 	int crane = *pB;
 	*pB = *pA;
 	*pA = crane;
