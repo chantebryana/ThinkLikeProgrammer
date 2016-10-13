@@ -11,6 +11,7 @@ void switch (int* pA, *pB) {
 int main () {
 	int numA = 2; 
 	int numB = 1;
-	
+	switch(numA, numB);
+	cout << numA << ", " << numB << "\n";
 	return 0;
 }
