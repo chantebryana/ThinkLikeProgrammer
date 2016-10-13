@@ -11,9 +11,7 @@ void switchFunc (int* pA, int* pB) {
 int main () {
 	int numA = 2; 
 	int numB = 1;
-	int* pnA = numA;
-	int* pnB = numB;
-	switchFunc(pnA, pnB);
-	cout << pnA << ", " << pnB << "\n";
+	switchFunc(numA, numB);
+	cout << numA << ", " << numB << "\n";
 	return 0;
 }
