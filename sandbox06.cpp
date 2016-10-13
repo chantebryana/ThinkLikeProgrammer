@@ -13,7 +13,7 @@ int main () {
 	int numB = 1;
 	int* pnA = numA;
 	int* pnB = numB;
-	switchFunc(*pnA, *pnB);
-	cout << *pnA << ", " << *pnB << "\n";
+	switchFunc(pnA, pnB);
+	cout << pnA << ", " << pnB << "\n";
 	return 0;
 }
