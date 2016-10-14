@@ -2,11 +2,13 @@
 #include <cstdlib>
 using namespace std;
 
-void switchFunc (int* pA, int* pB) {
-	int crane = *pB;
-	*pB = *pA;
-	*pA = crane;
-	cout << *pA << ", " << *pB << "\n";
+void switchFunc (void* pA, void* pB) {
+	int* intA = (int *)pA;
+	int* intB = (int *)pB;
+	int crane = *intB;
+	*intB = *intA;
+	*intA = crane;
+	cout << *intA << ", " << *intB << "\n";
 }
 
 int main () {
