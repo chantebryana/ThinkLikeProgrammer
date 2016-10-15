@@ -12,7 +12,7 @@ void switchFunc (int* pA, int* pB) {
 int main () {
 	int numA = 2; 
 	int numB = 1;
-	switchFunc(numA, numB);
+	switchFunc((int*)numA, (int*)numB);
 	//cout << numA << ", " << numB << "\n";
 	return 0;
 }
