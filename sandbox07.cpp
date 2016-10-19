@@ -3,9 +3,9 @@
 using namespace std;
 
 int smallest(int* array) {
-	int compVar = 0;
+	int compVar = 9; //this is a number larger than anything in the array
 	for (int i = 0; i < 3; i++) {
-		if (compVar < array[i]) {
+		if (compVar > array[i]) {
 			compVar = array[i];
 		}
 	}
