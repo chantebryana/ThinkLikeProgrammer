@@ -11,7 +11,7 @@ void switchFunc (int* pA, int* pB) {
 int * sortFunc(int *intArray, int arrayLength){
     // use switchFunc to sort the contents of intArray here
 	int* a;
-	switchFunc((a+0 * sizeof(int)), (a+1 * sizeof(int)));
+	switchFunc((a+0), (a+1));
 	// return the intArray for obscure reasons (to make it 'pass through' the function)
 	return intArray;
 }
