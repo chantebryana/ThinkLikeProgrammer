@@ -3,7 +3,7 @@
 using namespace std;
 
 int smallest(int* array) {
-	int compVar = 9; //this is a number larger than anything in the array
+	int compVar = 100; //this is a number larger than anything in the array
 	for (int i = 0; i < 3; i++) {
 		if (compVar > array[i]) {
 			compVar = array[i];
@@ -13,7 +13,7 @@ int smallest(int* array) {
 }
 
 int main() {
-	int a[3] = {3, 1, 2};
+	int a[3] = {35, 17, 27};
 	cout << smallest(a) << "\n";
 	return 0;
 }
