@@ -11,8 +11,11 @@ void switchFunc (int* pA, int* pB) {
 
 //actual sorting function: sort an array!
 int * sortFunc(int *intArray, int arrayLength){
-    // use switchFunc to sort the contents of intArray here
-	switchFunc(&intArray[0], &intArray[1]);
+	//create if / else statement to determine if I even need to do a switch
+	if (intArray[0] > intArray[1]) {
+		// use switchFunc to sort the contents of intArray here
+		switchFunc(&intArray[0], &intArray[1]);	
+	}
 	// return the intArray for obscure reasons (to make it 'pass through' the function)
 	return intArray;
 }
