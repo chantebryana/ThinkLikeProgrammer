@@ -2,16 +2,17 @@
 #include <cstdlib>
 using namespace std;
 
+//switch two elements around
 void switchFunc (int* pA, int* pB) {
 	int crane = *pB;
 	*pB = *pA;
 	*pA = crane;
 }
 
+//actual sorting function: sort an array!
 int * sortFunc(int *intArray, int arrayLength){
     // use switchFunc to sort the contents of intArray here
-	int* a;
-	switchFunc((a+0), (a+1));
+	switchFunc((intArray+0), (intArray+1));
 	// return the intArray for obscure reasons (to make it 'pass through' the function)
 	return intArray;
 }
