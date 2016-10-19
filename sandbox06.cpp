@@ -10,7 +10,8 @@ void switchFunc (int* pA, int* pB) {
 
 int * sortFunc(int *intArray, int arrayLength){
     // use switchFunc to sort the contents of intArray here
-	switchFunc(intArray, &arrayLength);
+	int* a;
+	switchFunc((a+0 * sizeof(int)), (a+1 * sizeof(int)));
 	// return the intArray for obscure reasons (to make it 'pass through' the function)
 	return intArray;
 }
@@ -19,7 +20,7 @@ int main () {
 	//declare and define array
 	int a[2] = {2, 1};
 	//call sortFunc() 
-	sortFunc(a, 20);
+	sortFunc(a, 2);
 	
 	//loop to print
 	for (int i = 0; i<2; i++) {
