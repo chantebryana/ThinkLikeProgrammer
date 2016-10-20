@@ -24,22 +24,25 @@ int * sortFunc(int *intArray, int arrayLength){
 int smallest(int* array, int aLength) {
 	int indexTally = 1;
 	int compVar = 100; 
-	int indexTrack = 0; 
-	for (int i = indexTally; i < 3; i++) {
-		if (compVar > array[i]) {
-			compVar = array[i];
-			indexTrack = i;
+	int indexTrack = 0;
+	for (int i = 0; i < aLength; i++) {
+		for (int i = indexTally; i < aLength; i++) {
+			if (compVar > array[i]) {
+				compVar = array[i];
+				indexTrack = i;
+			}
+			//indexTally++;
 		}
+		indexTally++;
+		//return indexTrack;
+		sortFunc(array, aLength);
 	}
-	indexTally++;
-	//return indexTrack;
-	sortFunc(array, aLength);
 }
 
 int main () {
 	//declare and define array
-	int const ALENGTH = 3;
-	int a[ALENGTH] = {2, 1, 3};
+	int const ALENGTH = 8;
+	int a[ALENGTH] = {2, 1, 4, 3, 7, 6, 5, 9};
 	//call smallest()
 	smallest(a, ALENGTH);
 	
