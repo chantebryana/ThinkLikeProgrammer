@@ -7,6 +7,7 @@ int smallest(int* array) {
 	int indexTrack = 0; //this tracks the index of the smallest value
 	for (int i = 0; i < 3; i++) { //i starting at 0 will actually depend on indexTally; 3 is the size of the array defined in main
 		if (compVar > array[i]) {
+			compVar = array[i];
 			indexTrack = i;
 		}
 	}
@@ -14,7 +15,7 @@ int smallest(int* array) {
 }
 
 int main() {
-	int a[3] = {35, 17, 27};
+	int a[3] = {1, 2, 3};
 	cout << a[smallest(a)] << "\n";
 	return 0;
 }
