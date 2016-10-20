@@ -20,14 +20,31 @@ int * sortFunc(int *intArray, int arrayLength){
 	return intArray;
 }
 
+//find the smallest! but first fix the wording.
+int smallest(int* array, int aLength) {
+	int indexTally = 1;
+	int compVar = 100; 
+	int indexTrack = 0; 
+	for (int i = indexTally; i < 3; i++) {
+		if (compVar > array[i]) {
+			compVar = array[i];
+			indexTrack = i;
+		}
+	}
+	indexTally++;
+	//return indexTrack;
+	sortFunc(array, aLength);
+}
+
 int main () {
 	//declare and define array
-	int a[2] = {2, 1};
-	//call sortFunc() 
-	sortFunc(a, 2);
+	int const ALENGTH = 3;
+	int a[ALENGTH] = {2, 1, 3};
+	//call smallest()
+	smallest(a, ALENGTH);
 	
 	//loop to print
-	for (int i = 0; i<2; i++) {
+	for (int i = 0; i<ALENGTH; i++) {
 		cout << a[i] << " ";
 	}
 	cout << "\n";
