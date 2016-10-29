@@ -16,7 +16,7 @@ int * sortFunc(int *intArray, int arrayLength){
 		// use switchFunc to sort the contents of intArray here
 		switchFunc(&intArray[0], &intArray[1]);	
 	}
-	// return the intArray for obscure reasons (to make it 'pass through' the function)
+	// return the intArrzay for obscure reasons (to make it 'pass through' the function)
 	return intArray;
 }
 
