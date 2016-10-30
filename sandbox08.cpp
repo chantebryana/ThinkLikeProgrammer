@@ -15,7 +15,7 @@ void switchFunc (int* pA, int* pB) {
 //actual sorting function: sort an array!
 int * sortFunc(int *intArray, int arrayLength){
 	//create for loop conditional; stop one element shy of end of array, since loop compares i+1
-	for (int i = 0; i < ALENGTH-1; i++) {	
+	for (int i = 0; i < arrayLength-1; i++) {	
 		//create if / else statement to determine if I even need to do a switch
 		if (intArray[i] > intArray[i+1]) {
 			// use switchFunc to sort the contents of intArray here
