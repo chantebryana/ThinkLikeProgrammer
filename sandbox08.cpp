@@ -2,9 +2,6 @@
 #include <cstdlib>
 using namespace std;
 
-//define constants
-int const ALENGTH = 4;
-
 //switch two elements around
 void switchFunc (int* pA, int* pB) {
 	int crane = *pB;
@@ -26,10 +23,10 @@ int * sortFunc(int *intArray, int arrayLength){
 	return intArray;
 }
 
-int smallest(int* array) {
+int smallest(int* array, int arrLength) {
 	int compVar = 100; //this is a number larger than anything in the array
-	int indexTrack = 0; //this tracks the index of the smallest value
-	for (int i = 0; i < ALENGTH; i++) { //i starting at 0 will actually depend on indexTally; 3 is the size of the array defined in main
+	int indexTrack = 0; //this trazcks the index of the smallest value
+	for (int i = 0; i < arrLength; i++) { //i starting at 0 will actually depend on indexTally; 3 is the size of the array defined in main
 		if (compVar > array[i]) {
 			compVar = array[i];
 			indexTrack = i;
@@ -47,8 +44,10 @@ int main() {
 */
 
 int main () {
+	//define constants
+	int const ALENGTH = 4;
 	//declare and define array
-	int a[ALENGTH] = {4, 3, 2, 1};
+	int a[ALENGTH] = {3, 2, 4, 1};
 	//call sortFunc() 
 	sortFunc(a, ALENGTH);
 	
