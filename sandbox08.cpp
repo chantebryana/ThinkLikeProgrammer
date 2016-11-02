@@ -9,37 +9,33 @@ void switchFunc (int* pA, int* pB) {
 	*pA = crane;
 }
 
-//func to compare
+//func to compare; 1 is "true", 0 is "false"
 int compLogicFunc(int * intArrayA, int * intArrayB) {
 	if (* intArrayA > * intArrayB) {
-		return 1; //"true"
+		return 1;
 	} else { 
-		return 0; //"false"
+		return 0;
 	}
 }
 
-//actual sorting function: sort an array!
+/*
+Bubble Sort Func: nested loops make sure the function compares and sorts the entire array; shorterVar removes comparing elements at the end that are already in their proper place; black boxes like compLogicFunc and switchFunc make the various pieces separate and more generalized; return intArray to pass the sorted array onwards.
+*/ 
 int * sortFunc(int *intArray, int arrayLength){
-	//create a quick and dirty outer loop for the inner loop:
 	for (int h = 0; h < arrayLength-1; h++) {		
-		//create for loop conditional; stop one element shy of end of array, since loop compares i+1:
-		int shorterVar = arrayLength - 1; //use shorterVar to eliminate comparing the parts of the array that are already sorted
+		int shorterVar = arrayLength - 1; 
 		for (int i = 0; i < shorterVar; i++) {	
-			//create if / else statement to determine if I even need to do a switch
 			if (compLogicFunc (&intArray[i], &intArray[i+1])) {
-				// use switchFunc to sort the contents of intArray here
 				switchFunc(&intArray[i], &intArray[i+1]);	
 			} 
 		} shorterVar --;
 	}
-	// return the intArray for obscure reasons (to make it 'pass through' the function)
 	return intArray;
 }
 
 int main () {
-	//define constants
+	//define constants, array
 	int const ALENGTH = 7;
-	//declare and define array
 	int a[ALENGTH] = {2, 8, 6, 4, 5, 9, 1};
 	//call sortFunc() 
 	sortFunc(a, ALENGTH);
