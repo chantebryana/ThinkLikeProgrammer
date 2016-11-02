@@ -10,11 +10,11 @@ void switchFunc (int* pA, int* pB) {
 }
 
 //func to compare
-int compLogicFunc(int intArrayA, int intArrayB) {
-	if (intArrayA > intArrayB) {
-		return 1;
+int compLogicFunc(int * intArrayA, int * intArrayB) {
+	if (* intArrayA > * intArrayB) {
+		return 1; //"true"
 	} else { 
-		return 0;
+		return 0; //"false"
 	}
 }
 
@@ -23,10 +23,10 @@ int * sortFunc(int *intArray, int arrayLength){
 	//create a quick and dirty outer loop for the inner loop:
 	for (int h = 0; h < arrayLength-1; h++) {		
 		//create for loop conditional; stop one element shy of end of array, since loop compares i+1:
-		int shorterVar = arrayLength - 1;
+		int shorterVar = arrayLength - 1; //use shorterVar to eliminate comparing the parts of the array that are already sorted
 		for (int i = 0; i < shorterVar; i++) {	
 			//create if / else statement to determine if I even need to do a switch
-			if (compLogicFunc (intArray[i], intArray[i+1])) {
+			if (compLogicFunc (&intArray[i], &intArray[i+1])) {
 				// use switchFunc to sort the contents of intArray here
 				switchFunc(&intArray[i], &intArray[i+1]);	
 			} 
