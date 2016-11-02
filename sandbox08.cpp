@@ -11,8 +11,10 @@ void switchFunc (int* pA, int* pB) {
 
 //func to compare
 int compLogicFunc(int * intArrayA, int * intArrayB) {
-	if (intArrayA > intArrayB) {
+	if (* intArrayA > * intArrayB) {
 		return 1;
+	} else { 
+		return 0;
 	}
 }
 
