@@ -9,6 +9,16 @@ void switchFunc (int* pA, int* pB) {
 	*pA = crane;
 }
 
+//func to compare
+int compLogicFunc(int * intArray) {
+	int i;
+	if (intArray[i] > intArray[i+1]) {
+		return 1;
+	} else { 
+		return 0;
+	}
+}
+
 //actual sorting function: sort an array!
 int * sortFunc(int *intArray, int arrayLength){
 	//create a quick and dirty outer loop for the inner loop:
@@ -17,7 +27,7 @@ int * sortFunc(int *intArray, int arrayLength){
 		int shorterVar = arrayLength - 1;
 		for (int i = 0; i < shorterVar; i++) {	
 			//create if / else statement to determine if I even need to do a switch
-			if (intArray[i] > intArray[i+1]) {
+			if (compLogicFunc(intArray)) {
 				// use switchFunc to sort the contents of intArray here
 				switchFunc(&intArray[i], &intArray[i+1]);	
 			} 
