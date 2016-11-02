@@ -35,10 +35,10 @@ int * sortFunc(int *intArray, int arrayLength){
 
 int main () {
 	//define constants, array
-	int const ALENGTH = 7;
-	int a[ALENGTH] = {2, 8, 6, 4, 5, 9, 1};
+	int const ALENGTH = 5;
+	char a[ALENGTH] = {"k", "a", "b", "z", "g"};
 	//call sortFunc() 
-	sortFunc(a, ALENGTH);
+//	sortFunc(a, ALENGTH);
 	
 	//loop to print
 	for (int i = 0; i<ALENGTH; i++) {
