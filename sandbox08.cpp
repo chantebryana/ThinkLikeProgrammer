@@ -11,12 +11,15 @@ void switchFunc (int* pA, int* pB) {
 
 //actual sorting function: sort an array!
 int * sortFunc(int *intArray, int arrayLength){
-	//create for loop conditional; stop one element shy of end of array, since loop compares i+1
-	for (int i = 0; i < arrayLength-1; i++) {	
-		//create if / else statement to determine if I even need to do a switch
-		if (intArray[i] > intArray[i+1]) {
-			// use switchFunc to sort the contents of intArray here
-			switchFunc(&intArray[i], &intArray[i+1]);	
+	//create a quick and dirty outer loop for the inner loop:
+	for (int h = 0; h < arrayLength-1; h++) {		
+		//create for loop conditional; stop one element shy of end of array, since loop compares i+1:
+		for (int i = 0; i < arrayLength-1; i++) {	
+			//create if / else statement to determine if I even need to do a switch
+			if (intArray[i] > intArray[i+1]) {
+				// use switchFunc to sort the contents of intArray here
+				switchFunc(&intArray[i], &intArray[i+1]);	
+			}
 		}
 	}
 	// return the intArray for obscure reasons (to make it 'pass through' the function)
@@ -45,9 +48,9 @@ int main() {
 
 int main () {
 	//define constants
-	int const ALENGTH = 4;
+	int const ALENGTH = 7;
 	//declare and define array
-	int a[ALENGTH] = {4, 1, 2, 3};
+	int a[ALENGTH] = {2, 8, 6, 4, 5, 9, 1};
 	//call sortFunc() 
 	sortFunc(a, ALENGTH);
 	
