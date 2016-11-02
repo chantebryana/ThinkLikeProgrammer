@@ -14,13 +14,14 @@ int * sortFunc(int *intArray, int arrayLength){
 	//create a quick and dirty outer loop for the inner loop:
 	for (int h = 0; h < arrayLength-1; h++) {		
 		//create for loop conditional; stop one element shy of end of array, since loop compares i+1:
-		for (int i = 0; i < arrayLength-1; i++) {	
+		int shorterVar = arrayLength - 1;
+		for (int i = 0; i < shorterVar; i++) {	
 			//create if / else statement to determine if I even need to do a switch
 			if (intArray[i] > intArray[i+1]) {
 				// use switchFunc to sort the contents of intArray here
 				switchFunc(&intArray[i], &intArray[i+1]);	
-			}
-		}
+			} 
+		} shorterVar --;
 	}
 	// return the intArray for obscure reasons (to make it 'pass through' the function)
 	return intArray;
