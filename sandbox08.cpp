@@ -36,7 +36,7 @@ int * sortFunc(int *intArray, int arrayLength){
 int main () {
 	//define constants, array
 	int const ALENGTH = 5;
-	char a[ALENGTH] = {"k", "a", "b", "z", "g"};
+	char a[ALENGTH] = {'k', 'a', 'b', 'z', 'g'};
 	//call sortFunc() 
 //	sortFunc(a, ALENGTH);
 	
