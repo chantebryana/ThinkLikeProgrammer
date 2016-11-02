@@ -47,7 +47,7 @@ int main () {
 	//define constants
 	int const ALENGTH = 4;
 	//declare and define array
-	int a[ALENGTH] = {3, 2, 4, 1};
+	int a[ALENGTH] = {4, 1, 2, 3};
 	//call sortFunc() 
 	sortFunc(a, ALENGTH);
 	
