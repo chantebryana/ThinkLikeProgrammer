@@ -1,20 +1,27 @@
+//https://en.wikipedia.org/wiki/Function_pointer
+
 #include <iostream>
-#include <cstdio>
 using namespace std;
 
-void func(void(* f)(int));
-
-void print(int x) {
-	printf("%d\n", x);
+int add(int first, int second) {
+	return first + second;
 }
 
-func(print);
+int subtract(int first, int second) {
+	return first - second;
+}
+
+int operation(int first, int second, int (*funcToCall)(int, int)) {
+	return (*funcToCall)(first, second);
+}
 
 int main () {
-	void func (void (*f)(int)) {
-		for (int counter = 0; counter < 5; counter++) {
-			(*f)(counter);
-		}
-	}
+	int a, b;
+	int (*plus)(int, int) = add;
+	int (*minus)(int, int) = subtract;
+	
+	a = operation(7, 5, plus);
+	b = operation(20, a, minus);
+	cout << "a = " << a << " and b = " << b << ".\n";
 	return 0;
 }
