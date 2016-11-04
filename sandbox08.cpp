@@ -18,14 +18,18 @@ int compLogicFunc(int * intArrayA, int * intArrayB) {
 	}
 }
 
+int pointFunc(int * first, int * second, int (*funcToCall)(int *, int *)) {
+	return (*funcToCall)(first, second);
+}
+
 /*
 Bubble Sort Func: nested loops make sure the function compares and sorts the entire array; shorterVar removes comparing elements at the end that are already in their proper place; black boxes like compLogicFunc and switchFunc make the various pieces separate and more generalized; return intArray to pass the sorted array onwards.
 */ 
-int * sortFunc(int *intArray, int arrayLength){
+int * sortFunc(int *intArray, int arrayLength, pointFunc(&intArray[i], &intArray[i+1], compLogicFunc)){
 	for (int h = 0; h < arrayLength-1; h++) {		
 		int shorterVar = arrayLength - 1; 
 		for (int i = 0; i < shorterVar; i++) {	
-			if (compLogicFunc (&intArray[i], &intArray[i+1])) {
+			if (pointFunc) {
 				switchFunc(&intArray[i], &intArray[i+1]);	
 			} 
 		} shorterVar --;
