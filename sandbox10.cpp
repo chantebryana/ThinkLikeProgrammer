@@ -13,12 +13,13 @@ int add(int * array, int length){
 
 // attempt at pointer func
 // https://en.wikipedia.org/wiki/Function_pointer
-int pFunc(int first, int second, int (*funcToCall)(int, int)) {
-	return (*funcToCall)(first, second);
+int pFunc(int * arrPoint, int (*funcToCall)(int *)) {
+	return (*funcToCall)(arrPoint);
 }
 
 int main () {
 	const int ALENGTH = 4;
 	int a[ALENGTH] = {4, 3, 2, 1};
+	int b = pFunc(a, add);
 	return 0;
 }
