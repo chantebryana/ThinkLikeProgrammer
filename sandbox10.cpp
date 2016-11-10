@@ -13,14 +13,17 @@ int add(int * array, int length){
 
 // attempt at pointer func
 // https://en.wikipedia.org/wiki/Function_pointer
-int pFunc(int * arrPoint, int (*funcToCall)(int *)) {
-	return (*funcToCall)(arrPoint);
+int pFunc(int * arrPoint, int length, int (*funcToCall)(int *, int)) {
+	return (*funcToCall)(arrPoint, length);
 }
 
 int main () {
 	const int ALENGTH = 4;
 	int a[ALENGTH] = {4, 3, 2, 1};
-	cout << add(a, ALENGTH) << "\n";
-//	int b = pFunc(a, add);
+	//print out using literal function
+	//cout << add(a, ALENGTH) << "\n";
+	//attempt at pointer func...
+	int b = pFunc(a, ALENGTH, add);
+	cout << b << "\n";
 	return 0;
 }
