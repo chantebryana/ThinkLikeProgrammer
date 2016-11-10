@@ -24,6 +24,6 @@ int main () {
 	//cout << add(a, ALENGTH) << "\n";
 	//attempt at pointer func...
 	int b = pFunc(a, ALENGTH, add);
-	cout << b << "\n";
+	cout << pFunc(a, ALENGTH, add) << "\n";
 	return 0;
 }
