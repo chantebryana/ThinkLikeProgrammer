@@ -20,10 +20,8 @@ int pFunc(int * arrPoint, int length, int (*funcToCall)(int *, int)) {
 int main () {
 	const int ALENGTH = 4;
 	int a[ALENGTH] = {4, 3, 2, 1};
-	//print out using literal function
-	//cout << add(a, ALENGTH) << "\n";
 	//attempt at pointer func...
 	int b = pFunc(a, ALENGTH, add);
-	cout << pFunc(a, ALENGTH, add) << "\n";
+	cout << b << "\n";
 	return 0;
 }
