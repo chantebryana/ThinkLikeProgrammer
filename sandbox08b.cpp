@@ -18,15 +18,19 @@ int compLogicFunc(int * intArrayA, int * intArrayB) {
 	}
 }
 
+void bubbleNest(int *intArray, int arrayLength) {
+	int shorterVar = arrayLength - 1;
+	for (int i = 0; i < shorterVar; i++) {
+		if (compLogicFunc (&intArray[i], &intArray[i+1])) {
+				switchFunc(&intArray[i], &intArray[i+1]);	
+		} 
+	} shorterVar --;
+}
+
 // Bubble Sort Func
 int * sortFunc(int *intArray, int arrayLength){
 	for (int h = 0; h < arrayLength-1; h++) {		
-		int shorterVar = arrayLength - 1; 
-		for (int i = 0; i < shorterVar; i++) {	
-			if (compLogicFunc (&intArray[i], &intArray[i+1])) {
-				switchFunc(&intArray[i], &intArray[i+1]);	
-			} 
-		} shorterVar --;
+		bubbleNest(intArray, arrayLength);
 	}
 	return intArray;
 }
