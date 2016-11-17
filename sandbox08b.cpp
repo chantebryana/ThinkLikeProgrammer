@@ -18,19 +18,19 @@ int compLogicFunc(int * intArrayA, int * intArrayB) {
 	}
 }
 
-void bubbleNest(int *intArray, int arrayLength) {
+void bubbleNest(int *intArray, int arrayLength, int (*compPointer)(int *, int *)) {
 	int shorterVar = arrayLength - 1;
 	for (int i = 0; i < shorterVar; i++) {
-		if (compLogicFunc (&intArray[i], &intArray[i+1])) {
+		if ( (*compPointer)(&intArray[i], &intArray[i+1]) ) { 
 				switchFunc(&intArray[i], &intArray[i+1]);	
 		} 
 	} shorterVar --;
 }
 
 // Bubble Sort Func
-int * sortFunc(int *intArray, int arrayLength){
+int * sortFunc(int *intArray, int arrayLength, int (*compPointer)(int *, int *)){
 	for (int h = 0; h < arrayLength-1; h++) {		
-		bubbleNest(intArray, arrayLength);
+		bubbleNest(intArray, arrayLength, compPointer);
 	}
 	return intArray;
 }
@@ -40,7 +40,7 @@ int main () {
 	int const ALENGTH = 7;
 	int a[ALENGTH] = {2, 8, 6, 4, 5, 9, 1};
 	//call sortFunc() 
-	sortFunc(a, ALENGTH);
+	sortFunc(a, ALENGTH, compLogicFunc);
 	
 	//loop to print
 	for (int i = 0; i<ALENGTH; i++) {
