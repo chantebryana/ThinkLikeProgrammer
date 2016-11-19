@@ -31,3 +31,4 @@ int main () {
 	printFunc(pFunc(a, ALENGTH, add));
 	return 0;
 }
+

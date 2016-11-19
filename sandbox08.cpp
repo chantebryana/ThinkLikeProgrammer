@@ -24,7 +24,6 @@ int compLogicFunc(const void * a, const void * b) {
 // https://en.wikipedia.org/wiki/Function_pointer
 int compPointFunc (const void * p1, const void * p2, int (*funcToCall)(const void *, const void *));
 
-
 /*
 int pointFunc(int * first, int * second, int (*funcToCall)(int *, int *)) {
 	return (*funcToCall)(first, second);
