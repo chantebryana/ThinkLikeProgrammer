@@ -22,7 +22,7 @@ int compLogicFunc(int * intArrayA, int * intArrayB) {
 int evenOddBrain(int * numA, int * numB) {
 	if (* numA % 2 == 0) {					//if first element's even
 		if (* numB % 2 == 0) {				//if second element's even
-			if (* numA > * numB) {			//if first element's larger than second
+			if (* numA < * numB) {			//if first element's larger than second
 				return 1;
 			} else {							//if first element's smaller than second
 				return 0;
