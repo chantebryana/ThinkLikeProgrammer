@@ -20,24 +20,24 @@ int compLogicFunc(int * intArrayA, int * intArrayB) {
 
 //1 is "true", 0 is "false"
 int evenOddBrain(int * numA, int * numB) {
-	if (numA % 2 == 0) {					//if first element's even
-		if (numB % 2 == 0) {				//if second element's even
-			if (numA > numB) {			//if first element's larger than second
+	if (* numA % 2 == 0) {					//if first element's even
+		if (* numB % 2 == 0) {				//if second element's even
+			if (* numA > * numB) {			//if first element's larger than second
 				return 1;
 			} else {							//if first element's smaller than second
 				return 0;
 			}
-		} else if (numB % 2 == 1) {	//if second element's odd
+		} else if (* numB % 2 == 1) {	//if second element's odd
 			return 0;
 		}
-	} else if (numA % 2 == 1) {		//if first element's odd
-		if (numB % 2 == 1) {				//if second element's odd
-			if (numA > numB) {			//if first element's larger than second
+	} else if (* numA % 2 == 1) {		//if first element's odd
+		if (* numB % 2 == 1) {				//if second element's odd
+			if (* numA > * numB) {			//if first element's larger than second
 				return 1;
 			} else {							//if first element's smaller than second
 				return 0;
 			}
-		} else if (numB % 2 == 0) {	//if second element's even
+		} else if (* numB % 2 == 0) {	//if second element's even
 			return 1;
 		}
 	}
@@ -47,7 +47,7 @@ void bubbleNest(int *intArray, int arrayLength, int (*compPointer)(int *, int *)
 	int shorterVar = arrayLength - 1;
 	for (int i = 0; i < shorterVar; i++) {
 		if ( (*compPointer)(&intArray[i], &intArray[i+1]) ) { 
-			   jswitchFunc(&intArray[i], &intArray[i+1]);	
+			   switchFunc(&intArray[i], &intArray[i+1]);	
 		} 
 	} shorterVar --;
 }
