@@ -9,7 +9,7 @@ void switchFunc (int* pA, int* pB) {
 	*pA = crane;
 }
 
-//func to compare; 1 is "true", 0 is "false"
+//func to compare; 1 is "true", 0 is "false"z
 int compLogicFunc(int * intArrayA, int * intArrayB) {
 	if (* intArrayA > * intArrayB) {
 		return 1;
@@ -22,7 +22,7 @@ void bubbleNest(int *intArray, int arrayLength, int (*compPointer)(int *, int *)
 	int shorterVar = arrayLength - 1;
 	for (int i = 0; i < shorterVar; i++) {
 		if ( (*compPointer)(&intArray[i], &intArray[i+1]) ) { 
-				switchFunc(&intArray[i], &intArray[i+1]);	
+			switchFunc(&intArray[i], &intArray[i+1]);	
 		} 
 	} shorterVar --;
 }
