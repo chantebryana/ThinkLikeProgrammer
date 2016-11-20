@@ -2,8 +2,6 @@
 #include <iostream>
 using namespace std;
 
-
-
 int main() {
 	// declare and define student struct
 	struct student {
@@ -26,6 +24,24 @@ int main() {
 		 {81, 10009, "Aretha"},
 		 {68, 10010, "Veronica"}
 	};
+
+	cout << "Student grades: ";
+	for (int i = 0; i < ARRAY_SIZE; i++) {
+		cout << studentArray[i].grade << " ";
+	}
+	cout << "\n";
+
+	cout << "Student IDs: ";
+	for (int i = 0; i < ARRAY_SIZE; i++) {
+		cout << studentArray[i].studentID << " ";
+	}
+	cout << "\n";
+
+	cout << "Student names: ";
+	for (int i = 0; i < ARRAY_SIZE; i++) {
+		cout << studentArray[i].name << " ";
+	}
+	cout << "\n";
 
 	return 0;
 }
