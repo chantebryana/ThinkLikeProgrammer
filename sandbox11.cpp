@@ -12,6 +12,34 @@ int compareInt(const void * a, const void * b) {
 	}
 }
 
+//sort evens first descending, then odds ascending
+//1 is "true", 0 is "false"
+int evenOddBrain(const void * a, const void * b) {
+	int * numA = (int *)a;
+	int * numB = (int *)b;
+	if (* numA % 2 == 0) {					//if first element's even
+		if (* numB % 2 == 0) {				//if second element's even
+			if (* numA < * numB) {			//if first element's larger than second
+				return 1;
+			} else {								//if first element's smaller than second
+				return 0;
+			}
+		} else if (* numB % 2 == 1) {		//if second element's odd
+			return 0;
+		}
+	} else if (* numA % 2 == 1) {			//if first element's odd
+		if (* numB % 2 == 1) {				//if second element's odd
+			if (* numA > * numB) {			//if first element's larger than second
+				return 1;
+			} else {								//if first element's smaller than second
+				return 0;
+			}
+		} else if (* numB % 2 == 0) {		//if second element's even
+			return 1;
+		}
+	}
+}
+
 //print the array!
 void printIt(int * value, int length) {
 	for (int i = 0; i < length; i++) {
@@ -21,9 +49,9 @@ void printIt(int * value, int length) {
 }
 
 int main () {
-	int const LENGTH = 6;
-	int values[LENGTH] = {40, 10, 100, 90, 20, 25};
-	qsort(values, LENGTH, sizeof(int), compareInt);
+	int const LENGTH = 9;
+	int values[LENGTH] = {2, 7, 8, 3, 6, 4, 5, 9, 1};
+	qsort(values, LENGTH, sizeof(int), evenOddBrain);
 	printIt(values, LENGTH);
 
 	return 0;
