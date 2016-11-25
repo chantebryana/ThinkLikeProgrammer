@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-// comparison func to use with qsort
+// comparison func to use with qsortz
 int compare (const void * a, const void * b) {
 	return ( *(int *)a - *(int *)b );
 }
@@ -43,12 +43,12 @@ int main() {
 		cout << studentArray[i].studentID << " ";
 	}
 	cout << "\n";
-
+/*
 	cout << "Student names: ";
 	for (int i = 0; i < ARRAY_SIZE; i++) {
 		cout << studentArray[i].name << " ";
 	}
 	cout << "\n";
-
+*/
 	return 0;
 }
