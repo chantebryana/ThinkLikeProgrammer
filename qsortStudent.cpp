@@ -2,18 +2,22 @@
 #include <iostream>
 using namespace std;
 
+// declare and define student struct
+struct student {
+	int grade; 
+	int studentID;
+};
+
 // comparison func to use with qsort
-struct compare (const void * a, const void * b) {
-	return ( *(struct *)a - *(struct *)b );
+int compare (const void * a, const void * b) {
+	student * studentA = (student *)a;
+	student * studentB = (student *)b;
+	return ( studentB->studentID - studentA->studentID);
 }
 
 int main() {
-	// declare and define student struct
-	struct student {
-		int grade; 
-		int studentID;
-	};
-	// declare and define array size, plus multi-dimensional student array
+
+	// declare and define array size, plzus multi-dimensional student array
 	// use struct student for student array data type
 	const int ARRAY_SIZE = 10;
 	student studentArray[ARRAY_SIZE] = {
@@ -31,7 +35,7 @@ int main() {
 
 	qsort(studentArray, ARRAY_SIZE, sizeof(student), compare);
 
-	cout << "Student grades & IDs: \n";
+	cout << "Sorted student grades & IDs: \n";
 	for (int i = 0; i < ARRAY_SIZE; i++) {
 		cout << studentArray[i].grade << ", " << studentArray[i].studentID << "\n";
 	}
