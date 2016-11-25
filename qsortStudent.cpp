@@ -2,9 +2,9 @@
 #include <iostream>
 using namespace std;
 
-// comparison func to use with qsortz
-int compare (const void * a, const void * b) {
-	return ( *(int *)a - *(int *)b );
+// comparison func to use with qsort
+struct compare (const void * a, const void * b) {
+	return ( *(struct *)a - *(struct *)b );
 }
 
 int main() {
@@ -31,23 +31,10 @@ int main() {
 
 	qsort(studentArray, ARRAY_SIZE, sizeof(student), compare);
 
-	cout << "Student grades: ";
+	cout << "Student grades & IDs: \n";
 	for (int i = 0; i < ARRAY_SIZE; i++) {
-		cout << studentArray[i].grade << " ";
+		cout << studentArray[i].grade << ", " << studentArray[i].studentID << "\n";
 	}
-	cout << "\n";
 
-	cout << "Student IDs: ";
-	for (int i = 0; i < ARRAY_SIZE; i++) {
-		cout << studentArray[i].studentID << " ";
-	}
-	cout << "\n";
-/*
-	cout << "Student names: ";
-	for (int i = 0; i < ARRAY_SIZE; i++) {
-		cout << studentArray[i].name << " ";
-	}
-	cout << "\n";
-*/
 	return 0;
 }
