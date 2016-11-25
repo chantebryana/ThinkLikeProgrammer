@@ -12,7 +12,8 @@ struct student {
 int compare (const void * a, const void * b) {
 	student * studentA = (student *)a;
 	student * studentB = (student *)b;
-	return ( (*studentA).grade - (*studentB).grade);
+	return ( ((student *)a)->grade - (*(student *)b).grade );
+//	return ( (*studentA).grade - (*studentB).grade);
 }
 
 int main() {
