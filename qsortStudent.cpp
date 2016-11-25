@@ -2,6 +2,11 @@
 #include <iostream>
 using namespace std;
 
+// comparison func to use with qsort
+int compare (const void * a, const void * b) {
+	return ( *(int *)a - *(int *)b );
+}
+
 int main() {
 	// declare and define student struct
 	struct student {
@@ -24,6 +29,8 @@ int main() {
 		 {81, 10009, "Aretha"},
 		 {68, 10010, "Veronica"}
 	};
+
+	qsort(studentArray, ARRAY_SIZE, sizeof(student), compare);
 
 	cout << "Student grades: ";
 	for (int i = 0; i < ARRAY_SIZE; i++) {
