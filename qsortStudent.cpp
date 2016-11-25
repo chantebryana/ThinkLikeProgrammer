@@ -12,7 +12,7 @@ struct student {
 int compare (const void * a, const void * b) {
 	student * studentA = (student *)a;
 	student * studentB = (student *)b;
-	return ( studentB->studentID - studentA->studentID);
+	return ( (*studentA).grade - (*studentB).grade);
 }
 
 int main() {
