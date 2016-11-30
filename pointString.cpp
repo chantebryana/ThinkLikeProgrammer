@@ -1,11 +1,12 @@
 // Variable-Length String problem, TLAP Ch4
 #include <cstdlib>
 #include <iostream>
+#include <string> 
 using namespace std;
 
 //take a string and a number and return the character at the position in the string
-void characterAt(string * word, int * indexToFind) {
-	cout << * string[* indexToFind] << "\n";
+void characterAt(string word, int indexToFind) {
+	cout << "Word '" << word << "' at index " << indexToFind << " produces letter '" << word[indexToFind] << "'\n";
 }
 
 int main() {
@@ -17,7 +18,7 @@ int main() {
 	cin >> userNum;
 	string * pointerString = &userString;
 	int * pointerNum = &userNum;
-	characterAt(pointerString, pointerNum);
+	characterAt(userString, userNum);
 
 	return 0;
 }
