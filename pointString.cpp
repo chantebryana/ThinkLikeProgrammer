@@ -4,15 +4,15 @@
 using namespace std;
 
 //take a string and a number and return the character at the position in the string
-void characterAt(int * indexToFind) {
-	cout << * indexToFind << "\n";
+void characterAt(int * array, int * indexToFind) {
+	cout << array[* indexToFind] << "\n";
 }
 
 int main() {
-//	int const aLength = 5;
-//	int a[aLength] = {1, 2, 3, 4, 5};
+	int const aLength = 5;
+	int a[aLength] = {1, 2, 3, 4, 5};
 	int positionIndex = 3;
 	int * positionPointer = &positionIndex;
-	characterAt(positionPointer);
+	characterAt(a, positionPointer);
 	return 0;
 }
