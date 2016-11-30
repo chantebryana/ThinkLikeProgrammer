@@ -10,16 +10,10 @@ void characterAt(char * array, int * indexToFind) {
 
 int main() {
 	string userString;
+	int userNum;
 	cout << "Enter a single-word string, then press ENTER: ";
 	cin >> userString;
-	cout << userString[3] << "\n"; 	// http://www.cplusplus.com/forum/beginner/60299/
-
-
-
-	int const aLength = 5;
-	char a[aLength] = {'a', 'b', 'c', 'd', 'e'};
-	int positionIndex = 3;
-	int * positionPointer = &positionIndex;
-//	characterAt(a, positionPointer);
+	cout << "Enter a number less than the length of the word entered above, then press ENTER: ";
+	cin >> userNum;
 	return 0;
 }
