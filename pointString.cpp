@@ -9,7 +9,7 @@ void characterAt(char * array, int * indexToFind) {
 }
 
 int main() {
-	string userString;
+	char userString[20];		// http://www.cplusplus.com/forum/beginner/76615/
 	cout << "Enter a single-word string, then press ENTER: ";
 	cin >> userString;
 	cout << "The string you entered is " << userString << "\n";
