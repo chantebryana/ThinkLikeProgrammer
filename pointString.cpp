@@ -5,7 +5,7 @@ using namespace std;
 
 //take a string and a number and return the character at the position in the string
 void characterAt(int * indexToFind) {
-	cout << indexToFind << "\n";
+	cout << * indexToFind << "\n";
 }
 
 int main() {
