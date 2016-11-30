@@ -15,5 +15,7 @@ int main() {
 	cin >> userString;
 	cout << "Enter a number less than the length of the word entered above, then press ENTER: ";
 	cin >> userNum;
+	string * pointerString = &userString;
+	int * pointerNum = &userNum;
 	return 0;
 }
