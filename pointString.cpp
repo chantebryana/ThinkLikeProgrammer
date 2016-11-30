@@ -8,19 +8,14 @@ void characterAt(char * array, int * indexToFind) {
 	cout << array[* indexToFind] << "\n";
 }
 
-//print the array!
-void printIt(char * value, int length) {
-	for (int i = 0; i < length; i++) {
-		cout << value[i] << " ";
-	}
-	cout << ".\n";
-}
-
 int main() {
 	string userString;
 	cout << "Enter a single-word string, then press ENTER: ";
 	cin >> userString;
-	cout << userString[3] << "\n";
+	cout << userString[3] << "\n"; 	// http://www.cplusplus.com/forum/beginner/60299/
+
+
+
 	int const aLength = 5;
 	char a[aLength] = {'a', 'b', 'c', 'd', 'e'};
 	int positionIndex = 3;
