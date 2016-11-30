@@ -13,6 +13,6 @@ int main() {
 	int a[aLength] = {1, 2, 3, 4, 5};
 	int positionIndex = 3;
 	int * positionPointer = &positionIndex;
-	characterAt(a, 3);
+	characterAt(a, positionIndex);
 	return 0;
 }
