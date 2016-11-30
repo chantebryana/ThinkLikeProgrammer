@@ -17,10 +17,10 @@ void printIt(char * value, int length) {
 }
 
 int main() {
-	char userString[8];		// http://www.cplusplus.com/forum/beginner/76615/
+	char userString[20];		// http://www.cplusplus.com/forum/beginner/76615/
 	cout << "Enter a single-word string, then press ENTER: ";
-	cin >> userString;
-	printIt(userString, 8);
+	cin >> userString >> "\0";
+	printIt(userString, 20);
 	int const aLength = 5;
 	char a[aLength] = {'a', 'b', 'c', 'd', 'e'};
 	int positionIndex = 3;
