@@ -1,0 +1,101 @@
+NOTES LINKED WITH PROBLEM PRESENTED ON PAGE 91 OF CHAPTER 4 OF TLAP, AND SUBESEQUENTLY DISCUSSED AND HASHED OUT BY AUTHOR
+
+91. typedef researched on wikipedia: https://en.wikipedia.org/wiki/Typedef 
+===
+		A typedef declaration may be used to indicate the meaning of a variable within the programming context, e.g., it may be include the expression of a unit of measurement or counts. The generic declarations in the following code,
+
+			int current_speed ;
+			int high_score ;
+
+
+			void congratulate(int your_score) {
+				 if (your_score > high_score)
+					  ...
+
+		may be expressed by declaring context specific types:
+
+			typedef int km_per_hour ;
+			typedef int points ;
+
+			km_per_hour current_speed ;  //"km_per_hour" is synonymous with "int" here,
+				points high_score ;       //and thus, the compiler treats our new variables as integers.
+
+
+			void congratulate(points your_score) {
+				 if (your_score > high_score)
+					  ...
+
+		Both sections of code execute identically. However, the use of typedef declarations in the second code block makes it clear that the two variables, while represented by the same data type int, represent different or incompatible data. The definition in congratulate() of your_score indicates to the programmer that current_speed (or any other variable not declared as a points) should not be passed as an argument. This would not be as apparent if both were declared as variables of int datatype.
+
+		...
+		Usage concerns
+
+		Some people[who?] are opposed to the extensive use of typedefs. Most arguments center on the idea that typedefs simply hide the actual data type of a variable. For example, Greg Kroah-Hartman, a Linux kernel hacker and documenter, discourages their use for anything except function prototype declarations. He argues that this practice not only unnecessarily obfuscates code, it can also cause programmers to accidentally misuse large structures thinking them to be simple types.[4]
+
+		Others argue that the use of typedefs can make code easier to maintain. K&R states that there are two reasons for using a typedef. First, it provides a means to make a program more portable. Instead of having to change a type everywhere it appears throughout the program's source files, only a single typedef statement needs to be changed. Second, a typedef can make a complex definition or declaration easier to understand.
+===
+
+92. the code / issues he addresses with characterAt() are similar to concerns I had when writing my code.  I initially worked with an array myself, but switched to a string because I thought he wanted that.  I must admit that I didn't use / know about the typedef concept. 
+	- important considerations: dynamically-adjusting array lengths, based on the length of the word the user inputs.  Also consider heap memory: I don't yet really know how that factors in / is connected with the code I write.
+93. find the length of the array with a while loop: look for end-line marker: in this case, a "0" (apparently)
+93. heap memory seems to be linked with calling a "new" variable, but I don't fully understand how / why / where / what the connection is.  
+===
+http://www.learncpp.com/cpp-tutorial/69-dynamic-memory-allocation-with-new-and-delete/
+- heap is dynamically-generated vars, linked with "new" and "delete"
+http://www.learncpp.com/cpp-tutorial/69-dynamic-memory-allocation-with-new-and-delete/
+- more specific focus on definition of dynamic memory, why it matters, practical use-cases
+- dynamic memory is important to add flexibility (dynamically allocate memory based on use input / interaction, for example) and also for fitting in with stack memory restrictions: stack memory is often limited and small, and stack overflow can easily happen if your program uses it too inefficiently.  Heap memory can help increase efficiency and also relieve some of the pressure on stack.
+- heap memory allocation is much larger than stack
+- "new int" --> requesting an integer's-worth of memory from heap; new operator returns a pointer containing the address of the memory that has been allocated (fascinating!); create a pointer variable to point to the address of the dynamic memory, and access it over and over again (instead of having it created and deleted and non-accessible in your program) ==> 
+	int * ptr = new int;		 //dynamically allocate an integer and assign it the address to ptr so we can access it later
+	* ptr = 7;					 //assign value of 7 to that allocated memory
+- Deleting single variables: When we are done with a dynamically allocated variable, we need to explicitly tell C++ to free the memory for reuse. For single variables, this is done via the scalar (non-array) form of the delete operator:
+	// assume ptr has previously been allocated with operator new
+	delete ptr; // return the memory pointed to by ptr to the operating system
+	ptr = 0;    // set ptr to be a null pointer (use nullptr instead of 0 in C++11)
+- deleting variables, cont: deleting the operator doesn't actually delete anything, it simply returns the occupied memory chunk back to the generic pool.  I can still use this pointer to point to other things? (yes, I think that's true).
+- if I delete a pointer, it's a dangling pointer, and that can cause problems with how the program runs or something.  Best practice is to both delete the pointer (which, remember, is keeping the pointer but reallocating the memory back to the general pool) and to ALSO set the pointer to null (0).  For some reason having a nullpointer (rather than a dangling pointer) is better.  
+- if "new" keyword fails (ie, if there isn't any memory in the heap to allocate) the program will throw "bad_alloc" exception and/or the program will crash.
+- a good crash check (which is often overlooked b/c it's so rare for there to be no memory in the heap): 
+	Note that if you then attempt to dereference this memory, your program will crash. Consequently, the best practice is to check all memory requests to ensure they actually succeeded before using the allocated memory.
+	int *value = new (std::nothrow) int; // ask for an integer's worth of memory
+	if (!value) // handle case where new returned null
+	{
+		 std::cout << "Could not allocate memory";
+		 exit(1);
+	}
+- memory leaks: heap memory that isn't explicity dereferenced or nullified stays active until the program closes; after that, the memory only gets cleaned up if the operating system does it: the program / language doesn't do that for you.  I still don't fully understand why memory leaks matter so much: of course it sounds undesirable, but I don't have any / enough examples yet for how that looks like in the real world, so I struggle to internalize it at this point.
+- hmmm, interesting: if a pointer goes out of scope (ie, if the pointer's destroyed but the program is still running), then the memory stays allocated, but there's no way to access it (because the pointer is gone): this is a memory leak.  But how would a pointer be out of scope without it being dereferenced / the program explicitly ending?  Ah, it can be when a funciton WITHIN a program ends.  Der der.  So an internal-to-the-function pointer can go out of scope once the function ends, but the allocated heap memory hasn't been dereferenced.  Therefore, it seems prudent to nullify / dereference any function-oriented pointer before the function ends.  At the very end of the function, set pointer to 0 or something similar.
+- likewise, if a variable pointing to heap memory later gets redirected to another place in memory without it first being set to 0 (null), then the memory is similarly damned to purgatory, ie memory leak!
+
+
+http://www.learncpp.com/cpp-tutorial/79-the-stack-and-the-heap/
+- The heap has advantages and disadvantages:
+	- Allocating memory on the heap is comparatively slow.
+	- Allocated memory stays allocated until it is specifically deallocated (beware memory leaks) or the application ends (at which point the OS should clean it up).
+	- Dynamically allocated memory must be accessed through a pointer. Dereferencing a pointer is slower than accessing a variable directly.
+	- Because the heap is a big pool of memory, large arrays, structures, or classes can be allocated here.
+- stack memory: imagine a stack of plates.  You can do 3 things with this stack of plates: 
+	- look at the surface of the top plate
+	- take the top plate off the stack (exposing the one underneath)
+	- put a new plate on top of the stack (hiding the one underneath)
+Translating that analogy to computer speak, as follows: 
+	- look at the top item on the stack (function top() or peek() )
+	- take the top item off of the stack (function pop() )
+	- put a new item on top of the stack (function push() )
+- stack is last in first out (LIFO) structure; contrasted against a random access (RAM) structure
+	Stack: empty
+	Push 1
+	Stack: 1
+	Push 2
+	Stack: 1 2
+	Push 3
+	Stack: 1 2 3
+	Pop
+	Stack: 1 2
+	Pop
+	Stack: 1
+
+===
+
+
