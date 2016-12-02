@@ -3,14 +3,15 @@
 // test diagram / example: take word "test" and append with "!" 
 // [t, e, s, t, 0] to [t, e, s, t, !, 0]
 
-void append(arrayString& s, char c) {				// pass arguments of full word arrayString ("test") plus added character c ("!")
+void append(arrayString& s, char c) {				// pass arguments of full word (address of) s array ("test") plus added character c ("!")
 	int oldLength = 0;
 	while (s[oldLength] != 0) {						// ie, till the last element of array, since last element will be null character (0)
 		oldLength++;										// makes oldLength the same length (minus 1) as your dynamically-created array
 	}
-	arrayString newS = new char[oldLength + 2];	// newS is new variable. arrayString already defined as typedef char * 
-																// "new char" array points to dynamically-allocated heap memory 
-																// (of length 1 byte * oldLength + 2)
+	arrayString newS = new char[oldLength + 2];	// newS is new variable, which I think kind of works like crane (from bubble sort) 
+																// arrayString already defined as typedef char * 
+																// new char array points to dynamically-allocated heap memory 
+																// (of length 1 byte * oldLength + 2 I think)
 	for (int i = 0; i < oldLength; i++) {
 		newS[i] = s[i];									// assigns defintions of newS elements to be equivelant as elements of s array
 	}
