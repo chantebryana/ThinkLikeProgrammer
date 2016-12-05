@@ -1,8 +1,14 @@
-// Chante's digestion of code as explained and explored in TLAP ch 4, pgs 91 - 95
+// Chante's digestion of code as explained and explored in TLAP ch 4
 
-// test diagram / example: take word "test" and append with "!" 
-// [t, e, s, t, 0] to [t, e, s, t, !, 0]
+// p 91
+typedef char * arrayString; 
 
+// p 92
+char characterAt(arrayString s, int position) {
+	return s[position];
+}
+
+// p 97
 int length(arrayString s) {
 	int count = 0;
 	while (s[count] != 0) {
@@ -11,10 +17,10 @@ int length(arrayString s) {
 	return count;
 }
 
-void append(arrayString& s, char c) {
-	int oldLength = 
+// p 94
+void append(arrayString& s, char c) {	
+	int oldLength = length(s);z
 	arrayString newS = new char[oldLength + 2];
-
 	for (int i = 0; i < oldLength; i++) {
 		newS[i] = s[i];
 	}
@@ -22,5 +28,10 @@ void append(arrayString& s, char c) {
 	newS[oldLength + 1] = 0;
 	delete[] s;	
 	s = newS;
+}
+
+// p 98
+// first variable is reference b/c it'll be changed by func; second variable is literal value b/c it's just referenced by func and won't be changed (just like append() )
+void concatenate(arrayString& s1, arrayString s2) {
 }
 
