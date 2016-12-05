@@ -19,8 +19,8 @@ int length(arrayString s) {
 
 // p 94
 void append(arrayString& s, char c) {	
-	int oldLength = length(s);z
-	arrayString newS = new char[oldLength + 2];
+	int oldLength = length(s);
+	arrayString newS = new char[oldLength + 2];	// I still feel like this should only be oldLength +1, and the p 98 code below is verifying my suspicion that +2 was a typo.  Yay!
 	for (int i = 0; i < oldLength; i++) {
 		newS[i] = s[i];
 	}
@@ -36,6 +36,9 @@ void concatenate(arrayString& s1, arrayString s2) {
 	int s2_Length = length(s2);
 	int s1_NewLength = s1_OldLength + s2_Length;
 	arrayString newS = new char[s1_NewLength + 1];
+	for (int i = 0; i < s1_OldLength; i++) {
+		newS[i] = s1[i];
+	}
 	for (int i = 0; i < s1_OldLength; i++) {
 		newS[s1_OldLength + i] = s2[i];
 	}
