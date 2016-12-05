@@ -31,7 +31,16 @@ void append(arrayString& s, char c) {
 }
 
 // p 98
-// first variable is reference b/c it'll be changed by func; second variable is literal value b/c it's just referenced by func and won't be changed (just like append() )
 void concatenate(arrayString& s1, arrayString s2) {
+	int s1_OldLength = length(s1);
+	int s2_Length = length(s2);
+	int s1_NewLength = s1_OldLength + s2_Length;
+	arrayString newS = new char[s1_NewLength + 1];
+	for (int i = 0; i < s1_OldLength; i++) {
+		newS[s1_OldLength + i] = s2[i];
+	}
+	newS[s1_NewLength] = 0;
+	delete[] s1;
+	s1 = newS;
 }
 
