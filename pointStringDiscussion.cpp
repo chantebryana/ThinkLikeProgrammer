@@ -20,7 +20,7 @@ int length(arrayString s) {
 // p 94
 void append(arrayString& s, char c) {	
 	int oldLength = length(s);
-	arrayString newS = new char[oldLength + 2];	// I still feel like this should only be oldLength +1, and the p 98 code below is verifying my suspicion that +2 was a typo.  Yay!
+	arrayString newS = new char[oldLength + 2];
 	for (int i = 0; i < oldLength; i++) {
 		newS[i] = s[i];
 	}

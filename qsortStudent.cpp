@@ -10,7 +10,7 @@ struct student {
 
 // comparison func to use with qsort
 int compare (const void * a, const void * b) {
-	return ( ((student *)a)->grade - (*(student *)b).grade );
+	return ( ((student *)a)->grade - (* (student *) b) . grade );
 }
 
 int main() {

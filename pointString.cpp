@@ -6,7 +6,7 @@ using namespace std;
 
 //take a string and a number and return the character at the position in the string
 void characterAt(string * word, int * indexToFind) {
-	cout << "Word '" << word << "' at index " << * indexToFind << " produces letter '" << word[* indexToFind] << "'\n";
+	cout << "Word '" << word << "' at index " << * indexToFind << " produces letter '" << word[*indexToFind] << "'\n";
 }
 
 int main() {
