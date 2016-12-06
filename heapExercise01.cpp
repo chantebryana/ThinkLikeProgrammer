@@ -8,14 +8,14 @@ using std::cout;
 
 
 void printFunc (char * output, int sLgth) {
-	for(int i = 0; i < sLgth; i++) {
-		cout << output[i];
+	for(int j = 0; j < sLgth; j++) {
+		cout << output[j];
 	}
 }
 void substring (char * array, int sPos, int sLgth) {
 	char output[sLgth];
-	for(int i = sPos; i < (7); i++) {
-		for (int j = 0; j < sLgth; j++) {
+	for (int j = 0; j < sLgth; j++) {
+		for(int i = sPos; i < (sLgth+1); i++) {
 			output[j] = array[i];
 		}
 	}
