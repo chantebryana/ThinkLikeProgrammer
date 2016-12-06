@@ -32,19 +32,23 @@ void addRecord(studentCollection& sc, int stuNum, int gr) {	// sc must be derefe
 }
 addRecord(sc, 1274, 91);
 
-// p 106 averageRecord function
+// p 106 - 108 averageRecord function
 // wow, it would have taken me a million years to figure out the exact syntax for this function!
 double averageRecord(studentCollection sc) {
 	int count = 0;
 	double sum = 0;
-	listNode * loopPtr = sc; // loopPtr helps keep track of where we are as we traverse the linked list; kind of like "i" in for loop; doing so not by tracking the position number of the array indexes, but by storing a pointer to the node we are currently processing.  The pointer is like the array index, sort of.
-	while (loopPtr != NULL) {
-		sum += loopPtr->grade;
-		count ++; 
-		loopPtr = loopPtr->next;
+	if (sc == NULL) {	// create condition if there's nothing to add: we don't want 0/0!
+		return 0;
+	} else {
+		listNode * loopPtr = sc; // loopPtr helps keep track of where we are as we traverse the linked list; kind of like "i" in for loop; doing so not by tracking the position number of the array indexes, but by storing a pointer to the node we are currently processing.  The pointer is like the array index, sort of.
+		while (loopPtr != NULL) {
+			sum += loopPtr->grade;
+			count ++; 
+			loopPtr = loopPtr->next;
+		}
+		double average = sum / count;
+		return average;
 	}
-	double average = sum / count;
-	return average;
 }
 int avg = averageRecord(sc);
 
