@@ -14,7 +14,7 @@ void printFunc (char * output, int sLgth) {
 }
 void substring (char * array, int sPos, int sLgth) {
 	char output[sLgth];
-	for(int i = (sPos-1); i < (sPos + sLgth - 1); i++) {
+	for(int i = sPos; i < (sPos + sLgth); i++) {
 		output[i] = array[i];
 	}
 	printFunc(output, sLgth);
@@ -24,7 +24,7 @@ void substring (char * array, int sPos, int sLgth) {
 int main() {
 	int const ALENGTH = 7;
 	char a[ALENGTH] = {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
-	int stringPosition = 3;
+	int stringPosition = 2;
 	int stringLength = 4;
 	substring(a, stringPosition, stringLength);
 	cout << "\n";
