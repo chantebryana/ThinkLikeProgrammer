@@ -14,10 +14,10 @@ void printFunc (char * output, int sLgth) {
 }
 void substring (char * array, int sPos, int sLgth) {
 	char output[sLgth];
-	for (int j = 0; j < sLgth; j++) {
-		for(int i = sPos; i < (sLgth+1); i++) {
-			output[j] = array[i];
-		}
+	int count = 0;
+	for(int i = sPos; i < (sLgth+1); i++) {
+		output[count] = array[i];
+		count ++;
 	}
 	printFunc(output, sLgth);
 }
@@ -36,8 +36,8 @@ int main() {
 	char a[ALENGTH] = {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
 	int stringPosition = 2;
 	int stringLength = 4;
-	//substring(a, stringPosition, stringLength);
-	substringLiteral(a, stringLength);
+	substring(a, stringPosition, stringLength);
+	//substringLiteral(a, stringLength);
 	cout << "\n";
 
 	return 0;
