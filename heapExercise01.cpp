@@ -15,7 +15,7 @@ void printFunc (char * output, int sLgth) {
 void substring (char * array, int sPos, int sLgth) {
 	char output[sLgth];
 	int count = 0;
-	for(int i = sPos; i < (sLgth+1); i++) {
+	for(int i = sPos; i < (sLgth+sPos); i++) {
 		output[count] = array[i];
 		count ++;
 	}
