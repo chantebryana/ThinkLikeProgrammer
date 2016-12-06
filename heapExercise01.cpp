@@ -23,7 +23,7 @@ void substring (char * array, int sPos, int sLgth) {
 }
 
 void substringLiteral(char * array, int sLgth) {
-	char output[4];
+	char output[sLgth];
 	output[0] = array[2];
 	output[1] = array[3];
 	output[2] = array[4];
