@@ -15,11 +15,12 @@ void printFunc (char * output, int sLgth) {
 void substring (char * array, int sPos, int sLgth) {
 	char output[sLgth];
 	for(int i = sPos; i < (7); i++) {
-		output[i] = array[i];
+		for (int j = 0; j < sLgth; j++) {
+			output[j] = array[i];
+		}
 	}
 	printFunc(output, sLgth);
 }
-
 
 int main() {
 	int const ALENGTH = 7;
