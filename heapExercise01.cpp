@@ -22,12 +22,22 @@ void substring (char * array, int sPos, int sLgth) {
 	printFunc(output, sLgth);
 }
 
+void substringLiteral(char * array, int sLgth) {
+	char output[4];
+	output[0] = array[2];
+	output[1] = array[3];
+	output[2] = array[4];
+	output[3] = array[5];
+	printFunc(output, sLgth);
+}
+
 int main() {
 	int const ALENGTH = 7;
 	char a[ALENGTH] = {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
 	int stringPosition = 2;
 	int stringLength = 4;
-	substring(a, stringPosition, stringLength);
+	//substring(a, stringPosition, stringLength);
+	substringLiteral(a, stringLength);
 	cout << "\n";
 
 	return 0;
