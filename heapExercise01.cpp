@@ -13,25 +13,16 @@ void printFunc (char * output, int sLgth) {
 	}
 }
 
-// create a new array "output" to print only the subset of chars from original "array"
+// create a new heap array "output" to print only the subset of chars from original "array"
 void substring (char * array, int sPos, int sLgth) {
-	char output[sLgth];
+	char * pArray = new char[sLgth];
 	int count = 0;
 	for(int i = sPos; i < (sLgth+sPos); i++) {
-		output[count] = array[i];
+		pArray[count] = array[i];
 		count ++;
 	}
-	printFunc(output, sLgth);
-}
-
-// literal reassignment func for testing purposes
-void substringLiteral(char * array, int sLgth) {
-	char output[sLgth];
-	output[0] = array[2];
-	output[1] = array[3];
-	output[2] = array[4];
-	output[3] = array[5];
-	printFunc(output, sLgth);
+	printFunc(pArray, sLgth);
+	delete[] pArray;
 }
 
 int main() {
