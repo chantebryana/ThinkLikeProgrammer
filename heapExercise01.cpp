@@ -15,7 +15,7 @@ void printFunc (char * output, int sLgth) {
 
 // create a new heap array "output" to print only the subset of chars from original "array"
 char * substring (char * array, int sPos, int sLgth) {
-	char * pArray = new char[sLgth];
+	char * pArray = new char[sLgth];	// missing several potential error checks
 	int count = 0;
 	for(int i = sPos; i < (sLgth+sPos); i++) {
 		pArray[count] = array[i];
@@ -32,9 +32,9 @@ int main() {
 	char a[ALENGTH] = {'a', 'b', 'c', 'd', 'e', 'f', 'g'};
 	int stringPosition = 2;		// where to start at the char array
 	int stringLength = 4;		// how long to keep looking for
-	cout << (saveit = substring(a, stringPosition, stringLength));
-   delete saveit[];
-	cout << "\n";
+	char * output = substring(a, stringPosition, stringLength);
+	cout << output << "\n";
+	delete[] output;
 
 	return 0;
 }
