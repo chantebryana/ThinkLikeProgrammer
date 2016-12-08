@@ -18,9 +18,21 @@ int findSame(char * source, char * targ) {
 	}
 }
 
+void print(char * source, char * targ) {
+	for (int i = 0; i < 9; i ++) {
+		if(findSame(source, targ) ) {
+			cout << source[i] << " ";
+		} else {
+			cout << "error ";
+		}
+	}
+	cout << "\n";
+}
+
 int main () {
 	char a[9] = {'a', 'b', 'c', 'd', 'b', 'c', 'e', 'c', 'b'};
 	char target[2] = {'b', 'c'};
 	char replace[3] = {'z', 'z', 'z'};
+	print(a, target);
 	return 0;
 }
