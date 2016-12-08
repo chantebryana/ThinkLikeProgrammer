@@ -9,7 +9,7 @@ using std::cout;
 int findSame(char * source, char * targ) {
 	// int count = 0;
 	for(int i = 0; i < 9; i++) {
-		if(source[i] == targ[0]) {
+		if(source[i] == 'b') {
 			return 1;
 		} else {
 			return 0;
