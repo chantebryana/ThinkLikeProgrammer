@@ -7,9 +7,9 @@ using std::cin;
 using std::cout;
 
 void booProcessing (int & booze) {
-	if(booze = 1) {
+	if(booze == 1) { 	// I always forget to add the second "=" !!!
 		cout << "true ";
-	} else {
+	} else{
 		cout << "false ";
 	}
 	cout << "\n";
