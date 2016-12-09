@@ -7,17 +7,17 @@ using std::cin;
 using std::cout;
 
 // boolean brains and replacement for findSame() 
-char * booProcessing (char * source, int & booze) {
+char * booProcessing (char * source, int & booze, char * replaceVar) {
 	for(int i = 0; i < 9; i++) {
 		if(booze == 1) { 	
-			source[i] = "z";
+			source[i] = replaceVar[0];
 		}
 	}
 	return source;
 }
 
 // identify matching elements between source and target, process the boolean, then return the end result; findSame called in main()
-char * findSame(char * source, char * targ) {
+char * findSame(char * source, char * targ, char * replaceVar) {
 	int boo;  
 	for(int i = 0; i < 9; i++) {
 		for(int j = 0; j < 1; j++) {
@@ -26,33 +26,20 @@ char * findSame(char * source, char * targ) {
 			} else {
 				boo = 0;
 			}
-			booProcessing (source, boo);
+			booProcessing (source, boo, replaceVar);
 		}
 	}
 	return source;
 }
 
-/*
-void print(char * source, char * targ) {
-	for (int i = 0; i < 9; i ++) {
-		if(findSame(source, targ) ) {
-			cout << source[i] << " ";
-		} else {
-			cout << "error ";
-		}
-	}
-	cout << "\n";
-}
-*/
-
 int main () {
 	char a[9] = {'a', 'b', 'c', 'd', 'b', 'c', 'e', 'c', 'b'};
 	char target[1] = {'b'};
-	char replace[3] = {'z', 'z', 'z'};
+	char replace[1] = {'z'};
 
 	// print and run findSame
 	for(int i = 0; i < 9; i++) {
-		cout << findSame(a, target) << " ";
+		cout << findSame(a, target, replace) << " ";
 	}
 	cout << "\n";
 
