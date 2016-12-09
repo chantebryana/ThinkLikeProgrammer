@@ -6,8 +6,17 @@ using std::string;
 using std::cin;
 using std::cout;
 
-int findSame(char * source, char * targ) {
-	int boo; // marker to "return" 1 (true) or 0 (false): use in separate func (?) 
+void booProcessing (int & booze) {
+	if(booze = 1) {
+		cout << "true ";
+	} else {
+		cout << "false ";
+	}
+	cout << "\n";
+}
+
+void findSame(char * source, char * targ) {
+	int boo;  
 	for(int i = 0; i < 9; i++) {
 		for(int j = 0; j < 1; j++) {
 			if( source[i] == targ[j] ) {
@@ -15,10 +24,12 @@ int findSame(char * source, char * targ) {
 			} else {
 				boo = 0;
 			}
+			booProcessing (boo);
 		}
 	}
 }
 
+/*
 void print(char * source, char * targ) {
 	for (int i = 0; i < 9; i ++) {
 		if(findSame(source, targ) ) {
@@ -29,11 +40,12 @@ void print(char * source, char * targ) {
 	}
 	cout << "\n";
 }
+*/
 
 int main () {
 	char a[9] = {'b', 'b', 'c', 'd', 'b', 'c', 'e', 'c', 'b'};
 	char target[1] = {'b'};
 	char replace[3] = {'z', 'z', 'z'};
-	print(a, target);
+	findSame(a, target);
 	return 0;
 }
