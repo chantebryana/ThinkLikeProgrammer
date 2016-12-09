@@ -9,8 +9,10 @@ using std::cout;
 // boolean brains and replacement for findSame() 
 char * booProcessing (char * source, int & booze, char * replaceVar) {
 	for(int i = 0; i < 9; i++) {
-		if(booze == 1) { 	
-			source[i] = replaceVar[0];
+		for(int j = 0; j < 1; j++) {
+			if(booze == 1) { 	
+				source[i] = replaceVar[j];
+			}
 		}
 	}
 	return source;
