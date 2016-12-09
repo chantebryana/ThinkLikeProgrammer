@@ -11,6 +11,7 @@ int findSame(char * source, char * targ) {
 	for(int i = 0; i < 9; i++) {
 		if(source[i] == 'b') {
 			return 0;
+			int val = 0;
 		} else {
 			return 1;
 		}
@@ -30,7 +31,7 @@ void print(char * source, char * targ) {
 }
 
 int main () {
-	char a[9] = {'a', 'b', 'c', 'd', 'b', 'c', 'e', 'c', 'b'};
+	char a[9] = {'b', 'b', 'c', 'd', 'b', 'c', 'e', 'c', 'b'};
 	char target[1] = {'b'};
 	char replace[3] = {'z', 'z', 'z'};
 	print(a, target);
