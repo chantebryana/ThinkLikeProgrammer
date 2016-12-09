@@ -6,14 +6,13 @@ using std::string;
 using std::cin;
 using std::cout;
 
-// reverting back to earlier state to try again from a different angle!
 int findSame(char * source, char * targ) {
 	for(int i = 0; i < 9; i++) {
 		for(int j = 0; j < 1; j++) {
 			if( source[i] == targ[j] ) {
-				return 1;
+				int booT = 1; // marker to "return" 1 or true: use in separate func
 			} else {
-				return 0;
+				int booF = 0; // marker to "return" 0 or false: use in separate func
 			}
 		}
 	}
