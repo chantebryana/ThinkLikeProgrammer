@@ -43,7 +43,7 @@ void print(char * source, char * targ) {
 */
 
 int main () {
-	char a[9] = {'b', 'b', 'c', 'd', 'b', 'c', 'e', 'c', 'b'};
+	char a[9] = {'a', 'b', 'c', 'd', 'b', 'c', 'e', 'c', 'b'};
 	char target[1] = {'b'};
 	char replace[3] = {'z', 'z', 'z'};
 	findSame(a, target);
