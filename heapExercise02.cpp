@@ -6,16 +6,18 @@ using std::string;
 using std::cin;
 using std::cout;
 
-void booProcessing (int & booze) {
-	if(booze == 1) { 	// I always forget to add the second "=" !!!
-		cout << "true ";
-	} else{
-		cout << "false ";
+// boolean brains and replacement for findSame() 
+char * booProcessing (char * source, int & booze) {
+	for(int i = 0; i < 9; i++) {
+		if(booze == 1) { 	
+			source[i] = "z";
+		}
 	}
-	cout << "\n";
+	return source;
 }
 
-void findSame(char * source, char * targ) {
+// identify matching elements between source and target, process the boolean, then return the end result; findSame called in main()
+char * findSame(char * source, char * targ) {
 	int boo;  
 	for(int i = 0; i < 9; i++) {
 		for(int j = 0; j < 1; j++) {
@@ -24,9 +26,10 @@ void findSame(char * source, char * targ) {
 			} else {
 				boo = 0;
 			}
-			booProcessing (boo);
+			booProcessing (source, boo);
 		}
 	}
+	return source;
 }
 
 /*
@@ -46,6 +49,12 @@ int main () {
 	char a[9] = {'a', 'b', 'c', 'd', 'b', 'c', 'e', 'c', 'b'};
 	char target[1] = {'b'};
 	char replace[3] = {'z', 'z', 'z'};
-	findSame(a, target);
+
+	// print and run findSame
+	for(int i = 0; i < 9; i++) {
+		cout << findSame(a, target) << " ";
+	}
+	cout << "\n";
+
 	return 0;
 }
