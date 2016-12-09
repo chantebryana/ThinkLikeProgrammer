@@ -7,12 +7,13 @@ using std::cin;
 using std::cout;
 
 int findSame(char * source, char * targ) {
+	int boo; // marker to "return" 1 (true) or 0 (false): use in separate func (?) 
 	for(int i = 0; i < 9; i++) {
 		for(int j = 0; j < 1; j++) {
 			if( source[i] == targ[j] ) {
-				int booT = 1; // marker to "return" 1 or true: use in separate func
+				boo = 1;
 			} else {
-				int booF = 0; // marker to "return" 0 or false: use in separate func
+				boo = 0;
 			}
 		}
 	}
