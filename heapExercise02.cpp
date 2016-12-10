@@ -8,14 +8,12 @@ using std::cout;
 
 
 void booProcessing (char * source, int & booze) {
-	int count = 0;
-	while(count < 9) {	
-		if(booze == 1) { 	
-			cout << source[count] << " ";
-		count++;
-		} else{
-			cout << "false ";
-		}
+	int count = 0;	
+	if(booze == 1) { 	
+		cout << source[count] << " ";
+	count++;
+	} else{
+		cout << "false ";
 	}
 }
 
