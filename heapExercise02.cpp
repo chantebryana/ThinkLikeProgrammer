@@ -7,11 +7,13 @@ using std::cin;
 using std::cout;
 
 
-void booProcessing (int & booze) {
-	if(booze == 1) { 	// I always forget to add the second "=" !!!
-		cout << "true ";
-	} else{
-		cout << "false ";
+void booProcessing (char * source, int & booze) {
+	for(int i = 0; i < 9; i++) {	
+		if(booze == 1) { 	
+			cout << source[i] << " ";
+		} else{
+			cout << "false ";
+		}
 	}
 }
 
@@ -25,7 +27,7 @@ char * findSame(char * source, char * targ) {
 			} else {
 				boo = 0;
 			}
-			booProcessing (boo);
+			booProcessing (source, boo);
 		}
 	}
 	cout << "\n";
