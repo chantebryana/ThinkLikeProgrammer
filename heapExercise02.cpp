@@ -31,7 +31,7 @@ char * findSame(char * source, char * targ) {
 }
 
 int main () {
-	char a[9] = {'a', 'b', 'c', 'd', 'b', 'c', 'e', 'c', 'b'};
+	char a[9] = {'a', 'b', 'c', 'd', 'b', 'c', 'e', 'c', 0};
 	char target[1] = {'b'};
 	char replace[1] = {'z'};
 
