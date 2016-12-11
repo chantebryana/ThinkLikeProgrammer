@@ -36,9 +36,7 @@ int main () {
 	char replace[1] = {'z'};
 
 	// print and run findSame
-	for(int i = 0; i < 9; i++) {
-		cout << findSame(a, target) << " ";
-	}
+	cout << findSame(a, target) << " ";
 	cout << "\n";
 	return 0;
 }
