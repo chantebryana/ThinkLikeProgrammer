@@ -19,11 +19,11 @@ void booProcessing (char * source, int & booze) {
 */
 
 // identify matching elements between source and target, process the boolean, then return the end result; findSame called in main()
-char * findSame(char * source, char * targ) {
+char * findSame(char * source, char * targ, char * repl) {
 	for(int i = 0; i < 9; i++) {
 		for(int j = 0; j < 1; j++) {
 			if( source[i] == targ[j] ) {
-				source[i] = 'z';
+				source[i] = repl[0];
 			}
 		}
 	}
@@ -36,7 +36,6 @@ int main () {
 	char replace[1] = {'z'};
 
 	// print and run findSame
-	cout << findSame(a, target) << " ";
-	cout << "\n";
+	cout << findSame(a, target, replace) << "\n";
 	return 0;
 }
