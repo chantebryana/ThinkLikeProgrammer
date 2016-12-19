@@ -12,9 +12,9 @@ void replaceFunc(char * oldString, char * repl) {
 	char * pA = new char[5];
 	pA[0] = oldString[0];
 	cout << pA << "\n";
-		for (int i = 1; i < 4; i++) {
-			pA[i+1] = repl[i];
-		}
+	for (int i = 0; i < 4; i++) {
+		pA[i+1] = repl[i];
+	}
 	cout << pA << "\n";
 	pA[4] = oldString[3];
 	cout << pA << "\n";
