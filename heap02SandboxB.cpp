@@ -43,20 +43,13 @@ int main () {
 	pA[0] = string[0];
 	cout << pA << "\n";
 
-/*	
-	char newArray[] = "     ";
-	print(string);
-	
-	newArray[0] = string[0];
-	print(newArray);
-
 	for (int i = 0; i < 3; i++) {
-		newArray[i+1] = replace[i];
+		pA[i+1] = replace[i];
 	}
-	print(newArray);
+	cout << pA << "\n";
 	
-	newArray[4] = string[3];
-	print(newArray);
-*/
+	pA[4] = string[3];
+	cout << pA << "\n";
+
 	return 0;
 }
