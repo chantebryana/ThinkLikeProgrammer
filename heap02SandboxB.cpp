@@ -8,14 +8,17 @@ using std::cout;
 
 
 // to begin with, i = 1 for newString[i]
-char * replaceFunc(char * oldString, char * repl) {
+void replaceFunc(char * oldString, char * repl) {
 	char * pA = new char[5];
 	pA[0] = oldString[0];
+	cout << pA << "\n";
 		for (int i = 1; i < 4; i++) {
 			pA[i+1] = repl[i];
 		}
+	cout << pA << "\n";
 	pA[4] = oldString[3];
-	return pA;
+	cout << pA << "\n";
+	delete[] pA;
 	}
 
 int main () {
@@ -24,10 +27,12 @@ int main () {
 	char target[] = "bc";
 	char replace[] = "xyz";
 	
+	replaceFunc(string, replace);
+	/*
 	char * output = replaceFunc(string, replace);
 	cout << output  << "\n";
 	delete[] output;
-
+	*/
 /*
 	// based off of append code p 93
 	char * pA = new char[5];
