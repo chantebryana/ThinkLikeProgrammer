@@ -40,6 +40,9 @@ int main () {
 	char * pA = new char[5];
 	cout << pA << "\n";
 
+	pA[0] = string[0];
+	cout << pA << "\n";
+
 /*	
 	char newArray[] = "     ";
 	print(string);
