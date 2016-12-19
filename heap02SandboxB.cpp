@@ -35,7 +35,12 @@ int main () {
 	char string[] = "abcd";
 	char target[] = "bc";
 	char replace[] = "xyz";
-	
+
+	// based off of append code p 93
+	char * pA = new char[5];
+	cout << pA << "\n";
+
+/*	
 	char newArray[] = "     ";
 	print(string);
 	
@@ -49,5 +54,6 @@ int main () {
 	
 	newArray[4] = string[3];
 	print(newArray);
+*/
 	return 0;
 }
