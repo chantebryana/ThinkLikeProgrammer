@@ -21,7 +21,8 @@ int memoryLength(char * string, char * targ) {
 			numberOfBs++;
 		}
 	}
-	return numberOfBs;
+	int newMemoryLength = aLength + numberOfBs;
+	return newMemoryLength;
 }
 
 int main () {
