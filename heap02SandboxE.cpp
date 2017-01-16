@@ -12,10 +12,10 @@ int findStringLength(char * string) {
 	return stringLength;
 }
 
+// function counts how many target characters appear in base string. Result returned to another function which will use return value to determine how long end-result string will be.
 int memoryLength(char * string, char * targ) {
 	int aLength = findStringLength(string);
 	int numberOfBs = 0;
-	numberOfBs = 0;
 	for (int i = 0; i < aLength; i++) {
 		if (string[i] == targ[0]) {
 			numberOfBs++;
@@ -25,11 +25,9 @@ int memoryLength(char * string, char * targ) {
 }
 
 int main () {
-	char a[] = "acd";
+	char a[] = "abcd";
 	char target[] = "b";
 	char replace[] = "xy";
-	//int * newStringLength = memoryLength(a, target);
 	cout << memoryLength(a, target) << "\n";
-	//delete newStringLength;
 	return 0;
 }
