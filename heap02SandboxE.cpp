@@ -27,19 +27,24 @@ int memoryLength(char * string, char * targ, char * repl) {
 	return newMemoryLength; // return newMemoryLength to pass onto outputFunc
 }
 
-// dummy function to declare output C-string heap variable, plus fill it with dummy characters to verify that my code works!
+// assign characters to outputString: either base string or replacement string
 char * outputFunc(char * string, char * targ, char * repl) {
-	int newMemoryLength = memoryLength(string, targ, repl);
-	char * outputString = new char[newMemoryLength];
+	int newMemoryLength = memoryLength(string, targ, repl); // define length of final output string
+	char * outputString = new char[newMemoryLength]; // heap variable for final output string
+	// assignment logic loop
 	for (int i = 0; i < newMemoryLength-1; i++) {
-		outputString[i] = 'a';
+		if (string[i] != targ[0]) {
+			outputString[i] = string[i];
+		} else if (string[i] == targ[0]) {
+			outputString[i] = repl[0];
+		}
 	}
-	outputString[newMemoryLength] = 0;
+	outputString[newMemoryLength] = 0; // assign 0 to end of C-String
 	return outputString;
 }
 
 int main () {
-	char a[] = "abcd"; // base string
+	char a[] = "abcdbbc"; // base string
 	char target[] = "b"; // target string
 	char replace[] = "xy"; // replacement string
 	cout << memoryLength(a, target, replace) << "\n"; // verify that memoryLength func works
