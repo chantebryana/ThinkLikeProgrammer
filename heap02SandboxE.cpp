@@ -43,13 +43,39 @@ char * outputFunc(char * string, char * targ, char * repl) {
 	return outputString;
 }
 
+char * doInsert(char * string, char * targ, char * repl, int indexInsert) {
+	int aLength = findStringLength(string); // base string length
+	int stringInsertLength = findStringLength(repl); // replacement string length
+	int newMemoryLength = memoryLength(string, targ, repl); // final string length
+
+	char * earlierString = outputFunc(string, targ, repl); // "axcd": deallocate this variable before the end of the function!
+	char * finalString = new char[newMemoryLength]; // heap var for final output string; return at end of this function, utilize in main(), then deallocate before end of main()
+
+	for(int i = 0; i < indexInsert; i++) {
+		finalString[i] = earlierString[i]; // assign chars from earlierString located before indexInsert (ie, the beginning part of the string)
+	}
+	for(int j = 0; j< (stringInsertLength - 1); j++) {  // minus 1 to account for first char ('x') already being included in earlierString
+		finalString[j + indexInsert] = repl[j+1]; // plus 1 for same reason as above comment; assign chars from repl located after initial index
+	}
+	for(int k = indexInsert; k<=(newMemoryLength - indexInsert); k++) {
+		finalString[k + stringInsertLength - 1] = string[k]; // assign chars after insertIndex (ie, remainder of earlierString)
+	}
+
+	delete[] earlierString;
+	return finalString;
+}
+
 int main () {
-	char a[] = "abcdbbc"; // base string
+	char a[] = "abcd"; // base string
 	char target[] = "b"; // target string
 	char replace[] = "xy"; // replacement string
+	int insertIndex = 2; // define where to insert 'y'; eventually I'd like to create a function to find this number 
 	cout << memoryLength(a, target, replace) << "\n"; // verify that memoryLength func works
-	char * endResultString = outputFunc(a, target, replace); // pass heap variable in outputFunc to new heap variable in main()
-	cout << endResultString << "\n"; // print outputString
-	delete[] endResultString; // deallocate heap memory: no leaking!
+	//char * endResultString = outputFunc(a, target, replace); // pass heap variable in outputFunc to new heap variable in main()
+	//cout << endResultString << "\n"; // print outputString
+	//delete[] endResultString; // deallocate heap memory: no leaking!
+	char * finalOutputString = doInsert(a, target, replace, insertIndex);
+	cout << finalOutputString << "\n";
+	delete[] finalOutputString;
 	return 0;
 }
