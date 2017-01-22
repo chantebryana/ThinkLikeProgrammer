@@ -12,6 +12,19 @@ int findStringLength(char * string) {
 	return stringLength;
 }
 
+int findTargLocation(char * string, char * targ) {
+	int targIndex = 1;
+	int aLength = findStringLength(string);
+	for (int i = 0; i < aLength; i++) {
+		if (string[i] != targ[0]) {
+			targIndex++;
+		} else if (string[i] == targ[0]) {
+			break;
+		}
+	}
+	return targIndex;
+}
+
 // function counts how many target characters appear in base string, which is used to find how long the new heap memory for new string should be.
 int memoryLength(char * string, char * targ, char * repl) {
 	int aLength = findStringLength(string); // length of base string
@@ -69,13 +82,12 @@ int main () {
 	char a[] = "abcd"; // base string
 	char target[] = "b"; // target string
 	char replace[] = "xy"; // replacement string
-	int insertIndex = 2; // define where to insert 'y'; eventually I'd like to create a function to find this number 
-	cout << memoryLength(a, target, replace) << "\n"; // verify that memoryLength func works
-	//char * endResultString = outputFunc(a, target, replace); // pass heap variable in outputFunc to new heap variable in main()
-	//cout << endResultString << "\n"; // print outputString
-	//delete[] endResultString; // deallocate heap memory: no leaking!
-	char * finalOutputString = doInsert(a, target, replace, insertIndex);
-	cout << finalOutputString << "\n";
-	delete[] finalOutputString;
+	cout << "Memory location: " << memoryLength(a, target, replace) << "\n"; // verify that memoryLength func works
+	cout << "Target location: " << findTargLocation(a, target) << "\n"; 
+	//	int insertIndex = 2; // define where to insert 'y'; eventually I'd like to create a function to find this number
+	//char * finalOutputString = doInsert(a, target, replace, insertIndex);
+	//cout << finalOutputString << "\n";
+	//delete[] finalOutputString;
 	return 0;
 }
+
