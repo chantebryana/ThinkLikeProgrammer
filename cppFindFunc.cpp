@@ -5,6 +5,10 @@
 // http://www.cplusplus.com/reference/string/string/replace/
 #include <iostream>
 #include <string> 
+#include <cstdlib>
+using std::string;
+using std::cout;
+
 
 /*
 int main () {
@@ -26,6 +30,34 @@ int main () {
 }
 */
 
+
+string searchAndDestroy(string stringBase, string stringTarget, string stringReplace) {
+	int searchVar = stringBase.find(stringTarget);
+	if (searchVar >= 0) {
+		stringBase.replace(searchVar, stringTarget.length(), stringReplace);
+	}
+	return stringBase;
+}
+
+
+int main () {
+	string base ("this is a test string.");
+	string target ("t");
+	string replace ("fw");
+	//char base[] = "this is a test string.";
+	//char target[] = "t";
+	//char replace[] = "f";
+
+//	int searchVar = base.find(target);
+//	if (searchVar >=0) {
+//		base.replace(searchVar, target.length(), replace);
+//	}
+//	cout << base << "\n";
+	cout << searchAndDestroy(base, target, replace) << "\n";
+	return 0;
+}
+
+/*
 int main () {
 	std::string base = "this is a test string.";
 	std::string str2 = "n example";
@@ -36,6 +68,7 @@ int main () {
 	std::cout << str << "\n";
 
 	//replace, using positions:
+	// str.replace(starting_index, for_how_long_count, replacement_phrase_or_var);
 	str.replace(8, 6, "just a"); // "this is just a phrase."
 	std::cout << str << "\n";
 
@@ -44,3 +77,5 @@ int main () {
 	std::cout << str << "\n";
 	return 0;
 }
+*/
+
