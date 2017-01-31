@@ -31,10 +31,10 @@ int main () {
 */
 
 
-string searchAndDestroy(string stringBase, string stringTarget, string stringReplace) {
-	int searchVar = stringBase.find(stringTarget);
+string * searchAndDestroy(string * stringBase, string * stringTarget, string * stringReplace) {
+	int searchVar = stringBase->find(* stringTarget);
 	if (searchVar >= 0) {
-		stringBase.replace(searchVar, stringTarget.length(), stringReplace);
+		stringBase->replace(searchVar, stringTarget->length(), * stringReplace);
 	}
 	return stringBase;
 }
@@ -53,7 +53,7 @@ int main () {
 //		base.replace(searchVar, target.length(), replace);
 //	}
 //	cout << base << "\n";
-	cout << searchAndDestroy(base, target, replace) << "\n";
+	cout << * searchAndDestroy(& base, & target, & replace) << "\n";
 	return 0;
 }
 
