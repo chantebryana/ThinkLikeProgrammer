@@ -67,24 +67,23 @@ char * scanMatchReplace (char * baseVar, char * targetVar, char * replaceVar) {
 	int i = 0;
 	int j = 0;
 
-	do {
-		matchingIndex;
-		cout << "beginning matchingIndex: " << matchingIndex << "\n";
-		if (matchingIndex >= 0) {
-			for (i = 0; i < matchingIndex; i++) {
-				outputVar[i + outputPlaceholder] = baseVar[i + basePlaceholder];
-			}
-			basePlaceholder = i + basePlaceholder + targetLength;
-			cout << "basePlaceholder: " << basePlaceholder << "\n";
-			for (j = 0; j < replaceLength; j++) {
-				outputVar[j + outputPlaceholder + matchingIndex] = replaceVar[j];
-			}
-			outputPlaceholder = j + outputPlaceholder + matchingIndex;
-			cout << "outputPlaceholder: " << outputPlaceholder << "\n";
-			matchingIndex = log_matching_index(baseVar, targetVar, basePlaceholder);
-			cout << "end matchingIndex: " << matchingIndex << "\n";
+	while(matchingIndex >= 0) {
+		for (i = 0; i < matchingIndex; i++) {
+			outputVar[i + outputPlaceholder] = baseVar[i + basePlaceholder];
 		}
-	} while (matchingIndex >= 0);
+		
+		basePlaceholder = i + basePlaceholder + targetLength;
+		cout << "basePlaceholder: " << basePlaceholder << "\n";
+		
+		for (j = 0; j < replaceLength; j++) {
+			outputVar[j + outputPlaceholder + matchingIndex] = replaceVar[j];
+		}
+		
+		outputPlaceholder = j + outputPlaceholder + matchingIndex;
+		cout << "outputPlaceholder: " << outputPlaceholder << "\n";
+		matchingIndex = log_matching_index(baseVar, targetVar, basePlaceholder);
+		cout << "end matchingIndex: " << matchingIndex << "\n";
+	}
 	return outputVar;	
 }
 
