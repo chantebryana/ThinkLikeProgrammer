@@ -33,28 +33,6 @@ int log_matching_index(char * baseVar, char * targetVar, int basePlaceholder) {
 	return matchingIndex;			// or return -1;
 }
 
-/*
-// assuming the other functions work assuming "true" and there's only one replacement to be had, this function copies base + replace strings to outputVar
-char * scanMatchReplace (char * baseVar, char * targetVar, char * replaceVar) {
-	char * outputVar = new char[100];
-	int matchingIndex = log_matching_index(baseVar, targetVar);
-	int replaceLength = strlen(replaceVar);
-	int targetLength = strlen(targetVar);
-	int baseLength = strlen(baseVar);
-	
-	for (int i = 0; i < (matchingIndex); i++) {
-		outputVar[i] = baseVar[i];
-	}
-	for (int j = 0; j < replaceLength; j++) {
-		outputVar[j + matchingIndex] = replaceVar[j];
-	}
-	for (int k = (matchingIndex); k < baseLength; k++) {
-		outputVar[k + replaceLength] = baseVar[k + targetLength];
-	}
-	return outputVar;
-}
-*/
-
 char * scanMatchReplace (char * baseVar, char * targetVar, char * replaceVar) {
 	char * outputVar = new char[100]; // create function to find outputVar length
 	// local variable declarations:
@@ -68,10 +46,11 @@ char * scanMatchReplace (char * baseVar, char * targetVar, char * replaceVar) {
 	int i = 0;
 	int j = 0;
 	int passesThroughLoop = 0;
+	cout << "targetLength: " << targetLength << "\n";
+	cout << "replaceLength: " << replaceLength << "\n";
 
 	while(matchingIndex >= 0) {
-		cout << "targetLength: " << targetLength << "\n";
-		cout << "replaceLength: " << replaceLength << "\n";
+		cout << "Round " << passesThroughLoop << ":\n";
 		cout << "starting matchingIndex: " << matchingIndex << "\n";
 		for (i = 0; i < matchingIndex; i++) {
 			outputVar[i + outputPlaceholder] = baseVar[i + basePlaceholder];
@@ -81,7 +60,7 @@ char * scanMatchReplace (char * baseVar, char * targetVar, char * replaceVar) {
 		cout << "basePlaceholder: " << basePlaceholder << "\n";
 		
 		for (j = 0; j < replaceLength; j++) {
-			outputVar[j + outputPlaceholder + matchingIndex] = replaceVar[j];
+			outputVar[j + matchingIndex + (charDiffLgth * passesThroughLoop)] = replaceVar[j];
 		}
 		
 		outputPlaceholder = (matchingIndex + (charDiffLgth * passesThroughLoop) + replaceLength);
