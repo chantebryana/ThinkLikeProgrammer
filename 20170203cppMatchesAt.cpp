@@ -56,33 +56,39 @@ char * scanMatchReplace (char * baseVar, char * targetVar, char * replaceVar) {
 */
 
 char * scanMatchReplace (char * baseVar, char * targetVar, char * replaceVar) {
-	char * outputVar = new char[100];
+	char * outputVar = new char[100]; // create function to find outputVar length
 	// local variable declarations:
 	int outputPlaceholder = 0;
 	int basePlaceholder = 0;
-	int matchingIndex = log_matching_index(baseVar, targetVar, basePlaceholder);
+	int matchingIndex = log_matching_index(baseVar, targetVar, basePlaceholder); 
 //	int baseLength = strlen(baseVar);
-	int targetLength = strlen(targetVar);
+	int targetLength = strlen(targetVar); 
 	int replaceLength = strlen(replaceVar);
+	int charDiffLgth = (replaceLength - targetLength); // turn this into absolute value to make more robust, generic code!
 	int i = 0;
 	int j = 0;
+	int passesThroughLoop = 0;
 
 	while(matchingIndex >= 0) {
+		cout << "targetLength: " << targetLength << "\n";
+		cout << "replaceLength: " << replaceLength << "\n";
+		cout << "starting matchingIndex: " << matchingIndex << "\n";
 		for (i = 0; i < matchingIndex; i++) {
 			outputVar[i + outputPlaceholder] = baseVar[i + basePlaceholder];
 		}
 		
-		basePlaceholder = i + basePlaceholder + targetLength;
+		basePlaceholder = (matchingIndex + targetLength);
 		cout << "basePlaceholder: " << basePlaceholder << "\n";
 		
 		for (j = 0; j < replaceLength; j++) {
 			outputVar[j + outputPlaceholder + matchingIndex] = replaceVar[j];
 		}
 		
-		outputPlaceholder = j + outputPlaceholder + matchingIndex;
+		outputPlaceholder = (matchingIndex + (charDiffLgth * passesThroughLoop) + replaceLength);
 		cout << "outputPlaceholder: " << outputPlaceholder << "\n";
 		matchingIndex = log_matching_index(baseVar, targetVar, basePlaceholder);
 		cout << "end matchingIndex: " << matchingIndex << "\n";
+		passesThroughLoop++;
 	}
 	return outputVar;	
 }
