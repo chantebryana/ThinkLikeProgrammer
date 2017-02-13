@@ -34,41 +34,54 @@ int log_matching_index(char * baseVar, char * targetVar, int basePlaceholder) {
 }
 
 char * scanMatchReplace (char * baseVar, char * targetVar, char * replaceVar) {
-	char * outputVar = new char[100]; // create function to find outputVar length
+	char * outputVar = new char[100]; // CE:create function to find outputVar length
 	// local variable declarations:
+	int keepGoing = 1;
 	int outputPlaceholder = 0;
 	int basePlaceholder = 0;
 	int matchingIndex = log_matching_index(baseVar, targetVar, basePlaceholder); 
-//	int baseLength = strlen(baseVar);
+	int baseLength = strlen(baseVar);
 	int targetLength = strlen(targetVar); 
 	int replaceLength = strlen(replaceVar);
-	int charDiffLgth = (replaceLength - targetLength); // turn this into absolute value to make more robust, generic code!
+	int charDiffLgth = (replaceLength - targetLength); // CE:turn this into absolute value to make more robust, generic code!
 	int i = 0;
 	int j = 0;
+	int k = 0;
 	int passesThroughLoop = 0;
 	cout << "targetLength: " << targetLength << "\n";
 	cout << "replaceLength: " << replaceLength << "\n";
 
-	while(matchingIndex >= 0) {
+	// populate outputVar with new string that includes base string with replacement word put in place of target word in base string
+	while(keepGoing) {
 		cout << "Round " << passesThroughLoop << ":\n";
 		cout << "starting matchingIndex: " << matchingIndex << "\n";
-		for (i = 0; i < matchingIndex; i++) {
-			outputVar[i + outputPlaceholder] = baseVar[i + basePlaceholder];
+		// transcribe non-target characters of base string over to outputVar
+		if (matchingIndex >= 0) {
+			for (i = 0; i < matchingIndex; i++) {
+				outputVar[i + outputPlaceholder] = baseVar[i + basePlaceholder];
+			}
+		
+			basePlaceholder = (matchingIndex + targetLength); // iterate basePlaceholder for next pass-through
+			cout << "basePlaceholder: " << basePlaceholder << "\n";
+		} else {
+			for (k = 0; k < baseLength; k++) {
+				outputVar[k + outputPlaceholder] = baseVar[k + basePlaceholder]; 
+			}
+			keepGoing = 0;
+			break;
 		}
-		
-		basePlaceholder = (matchingIndex + targetLength);
-		cout << "basePlaceholder: " << basePlaceholder << "\n";
-		
+		// transcribe replacement characters over to outputVar in place of target characters in base
 		for (j = 0; j < replaceLength; j++) {
 			outputVar[j + matchingIndex + (charDiffLgth * passesThroughLoop)] = replaceVar[j];
 		}
 		
-		outputPlaceholder = (matchingIndex + (charDiffLgth * passesThroughLoop) + replaceLength);
+		outputPlaceholder = (matchingIndex + (charDiffLgth * passesThroughLoop) + replaceLength); // iterate outputPlaceholder for next pass-through
 		cout << "outputPlaceholder: " << outputPlaceholder << "\n";
-		matchingIndex = log_matching_index(baseVar, targetVar, basePlaceholder);
+		matchingIndex = log_matching_index(baseVar, targetVar, basePlaceholder); // iterate matchingIndex for next pass-through
 		cout << "end matchingIndex: " << matchingIndex << "\n";
-		passesThroughLoop++;
+		passesThroughLoop++; // iterate passesThroughLoop for next pass-through
 	}
+
 	return outputVar;	
 }
 
