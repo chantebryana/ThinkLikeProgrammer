@@ -20,17 +20,17 @@ int matches_at_bool(char * baseVar, char * targetVar, int at_this_index) {
 
 // function passes over all of base string, checks for any matches with target, and returns the index of the match if it's there; if there's no match, it returns -1 (a non-answer, since any match would return a number that starts at 0)
 int log_matching_index(char * baseVar, char * targetVar, int basePlaceholder) {
-	int matchingIndex = -1;			// or remove this line
+	int matchingIndex = -1;
 	int baseVar_length = strlen(baseVar);
-	for (int i = basePlaceholder; i < baseVar_length; i++) {	// or remove this line
+	for (int i = basePlaceholder; i < baseVar_length; i++) {
 		if (baseVar[i] == targetVar[0]) {
 			if (matches_at_bool(baseVar, targetVar, i)) {
-				matchingIndex = i;	// or return i;
-				break;					// or remove this line
+				matchingIndex = i;
+				break;
 			}
 		}
-	}										// or remove this line too
-	return matchingIndex;			// or return -1;
+	}
+	return matchingIndex;
 }
 
 char * scanMatchReplace (char * baseVar, char * targetVar, char * replaceVar) {
@@ -43,42 +43,33 @@ char * scanMatchReplace (char * baseVar, char * targetVar, char * replaceVar) {
 	int baseLength = strlen(baseVar);
 	int targetLength = strlen(targetVar); 
 	int replaceLength = strlen(replaceVar);
-	int charDiffLgth = (replaceLength - targetLength); // CE:turn this into absolute value to make more robust, generic code!
+	int charDiffLgth = (replaceLength - targetLength); // (behold the magic of math! don't make this an absolute value: if replace is shorter than target, we want a negative number)
 	int i = 0;
 	int j = 0;
 	int k = 0;
 	int passesThroughLoop = 0;
-	cout << "targetLength: " << targetLength << "\n";
-	cout << "replaceLength: " << replaceLength << "\n";
 
-	// populate outputVar with new string that includes base string with replacement word put in place of target word in base string
-	while(keepGoing) {
-		cout << "Round " << passesThroughLoop << ":\n";
-		cout << "starting matchingIndex: " << matchingIndex << "\n";
+	// populate outputVar characters with replacement text from baseVar and replaceVar, based on logic below
+	while(keepGoing) {	// keeps looping while keepGoing is true
 		// transcribe non-target characters of base string over to outputVar
 		if (matchingIndex >= 0) {
 			for (i = 0; i < matchingIndex; i++) {
 				outputVar[i + outputPlaceholder] = baseVar[i + basePlaceholder];
 			}
-		
 			basePlaceholder = (matchingIndex + targetLength); // iterate basePlaceholder for next pass-through
-			cout << "basePlaceholder: " << basePlaceholder << "\n";
-		} else {
+		} else { // if matchingIndex < 0, ie, the end of baseVar after there are no more replacements to be found
 			for (k = 0; k < baseLength; k++) {
 				outputVar[k + outputPlaceholder] = baseVar[k + basePlaceholder]; 
 			}
-			keepGoing = 0;
-			break;
+			keepGoing = 0; // set keepGoing to false: this stops the while loop
+			break; // break out of the loop: we're done!
 		}
-		// transcribe replacement characters over to outputVar in place of target characters in base
+		// if matchingIndex < 0 then there's some replacement text to swap out.  This for loop inserts that replacement text into outputVar
 		for (j = 0; j < replaceLength; j++) {
 			outputVar[j + matchingIndex + (charDiffLgth * passesThroughLoop)] = replaceVar[j];
 		}
-		
 		outputPlaceholder = (matchingIndex + (charDiffLgth * passesThroughLoop) + replaceLength); // iterate outputPlaceholder for next pass-through
-		cout << "outputPlaceholder: " << outputPlaceholder << "\n";
 		matchingIndex = log_matching_index(baseVar, targetVar, basePlaceholder); // iterate matchingIndex for next pass-through
-		cout << "end matchingIndex: " << matchingIndex << "\n";
 		passesThroughLoop++; // iterate passesThroughLoop for next pass-through
 	}
 
@@ -86,8 +77,8 @@ char * scanMatchReplace (char * baseVar, char * targetVar, char * replaceVar) {
 }
 
 int main () {
-	char base[] = "I say, dogs eat dogs on dogs for lunch";
-	char target[] = "dogs";
+	char base[] = "I say, dogsandwich eat dogsandwich on dogsandwich for lunch";
+	char target[] = "dogsandwich";
 	char replace[] = "hippos";
 	cout << "Base Phrase:   ";
 	for (int i = 0; i < (strlen(base)); i++) {
