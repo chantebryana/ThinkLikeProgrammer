@@ -10,14 +10,29 @@ struct charNode {
 
 
 // http://www.cprogramming.com/tutorial/lesson15.html 
+// function to print all of the nodes in charNode * lettersHeadPointer
 void printNode(charNode * lhpVar) {
-	if (lhpVar != 0) {
+	//if (lhpVar != 0) {
 		while (lhpVar -> next != 0) {
 			std::cout << lhpVar -> letter << " ";
 			lhpVar = lhpVar -> next;
 		}
 		std::cout << lhpVar -> letter << "\n";
+	//}
+}
+
+// http://www.geeksforgeeks.org/write-a-function-to-get-nth-node-in-a-linked-list/
+// return Nth node from linked list: where's my character at?!
+char characterAt(charNode * lhpVar, int index) {
+	int count = 0;
+	while (lhpVar -> next != 0) {
+		if (count == index) {
+			return lhpVar -> letter;
+		}
+		count++;
+		lhpVar = lhpVar -> next;
 	}
+	return 'z';
 }
 
 int main () {
@@ -38,6 +53,7 @@ int main () {
 	nodeA = nodeB = nodeC = NULL; // deallocate heap memory
 	
 	printNode(lettersHeadPointer);
+	std::cout << characterAt(lettersHeadPointer, 6) << "\n";
 
 //	std::cout << lettersHeadPointer -> letter << "\n";
 	return 0;
