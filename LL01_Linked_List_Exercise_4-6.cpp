@@ -8,6 +8,18 @@ struct charNode {
 	charNode * next;
 };
 
+
+// http://www.cprogramming.com/tutorial/lesson15.html 
+void printNode(charNode * lhpVar) {
+	if (lhpVar != 0) {
+		while (lhpVar -> next != 0) {
+			std::cout << lhpVar -> letter << " ";
+			lhpVar = lhpVar -> next;
+		}
+		std::cout << lhpVar -> letter << "\n";
+	}
+}
+
 int main () {
 	charNode * lettersHeadPointer; // declare "head pointer" for later linked list
 
@@ -25,14 +37,7 @@ int main () {
 	nodeC -> next = NULL; // end of linked list
 	nodeA = nodeB = nodeC = NULL; // deallocate heap memory
 	
-	// http://www.cprogramming.com/tutorial/lesson15.html 
-	if (lettersHeadPointer != 0) {
-		while (lettersHeadPointer -> next != 0) {
-			std::cout << lettersHeadPointer -> letter << " ";
-			lettersHeadPointer = lettersHeadPointer -> next;
-		}
-		std::cout << lettersHeadPointer -> letter << "\n";
-	}
+	printNode(lettersHeadPointer);
 
 //	std::cout << lettersHeadPointer -> letter << "\n";
 	return 0;
