@@ -12,6 +12,16 @@ struct charNode {
 void printNode(charNode * lhpVar);
 char characterAt(charNode * lhpVar, int index);
 
+//add new node to linked list
+charNode * addRecord(charNode * lhpVar, char letterVar) { // pass address of lhpVar because I'm directly editing this variable
+	charNode * newNode = new charNode; // declare newNode and point to heap memory
+	newNode -> letter = letterVar; // assign the new record
+	newNode -> next = lhpVar; // link newNode to existing linked list head pointer
+	lhpVar = newNode; // point head pointer to new beginning of linked list
+	newNode = NULL; // deallocate heap memory
+	return lhpVar;
+}
+
 int main () {
 	charNode * lettersHeadPointer; // declare "head pointer" for later linked list
 
@@ -29,10 +39,11 @@ int main () {
 	nodeC -> next = NULL; // end of linked list
 	nodeA = nodeB = nodeC = NULL; // deallocate heap memory
 	
+	std::cout << "Original linked list: ";
 	printNode(lettersHeadPointer);
 	std::cout << characterAt(lettersHeadPointer, 2) << "\n";
-
-//	std::cout << lettersHeadPointer -> letter << "\n";
+	charNode * appendedLL = addRecord(lettersHeadPointer, 'g');
+	printNode(appendedLL);
 	return 0;
 }
 
@@ -60,4 +71,6 @@ char characterAt(charNode * lhpVar, int index) {
 	}
 	return 'z'; // return 'z' if the manual count never matched the passed index
 }
+
+
 
