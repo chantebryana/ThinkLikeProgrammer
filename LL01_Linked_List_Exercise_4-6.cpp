@@ -22,6 +22,17 @@ charNode * addRecord(charNode * lhpVar, char letterVar) { // pass address of lhp
 	return lhpVar;
 }
 
+charNode * appendRecord(charNode * lhpVar, char letterVar) { // append char at END of linked list
+	charNode * newNode = new charNode; // declare newNode and point to heap memory
+	newNode -> letter = letterVar; // assign char to new heap record
+	while(lhpVar -> next == NULL) { // at the end of the linked list, which is null
+		lhpVar -> next = newNode; // end of lhpVar to newNode
+		newNode -> next = NULL;	// assign NULL to newNode to make sure new ending knows not to point to anything
+		newNode = NULL; // deallocate heap memory
+	}
+	return lhpVar;
+}
+
 int main () {
 	charNode * lettersHeadPointer; // declare "head pointer" for later linked list
 
@@ -39,11 +50,18 @@ int main () {
 	nodeC -> next = NULL; // end of linked list
 	nodeA = nodeB = nodeC = NULL; // deallocate heap memory
 	
-	std::cout << "Original linked list: ";
+	int indexChar = 2; // index to pass to characterAt func
+	
+	std::cout << "Original linked list........";
 	printNode(lettersHeadPointer);
-	std::cout << characterAt(lettersHeadPointer, 2) << "\n";
-	charNode * appendedLL = addRecord(lettersHeadPointer, 'g');
-	printNode(appendedLL);
+	std::cout << "Character found at index " << indexChar << ".." << characterAt(lettersHeadPointer, indexChar) << "\n";
+	lettersHeadPointer = addRecord(lettersHeadPointer, 'g');
+	std::cout << "Newly added-onto list.......";
+	printNode(lettersHeadPointer);
+	lettersHeadPointer = appendRecord(lettersHeadPointer, 'q');
+	std::cout << "Newly appended list.........";
+	printNode(lettersHeadPointer);
+	
 	return 0;
 }
 
