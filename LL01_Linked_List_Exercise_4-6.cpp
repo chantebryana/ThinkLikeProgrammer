@@ -13,7 +13,7 @@ void printNode(charNode * lhpVar);
 char characterAt(charNode * lhpVar, int index);
 
 //add new node to linked list
-charNode * addRecord(charNode * lhpVar, char letterVar) { // pass address of lhpVar because I'm directly editing this variable
+charNode * addAtFront(charNode * lhpVar, char letterVar) { // pass address of lhpVar because I'm directly editing this variable
 	charNode * newNode = new charNode; // declare newNode and point to heap memory
 	newNode -> letter = letterVar; // assign the new record
 	newNode -> next = lhpVar; // link newNode to existing linked list head pointer
@@ -22,16 +22,51 @@ charNode * addRecord(charNode * lhpVar, char letterVar) { // pass address of lhp
 	return lhpVar;
 }
 
-charNode * appendRecord(charNode * lhpVar, char letterVar) { // append char at END of linked list
+//add new node to linked list
+charNode * insertAtEnd(charNode * lhpVar, char letterVar) { // pass address of lhpVar because I'm directly editing this variable
 	charNode * newNode = new charNode; // declare newNode and point to heap memory
-	newNode -> letter = letterVar; // assign char to new heap record
-	newNode -> next = NULL;	// assign NULL to newNode to make sure new ending knows not to point to anything
-	while(lhpVar -> next !=NULL) { // at the end of the linked list, which is null
-		lhpVar = lhpVar -> next;
+	newNode -> letter = letterVar; // assign the new record
+	newNode -> next = lhpVar; // link newNode to existing linked list head pointer
+
+	if (!lhpVar) { // if the linked list is empty; doesn't exist; has no records
+		lhpVar = newNode;
+		return lhpVar;
+	} else { // find last node of linked list and link to new node
+		charNode * last = lhpVar;
+		while (last -> next != 0) {
+			last = last -> next;
+		}
+		last -> next = newNode;
+		lhpVar = last;
 	}
-	lhpVar -> next = newNode; // end of lhpVar to newNode
 	newNode = NULL; // deallocate heap memory
 	return lhpVar;
+}
+
+// http://www.geeksforgeeks.org/write-a-function-to-get-nth-node-in-a-linked-list/
+// return Nth node from linked list: where's my character at?!
+char characterAt(charNode * lhpVar, int index) {
+	int count = 0; // manually iterated index
+	while (lhpVar != 0) { // if we haven't gotten to the end of the linked list
+		if (count == index) { // if manual count equals index passed as arg
+			return lhpVar -> letter; // return the node at that manual count
+		}
+		count++; // if there's no match, keep iterating the manual count
+		lhpVar = lhpVar -> next; // iterate the node we're pointing at
+	}
+	return 'z'; // return 'z' if the manual count never matched the passed index
+}
+
+
+
+// http://www.cprogramming.com/tutorial/lesson15.html 
+// function to print all of the nodes in charNode * lettersHeadPointer
+void printNode(charNode * lhpVar) {
+	while (lhpVar != 0) {
+		std::cout << lhpVar -> letter << " ";
+		lhpVar = lhpVar -> next;
+	}
+	std::cout << "\n";
 }
 
 int main () {
@@ -56,40 +91,16 @@ int main () {
 	std::cout << "Original linked list.........";
 	printNode(lettersHeadPointer);
 	std::cout << "Character found at index " << indexChar << "..." << characterAt(lettersHeadPointer, indexChar) << "\n";
-	lettersHeadPointer = addRecord(lettersHeadPointer, 'g');
-	std::cout << "Newly added-onto list........";
+	lettersHeadPointer = addAtFront(lettersHeadPointer, 'g');
+	std::cout << "List with new node at front..";
 	printNode(lettersHeadPointer);
-	lettersHeadPointer = appendRecord(lettersHeadPointer, 'q');
-	std::cout << "Newly appended list..........";
-	printNode(lettersHeadPointer);
+//	lettersHeadPointer = insertAtEnd(lettersHeadPointer, 'q');
+//	std::cout << "Newly appended list..........";
+//	printNode(lettersHeadPointer);
 	
 	return 0;
 }
 
-
-// http://www.cprogramming.com/tutorial/lesson15.html 
-// function to print all of the nodes in charNode * lettersHeadPointer
-void printNode(charNode * lhpVar) {
-	while (lhpVar != 0) {
-		std::cout << lhpVar -> letter << " ";
-		lhpVar = lhpVar -> next;
-	}
-	std::cout << "\n";
-}
-
-// http://www.geeksforgeeks.org/write-a-function-to-get-nth-node-in-a-linked-list/
-// return Nth node from linked list: where's my character at?!
-char characterAt(charNode * lhpVar, int index) {
-	int count = 0; // manually iterated index
-	while (lhpVar != 0) { // if we haven't gotten to the end of the linked list
-		if (count == index) { // if manual count equals index passed as arg
-			return lhpVar -> letter; // return the node at that manual count
-		}
-		count++; // if there's no match, keep iterating the manual count
-		lhpVar = lhpVar -> next; // iterate the node we're pointing at
-	}
-	return 'z'; // return 'z' if the manual count never matched the passed index
-}
 
 
 

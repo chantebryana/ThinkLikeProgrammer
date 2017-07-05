@@ -12,9 +12,11 @@ int findStringLength(char * string) {
 	return stringLength;
 }
 
+// this work-in-progress function finds the first character of the first-occurring target.
 int findTargLocation(char * string, char * targ) {
-	int targIndex = 1;
+	int targIndex = 1; // start at 1 instead of 0 to make the numbers line up
 	int aLength = findStringLength(string);
+	// iterate through base string increment targIndex until the first target is found
 	for (int i = 0; i < aLength; i++) {
 		if (string[i] != targ[0]) {
 			targIndex++;
@@ -22,7 +24,7 @@ int findTargLocation(char * string, char * targ) {
 			break;
 		}
 	}
-	return targIndex;
+	return targIndex;  // return targIndex to be used in later functions
 }
 
 // function counts how many target characters appear in base string, which is used to find how long the new heap memory for new string should be.
@@ -83,11 +85,12 @@ int main () {
 	char target[] = "b"; // target string
 	char replace[] = "xy"; // replacement string
 	cout << "Memory location: " << memoryLength(a, target, replace) << "\n"; // verify that memoryLength func works
-	cout << "Target location: " << findTargLocation(a, target) << "\n"; 
+	int targIndex = findTargLocation(a, target);
+	cout << "Target location: " << targIndex << "\n"; 
 	//	int insertIndex = 2; // define where to insert 'y'; eventually I'd like to create a function to find this number
-	//char * finalOutputString = doInsert(a, target, replace, insertIndex);
-	//cout << finalOutputString << "\n";
-	//delete[] finalOutputString;
+	char * finalOutputString = doInsert(a, target, replace, targIndex);
+	cout << finalOutputString << "\n";
+	delete[] finalOutputString;
 	return 0;
 }
 

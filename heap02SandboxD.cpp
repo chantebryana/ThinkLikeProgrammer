@@ -3,22 +3,13 @@
 using std::string;
 using std::cout;
 
-// find length of baseString, for use in determining where to insert various characters to new memory allocation
-int findBaseLength(char * stringBase) {
-	int stringBaseLength = 0;
-	while (stringBase[stringBaseLength] !=0) {
-		stringBaseLength++;
+// generic funciton to find length of string, to use in doInsert function
+int findStringLength(char * string) {
+	int stringLength = 0;
+	while (string[stringLength] !=0) {
+		stringLength++;
 	}
-	return stringBaseLength;
-}
-
-// find length of insertString, for use in determining where to insert various characters to new memory allocation
-int findInsertLength(char * stringInsert) {
-	int stringInsertLength = 0;
-	while (stringInsert[stringInsertLength] !=0) {
-		stringInsertLength++;
-	}
-	return stringInsertLength;
+	return stringLength;
 }
 
 
@@ -26,22 +17,25 @@ int findInsertLength(char * stringInsert) {
 
 char * doInsert(char * stringBase, int indexInsert, char * stringInsert) {
 	// assign vars to both string length functions
-	int stringBaseLength = findBaseLength(stringBase);
-	int stringInsertLength = findInsertLength(stringInsert);
+	int stringBaseLength = findStringLength(stringBase);
+	int stringInsertLength = findStringLength(stringInsert);
 	// allocates size of new string length!
-	int totalStringLength = ( findBaseLength(stringBase) + findInsertLength(stringInsert) );
+	int totalStringLength = ( findStringLength(stringBase) + findStringLength(stringInsert) );
 	// assign dynamic heap memory for longer string concatination
 	char * stringResult = new char[totalStringLength];
 	
 	// series of for loops to concatinate strings together:
+		// indices 0 - 9:
 	for (int i = 0; i < indexInsert; i++) {
 		stringResult[i] = stringBase[i];
 	}
+		// indices 10 - 37:
 	for (int j = 0; j < stringInsertLength; j++) {
 		stringResult[j + indexInsert] = stringInsert[j];
 	}
-	for (int k = 0; k < (stringBaseLength - indexInsert); k++) {
-		stringResult[k + indexInsert + stringInsertLength] = stringBase[k + indexInsert];
+		// indices 38 - __ (includes null character space)
+	for (int k = indexInsert; k <= (stringBaseLength - indexInsert); k++) {
+		stringResult[k + stringInsertLength] = stringBase[k];
 	}
 
 	// return stringResult to pass concatenated string to main()
@@ -50,11 +44,13 @@ char * doInsert(char * stringBase, int indexInsert, char * stringInsert) {
 
 int main () {
 	// define base String
-	char baseString[] = "Long ago, in a galaxy far away...";
+	//char baseString[] = "Long ago, in a galaxy far away...";
+	char baseString[] = "abcd";
 	// define where to insert new string within baseString
-	int insertIndex = 10;
+	int insertIndex = 2;
 	// string to insert into baseString
-	char insertString[] = "where the deer and the antelope play, ";
+	//char insertString[] = "where the deer and the antelope play, ";
+	char insertString[] = "xy";
 	// define pointer var to point to results of doInsert function (prevent memory leak of heap memory)
 	char * resultString = doInsert(baseString, insertIndex, insertString);
 	// print doInsert / resultString to terminal

@@ -29,21 +29,5 @@ int main () {
 	cout << output  << "\n";
 	delete[] output;
 
-/*
-	// based off of append code p 93
-	char * pA = new char[5];
-	cout << pA << "\n";
-
-	pA[0] = string[0];
-	cout << pA << "\n";
-
-	for (int i = 0; i < 3; i++) {
-		pA[i+1] = replace[i];
-	}
-	cout << pA << "\n";
-	
-	pA[4] = string[3];
-	cout << pA << "\n";
-*/
 	return 0;
 }
