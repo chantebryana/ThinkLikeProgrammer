@@ -1,0 +1,19 @@
+//add new node to linked list
+charNode * insertAtEnd(charNode * lhpVar, char letterVar) { // pass address of lhpVar because I'm directly editing this variable
+	charNode * newNode = new charNode; // declare newNode and point to heap memory
+	newNode -> letter = letterVar; // assign the new record
+	newNode -> next = lhpVar; // link newNode to existing linked list head pointer
+
+	if (!lhpVar) { // if the linked list is empty; doesn't exist; has no records
+		lhpVar = newNode;
+		return;
+	} else { // find last node of linked list and link to new node
+		charNode * last = lhpVar;
+		while (last -> next) {
+			last = last -> next;
+		}
+		last -> next = temp;
+	}
+	newNode = NULL; // deallocate heap memory
+	return lhpVar;
+}

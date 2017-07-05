@@ -1,0 +1,17 @@
+
+char baseString[] = "Long ago, in a galaxy far away...";
+insertIndex = 10;
+char insertString[] = "where the dear and the antelope play, ";
+
+char *resultString = doInsert(baseString, insertIndex, insertString);
+
+printf(resultString);
+// --> "Long ago, where the dear and the antelope play, in a galaxy far away..."
+
+delete[] resultString;
+
+// note that doInsert has a template like this:
+// char * doInsert(char*, int, char*);
+
+
+// similarity with past problem: create new cString with long length (memory manipulation), and copy stuff into it (or point it)
