@@ -5,28 +5,33 @@ using std::cout;
 
 class Vehicle {
 	public: 
-		vehicle_record();
-		vehicle_record(string new_mfgr, string new_model, int new_year);
-		string get_mfgr();
-		void set_mfgr(string new_mfgr);
-		string get_model();
-		void set_model(string new_model);
+		Vehicle();
+		Vehicle(char new_mfgr, char new_model, int new_year);
+		char get_mfgr();
+		void set_mfgr(char new_mfgr);
+		char get_model();
+		void set_model(char new_model);
 		int get_year();
 		void set_year(int new_year);
 	private: 
-		string _mfgr;
-		string _model;
+		char _mfgr;
+		char _model;
 		int _year;
 };
 
-void Vehicle::set_mfgr(string mfgr_name) {
-	_mfgr = mfgr_name;
+void Vehicle::set_mfgr(char new_mfgr) {
+	_mfgr = new_mfgr;
+}
+
+char Vehicle::get_mfgr() {
+	// look up struct to find the mfgr I want or maybe the whole list?
+	return _mfgr;
 }
 
 int main() {
 	Vehicle car;
 	car.set_mfgr("Ford");
-	cout << car.get_mfgr(); << "\n";
+	cout << car.get_mfgr() << "\n";
 	return 0;
 }
 
