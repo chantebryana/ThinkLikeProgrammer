@@ -16,7 +16,7 @@ public:
   // Destructor
   void setspeed ( int p );
   int readspeed();
-protected:
+//protected:
   // This means that all the variables under this, until a new type of
   //  restriction is placed, will only be accessible to other functions in the
   //  class.  NOTE: That is a colon, NOT a semicolon...
