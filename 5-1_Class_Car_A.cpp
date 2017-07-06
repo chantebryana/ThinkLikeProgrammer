@@ -21,7 +21,8 @@ class Vehicle {
 };
 
 Vehicle::Vehicle() {
-	_mfgr = "";
+	//_mfgr = "";
+	set_mfgr("");
 }
 
 Vehicle::Vehicle(char new_mfgr) {
@@ -45,5 +46,3 @@ int main() {
 }
 
 
-
-//[ [mfgr => "Ford", model => "Taurus", year => 1999], [mfgr => "Ford", model => "Crown Victoria", year => 2008], [mfgr => "Jeep", model => "Liberty Sport", year => 2008] ]
