@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+//#include <string> or something
 using std::cin;
 using std::cout;
 
@@ -22,7 +23,7 @@ class Vehicle {
 
 Vehicle::Vehicle() {
 	//_mfgr = "";
-	set_mfgr("");
+	set_mfgr(' ');
 }
 
 Vehicle::Vehicle(char new_mfgr) {
@@ -40,7 +41,7 @@ char Vehicle::get_mfgr() {
 
 int main() {
 	Vehicle car;
-	car.set_mfgr("Ford");
+	car.set_mfgr('F');
 	cout << car.get_mfgr() << "\n";
 	return 0;
 }

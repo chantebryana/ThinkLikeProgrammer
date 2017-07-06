@@ -16,7 +16,7 @@ public:
   // Destructor
   void setspeed ( int p );
   int readspeed();
-//protected:
+protected:
   // This means that all the variables under this, until a new type of
   //  restriction is placed, will only be accessible to other functions in the
   //  class.  NOTE: That is a colon, NOT a semicolon...
@@ -55,9 +55,9 @@ int main()
   // To create an 'instance' of the class, simply treat it like you would
   //  a structure.  (An instance is simply when you create an actual object
   //  from the class, as opposed to having the definition of the class)
-  int speedy = compute.setspeed ( 100 ); 
+  compute.setspeed ( 100 ); 
   // To call functions in the class, you put the name of the instance,
   //  a period, and then the function name.
-  cout<< speedy;
+  cout<< compute.readspeed();
   // See above note.
 }
