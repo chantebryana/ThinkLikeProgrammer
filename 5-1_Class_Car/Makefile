@@ -1,11 +1,14 @@
 all: 5-1_Class_Car_A
 
 vehicle_a.o: vehicle_a.cpp vehicle_a.h
-	g++ -c vehicle_a.cpp -o vehicle_a.o
+	mkdir -p bin
+	g++ -c vehicle_a.cpp -o bin/vehicle_a.o
 
 5-1_Class_Car_A: vehicle_a.o 5-1_Class_Car_A.cpp
-	g++ vehicle_a.o 5-1_Class_Car_A.cpp -o 5-1_Class_Car_A
-	echo "type ./5-1_Class_Car_A to run program"
+	g++ bin/vehicle_a.o 5-1_Class_Car_A.cpp -o bin/5-1_Class_Car_A
+	echo "type ./bin/5-1_Class_Car_A to run program"
 
 clean: 
-	rm vehicle_a.o 5-1_Class_Car_A
+	rm bin/* 
+	rmdir bin
+	#rm vehicle_a.o 5-1_Class_Car_A
