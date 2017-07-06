@@ -7,15 +7,9 @@ class Vehicle {
 	public: 
 		Vehicle();
 		Vehicle(int new_year);
-		//char get_mfgr();
-		//void set_mfgr(char new_mfgr);
-		//char get_model();
-		//void set_model(char new_model);
 		int get_year();
 		void set_year(int new_year);
 	private: 
-		//char _mfgr;
-		//char _model;
 		int _year;
 };
 
