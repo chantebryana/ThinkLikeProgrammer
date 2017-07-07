@@ -1,3 +1,7 @@
+// from https://www.tutorialspoint.com/cplusplus/cpp_strings.htm
+// exploring strings to better understand how they work 
+// for use in 5-1_Class_Car_A.cpp exercise
+
 #include <iostream>
 #include <string>
 
@@ -23,3 +27,4 @@ int main () {
 
    return 0;
 }
+
