@@ -15,11 +15,7 @@ int main() {
 	car.set_mfgr('F');
 	car.set_model('T');
 	car.set_year(0);
-	if (car.get_year()<2020) {
-		cout << car.get_mfgr() << ", " << car.get_model() << ", " << car.get_year() << "\n";
-	} else {
-		cout << "error\n";
-	}
+	cout << car.get_mfgr() << ", " << car.get_model() << ", " << car.get_year() << "\n";
 	return 0;
 }
 
