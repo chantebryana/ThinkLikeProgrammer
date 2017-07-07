@@ -1,20 +1,24 @@
 #include "./vehicle_a.h"
 
 Vehicle::Vehicle() {
-	set_mfgr(' ');
+	//set_mfgr(' ');
+	set_mfgr("");
 }
 
-Vehicle::Vehicle(char new_mfgr, char new_model, int new_year) {
+//Vehicle::Vehicle(char new_mfgr, char new_model, int new_year) {
+Vehicle::Vehicle(string new_mfgr, char new_model, int new_year) {
 	set_mfgr(new_mfgr);
 	set_model(new_model);
 	set_year(new_year);
 };
 
-void Vehicle::set_mfgr(char new_mfgr) {
+//void Vehicle::set_mfgr(char new_mfgr) {
+void Vehicle::set_mfgr(string new_mfgr) {
 	_mfgr = new_mfgr;
 }
 
-char Vehicle::get_mfgr() {
+//char Vehicle::get_mfgr() {
+string Vehicle::get_mfgr() {
 	return _mfgr;
 }
 
