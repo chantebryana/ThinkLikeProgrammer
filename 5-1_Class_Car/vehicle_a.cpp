@@ -26,8 +26,10 @@ char Vehicle::get_model() {
 	return _model;
 }
 
+// set new year, with rudamentary error-checking
 void Vehicle::set_year(int new_year) {
-	_year = new_year;
+	if ((new_year >= 1850) && (new_year <= 2020))
+		_year = new_year;
 }
 
 int Vehicle::get_year() {
