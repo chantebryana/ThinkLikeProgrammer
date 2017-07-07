@@ -4,10 +4,22 @@
 
 #include <iostream>
 #include <string>
-
 using namespace std;
 
+struct student {
+	int studentID; 
+	string name;
+};
+
 int main () {
+	const int ARRAY_SIZE = 3;
+	student studentArray[ARRAY_SIZE] = {
+		{01, "Rachel"}, 
+		{02, "Wick"}, 
+		{03, "Borne"}
+	};
+	cout << studentArray[0].name << "\n";
+
    string str1 = "Hello";
    string str2 = "World";
    string str3;
