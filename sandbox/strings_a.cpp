@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "./strings.h"
 using namespace std;
 
 int main () {
