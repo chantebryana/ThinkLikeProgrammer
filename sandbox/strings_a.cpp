@@ -45,6 +45,10 @@ int main () {
 		{03, "Wizbang"}
 	};
 	cout << studentArray[0].name << "\n";
+
+	studentRecord studentRecord; 
+	studentRecord.setName("Bob");
+	cout << studentRecord.getName() << "\n";
 /*
    string str1 = "Hello";
    string str2 = "World";
