@@ -69,9 +69,11 @@ int main () {
 	};
 	cout << studentArray[0].name << "\n";
 
-	//studentRecord studentRecord; 
-	//studentRecord.setName("Bob");
-	//cout << studentRecord.getName() << "\n";
+	studentRecord studentRecord; 
+	studentRecord.setId(01);
+	studentRecord.setName("Bob");
+	cout << studentRecord.getId() << " ";
+	cout << studentRecord.getName() << "\n";
 /*
    string str1 = "Hello";
    string str2 = "World";
