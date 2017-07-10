@@ -11,15 +11,41 @@ struct student {
 	string name;
 };
 
+class studentRecord {
+	public: 
+		studentRecord();
+		studentRecord(string newName);
+		string getName();
+		void setName(string newName);
+	private: 
+		string _name;
+};
+
+string studentRecord::getName() {
+	return _name;
+}
+
+void studentRecord::setName(string newName) {
+	_name = newName;
+}
+
+studentRecord::studentRecord(string newName) {
+	setName(newName);
+}
+
+studentRecord::studentRecord() {
+	setName("");
+}
+
 int main () {
 	const int ARRAY_SIZE = 3;
 	student studentArray[ARRAY_SIZE] = {
-		{01, "Rachel"}, 
-		{02, "Wick"}, 
-		{03, "Borne"}
+		{01, "Wonky"}, 
+		{02, "Woozie"}, 
+		{03, "Wizbang"}
 	};
 	cout << studentArray[0].name << "\n";
-
+/*
    string str1 = "Hello";
    string str2 = "World";
    string str3;
@@ -36,7 +62,7 @@ int main () {
    // total lenghth of str3 after concatenation
    len = str3.size();
    cout << "str3.size() :  " << len << endl;
-
+*/
    return 0;
 }
 
