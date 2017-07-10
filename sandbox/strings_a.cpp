@@ -15,11 +15,22 @@ class studentRecord {
 	public: 
 		studentRecord();
 		studentRecord(string newName);
+		int getId();
+		void setId(int newId);
 		string getName();
 		void setName(string newName);
 	private: 
+		int _studentId;
 		string _name;
 };
+
+int studentRecord::getId() {
+	return _studentId;
+}
+
+void studentRecord::setId(int newId) {
+	_studentId = newId;
+}
 
 string studentRecord::getName() {
 	return _name;
@@ -29,11 +40,13 @@ void studentRecord::setName(string newName) {
 	_name = newName;
 }
 
-studentRecord::studentRecord(string newName) {
+studentRecord::studentRecord(int newId, string newName) {
+	setId(newId);
 	setName(newName);
 }
 
 studentRecord::studentRecord() {
+	setId(0);
 	setName("");
 }
 
@@ -46,9 +59,9 @@ int main () {
 	};
 	cout << studentArray[0].name << "\n";
 
-	studentRecord studentRecord; 
-	studentRecord.setName("Bob");
-	cout << studentRecord.getName() << "\n";
+	//studentRecord studentRecord; 
+	//studentRecord.setName("Bob");
+	//cout << studentRecord.getName() << "\n";
 /*
    string str1 = "Hello";
    string str2 = "World";
