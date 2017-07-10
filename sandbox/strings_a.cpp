@@ -14,15 +14,15 @@ struct student {
 class studentRecord {
 	public: 
 		studentRecord();
-//		studentRecord(string newName);
-		studentRecord(int newId);
+		studentRecord(int newId, string newName);
+//		studentRecord(int newId);
 		int getId();
 		void setId(int newId);
-//		string getName();
-//		void setName(string newName);
+		string getName();
+		void setName(string newName);
 	private: 
 		int _studentId;
-//		string _name;
+		string _name;
 };
 
 int studentRecord::getId() {
@@ -32,7 +32,7 @@ int studentRecord::getId() {
 void studentRecord::setId(int newId) {
 	_studentId = newId;
 }
-/*
+
 string studentRecord::getName() {
 	return _name;
 }
@@ -50,8 +50,8 @@ studentRecord::studentRecord() {
 	setId(0);
 	setName("");
 }
-*/
 
+/*
 studentRecord::studentRecord(int newId) {
 	setId(newId);
 }
@@ -59,7 +59,7 @@ studentRecord::studentRecord(int newId) {
 studentRecord::studentRecord() {
 	setId(0);
 }
-
+*/
 int main () {
 	const int ARRAY_SIZE = 3;
 	student studentArray[ARRAY_SIZE] = {
