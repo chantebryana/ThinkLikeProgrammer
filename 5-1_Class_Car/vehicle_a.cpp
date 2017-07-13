@@ -43,7 +43,8 @@ std::string Vehicle::output_string() {
 }
 
 int age_of_car() {
-	int current_year = 2017;
+	int current_year = 0;
+	current_year = 2017;
 	int age_of_car = _year - current_year;
 	return age_of_car;
 }

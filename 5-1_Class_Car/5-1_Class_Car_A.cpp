@@ -25,7 +25,8 @@ int main() {
 	tm *ltm = localtime(&now);
 	std::cout << "Year " << 1900 + ltm->tm_year<<std::endl;
 */
-	std::cout << current_year() << std::endl;
+//	std::cout << current_year() << std::endl;
+	std::cout << car.age_of_car();
 	return 0;
 }
 
