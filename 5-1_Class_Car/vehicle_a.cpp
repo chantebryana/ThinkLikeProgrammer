@@ -1,4 +1,5 @@
 //#include <string>
+#include <ctime>
 #include "./vehicle_a.h"
 
 Vehicle::Vehicle() {
@@ -42,9 +43,18 @@ std::string Vehicle::output_string() {
 	return output_var;
 }
 
-int age_of_car() {
-	int current_year = 0;
-	current_year = 2017;
-	int age_of_car = _year - current_year;
-	return age_of_car;
+int Vehicle::current_year() {
+	time_t now = time(0);
+	tm *ltm = localtime(&now);
+	int year = 1900 + ltm->tm_year;
+	return year;
 }
+
+int Vehicle::age_of_vehicle() {
+//	int current_year;
+//	current_year = 2017;
+	int age_of_vehicle = current_year() - _year;
+	return age_of_vehicle;
+}
+
+

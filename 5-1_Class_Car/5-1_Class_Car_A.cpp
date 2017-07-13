@@ -26,7 +26,7 @@ int main() {
 	std::cout << "Year " << 1900 + ltm->tm_year<<std::endl;
 */
 //	std::cout << current_year() << std::endl;
-	std::cout << car.age_of_car();
+	std::cout << "Age of vehicle: " <<  car.age_of_vehicle() << std::endl;
 	return 0;
 }
 
