@@ -5,7 +5,6 @@
 
 int main() {
 	Vehicle car;
-	//car.set_mfgr('F');
 	car.set_mfgr("Ford");
 	car.set_model("Taurus");
 	car.set_year(0);
