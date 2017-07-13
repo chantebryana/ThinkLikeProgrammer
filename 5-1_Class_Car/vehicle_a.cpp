@@ -43,6 +43,7 @@ std::string Vehicle::output_string() {
 	return output_var;
 }
 
+// next two functions: exercise 5-2 -- another supporting method: 
 int Vehicle::current_year() {
 	time_t now = time(0);
 	tm *ltm = localtime(&now);
@@ -51,10 +52,9 @@ int Vehicle::current_year() {
 }
 
 int Vehicle::age_of_vehicle() {
-//	int current_year;
-//	current_year = 2017;
-	int age_of_vehicle = current_year() - _year;
-	return age_of_vehicle;
+	//int age_of_vehicle = current_year() - _year;
+	//return age_of_vehicle;
+	return current_year() - _year;
 }
 
 

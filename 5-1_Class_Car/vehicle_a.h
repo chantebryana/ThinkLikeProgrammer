@@ -12,11 +12,13 @@ class Vehicle {
 		void set_year(int new_year);
 		// exercise 5-2 -- supporting method:
 		std::string output_string();
+		// exercise 5-2 -- another supporting method: 
 		int age_of_vehicle();
 	private: 
 		std::string _mfgr;
 		std::string _model;
 		int _year;
+		// exercise 5-2 -- private method for supporting method: 
 		int current_year();
 };
 
