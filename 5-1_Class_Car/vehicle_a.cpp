@@ -41,3 +41,4 @@ std::string Vehicle::output_string() {
 	output_var = "\"" + std::to_string(_year) + " " + _mfgr + " " + _model + "\"";
 	return output_var;
 }
+
