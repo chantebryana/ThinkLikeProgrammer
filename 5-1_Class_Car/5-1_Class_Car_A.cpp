@@ -1,15 +1,16 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
-#include <ctime>
+//#include <ctime>
 #include "./vehicle_a.h"
-
+/*
 int current_year() {
 	time_t now = time(0);
 	tm *ltm = localtime(&now);
 	int year = 1900 + ltm->tm_year;
 	return year;
 }
+*/
 
 int main() {
 	Vehicle car;
