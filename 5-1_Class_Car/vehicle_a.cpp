@@ -35,3 +35,15 @@ int Vehicle::get_year() {
 	return _year;
 }
 
+/*
+std::string Vehicle::output_string(std::string get_mfgr, std::string get_model, int get_year) {
+	std::string output_var = "";
+	output_var = get_year + get_mfgr + get_model;
+	return output_var;
+}
+*/
+std::string Vehicle::output_string() {
+	std::string output_var = "";
+	output_var = "\"" + std::to_string(_year) + " " + _mfgr + " " + _model + "\"";
+	return output_var;
+}

@@ -9,6 +9,8 @@ class Vehicle {
 		void set_model(std::string new_model);
 		int get_year();
 		void set_year(int new_year);
+		//std::string output_string(std::string get_mfgr, std::string get_model, int get_year); // supporting method
+		std::string output_string();
 	private: 
 		std::string _mfgr;
 		std::string _model;
