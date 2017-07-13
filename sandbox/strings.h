@@ -1,3 +1,7 @@
+#include <string>
+// required to prevent string-related breakage when separating files:
+using std::string;
+
 class studentRecord {
 	public: 
 		studentRecord();
