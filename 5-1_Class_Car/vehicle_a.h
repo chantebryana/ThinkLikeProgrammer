@@ -20,7 +20,7 @@ class Vehicle {
 		void set_year(int new_year);
 		// exercise 5-2 -- supporting method:
 		std::string output_string();
-		int age_of_car(int current_year);
+		int age_of_car();
 	private: 
 		std::string _mfgr;
 		std::string _model;
