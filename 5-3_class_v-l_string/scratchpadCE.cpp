@@ -1,13 +1,21 @@
 #include <iostream>
 #include <cstdlib>
 
+int age_of_car (int * pnow_yr, int * pcar_yr) {
+	return * pnow_yr - * pcar_yr;
+}
+
 int main () {
-	int fish = 5;
-	int * pfish;
-	pfish = & fish;
-	std::cout << "            address of fish: " << & fish << std::endl;
-	std::cout << "address referenced by pfish: " << pfish << std::endl;
-	std::cout << "            value of fish: " << fish << std::endl;
-	std::cout << "value pointed to by pfish: " << *pfish << std::endl;
+	int car_year = 1999;
+	int now_year = 2017;
+	int * pcar_year;
+	int * pnow_year;
+	pcar_year = & car_year;
+	pnow_year = & now_year;
+	std::cout << pnow_year << " minus " << pcar_year << " equals " << pnow_year - pcar_year << std::endl;
+
+	std::cout << age_of_car(pnow_year, pcar_year) << std::endl;
+//	std::cout << "Age of car: " << * pnow_year - * pcar_year << " years old" << std::endl;
+
 	return 0;
 }
