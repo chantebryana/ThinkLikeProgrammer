@@ -10,10 +10,11 @@ class String {
 	public: 
 		String(); // constructor
 		char * get_string();
-		void set_string();
+		void set_string(char * new_char_array);
 		~String(); // destructor
 	private: 
 		char * char_array;
+		int length(char * new_char_array);
 };
 
 String::String() {
@@ -30,11 +31,23 @@ char * String::get_string() {
 	return char_array;
 }
 
+int String::length(char * new_char_array) {
+	int count = 0;
+	while (new_char_array[count] != 0) {
+		count ++;
+	}
+	count += 1;
+	return count;
+}
+
 void String::set_string(char * new_char_array) {
-	dereference char_array
-	figure out length of char_array (const int LENGTH = 5, for instance)
-	allocate: char_array = new char[5];
-	for (i = 0; i < LENGTH; i ++) {
+//	deallocate char_array
+	delete[] char_array;
+//	figure out length of char_array (const int LENGTH = 5, for instance)
+	int char_length = length(new_char_array);
+//	allocate: char_array = new char[5];
+	char_array = new char[char_length];
+	for (int i = 0; i < char_length; i ++) {
 		char_array[i] = new_char_array[i];
 	}
 }
@@ -45,12 +58,8 @@ String::~String() {
 
 int main () {
 	String word;
-	// all versions of the same thing (lines 49 - 53): 
-	char * user_chars[5] = {'a', 'b', 'c', 'd', 0};
-	char * user_chars[5] = "abcd";
+	char user_chars[5] = {'a', 'b', 'c', 'd', 0}; // not char *
 	word.set_string(user_chars);
-	word.set_string({'a', 'b', 'c', 'd', 0});
-	word.set_string("abcd");
 	std::cout << word.get_string() << std::endl;
 
 /*
