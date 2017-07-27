@@ -8,6 +8,8 @@ int main () {
 	word.set_string(user_chars);
 	std::cout << word.get_string() << std::endl;
 	std::cout << word.characterAt(2) << std::endl;
+	word.append('?');
+	std::cout << word.get_string() << std::endl;
 
 	return 0;
 }
