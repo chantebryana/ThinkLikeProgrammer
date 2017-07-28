@@ -9,5 +9,5 @@ class String {
 		~String(); // destructor
 	private: 
 		char * char_array;
-		int length(char * new_char_array);
+		int allocation_length(char * new_char_array);
 };

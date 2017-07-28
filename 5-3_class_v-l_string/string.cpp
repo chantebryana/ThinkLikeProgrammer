@@ -11,7 +11,7 @@ char * String::get_string() {
 	return char_array;
 }
 
-int String::length(char * new_char_array) {
+int String::allocation_length(char * new_char_array) {
 	int count = 0;
 	while (new_char_array[count] != 0) {
 		count ++;
@@ -22,7 +22,7 @@ int String::length(char * new_char_array) {
 
 void String::set_string(char * new_char_array) {
 	delete[] char_array;
-	int char_length = length(new_char_array);
+	int char_length = allocation_length(new_char_array);
 	char_array = new char[char_length];
 	for (int i = 0; i < char_length; i ++) {
 		char_array[i] = new_char_array[i];
@@ -34,7 +34,7 @@ char String::characterAt(int position) {
 }
 
 void String::append(char c) {
-	int original_length = length(char_array);
+	int original_length = allocation_length(char_array);
 	char * append_char_array = new char[original_length + 1];
 	for (int i = 0; i < original_length-1; i++) {
 		append_char_array[i] = char_array[i];
@@ -46,8 +46,8 @@ void String::append(char c) {
 }
 
 void String::concatenate(char * char_array_b) {
-	int original_length_a = length(char_array);
-	int length_b = length(char_array_b);
+	int original_length_a = allocation_length(char_array);
+	int length_b = allocation_length(char_array_b);
 	int new_length_ab = original_length_a + length_b-1;
 	char * cat_char_array = new char[new_length_ab];
 	for (int i = 0; i < original_length_a-1; i++) {
