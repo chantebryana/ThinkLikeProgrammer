@@ -16,6 +16,7 @@ int main () {
 	std::cout << word.get_string() << std::endl;
 	word.concatenate(second_char);
 	std::cout << word.get_string() << std::endl;
+	delete[] second_char;
 
 	return 0;
 }
