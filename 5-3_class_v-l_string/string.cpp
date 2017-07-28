@@ -1,3 +1,5 @@
+#include <iostream>
+#include <cstdlib>
 #include "./string.h"
 
 String::String() {
@@ -41,6 +43,26 @@ void String::append(char c) {
 	append_char_array[original_length] = 0;
 	delete[] char_array;
 	char_array = append_char_array;
+}
+
+void String::concatenate(char * char_array_b) {
+	int original_length_a = length(char_array);
+	//std::cout << "original_length_a: " << original_length_a << std::endl;
+	int length_b = length(char_array_b)-1;
+	//std::cout << "length_b: " << length_b << std::endl;
+	int new_length_ab = original_length_a + length_b;
+	//std::cout << "new_length_ab: " << new_length_ab << std::endl;
+	char * cat_char_array = new char[new_length_ab + 1];
+	//std::cout << "cat_char_array length: " << length(cat_char_array) << std::endl;
+	for (int i = 0; i < original_length_a-1; i++) {
+		cat_char_array[i] = char_array[i];
+	}
+	for (int i = 0; i < length_b-1; i++) {
+		cat_char_array[original_length_a + i] = char_array_b[i];
+	}
+	cat_char_array[new_length_ab] = 0;
+	delete[] char_array;
+	char_array = cat_char_array;
 }
 
 String::~String() {

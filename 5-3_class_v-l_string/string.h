@@ -5,6 +5,7 @@ class String {
 		void set_string(char * new_char_array);
 		char characterAt(int position);
 		void append(char c);
+		void concatenate(char * char_array_b);
 		~String(); // destructor
 	private: 
 		char * char_array;
