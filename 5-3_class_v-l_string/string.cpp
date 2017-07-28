@@ -1,5 +1,3 @@
-#include <iostream>
-#include <cstdlib>
 #include "./string.h"
 
 String::String() {
