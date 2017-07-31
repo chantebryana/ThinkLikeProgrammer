@@ -9,6 +9,7 @@ public:
 	void setGrade(int newGrade);
 //...
 //...
+
 private: 
 	int _grade;
 	int _studentID;
@@ -113,4 +114,33 @@ studentCollection & studentCollection::operator=(const studentCollection & right
 	}
 	return * this;
 }
+
+
+// ...	...	...
+// attempting deep copy and operator overloading
+
+char * copied_array(const char * original);
+String & operator=(const String & rhs);
+
+
+char * String::copied_array(const char * original) {
+	if (original == NULL) {
+		return NULL;
+	}
+	int char_length = allocation_length(char_array);
+	char * copy_char_array = new char[char_length];
+	for (int i = 0; i < char_length-1; i++) {
+		copy_char_array[i] = original[i];
+	}
+	return copy_char_array;
+}
+
+String * String::operator=(const String & rhs) {
+	if (this != & rhs) {
+		delete[] char_array;
+		char_array = copied_array(rhs); // do i need to iterate here? i iterate in copied_array()
+	}
+	return * this;
+}
+
 

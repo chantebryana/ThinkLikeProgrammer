@@ -8,6 +8,6 @@ class String {
 		void concatenate(char * char_array_b);
 		~String(); 
 	private: 
-		char * char_array;
+		char * _char_array;
 		int allocation_length(char * new_char_array);
 };
