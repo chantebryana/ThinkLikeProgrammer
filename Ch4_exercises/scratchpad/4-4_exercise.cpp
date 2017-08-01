@@ -72,8 +72,7 @@ void copy(char * s, char * * c_s) {
 }
 
 int compare(char * s, char * comp_s) {
-//	output(s);
-//	output(comp_s);
+//int compare(char s, char comp_s) {
 	if (s[0] != comp_s[0]) {
 		std::cout << "Comparison Analysis: Printable Area of strings are not the same!" << std::endl;
 		return 0;
@@ -81,16 +80,12 @@ int compare(char * s, char * comp_s) {
 	int s_length = s[0];
 	for (int i = 1; i < s_length; i++) {
 		if (s[i] != comp_s[i]) {
-			std::cout << "s[i]: " << s[i] << ", comp_s[i]: " << comp_s[i] << std::endl;
 			std::cout << "Comparison Analysis: Printable Area of strings are different!" << std::endl;
 			return 0;
-		} else {
-			std::cout << "Comparison Analysis: Printable Area of the strings are the same!" << std::endl;
-			return 1;
-		}
+		} 
 	}
-	//std::cout << "Comparison Analysis: Printable Area of the strings are the same!" << std::endl;
-	//return 1;
+	std::cout << "Comparison Analysis: Printable Area of the strings are the same!" << std::endl;
+	return 1;
 }
 
 int main() {
@@ -101,9 +96,11 @@ int main() {
 	int compare_length = 6;
 	//char compare_string[compare_length] = {'l', 'u', 'c', 'k', 'y'};
 	char * compare_string = new char[compare_length];
-	compare_string[0] = compare_length; compare_string[1] = 'l'; compare_string[2] = 'u'; compare_string[3] = 'c'; compare_string[4] = 'k'; compare_string[5] = 'y'; 
+	compare_string[0] = compare_length; compare_string[1] = 'l'; compare_string[2] = 'a'; compare_string[3] = 'c'; compare_string[4] = 'k'; compare_string[5] = 'y'; 
 //	std::cout << "compare_string in main: ";
-	output(compare_string);
+	//output(compare_string);
+	char stack_string[4] = {4, 'a', 'b', 'c'};
+	char stack_compare[4] = {4, 'a', 'b', 'c'};
 	output(my_string);
 	append(& my_string, 'y');
 	output(my_string);
@@ -116,6 +113,7 @@ int main() {
 	output(copy_string);
 	std::cout << character_at(my_string, 1) << std::endl;
 	compare(my_string, compare_string);  // this will either have its own output, or will return bool true false, which will inform a secondary output function...i guess...
+	compare(stack_string, stack_compare);
 	delete[] my_string;
 	delete[] copy_string;
 	return 0;
