@@ -82,7 +82,8 @@ void reverse_int(int * * a) {
 }
 
 int main() {
-	//char * my_string = new char[5];
+	char * my_string = new char[5];
+/*
 	int * my_string = new int[5];
 	std::cout << "BEFORE ASSIGNMENT: " << std::endl;
 	std::cout << "& my_string:    " << & my_string << std::endl;
@@ -95,9 +96,12 @@ int main() {
 	std::cout << "& my_string[4]: " << & my_string[4] << std::endl;
 	std::cout << "* (my_string + 0): " << * (my_string + 0) << std::endl;
 	std::cout << "my_string[0]:      " << my_string[0] << std::endl;
+
 	//std::cout << "* my_string[0] before assignment: " << * my_string[0] << std::endl;
+*/
 	//my_string[0] = '5'; my_string[1] = 'l'; my_string[2] = 'u'; my_string[3] = 'c'; my_string[4] = 'k';
-	//my_string[0] = 5; my_string[1] = 'l'; my_string[2] = 'u'; my_string[3] = 'c'; my_string[4] = 'k';
+	my_string[0] = 5; my_string[1] = 'l'; my_string[2] = 'u'; my_string[3] = 'c'; my_string[4] = 'k';
+/*
 	my_string[0] = 11; my_string[1] = 12; my_string[2] = 13; my_string[3] = 14; my_string[4] = 15;
 	std::cout << "AFTER ASSIGNMENT: " << std::endl;
 	std::cout << "& my_string:    " << & my_string << std::endl;
@@ -113,10 +117,11 @@ int main() {
 	std::cout << "my_string[0]:      " << my_string[0] << std::endl;
 	std::cout << "my_string[1]:      " << my_string[1] << std::endl;
 	//std::cout << "* my_string[0] after assignment: " << * my_string[0] << std::endl;
-
+*/
 	//int array[5] = {1, 2, 3, 4, 5};
 	//int a_b[5];
 	//int static_array[5] = {1, 2, 3, 4, 5};
+/*
 	int static_array[5];
 	std::cout << "BEFORE ASSIGNMENT: " << std::endl;
 	std::cout << "& static_array:    " << & static_array << std::endl;
@@ -140,7 +145,8 @@ int main() {
 	std::cout << "* (static_array + 1): " << * (static_array + 1) << std::endl;
 	std::cout << "static_array[0]: " << static_array[0] << std::endl;
 	std::cout << "static_array[1]: " << static_array[1] << std::endl;
-/*
+*/
+
 	int * array = new int[5];
 	array[0] = 1; array[1] = 2; array[2] = 3; array[3] = 4; array[4] = 5; 
 	output(my_string);
@@ -152,15 +158,15 @@ int main() {
 	//std::cout << reverse(array, a_b) << std::endl;
 	//reverse_int(array, a_b);
 	//reverse_int(& array);
-
+/*
 	for (int i = 0; i < 5; i++) {
 		//std::cout << a_b[i];
 		std::cout << array[i];
 	}
 	std::cout << std::endl;
-
 */
+
 	delete[] my_string;
-//	delete[] array;
+	delete[] array;
 	return 0;
 }
