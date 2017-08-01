@@ -49,26 +49,19 @@ char character_at(char * s, int position) {
 	return s[position];
 }
 
-
-//char * reverse(char * s) {
+// reverse that string!
 void reverse(char * * s) {
-	int s_length = (* s)[0];
-	//int s_length = length(s);
-	//int s_length = 5;
-//	char rev_s[s_length];
-	char * rev_s = new char[s_length];
-	rev_s[0] = (* s)[0];
-	//std::cout << "rev_s[0]: " << (int) rev_s[0] << std::endl;
-	int j = s_length-1;
+	int s_length = (* s)[0];  // define length
+	char * rev_s = new char[s_length];  // new heap memory for transfer-over work
+	rev_s[0] = (* s)[0];  // first element stays the same: length of array
+	int j = s_length-1;  // define j counter OUTSIDE of for loop
+	// iterate over rev_s and * s, assigning the *s to rev_s in reverse order:
 	for (int i = 1; i < s_length; i++) {
-		//int j = s_length;
 		rev_s[i] = (* s)[j];
 		j--;
 	}
-	delete[] * s;
-	* s = rev_s;
-	//delete[] rev_s;
-//	return s;
+	delete[] * s;  // deallocate heap memory of original * s (what's defined in main)
+	* s = rev_s;  // reallocate it to new reversed order as defined in rev_s
 }
 
 
@@ -101,8 +94,6 @@ int main() {
 	output(my_string);
 	reverse(& my_string);
 	output(my_string);
-	//output(reverse(my_string));
-	//length(my_string);
 	std::cout << character_at(my_string, 3) << std::endl;
 	//std::cout << reverse(array, a_b) << std::endl;
 	//reverse(array, a_b);
