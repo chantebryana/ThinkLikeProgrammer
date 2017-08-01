@@ -71,27 +71,30 @@ void reverse(char * * s) {
 }
 */
 
-void reverse(int * a, int * b) {
+//void reverse(int * a, int * b) {
+void reverse(int * * a) {
 	int a_length = 5;
 	//int rev_a[5];
+	int * rev_a = new int[5];
 	int j = a_length-1;
 	for (int i = 0; i < a_length; i ++) {
-		//int j = a_length;
-		//std::cout << j << " ";
-		b[i] = a[j];
+		rev_a[i] = (* a)[j];
+		//std::cout << rev_a[i] << ", ";
 		j--;
-		//std::cout << b[i] << ", ";
 	}
-	//return rev_a;
 	//std::cout << std::endl;
+	delete[] * a;
+	* a = rev_a;
 }
 
 int main() {
 	char * my_string = new char[5];
 	//my_string[0] = '5'; my_string[1] = 'l'; my_string[2] = 'u'; my_string[3] = 'c'; my_string[4] = 'k';
 	my_string[0] = 5; my_string[1] = 'l'; my_string[2] = 'u'; my_string[3] = 'c'; my_string[4] = 'k';
-	int array[5] = {1, 2, 3, 4, 5};
-	int a_b[5];
+	//int array[5] = {1, 2, 3, 4, 5};
+	//int a_b[5];
+	int * array = new int[5];
+	array[0] = 1; array[1] = 2; array[2] = 3; array[3] = 4; array[4] = 5; 
 	output(my_string);
 	append(& my_string, 'y');
 	output(my_string);
@@ -101,10 +104,12 @@ int main() {
 	//length(my_string);
 	std::cout << character_at(my_string, 3) << std::endl;
 	//std::cout << reverse(array, a_b) << std::endl;
-	reverse(array, a_b);
+	//reverse(array, a_b);
+	reverse(& array);
 
 	for (int i = 0; i < 5; i++) {
-		std::cout << a_b[i];
+		//std::cout << a_b[i];
+		std::cout << array[i];
 	}
 	std::cout << std::endl;
 
