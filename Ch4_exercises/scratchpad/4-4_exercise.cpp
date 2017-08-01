@@ -50,7 +50,7 @@ char character_at(char * s, int position) {
 }
 
 // reverse that string!
-void reverse(char * * s) {
+void reverse_char(char * * s) {
 	int s_length = (* s)[0];  // define length
 	char * rev_s = new char[s_length];  // new heap memory for transfer-over work
 	rev_s[0] = (* s)[0];  // first element stays the same: length of array
@@ -66,10 +66,10 @@ void reverse(char * * s) {
 
 
 //void reverse(int * a, int * b) {
-void reverse(int * * a) {
+void reverse_int(int * * a) {
 	int a_length = 5;
-	int rev_a[5];
-	//int * rev_a = new int[5];
+	//int rev_a[5];
+	int * rev_a = new int[5];
 	int j = a_length-1;
 	for (int i = 0; i < a_length; i ++) {
 		rev_a[i] = (* a)[j];
@@ -82,30 +82,85 @@ void reverse(int * * a) {
 }
 
 int main() {
-	char * my_string = new char[5];
+	//char * my_string = new char[5];
+	int * my_string = new int[5];
+	std::cout << "BEFORE ASSIGNMENT: " << std::endl;
+	std::cout << "& my_string:    " << & my_string << std::endl;
+	std::cout << "my_string:      " << my_string << std::endl;	
+	std::cout << "my_string + 1:  " << my_string + 1 << std::endl;	
+	std::cout << "& my_string[0]: " << & my_string[0] << std::endl;
+	std::cout << "& my_string[1]: " << & my_string[1] << std::endl;
+	std::cout << "& my_string[2]: " << & my_string[2] << std::endl;
+	std::cout << "& my_string[3]: " << & my_string[3] << std::endl;
+	std::cout << "& my_string[4]: " << & my_string[4] << std::endl;
+	std::cout << "* (my_string + 0): " << * (my_string + 0) << std::endl;
+	std::cout << "my_string[0]:      " << my_string[0] << std::endl;
+	//std::cout << "* my_string[0] before assignment: " << * my_string[0] << std::endl;
 	//my_string[0] = '5'; my_string[1] = 'l'; my_string[2] = 'u'; my_string[3] = 'c'; my_string[4] = 'k';
-	my_string[0] = 5; my_string[1] = 'l'; my_string[2] = 'u'; my_string[3] = 'c'; my_string[4] = 'k';
+	//my_string[0] = 5; my_string[1] = 'l'; my_string[2] = 'u'; my_string[3] = 'c'; my_string[4] = 'k';
+	my_string[0] = 11; my_string[1] = 12; my_string[2] = 13; my_string[3] = 14; my_string[4] = 15;
+	std::cout << "AFTER ASSIGNMENT: " << std::endl;
+	std::cout << "& my_string:    " << & my_string << std::endl;
+	std::cout << "my_string:      " << my_string << std::endl;	
+	std::cout << "my_string + 1:  " << my_string + 1 << std::endl;	
+	std::cout << "& my_string[0]: " << & my_string[0] << std::endl;
+	std::cout << "& my_string[1]: " << & my_string[1] << std::endl;
+	std::cout << "& my_string[2]: " << & my_string[2] << std::endl;
+	std::cout << "& my_string[3]: " << & my_string[3] << std::endl;
+	std::cout << "& my_string[4]: " << & my_string[4] << std::endl;
+	std::cout << "* (my_string + 0): " << * (my_string + 0) << std::endl;
+	std::cout << "* (my_string + 1): " << * (my_string + 1) << std::endl;
+	std::cout << "my_string[0]:      " << my_string[0] << std::endl;
+	std::cout << "my_string[1]:      " << my_string[1] << std::endl;
+	//std::cout << "* my_string[0] after assignment: " << * my_string[0] << std::endl;
+
 	//int array[5] = {1, 2, 3, 4, 5};
 	//int a_b[5];
+	//int static_array[5] = {1, 2, 3, 4, 5};
+	int static_array[5];
+	std::cout << "BEFORE ASSIGNMENT: " << std::endl;
+	std::cout << "& static_array:    " << & static_array << std::endl;
+	std::cout << "static_array:      " << static_array << std::endl;
+	std::cout << "& static_array[0]: " << & static_array[0] << std::endl;
+	std::cout << "& static_array[1]: " << & static_array[1] << std::endl;
+	std::cout << "* (static_array + 0): " << * (static_array + 0) << std::endl;
+	std::cout << "* (static_array + 1): " << * (static_array + 1) << std::endl;
+	std::cout << "static_array[0]: " << static_array[0] << std::endl;
+	std::cout << "static_array[1]: " << static_array[1] << std::endl;
+	static_array[0] = 1; static_array[1] = 2; static_array[2] = 3; static_array[3] = 4; static_array[4] = 5; 
+	std::cout << "AFTER ASSIGNMENT: " << std::endl;
+	std::cout << "& static_array:    " << & static_array << std::endl;
+	std::cout << "static_array:      " << static_array << std::endl;
+	std::cout << "& static_array[0]: " << & static_array[0] << std::endl;
+	std::cout << "& static_array[1]: " << & static_array[1] << std::endl;
+	std::cout << "& static_array[2]: " << & static_array[2] << std::endl;
+	std::cout << "& static_array[3]: " << & static_array[3] << std::endl;
+	std::cout << "& static_array[4]: " << & static_array[4] << std::endl;
+	std::cout << "* (static_array + 0): " << * (static_array + 0) << std::endl;
+	std::cout << "* (static_array + 1): " << * (static_array + 1) << std::endl;
+	std::cout << "static_array[0]: " << static_array[0] << std::endl;
+	std::cout << "static_array[1]: " << static_array[1] << std::endl;
+/*
 	int * array = new int[5];
 	array[0] = 1; array[1] = 2; array[2] = 3; array[3] = 4; array[4] = 5; 
 	output(my_string);
 	append(& my_string, 'y');
 	output(my_string);
-	reverse(& my_string);
+	reverse_char(& my_string);
 	output(my_string);
 	std::cout << character_at(my_string, 3) << std::endl;
 	//std::cout << reverse(array, a_b) << std::endl;
-	//reverse(array, a_b);
-	//reverse(& array);
-/*
+	//reverse_int(array, a_b);
+	//reverse_int(& array);
+
 	for (int i = 0; i < 5; i++) {
 		//std::cout << a_b[i];
 		std::cout << array[i];
 	}
 	std::cout << std::endl;
+
 */
 	delete[] my_string;
-	delete[] array;
+//	delete[] array;
 	return 0;
 }
