@@ -14,28 +14,6 @@ loops through its string parameter, displaying the characters.
 
 //typedef char * array_string;
 
-/*
-//char * reverse(char * s) {
-void reverse(char & s) {
-	//int s_length = s[0];
-	//int s_length = length(s);
-	int s_length = 5;
-//	char rev_s[s_length];
-	char * rev_s = new char[s_length];
-	rev_s[0] = s[0];
-	std::cout << "rev_s[0]: " << rev_s[0] << std::endl;
-	for (int i = 1; i < s_length; i++) {
-		int j = s_length;
-		rev_s[j] = s[i];
-		j--;
-	}
-	//delete[] s;
-	s = rev_s;
-	delete[] rev_s;
-//	return s;
-}
-*/
-
 int length(char * s) {
 	int s_length = s[0] - '0'; // s_length s/b equal to # (int) not '#' (char)
 	//std::cout << s_length << std::endl;
@@ -68,19 +46,64 @@ void append(char * * s, char c) {
 }
 
 char character_at(char * s, int position) {
-	return s[position + 1];
+	return s[position];
+}
+
+/*
+//char * reverse(char * s) {
+void reverse(char * * s) {
+	int s_length = (* s)[0];
+	//int s_length = length(s);
+	//int s_length = 5;
+//	char rev_s[s_length];
+	char * rev_s = new char[s_length];
+	rev_s[0] = (* s)[0];
+	std::cout << "rev_s[0]: " << (int) rev_s[0] << std::endl;
+	for (int i = 1; i < s_length; i++) {
+		int j = s_length;
+		rev_s[j] = (* s)[i];
+		j--;
+	}
+	//delete[] s;
+	* s = rev_s;
+	delete[] rev_s;
+//	return s;
+}
+*/
+
+void reverse(int * a, int * b) {
+	int a_length = 5;
+	//int rev_a[5];
+	for (int i = 0; i < a_length; i ++) {
+		//int j = a_length;
+		b[i] = a[i];
+		//j--;
+		//std::cout << b[i];
+	}
+	//return rev_a;
+	//std::cout << std::endl;
 }
 
 int main() {
 	char * my_string = new char[5];
 	//my_string[0] = '5'; my_string[1] = 'l'; my_string[2] = 'u'; my_string[3] = 'c'; my_string[4] = 'k';
 	my_string[0] = 5; my_string[1] = 'l'; my_string[2] = 'u'; my_string[3] = 'c'; my_string[4] = 'k';
+	int array[5] = {1, 2, 3, 4, 5};
+	int a_b[5];
 	output(my_string);
 	append(& my_string, 'y');
 	output(my_string);
+	//reverse(& my_string);
+	//output(my_string);
 	//output(reverse(my_string));
 	//length(my_string);
 	std::cout << character_at(my_string, 3) << std::endl;
+	//std::cout << reverse(array, a_b) << std::endl;
+	reverse(array, a_b);
+	for (int i = 0; i < 5; i++) {
+		std::cout << a_b[i];
+	}
+	std::cout << std::endl;
 
 	delete[] my_string;
 	return 0;

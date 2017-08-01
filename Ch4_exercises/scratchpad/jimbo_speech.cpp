@@ -1,4 +1,6 @@
-//c:
+// discussion w/ Jim on pointers, in c and c++ syntax
+
+// c:
 char charUpdateFunc(char input){
 	return 'a';
 }
