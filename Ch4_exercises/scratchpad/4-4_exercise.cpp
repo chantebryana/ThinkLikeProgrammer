@@ -11,15 +11,13 @@ loops through its string parameter, displaying the characters.
 
 #include <iostream>
 #include <cstdlib>
-
-//typedef char * array_string;
-
+/*
 int length(char * s) {
 	int s_length = s[0] - '0'; // s_length s/b equal to # (int) not '#' (char)
 	//std::cout << s_length << std::endl;
 	return s_length;
 }
-
+*/
 void output(char * s) {
 	int s_length = s[0];
 //	int s_length = length(s);
@@ -64,16 +62,33 @@ void reverse_char(char * * s) {
 	* s = rev_s;  // reallocate it to new reversed order as defined in rev_s
 }
 
+void copy(char * s, char * * c_s) {
+	int s_length = s[0]; 
+	(* c_s)[0] = s[0]; 
+	for (int i = 1; i < s_length; i++) {
+		(* c_s)[i] = s[i];
+	};
+}
+
+
 int main() {
 	char * my_string = new char[5];
 	//my_string[0] = '5'; my_string[1] = 'l'; my_string[2] = 'u'; my_string[3] = 'c'; my_string[4] = 'k';
 	my_string[0] = 5; my_string[1] = 'l'; my_string[2] = 'u'; my_string[3] = 'c'; my_string[4] = 'k';
+	char * copy_string = new char[5];
+
 	output(my_string);
 	append(& my_string, 'y');
 	output(my_string);
 	reverse_char(& my_string);
 	output(my_string);
+	reverse_char(& my_string);
+	output(my_string);
+	copy(my_string, & copy_string);
+	std::cout << "copy_string: ";
+	output(copy_string);
 	std::cout << character_at(my_string, 1) << std::endl;
 	delete[] my_string;
+	delete[] copy_string;
 	return 0;
 }
