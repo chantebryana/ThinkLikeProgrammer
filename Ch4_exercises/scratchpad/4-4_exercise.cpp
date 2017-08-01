@@ -73,18 +73,21 @@ void copy(char * s, char * * c_s) {
 
 int compare(char * s, char * comp_s) {
 //int compare(char s, char comp_s) {
+	std::cout << "Comparing the following strings: " << std::endl;
+	output(s);
+	output(comp_s);
 	if (s[0] != comp_s[0]) {
-		std::cout << "Comparison Analysis: Printable Area of strings are not the same!" << std::endl;
+		std::cout << "Comparison Analysis: No match! (Printable area of one array is longer than the other)" << std::endl;
 		return 0;
 	}
 	int s_length = s[0];
 	for (int i = 1; i < s_length; i++) {
 		if (s[i] != comp_s[i]) {
-			std::cout << "Comparison Analysis: Printable Area of strings are different!" << std::endl;
+			std::cout << "Comparison Analysis: No match! (At least one letter's different)" << std::endl;
 			return 0;
 		} 
 	}
-	std::cout << "Comparison Analysis: Printable Area of the strings are the same!" << std::endl;
+	std::cout << "Comparison Analysis: They match! (Printable area of arrays are the same size and all letters match)" << std::endl;
 	return 1;
 }
 
@@ -93,7 +96,7 @@ int main() {
 	//my_string[0] = '5'; my_string[1] = 'l'; my_string[2] = 'u'; my_string[3] = 'c'; my_string[4] = 'k';
 	my_string[0] = 5; my_string[1] = 'l'; my_string[2] = 'u'; my_string[3] = 'c'; my_string[4] = 'k';
 	char * copy_string = new char[1];
-	int compare_length = 6;
+	int compare_length = 10;
 	//char compare_string[compare_length] = {'l', 'u', 'c', 'k', 'y'};
 	char * compare_string = new char[compare_length];
 	compare_string[0] = compare_length; compare_string[1] = 'l'; compare_string[2] = 'a'; compare_string[3] = 'c'; compare_string[4] = 'k'; compare_string[5] = 'y'; 
@@ -101,19 +104,28 @@ int main() {
 	//output(compare_string);
 	char stack_string[4] = {4, 'a', 'b', 'c'};
 	char stack_compare[4] = {4, 'a', 'b', 'c'};
+
 	output(my_string);
+
 	append(& my_string, 'y');
 	output(my_string);
+
 	reverse_char(& my_string);
 	output(my_string);
+
 	reverse_char(& my_string);
 	output(my_string);
+
 	copy(my_string, & copy_string);
 	std::cout << "copy_string: ";
 	output(copy_string);
+
 	std::cout << character_at(my_string, 1) << std::endl;
-	compare(my_string, compare_string);  // this will either have its own output, or will return bool true false, which will inform a secondary output function...i guess...
-	compare(stack_string, stack_compare);
+
+	//compare(my_string, compare_string);  // this will either have its own output, or will return bool true false, which will inform a secondary output function...i guess...
+	//compare(stack_string, stack_compare);
+	compare(my_string, stack_compare);
+
 	delete[] my_string;
 	delete[] copy_string;
 	return 0;
