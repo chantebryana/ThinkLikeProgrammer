@@ -74,11 +74,13 @@ void reverse(char * * s) {
 void reverse(int * a, int * b) {
 	int a_length = 5;
 	//int rev_a[5];
+	int j = a_length-1;
 	for (int i = 0; i < a_length; i ++) {
 		//int j = a_length;
-		b[i] = a[i];
-		//j--;
-		//std::cout << b[i];
+		//std::cout << j << " ";
+		b[i] = a[j];
+		j--;
+		//std::cout << b[i] << ", ";
 	}
 	//return rev_a;
 	//std::cout << std::endl;
@@ -100,6 +102,7 @@ int main() {
 	std::cout << character_at(my_string, 3) << std::endl;
 	//std::cout << reverse(array, a_b) << std::endl;
 	reverse(array, a_b);
+
 	for (int i = 0; i < 5; i++) {
 		std::cout << a_b[i];
 	}
