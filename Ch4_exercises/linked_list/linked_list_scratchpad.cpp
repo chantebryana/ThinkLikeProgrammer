@@ -9,7 +9,9 @@ struct run_node {
 } ;
 
 void print_node(run_node * existing_node);
-int counter(run_node * existing_node);
+int counter_total(run_node * existing_node);
+int counter_name(run_node * existing_node, std::string end_name);
+int counter_time(run_node * existing_node, float end_time);
 void insert_new_at_end(run_node * existing_node, std::string new_name, float new_time);
 void insert_new_at_front(run_node * * existing_node, std::string new_name, float new_time);
 
@@ -31,12 +33,21 @@ int main() {
 	//insert_new_at_end(run_200m, "Aziz", 27.00);
 	insert_new_at_front(& run_200m, "Francois", 25.51);
 	print_node(run_200m);
-	std::cout << "Number of nodes: " << counter(run_200m) << std::endl;
+	std::string count_name = "Maurice";
+	float count_time = 26.01;
+	std::cout << "Name " << count_name << " is located at node " << counter_name(run_200m, count_name) << std::endl;
+	std::cout << "Time " << count_time << " is located at node " << counter_time(run_200m, count_time) << std::endl;
 
 	// deallocate run_200m?
 
 	return 0;
 }
+
+
+
+
+
+
 
 void print_node(run_node * existing_node) {
 	if(existing_node != NULL) { // makes sure existing_node holds information
@@ -49,9 +60,30 @@ void print_node(run_node * existing_node) {
 	}
 }
 
-int counter(run_node * existing_node) {
+int counter_total(run_node * existing_node) {
 	int counter = 0;
-	while (existing_node->next != NULL) {
+//	while (existing_node->next != NULL) {
+	while(existing_node->next != NULL) {
+		counter += 1;
+		existing_node = existing_node->next;
+	}
+	counter += 1;
+	return counter;
+}
+
+int counter_name(run_node * existing_node, std::string end_name) {
+	int counter = 0;
+	while(existing_node->name != end_name) {
+		counter += 1;
+		existing_node = existing_node->next;
+	}
+	counter += 1;
+	return counter;
+}
+
+int counter_time(run_node * existing_node, float end_time) {
+	int counter = 0;
+	while(existing_node->time_sec != end_time) {
 		counter += 1;
 		existing_node = existing_node->next;
 	}
