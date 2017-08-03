@@ -14,6 +14,7 @@ int counter_name(run_node * existing_node, std::string end_name);
 int counter_time(run_node * existing_node, float end_time);
 void insert_new_at_end(run_node * existing_node, std::string new_name, float new_time);
 void insert_new_at_front(run_node * * existing_node, std::string new_name, float new_time);
+void insert_after_name(run_node * * existing_node, std::string insert_after_this_name, std::string new_name, float new_time);
 
 int main() {
 	run_node * run_200m;
@@ -33,11 +34,15 @@ int main() {
 	//insert_new_at_end(run_200m, "Aziz", 27.00);
 	insert_new_at_front(& run_200m, "Francois", 25.51);
 	print_node(run_200m);
+	insert_after_name(& run_200m, "Bianca", "Phuong", 25.63);
+	std::cout << "After running insert_after_name() " << std::endl;
+	print_node(run_200m);
+/*
 	std::string count_name = "Maurice";
 	float count_time = 26.01;
 	std::cout << "Name " << count_name << " is located at node " << counter_name(run_200m, count_name) << std::endl;
 	std::cout << "Time " << count_time << " is located at node " << counter_time(run_200m, count_time) << std::endl;
-
+*/
 	// deallocate run_200m?
 
 	return 0;
@@ -111,4 +116,17 @@ void insert_new_at_front(run_node * * existing_node, std::string new_name, float
 	conductor = NULL;
 }
 
+void insert_after_name(run_node * * existing_node, std::string insert_after_this_name, std::string new_name, float new_time) {
+	run_node * placeholder = * existing_node;
+	run_node * conductor = new run_node;
+	conductor->name = new_name; conductor->time_sec = new_time;
+	while (placeholder->name == insert_after_this_name) {
+		run_node * next_node_down_the_list = placeholder->next;
+		placeholder->next = conductor;
+		conductor->next = next_node_down_the_list;
+		next_node_down_the_list = NULL;
+	}
+	* existing_node = placeholder;
+	placeholder = conductor = NULL;
+}
 
