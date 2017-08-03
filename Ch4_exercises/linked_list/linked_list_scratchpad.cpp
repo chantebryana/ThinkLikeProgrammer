@@ -9,9 +9,9 @@ struct run_node {
 } ;
 
 void print_node(run_node * existing_node);
+int counter(run_node * existing_node);
 void insert_new_at_end(run_node * existing_node, std::string new_name, float new_time);
 void insert_new_at_front(run_node * * existing_node, std::string new_name, float new_time);
-void print_i();
 
 int main() {
 	run_node * run_200m;
@@ -31,7 +31,7 @@ int main() {
 	//insert_new_at_end(run_200m, "Aziz", 27.00);
 	insert_new_at_front(& run_200m, "Francois", 25.51);
 	print_node(run_200m);
-	//print_i();
+	std::cout << "Number of nodes: " << counter(run_200m) << std::endl;
 
 	// deallocate run_200m?
 
@@ -47,6 +47,16 @@ void print_node(run_node * existing_node) {
 		// prints out the final chunk of data: 
 		std::cout << "runner: " << existing_node->name << ", time(sec): " << existing_node->time_sec << std::endl;
 	}
+}
+
+int counter(run_node * existing_node) {
+	int counter = 0;
+	while (existing_node->next != NULL) {
+		counter += 1;
+		existing_node = existing_node->next;
+	}
+	counter += 1;
+	return counter;
 }
 
 void insert_new_at_end(run_node * existing_node, std::string new_name, float new_time) {
@@ -69,7 +79,4 @@ void insert_new_at_front(run_node * * existing_node, std::string new_name, float
 	conductor = NULL;
 }
 
-void print_i() {
-	int * i;
-	std::cout << i << std::endl;
-}
+
