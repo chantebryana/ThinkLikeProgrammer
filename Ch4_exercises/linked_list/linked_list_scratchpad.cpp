@@ -8,17 +8,7 @@ struct run_node {
 	run_node * next;
 } ;
 
-void print_node(run_node * placeholder) {
-	if(placeholder != NULL) { // makes sure placeholder holds information
-		while (placeholder->next != 0){ // goes through the linked list till the end
-			//printf("%f \n", placeholder->outcome_seconds);
-			std::cout << "runner: " << placeholder->name << ", time (sec): " << placeholder->outcome_seconds << std::endl;
-			placeholder = placeholder->next;
-		}
-		// prints out the final chunk of data: 
-		std::cout << "runner: " << placeholder->name << ", time (sec): " << placeholder->outcome_seconds << std::endl;
-	}
-}
+void print_node(run_node * placeholder);
 
 int main() {
 	run_node * run_200m;
@@ -39,4 +29,15 @@ int main() {
 	// deallocate run_200m?
 
 	return 0;
+}
+
+void print_node(run_node * placeholder) {
+	if(placeholder != NULL) { // makes sure placeholder holds information
+		while (placeholder->next != 0){ // goes through the linked list till the end
+			std::cout << "runner: " << placeholder->name << ", time (sec): " << placeholder->outcome_seconds << std::endl;
+			placeholder = placeholder->next;
+		}
+		// prints out the final chunk of data: 
+		std::cout << "runner: " << placeholder->name << ", time (sec): " << placeholder->outcome_seconds << std::endl;
+	}
 }
