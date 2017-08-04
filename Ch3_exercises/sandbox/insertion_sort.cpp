@@ -16,34 +16,33 @@ int main () {
 	}
 	std::cout << std::endl;
 
-	//insertion_sort(int_array, ARRAY_SIZE);
-	insertion_sort(p_int_array, ARRAY_SIZE);
-	print_int_array(p_int_array, ARRAY_SIZE);
+	insertion_sort(int_array, ARRAY_SIZE);
+	print_int_array(int_array, ARRAY_SIZE);
+	//insertion_sort(p_int_array, ARRAY_SIZE);
+	//print_int_array(p_int_array, ARRAY_SIZE);
 
 	return 0;
 }
 
 
-
+// insertion_sort sorts in-place: no need to allocate new heap memory or have placeholders or deallocate anything: 
+// it can work for heap or stack variables too!
 // sort recently-dealt hand of cards in a pitch game:
 // int * insertion_sort(int * a, const int a_lgth) {
 void insertion_sort(int * a, const int a_lgth) {
 	int start = 0;
 	int end = a_lgth-1;
-	//int * temp = new int[1];
 	int temp = 0;
 	// pass over entire deck of cards, excluding the very first card: 
 	// (iterate over entire array, beginning at i = 1) :
 	for (int i = start + 1; i <= end; i++) {
 		// with j starting at i, loop decrements j so long as we haven't reached the lower end of the array (start), and haven't yet found the right stopping point for this new value: 
 		for (int j = i; j > start && (a)[j-1] > (a)[j]; j--) {
-			//int * temp = new int[1];
 			temp = (a)[j-1];
 			(a)[j-1] = (a)[j];
 			(a)[j] = temp;
 		}
 	}
-	//delete[] temp;
 }
 
 void print_int_array (int * a, const int a_lgth) {
