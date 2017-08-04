@@ -159,26 +159,30 @@ void insert_after_name(run_node * * existing_node, std::string insert_after_this
 // CE: PSEUDOCODE
 void insert_new_at_end(run_node * * existing_node, std::string new_name, float new_time) {
 	run_node * conductor = new run_node;
-	run_node * placeholder = new run_node;
+	//run_node * placeholder = new run_node;
+	run_node * placeholder; // more after else
 
 	conductor->name = new_name;
 	conductor->time_sec = new_time;
 	conductor->next = NULL;
 
-	placeholder = (* existing_node)->next;
+	//placeholder = (* existing_node)->next;
+	//placeholder = * existing_node;
+	//placehoder = placeholder->next;
 
 	if (* existing_node == NULL) {
 		* existing_node = conductor;
 	} else {
-		//placeholder = * existing_node;
+		placeholder = * existing_node;
 		//placeholder = placeholder->next;
 		//placeholder = (* existing_node)->next;
-		while ((* existing_node)->next != NULL) {
-			* existing_node = (* existing_node)->next; // traverse through linked list
+		//while ((* existing_node)->next != NULL) {
+		while (placeholder->next != NULL) {
+			//* existing_node = (* existing_node)->next; // traverse through linked list
 			placeholder = placeholder->next;  // traverse one node ahead of * existing_node
 		}
-		//placeholder->next = conductor;
-		//* existing_node = placeholder;
+		placeholder->next = conductor;
+		//* existing_node = placeholder;  // CE DON'T NEED THIS LINE!!!!
 	}
 	//placeholder->next = conductor;
 	//* existing_node = placeholder;
