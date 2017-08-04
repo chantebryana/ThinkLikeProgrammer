@@ -95,35 +95,6 @@ int counter_time(run_node * existing_node, float end_time) {
 	counter += 1;
 	return counter;
 }
-/*
-void insert_new_at_end(run_node * * existing_node, std::string new_name, float new_time) {
-	run_node * new_node = new run_node;
-	//run_node * next_node_ahead = new run_node;
-	new_node->name = new_name; new_node->time_sec = new_time; new_node->next = NULL;
-	//run_node * placeholder = new run_node;
-	//next_node_ahead = (* existing_node)->next;
-	if (* existing_node == NULL) {
-		* existing_node = new_node;
-	} else {
-		while ((* existing_node)->next != NULL) {
-			* existing_node = (* existing_node)->next;
-			//placeholder = (* existing_node)->next;
-		}
-		(* existing_node)->next = new_node;
-	}
-	//(* existing_node)->next = new_node;
-	/*
-	while ((* existing_node)->next == NULL) {
-		* existing_node = (* existing_node)->next;
-		next_node_ahead = next_node_ahead->next;
-		//(* existing_node)->next = new_node;
-		
-	}
-	*/
-/*
-	new_node = NULL;
-}
-*/
 
 void insert_new_at_front(run_node * * existing_node, std::string new_name, float new_time) {
 	run_node * conductor = new run_node;
@@ -156,60 +127,25 @@ void insert_after_name(run_node * * existing_node, std::string insert_after_this
 	placeholder = conductor = NULL;
 }
 
-// CE: PSEUDOCODE
 void insert_new_at_end(run_node * * existing_node, std::string new_name, float new_time) {
 	run_node * conductor = new run_node;
-	//run_node * placeholder = new run_node;
 	run_node * placeholder; // more after else
 
 	conductor->name = new_name;
 	conductor->time_sec = new_time;
 	conductor->next = NULL;
 
-	//placeholder = (* existing_node)->next;
-	//placeholder = * existing_node;
-	//placehoder = placeholder->next;
-
 	if (* existing_node == NULL) {
 		* existing_node = conductor;
 	} else {
 		placeholder = * existing_node;
-		//placeholder = placeholder->next;
-		//placeholder = (* existing_node)->next;
-		//while ((* existing_node)->next != NULL) {
 		while (placeholder->next != NULL) {
-			//* existing_node = (* existing_node)->next; // traverse through linked list
-			placeholder = placeholder->next;  // traverse one node ahead of * existing_node
+			placeholder = placeholder->next;  
 		}
 		placeholder->next = conductor;
-		//* existing_node = placeholder;  // CE DON'T NEED THIS LINE!!!!
+		//* existing_node = placeholder;  // CE DON'T NEED THIS LINE HERE OR ANYWHERE!!!!
 	}
-	//placeholder->next = conductor;
-	//* existing_node = placeholder;
 
 	conductor = placeholder = NULL;
 }
 
-// CE: copying from internet
-void append(run_node * * existing_node, std::string new_name, float new_time) {
-	// 1. allocate nodes:
-	run_node * new_node = new run_node;
-	run_node * last = * existing_node;  // used in step 5
-
-	// 2. put in data: 
-	new_node->name = new_name;
-	new_node->time_sec = new_time;
-	
-	// 3. set new_node->next to null b/c at end of linked list
-	new_node->next = NULL;
-
-	// 4. if linkedlist is empty, set header to new_node
-	if (* existing_node == NULL) {
-		* existing_node = new_node;
-	} else {	// 5. else traverse till the last node:
-		while (last->next != NULL) {
-			last = last->next;
-		}
-		// CE: where does the last, crutial, assignment go? which tier is it nested in?
-	}
-}
