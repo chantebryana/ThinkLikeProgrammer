@@ -46,11 +46,6 @@ int compare_char(const void * void_a, const void * void_b) {
 int compare_float(const void * void_a, const void * void_b) {
 	float * float_a = (float *)void_a;
 	float * float_b = (float *)void_b;
-	//return * float_a - * float_b; // too messy: rounds off numbers
-	// https://stackoverflow.com/questions/3886446/problem-trying-to-use-the-c-qsort-function :
-	//return ( (* float_a) > (* float_b) ) - ( (* float_a) < (* float_b) );
-
-	// https://cboard.cprogramming.com/c-programming/1293-qsort-doesnt-work-floats.html :
 	if ( (* float_a) < (* float_b) ) {
 		return -1;
 	} else if ( (* float_a) > (* float_b) ) {
