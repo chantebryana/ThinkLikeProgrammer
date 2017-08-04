@@ -53,8 +53,10 @@ int compare_float(const void * void_a, const void * void_b) {
 	// https://cboard.cprogramming.com/c-programming/1293-qsort-doesnt-work-floats.html :
 	if ( (* float_a) < (* float_b) ) {
 		return -1;
-	} else {
-		return (* float_a) > (* float_b);
+	} else if ( (* float_a) > (* float_b) ) {
+		return 1;
+	} else { // if ( (* float_a) == (* float_b) )
+		return 0;
 	}
 }
 
