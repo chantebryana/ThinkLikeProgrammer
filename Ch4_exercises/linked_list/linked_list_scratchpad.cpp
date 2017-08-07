@@ -14,7 +14,7 @@ int counter_name(run_node * existing_node, std::string end_name);
 int counter_time(run_node * existing_node, float end_time);
 void insert_new_at_end(run_node * * existing_node, std::string new_name, float new_time);
 void insert_new_at_front(run_node * * existing_node, std::string new_name, float new_time);
-void insert_after_name(run_node * * existing_node, std::string insert_after_this_name, std::string new_name, float new_time);
+void insert_new_after_name(run_node * * existing_node, std::string insert_after_this_name, std::string new_name, float new_time);
 
 int main() {
 	run_node * run_200m;
@@ -31,12 +31,12 @@ int main() {
 	node1 = node2 = node3 = NULL;
 
 	//print_node(run_200m);
-	insert_new_at_end(& run_200m, "Aziz", 27.00);
+	//insert_new_at_end(& run_200m, "Aziz", 27.00);
 	//insert_new_at_front(& run_200m, "Francois", 25.51);
-	print_node(run_200m);
-	//insert_after_name(& run_200m, "Bianca", "Phuong", 25.63);
-	//std::cout << "After running insert_after_name() " << std::endl;
 	//print_node(run_200m);
+	insert_new_after_name(& run_200m, "Bianca", "Phuong", 25.63);
+	std::cout << "After running insert_new_after_name() " << std::endl;
+	print_node(run_200m);
 /*
 	std::string count_name = "Maurice";
 	float count_time = 26.01;
@@ -105,7 +105,7 @@ void insert_new_at_front(run_node * * existing_node, std::string new_name, float
 	* existing_node = conductor;
 	conductor = NULL;
 }
-
+/*
 void insert_after_name(run_node * * existing_node, std::string insert_after_this_name, std::string new_name, float new_time) {
 	run_node * placeholder = * existing_node;
 	std::cout << "placeholder->name: " << placeholder->name << std::endl;
@@ -115,10 +115,10 @@ void insert_after_name(run_node * * existing_node, std::string insert_after_this
 		std::cout << "what name is this: " << placeholder->name << std::endl;
 		run_node * next_node_down_the_list = placeholder->next;
 		std::cout << "next_node_down_the_list->name: " << next_node_down_the_list->name << std::endl;
-/*
-- USEFUL: learn that while loop may not be running, which would explain why nothing changes and nothing crashes. curious!!
-- AH, I need to do [placeholder = placeholder->next], and then create an inner loop or condition or something that performs some of the meaty brains...!!!
-*/
+
+//- USEFUL: learn that while loop may not be running, which would explain why nothing changes and nothing crashes. curious!!
+//- AH, I need to do [placeholder = placeholder->next], and then create an inner loop or condition or something that performs some of the meaty brains...!!!
+
 		placeholder->next = conductor;
 		conductor->next = next_node_down_the_list;
 		next_node_down_the_list = NULL;
@@ -126,26 +126,52 @@ void insert_after_name(run_node * * existing_node, std::string insert_after_this
 	* existing_node = placeholder;
 	placeholder = conductor = NULL;
 }
-
+*/
 void insert_new_at_end(run_node * * existing_node, std::string new_name, float new_time) {
-	run_node * conductor = new run_node;
+	run_node * new_node = new run_node;
 	run_node * placeholder; // more after else
 
-	conductor->name = new_name;
-	conductor->time_sec = new_time;
-	conductor->next = NULL;
+	new_node->name = new_name;
+	new_node->time_sec = new_time;
+	new_node->next = NULL;
 
 	if (* existing_node == NULL) {
-		* existing_node = conductor;
+		* existing_node = new_node;
 	} else {
 		placeholder = * existing_node;
 		while (placeholder->next != NULL) {
 			placeholder = placeholder->next;  
 		}
-		placeholder->next = conductor;
+		placeholder->next = new_node;
 		//* existing_node = placeholder;  // CE DON'T NEED THIS LINE HERE OR ANYWHERE!!!!
 	}
 
-	conductor = placeholder = NULL;
+	new_node  = placeholder = NULL;
 }
+
+void insert_new_after_name(run_node * * existing_node, std::string insert_after_this_name, std::string new_name, float new_time) {
+	run_node * new_node = new run_node;
+	run_node * placeholder; // more after else
+	run_node * one_node_ahead; // more after else
+
+	new_node->name = new_name;
+	new_node->time_sec = new_time;
+
+	if (* existing_node == NULL) {
+		new_node->next = NULL;
+		* existing_node = new_node;
+	} else {
+		placeholder = * existing_node;
+		one_node_ahead = placeholder->next;
+
+		while (placeholder->name != insert_after_this_name) { // CE find another line of logic if insert_after_this_name isn't part of linked list
+			placeholder = placeholder->next;
+			one_node_ahead = one_node_ahead->next;
+		}
+		placeholder->next = new_node;
+		new_node->next = one_node_ahead;
+	}
+	new_node = placeholder = one_node_ahead = NULL;
+}
+
 
