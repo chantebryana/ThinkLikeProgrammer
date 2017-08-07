@@ -34,7 +34,7 @@ int main() {
 	//insert_new_at_end(& run_200m, "Aziz", 27.00);
 	//insert_new_at_front(& run_200m, "Francois", 25.51);
 	//print_node(run_200m);
-	insert_new_after_name(& run_200m, "Bianca", "Gustov", 25.63);
+	insert_new_after_name(& run_200m, "Maurice", "Gustov", 25.63);
 	//insert_new_after_name(& run_200m, "Arthur", "Phuong", 26.73);
 	//std::cout << "After running insert_new_after_name() " << std::endl;
 	print_node(run_200m);
@@ -154,12 +154,11 @@ void insert_new_at_end(run_node * * existing_node, std::string new_name, float n
 int insert_new_after_name(run_node * * existing_node, std::string insert_after_this_name, std::string new_name, float new_time) {
 	run_node * new_node = new run_node;
 	run_node * placeholder; // more during else condition, before while loop begins
-	run_node * one_node_ahead; // more during else condition, after while loop is over
 
 	// assign new values to temp new_node:
 	new_node->name = new_name;
 	new_node->time_sec = new_time;
-	// wait to assign new_node-> next till later
+	// wait to assign new_node->next till later
 
 	 // returned value for func; condition is whether the new values got added to linked list: 0 = false, 1 = true:
 	int did_insertion_work = 0;
@@ -167,15 +166,10 @@ int insert_new_after_name(run_node * * existing_node, std::string insert_after_t
 	// if * existing_node is empty, return 0 (false), else set placeholder to * existing_node (placeholder will be used in next steps):
 	if (* existing_node == NULL) {
 		return did_insertion_work;
-		//new_node->next = NULL;
-		//* existing_node = new_node;
 	} else {
 		placeholder = * existing_node;
-		//one_node_ahead = placeholder->next;
 	}
 
-		//while (placeholder->next != NULL || placeholder->name != insert_after_this_name) {
-		//CE current loop doesn't work if insert_after_this_name is the last name on the list: 
 		// iterate through linked list. if loop finds insert_after_this_name, set did_insertion_work to 1 (true) and break before fininshing the loop to save the place in the linked list for the next steps; else did_insertion_work is still set to 0 and placeholder is set to the last node of the list: 
 		while (placeholder->next != NULL) { 
 			if (placeholder->name == insert_after_this_name) {
@@ -184,25 +178,21 @@ int insert_new_after_name(run_node * * existing_node, std::string insert_after_t
 			};
 			placeholder = placeholder->next;
 		};
+		// final check on last node of linked list (while loop ends before last node can get checked):
+		if (placeholder->name == insert_after_this_name) {
+			did_insertion_work = 1;
+		};
 
 		// if insert_after_this_name is in the linked list, then add the new_node after it and return 1 (true); else, do nothing and return 0 (false):
 		if (did_insertion_work == 1) {
-			
-			// CE I think these 2 lines are better than what i've got now, but i haven't tested them out yet so they remain in comments
 			new_node->next = placeholder->next;
 			placeholder->next = new_node;
-			
-/*
-			one_node_ahead = placeholder->next;
-			placeholder->next = new_node;
-			new_node->next = one_node_ahead;
-*/
 			return did_insertion_work;
 		} else {
 			return did_insertion_work;
 		};
 			
-	new_node = placeholder = one_node_ahead = NULL;
+	new_node = placeholder = NULL;
 }
 
 
