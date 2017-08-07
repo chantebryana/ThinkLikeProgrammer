@@ -34,8 +34,8 @@ int main() {
 	//insert_new_at_end(& run_200m, "Aziz", 27.00);
 	//insert_new_at_front(& run_200m, "Francois", 25.51);
 	//print_node(run_200m);
-	//insert_new_after_name(& run_200m, "Bianca", "Gustov", 25.63);
-	insert_new_after_name(& run_200m, "Arthur", "Phuong", 26.73);
+	insert_new_after_name(& run_200m, "Bianca", "Gustov", 25.63);
+	//insert_new_after_name(& run_200m, "Arthur", "Phuong", 26.73);
 	//std::cout << "After running insert_new_after_name() " << std::endl;
 	print_node(run_200m);
 /*
@@ -187,14 +187,16 @@ int insert_new_after_name(run_node * * existing_node, std::string insert_after_t
 
 		// if insert_after_this_name is in the linked list, then add the new_node after it and return 1 (true); else, do nothing and return 0 (false):
 		if (did_insertion_work == 1) {
-			/*
+			
 			// CE I think these 2 lines are better than what i've got now, but i haven't tested them out yet so they remain in comments
 			new_node->next = placeholder->next;
 			placeholder->next = new_node;
-			*/
+			
+/*
 			one_node_ahead = placeholder->next;
 			placeholder->next = new_node;
 			new_node->next = one_node_ahead;
+*/
 			return did_insertion_work;
 		} else {
 			return did_insertion_work;
