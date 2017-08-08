@@ -15,7 +15,11 @@ int main() {
 	node1->next = node2;
 	node2->next = node3;
 	node3->next = NULL;
+
 	node1 = node2 = node3 = NULL;
+	delete node1;
+	delete node2;
+	delete node3;
 
 	//print_node(run_200m);
 	//insert_new_at_end(& run_200m, "Aziz", 27.00);
