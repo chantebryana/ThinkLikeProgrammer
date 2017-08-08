@@ -18,7 +18,7 @@ void print_node(run_node * existing_node) {
 		std::cout << "runner: " << existing_node->name << ", time(sec): " << existing_node->time_sec << std::endl;
 	}
 }
-
+/*
 int counter_total(run_node * existing_node) {
 	int counter = 0;
 //	while (existing_node->next != NULL) {
@@ -49,7 +49,7 @@ int counter_time(run_node * existing_node, float end_time) {
 	counter += 1;
 	return counter;
 }
-
+*/
 void insert_new_at_front(run_node * * existing_node, std::string new_name, float new_time) {
 	run_node * conductor = new run_node;
 	conductor->name = new_name;
@@ -58,29 +58,9 @@ void insert_new_at_front(run_node * * existing_node, std::string new_name, float
 	
 	* existing_node = conductor;
 	conductor = NULL;
+	delete conductor;
 }
-/*
-void insert_after_name(run_node * * existing_node, std::string insert_after_this_name, std::string new_name, float new_time) {
-	run_node * placeholder = * existing_node;
-	std::cout << "placeholder->name: " << placeholder->name << std::endl;
-	run_node * conductor = new run_node;
-	conductor->name = new_name; conductor->time_sec = new_time;
-	while (placeholder->name == insert_after_this_name) {
-		std::cout << "what name is this: " << placeholder->name << std::endl;
-		run_node * next_node_down_the_list = placeholder->next;
-		std::cout << "next_node_down_the_list->name: " << next_node_down_the_list->name << std::endl;
 
-//- USEFUL: learn that while loop may not be running, which would explain why nothing changes and nothing crashes. curious!!
-//- AH, I need to do [placeholder = placeholder->next], and then create an inner loop or condition or something that performs some of the meaty brains...!!!
-
-		placeholder->next = conductor;
-		conductor->next = next_node_down_the_list;
-		next_node_down_the_list = NULL;
-	}
-	* existing_node = placeholder;
-	placeholder = conductor = NULL;
-}
-*/
 void insert_new_at_end(run_node * * existing_node, std::string new_name, float new_time) {
 	run_node * new_node = new run_node;
 	run_node * placeholder; // more after else
@@ -102,6 +82,8 @@ void insert_new_at_end(run_node * * existing_node, std::string new_name, float n
 	}
 
 	new_node  = placeholder = NULL;
+	delete new_node;
+	delete placeholder; // CE placeholder is deeper than new_node: so may need to call a function on this guy! -- CE actually no: it's pointing to the same memory as * existing_nde, so when I set it to NULL there's nothing in the heap that isn't accounted for elsewhere: delete placeholder just like new_node
 }
 
 int insert_new_after_name(run_node * * existing_node, std::string insert_after_this_name, std::string new_name, float new_time) {
@@ -146,6 +128,8 @@ int insert_new_after_name(run_node * * existing_node, std::string insert_after_t
 		};
 			
 	new_node = placeholder = NULL;
+	delete new_node;
+	delete placeholder;
 }
 
 
