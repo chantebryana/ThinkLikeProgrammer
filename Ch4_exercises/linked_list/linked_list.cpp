@@ -22,17 +22,21 @@ int main() {
 	delete node3;
 
 	run_node * null_node = NULL;
+
 	print_node(run_200m);
 	std::cout << std::endl;
 	//insert_new_at_end(& run_200m, "Aziz", 27.00);
 	//insert_new_at_front(& run_200m, "Francois", 25.51);
 	//insert_new_after_name(& run_200m, "Maurice", "Gustov", 25.63);
-	insert_new_after_name( & null_node, "Bill", "Susan", 26.9);
+	//insert_new_after_name( & null_node, "Bill", "Susan", 26.9);
 	//insert_new_after_name(& run_200m, "Arthur", "Phuong", 26.73);
 	print_node(run_200m);
 
 	delete null_node;
+
 	// deallocate run_200m?
+	deallocate(& run_200m);
+	//delete run_200m;
 
 	return 0;
 }

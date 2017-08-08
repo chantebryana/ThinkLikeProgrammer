@@ -142,4 +142,12 @@ int insert_new_after_name(run_node * * existing_node, std::string insert_after_t
 		};
 }
 
+void deallocate(run_node * * existing_node) {
+	while (* existing_node) {
+		run_node * placeholder;
+		placeholder = * existing_node;
+		* existing_node = (* existing_node)->next;
+		delete placeholder;
+	}
+}
 
