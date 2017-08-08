@@ -87,13 +87,7 @@ void insert_new_at_end(run_node * * existing_node, std::string new_name, float n
 }
 
 int insert_new_after_name(run_node * * existing_node, std::string insert_after_this_name, std::string new_name, float new_time) {
-	run_node * new_node = new run_node;
 	run_node * placeholder; // more during else condition, before while loop begins
-
-	// assign new values to temp new_node:
-	new_node->name = new_name;
-	new_node->time_sec = new_time;
-	// wait to assign new_node->next till later
 
 	 // returned value for func; condition is whether the new values got added to linked list: 0 = false, 1 = true:
 	int did_insertion_work = 0;
@@ -120,16 +114,33 @@ int insert_new_after_name(run_node * * existing_node, std::string insert_after_t
 
 		// if insert_after_this_name is in the linked list, then add the new_node after it and return 1 (true); else, do nothing and return 0 (false):
 		if (did_insertion_work == 1) {
+			// assign new values to temp new_node:
+			run_node * new_node = new run_node;
+			new_node->name = new_name;
+			new_node->time_sec = new_time;
+
+			// insert new_node in its proper place in * existing_node via placeholder heap pointer:
 			new_node->next = placeholder->next;
 			placeholder->next = new_node;
+
+			// deallocate new_node pointer from the heap:
+			new_node = placeholder = NULL;
+			delete new_node;
+			delete placeholder;
+	
+			// return 1 (true):
 			return did_insertion_work;
 		} else {
+			placeholder = NULL;
+			delete placeholder;
 			return did_insertion_work;
 		};
 			
-	new_node = placeholder = NULL;
-	delete new_node;
-	delete placeholder;
+	// CE all this shit happens AFTER return: make sure it happens before!!
+	//new_node = placeholder = NULL;
+	//placeholder = NULL;
+	//delete new_node;
+	//delete placeholder;
 }
 
 

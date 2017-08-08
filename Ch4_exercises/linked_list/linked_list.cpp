@@ -26,8 +26,8 @@ int main() {
 	//insert_new_at_end(& run_200m, "Aziz", 27.00);
 	//insert_new_at_front(& run_200m, "Francois", 25.51);
 	//print_node(run_200m);
-	//insert_new_after_name(& run_200m, "Maurice", "Gustov", 25.63);
-	insert_new_after_name(& run_200m, "Arthur", "Phuong", 26.73);
+	insert_new_after_name(& run_200m, "Maurice", "Gustov", 25.63);
+	//insert_new_after_name(& run_200m, "Arthur", "Phuong", 26.73);
 	//std::cout << "After running insert_new_after_name() " << std::endl;
 	print_node(run_200m);
 /*
