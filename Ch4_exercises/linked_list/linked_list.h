@@ -94,6 +94,8 @@ int insert_new_after_name(run_node * * existing_node, std::string insert_after_t
 
 	// if * existing_node is empty, return 0 (false), else set placeholder to * existing_node (placeholder will be used in next steps):
 	if (* existing_node == NULL) {
+		placeholder = NULL;
+		delete placeholder;
 		return did_insertion_work;
 	} else {
 		placeholder = * existing_node;
@@ -123,7 +125,7 @@ int insert_new_after_name(run_node * * existing_node, std::string insert_after_t
 			new_node->next = placeholder->next;
 			placeholder->next = new_node;
 
-			// deallocate new_node pointer from the heap:
+			// deallocate new_node and placeholder pointers from the heap:
 			new_node = placeholder = NULL;
 			delete new_node;
 			delete placeholder;
@@ -131,16 +133,13 @@ int insert_new_after_name(run_node * * existing_node, std::string insert_after_t
 			// return 1 (true):
 			return did_insertion_work;
 		} else {
+			// deallocate new_node and placeholder pointers from the heap:
 			placeholder = NULL;
 			delete placeholder;
+
+			// return 0 (false):
 			return did_insertion_work;
 		};
-			
-	// CE all this shit happens AFTER return: make sure it happens before!!
-	//new_node = placeholder = NULL;
-	//placeholder = NULL;
-	//delete new_node;
-	//delete placeholder;
 }
 
 

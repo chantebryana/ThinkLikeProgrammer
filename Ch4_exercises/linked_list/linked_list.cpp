@@ -21,21 +21,17 @@ int main() {
 	delete node2;
 	delete node3;
 
+	run_node * null_node = NULL;
 	print_node(run_200m);
 	std::cout << std::endl;
 	//insert_new_at_end(& run_200m, "Aziz", 27.00);
 	//insert_new_at_front(& run_200m, "Francois", 25.51);
-	//print_node(run_200m);
-	insert_new_after_name(& run_200m, "Maurice", "Gustov", 25.63);
+	//insert_new_after_name(& run_200m, "Maurice", "Gustov", 25.63);
+	insert_new_after_name( & null_node, "Bill", "Susan", 26.9);
 	//insert_new_after_name(& run_200m, "Arthur", "Phuong", 26.73);
-	//std::cout << "After running insert_new_after_name() " << std::endl;
 	print_node(run_200m);
-/*
-	std::string count_name = "Maurice";
-	float count_time = 26.01;
-	std::cout << "Name " << count_name << " is located at node " << counter_name(run_200m, count_name) << std::endl;
-	std::cout << "Time " << count_time << " is located at node " << counter_time(run_200m, count_time) << std::endl;
-*/
+
+	delete null_node;
 	// deallocate run_200m?
 
 	return 0;
