@@ -58,7 +58,6 @@ void insert_new_at_front(run_node * * existing_node, std::string new_name, float
 	
 	* existing_node = conductor;
 	conductor = NULL;
-	delete conductor;
 }
 
 void insert_new_at_end(run_node * * existing_node, std::string new_name, float new_time) {
@@ -82,8 +81,6 @@ void insert_new_at_end(run_node * * existing_node, std::string new_name, float n
 	}
 
 	new_node  = placeholder = NULL;
-	delete new_node;
-	delete placeholder; // CE placeholder is deeper than new_node: so may need to call a function on this guy! -- CE actually no: it's pointing to the same memory as * existing_nde, so when I set it to NULL there's nothing in the heap that isn't accounted for elsewhere: delete placeholder just like new_node
 }
 
 int insert_new_after_name(run_node * * existing_node, std::string insert_after_this_name, std::string new_name, float new_time) {
@@ -95,7 +92,6 @@ int insert_new_after_name(run_node * * existing_node, std::string insert_after_t
 	// if * existing_node is empty, return 0 (false), else set placeholder to * existing_node (placeholder will be used in next steps):
 	if (* existing_node == NULL) {
 		placeholder = NULL;
-		delete placeholder;
 		return did_insertion_work;
 	} else {
 		placeholder = * existing_node;
@@ -127,15 +123,12 @@ int insert_new_after_name(run_node * * existing_node, std::string insert_after_t
 
 			// deallocate new_node and placeholder pointers from the heap:
 			new_node = placeholder = NULL;
-			delete new_node;
-			delete placeholder;
 	
 			// return 1 (true):
 			return did_insertion_work;
 		} else {
 			// deallocate new_node and placeholder pointers from the heap:
 			placeholder = NULL;
-			delete placeholder;
 
 			// return 0 (false):
 			return did_insertion_work;
@@ -148,6 +141,7 @@ void deallocate(run_node * * existing_node) {
 		placeholder = * existing_node;
 		* existing_node = (* existing_node)->next;
 		delete placeholder;
+		// don't need to explicity delete * existing_node b/c it's already set to NULL thanks to the while loop
 	}
 }
 
