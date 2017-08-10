@@ -41,3 +41,19 @@ void deallocate(* * existing_node) {
 	}
 }
 
+// ===	===	===	===	===
+
+void deallocate(* * existing_node) {
+	while (* existing_node->next != NULL) {
+		run_node * placeholder;
+		placeholder = * existing_node;
+		* existing_node = * existing_node->next;
+		delete placeholder;
+	}
+	run_node * placeholder;
+	placeholder = * existing_node;
+	delete placeholder;
+}
+// (outside of function, back in main): 
+delete run_200m;
+

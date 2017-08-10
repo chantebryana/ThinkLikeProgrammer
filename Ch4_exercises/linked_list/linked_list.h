@@ -18,38 +18,7 @@ void print_node(run_node * existing_node) {
 		std::cout << "runner: " << existing_node->name << ", time(sec): " << existing_node->time_sec << std::endl;
 	}
 }
-/*
-int counter_total(run_node * existing_node) {
-	int counter = 0;
-//	while (existing_node->next != NULL) {
-	while(existing_node->next != NULL) {
-		counter += 1;
-		existing_node = existing_node->next;
-	}
-	counter += 1;
-	return counter;
-}
 
-int counter_name(run_node * existing_node, std::string end_name) {
-	int counter = 0;
-	while(existing_node->name != end_name) {
-		counter += 1;
-		existing_node = existing_node->next;
-	}
-	counter += 1;
-	return counter;
-}
-
-int counter_time(run_node * existing_node, float end_time) {
-	int counter = 0;
-	while(existing_node->time_sec != end_time) {
-		counter += 1;
-		existing_node = existing_node->next;
-	}
-	counter += 1;
-	return counter;
-}
-*/
 void insert_new_at_front(run_node * * existing_node, std::string new_name, float new_time) {
 	run_node * conductor = new run_node;
 	conductor->name = new_name;
