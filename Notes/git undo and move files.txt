@@ -1,0 +1,63 @@
+# archive a local copy of files before I make github commit changes
+
+# cd to Projects directory
+
+# make a folder to store archived / deep-copied files in
+
+# before deep copy to archives, check out how large old folder is: 
+ruby@rubyVM:~/Projects/ThinkLikeProgrammer$ du -sh .
+54M	.
+
+# make the archive: 
+ruby@rubyVM:~/Projects/ThinkLikeProgrammer$ cd ../
+ruby@rubyVM:~/Projects$ mkdir archives
+ruby@rubyVM:~/Projects$ cp -a ./ThinkLikeProgrammer/ ./archives/TLAP_undo_file_change_commit
+
+# after deep copy, verify that it worked by checking file size of archive: 
+ruby@rubyVM:~/Projects$ du -sh archives/TLAP_undo_file_change_commit/
+54M	archives/TLAP_undo_file_change_commit/
+
+
+===	===	===
+
+
+# https://stackoverflow.com/questions/448919/how-can-i-remove-a-commit-on-github
+
+# don't erase sensitive data, just reorient branches on tree:
+
+#no need to git stash: no dirty tree
+
+# go back to relevant directory: 
+ruby@rubyVM:~/Projects$ cd ./ThinkLikeProgrammer/
+
+
+git reset --hard HEAD^ #goes back one commit and also syncs with local files
+
+git push origin +master #assertive push (if i don't do this, my branch will look one commit behind of master)
+
+===	===	===
+
+# move my files around, but this time using git
+
+ruby@rubyVM:~/Projects/ThinkLikeProgrammer$ mkdir Ch2_exercises
+ruby@rubyVM:~/Projects/ThinkLikeProgrammer$ mkdir ./Ch2_exercises/2016-prior
+ruby@rubyVM:~/Projects/ThinkLikeProgrammer$ git mv binaryDecimalConverter.rb decoderP61.rb decoderP61Notes.txt luhnChecksumP31.rb luhnGameplan.txt thinkProgrammer.rb TLaP_pg46.cpp ./Ch2_exercises/2016-prior/
+ruby@rubyVM:~/Projects/ThinkLikeProgrammer$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	renamed:    TLaP_pg46.cpp -> Ch2_exercises/2016-prior/TLaP_pg46.cpp
+	renamed:    binaryDecimalConverter.rb -> Ch2_exercises/2016-prior/binaryDecimalConverter.rb
+	renamed:    decoderP61.rb -> Ch2_exercises/2016-prior/decoderP61.rb
+	renamed:    decoderP61Notes.txt -> Ch2_exercises/2016-prior/decoderP61Notes.txt
+	renamed:    luhnChecksumP31.rb -> Ch2_exercises/2016-prior/luhnChecksumP31.rb
+	renamed:    luhnGameplan.txt -> Ch2_exercises/2016-prior/luhnGameplan.txt
+	renamed:    thinkProgrammer.rb -> Ch2_exercises/2016-prior/thinkProgrammer.rb
+
+# once I'm done moving things around...
+# git commit, git push (no need to git add . --> git mv does that automatically)
+
+
+
