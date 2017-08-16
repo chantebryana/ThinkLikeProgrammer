@@ -21,45 +21,19 @@ int main () {
 	std::cout << "How many values? ";
 	std::cin >> n;
 	int * user_var = new int[n];
+
 	for (int i = 0; i < n; i++) {
-		std::cout << "Enter value number " << i+1 << ": ";
+		std::cout << "Enter non-zero integer for value number " << i+1 << " of " << n << ": ";
 		std::cin >> user_var[i];
-	}
-
-	for (int i = 0; i < n; i++) {
-		std::cout << user_var[i] << " ";
-	}
-	std::cout << std::endl;
-
-/*
-	std::cout << "enter a positive, non-zero integer: " << std::endl;
-	for (int i = 0; i < 10; i++) {
-		while (std::cin >> user_var[i]) {
-			std::cout << "user_var[i]: " << user_var[i] << std::endl;
-			//if (user_var <= 0) {
-				//std::cout << "error" << std::endl;
-				//break;
-			//}
+		if (user_var[i] == 0) {
+			break;
 		}
 	}
-	std::cout << "the whole array: " << std::endl;
-	for (int i = 0; i < 10; i++) {
+
+	for (int i = 0; i < n; i++) {
 		std::cout << user_var[i] << " ";
 	}
 	std::cout << std::endl;
-*/
-
-/*
-	std::cout << "User, enter a positive integer: ";
-	std::cin >> user_var;
-//	std::cout << "The value entered: " << user_var << std::endl;
-
-	if (user_var > 0) {
-		std::cout << "The value entered: " << user_var << std::endl;
-	} else {
-		std::cout << "Please enter a real positive integer" << std::endl;
-	}
-*/
 
 	deallocate(& root);
 	return 0;
