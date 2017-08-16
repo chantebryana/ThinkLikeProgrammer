@@ -20,6 +20,7 @@ int main () {
 	print_node(root);
 
 	int user_input;
+	std::cout << "__ADD DATA TO LINKED LIST \'ROOT\'__" << std::endl;
 	std::cout << "enter a series of non-zero integers; enter a char to quit: " << std::endl;
 	process_user_input(& root, user_input);
 	print_node(root);
@@ -28,6 +29,8 @@ int main () {
 	deallocate(& root);
 	return 0;
 }
+
+
 
 
 
