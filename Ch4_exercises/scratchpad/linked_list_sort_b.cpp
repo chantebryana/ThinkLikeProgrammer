@@ -16,6 +16,28 @@ int main () {
 
 	print_node(root);
 
+	int user_input;
+	int quit = 0;
+	std::cout << "enter a series of non-zero integers; enter a letter to quit: " << std::endl;
+	while (!quit) {
+		std::cin >> user_input;
+		if (user_input != 0) {
+			node * temp = new node;
+			temp->data = user_input;
+			temp->next = root;
+			root = temp;
+			temp = NULL;
+		} else if (user_input == 0) {
+			std::cout << "all done!" << std::endl;
+			quit = 1;
+		} else {
+			std::cout << "input error" << std::endl;
+			quit = 1;
+		}
+	}
+
+	print_node(root);
+/*
 //	int * user_var;
 	int n;
 	std::cout << "How many values? ";
@@ -34,7 +56,7 @@ int main () {
 		std::cout << user_var[i] << " ";
 	}
 	std::cout << std::endl;
-
+*/
 	deallocate(& root);
 	return 0;
 }
