@@ -6,6 +6,7 @@ struct node {
 	node * next;
 } ;
 
+void insert_new_at_front(node * * head, int user_input);
 void print_node(node * head);
 void deallocate(node * * head);
 
@@ -22,11 +23,7 @@ int main () {
 	while (!quit) {
 		std::cin >> user_input;
 		if (user_input != 0) {
-			node * temp = new node;
-			temp->data = user_input;
-			temp->next = root;
-			root = temp;
-			temp = NULL;
+			insert_new_at_front(& root, user_input);
 		} else if (user_input == 0) {
 			std::cout << "all done!" << std::endl;
 			quit = 1;
@@ -37,31 +34,21 @@ int main () {
 	}
 
 	print_node(root);
-/*
-//	int * user_var;
-	int n;
-	std::cout << "How many values? ";
-	std::cin >> n;
-	int * user_var = new int[n];
 
-	for (int i = 0; i < n; i++) {
-		std::cout << "Enter non-zero integer for value number " << i+1 << " of " << n << ": ";
-		std::cin >> user_var[i];
-		if (user_var[i] == 0) {
-			break;
-		}
-	}
-
-	for (int i = 0; i < n; i++) {
-		std::cout << user_var[i] << " ";
-	}
-	std::cout << std::endl;
-*/
 	deallocate(& root);
 	return 0;
 }
 
 
+
+
+void insert_new_at_front(node * * head, int user_input) {
+	node * temp = new node;
+	temp->data = user_input;
+	temp->next = * head;
+	* head = temp;
+	temp = NULL;
+}
 
 void print_node(node * head) {
 	if (head != NULL) {
