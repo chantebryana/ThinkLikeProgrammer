@@ -8,6 +8,7 @@ struct node {
 
 void insert_new_at_front(node * * head, int user_input);
 void print_node(node * head);
+void print_address(node * head);
 void deallocate(node * * head);
 
 int main () {
@@ -16,10 +17,12 @@ int main () {
 	root->next = NULL;
 
 	print_node(root);
+	//print_address(& root);
+	//std::cout << (& root) << std::endl;
 
 	int user_input;
 	int quit = 0;
-	std::cout << "enter a series of non-zero integers; enter a letter to quit: " << std::endl;
+	std::cout << "enter a series of non-zero integers; enter a char to quit: " << std::endl;
 	while (!quit) {
 		std::cin >> user_input;
 		if (user_input != 0) {
@@ -34,6 +37,7 @@ int main () {
 	}
 
 	print_node(root);
+	print_address(root);
 
 	deallocate(& root);
 	return 0;
@@ -52,11 +56,23 @@ void insert_new_at_front(node * * head, int user_input) {
 
 void print_node(node * head) {
 	if (head != NULL) {
+		std::cout << "data: ";
 		while (head->next != 0) {
-			std::cout << "data: " << head->data << std::endl;
+			std::cout << head->data << " ";
 			head = head->next;
 		}
-		std::cout << "data: " << head->data << std::endl;
+		std::cout << head->data << std::endl;
+	}
+}
+
+void print_address(node * head) {
+	if (head != NULL) {
+		std::cout << "data addresses: " << std::endl;
+		while (head->next != 0) {
+			std::cout << (& head->data) << std::endl;
+			head = head->next;
+		}
+		std::cout << (& head) << std::endl;
 	}
 }
 
