@@ -62,6 +62,8 @@ int main () {
 
 	print_node(sort_node);
 
+	// deallocate func goes here
+
 	return 0;
 }
 
