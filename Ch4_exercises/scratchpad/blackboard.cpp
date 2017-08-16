@@ -35,29 +35,20 @@ for (int i = 0; i < SOME_NUM; i++) {
 
 //	===	===	===
 
-int * address_of_0 = new int;
-int * address_of_1 = new int;
-int * address_of_2 = new int;
-int * address_of_3 = new int;
+const int SOME_NUM = 4;
+int * address_of = new int[SOME_NUM];
 node * temp = root;
 
-address_of_0 = &temp->data;
-temp = temp->next;
-address_of_1 = &temp->data;
-temp = temp->next;
-address_of_2 = &temp->data;
-temp = temp->next;
-address_of_3 = &temp->data;
-temp = temp->next;
+for (int i = 0; i < SOME_NUM; i ++) {
+	address_of[i] = &temp->data;
+	temp = temp->next;
+	if (temp->next == NULL) {break;}
+}
 
-std::cout << "address_of_x: " std::endl;
-std::cout << address_of_0 << " " << std::endl;
-std::cout << address_of_1 << " " << std::endl;
-std::cout << address_of_2 << " " << std::endl;
-std::cout << address_of_3 << " " << std::endl;
+std::cout << "address_of[i]: " << std::endl;
+for (int i = 0; i < SOME_NUM; i++) {
+	std::cout << address_of[i] << std::endl;
+}
 
 temp = NULL;
-delete address_of_0;
-delete address_of_1;
-delete address_of_2;
-delete address_of_3;
+delete[] address_of;
