@@ -32,3 +32,32 @@ for (int i = 0; i < SOME_NUM; i++) {
 	if (root == NULL) {break;}
 }
 
+
+//	===	===	===
+
+int * address_of_0 = new int;
+int * address_of_1 = new int;
+int * address_of_2 = new int;
+int * address_of_3 = new int;
+node * temp = root;
+
+address_of_0 = &temp->data;
+temp = temp->next;
+address_of_1 = &temp->data;
+temp = temp->next;
+address_of_2 = &temp->data;
+temp = temp->next;
+address_of_3 = &temp->data;
+temp = temp->next;
+
+std::cout << "address_of_x: " std::endl;
+std::cout << address_of_0 << " " << std::endl;
+std::cout << address_of_1 << " " << std::endl;
+std::cout << address_of_2 << " " << std::endl;
+std::cout << address_of_3 << " " << std::endl;
+
+temp = NULL;
+delete address_of_0;
+delete address_of_1;
+delete address_of_2;
+delete address_of_3;
