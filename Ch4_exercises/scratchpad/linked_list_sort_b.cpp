@@ -6,6 +6,7 @@ struct node {
 	node * next;
 } ;
 
+void process_user_input (node * * head, int new_data);
 void insert_new_at_front(node * * head, int user_input);
 void print_node(node * head);
 void print_address(node * head);
@@ -17,10 +18,11 @@ int main () {
 	root->next = NULL;
 
 	print_node(root);
-	//print_address(& root);
-	//std::cout << (& root) << std::endl;
 
 	int user_input;
+	std::cout << "enter a series of non-zero integers; enter a char to quit: " << std::endl;
+	process_user_input(& root, user_input);
+/*
 	int quit = 0;
 	std::cout << "enter a series of non-zero integers; enter a char to quit: " << std::endl;
 	while (!quit) {
@@ -35,7 +37,7 @@ int main () {
 			quit = 1;
 		}
 	}
-
+*/
 	print_node(root);
 	print_address(root);
 
@@ -45,6 +47,23 @@ int main () {
 
 
 
+
+
+void process_user_input (node * * head, int new_data) {
+	int quit = 0;
+	while (!quit) {
+		std::cin >> new_data;
+		if (new_data != 0) {
+			insert_new_at_front(head, new_data); // CE: no (& head) or (& & head)
+		} else if (new_data == 0) {
+			std::cout << "all done!" << std::endl;
+			quit = 1;
+		} else {
+			std::cout << "input error" << std::endl;
+			quit = 1;
+		}
+	}
+}
 
 void insert_new_at_front(node * * head, int user_input) {
 	node * temp = new node;
