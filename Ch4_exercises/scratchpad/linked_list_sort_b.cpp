@@ -25,7 +25,25 @@ int main () {
 	process_user_input(& root, user_input);
 	print_node(root);
 	print_address(root);
+	int * address_of = new int;
+	address_of = (& root->data);
+	std::cout << "address_of: " << address_of << std::endl;
+/*
+	node * temp = root;
+	const int SOME_NUM = 7;
+	int * node_address = new int [SOME_NUM];
+	for (int i = 0; i < SOME_NUM; i++) {
+		node_address[i] = (temp);
+		temp = temp->next;
+		if (temp == NULL) {break;}
+	}
+	temp = NULL;
 
+	for (int i = 0; i < SOME_NUM; i++) {
+		std::cout << node_address[i] << " ";
+	}
+	std::cout << std::endl;
+*/
 	deallocate(& root);
 	return 0;
 }
@@ -36,7 +54,7 @@ int main () {
 
 
 
-void process_user_input (node * * head, int new_data) {
+void process_user_input(node * * head, int new_data) {
 	int quit = 0;
 	while (!quit) {
 		std::cin >> new_data;
