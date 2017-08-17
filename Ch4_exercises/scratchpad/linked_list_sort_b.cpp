@@ -8,6 +8,7 @@ struct node {
 
 void process_user_input (node * * head, int new_data);
 void insert_new_at_front(node * * head, int user_input);
+void node_address_to_array (node * head, int * * array, const int a_length);
 void print_node(node * head);
 void print_address(node * head);
 void deallocate(node * * head);
@@ -28,6 +29,7 @@ int main () {
 
 	const int SOME_NUM = 10;
 	int * * address_of = new int * [SOME_NUM];
+/*
 	node * temp = root;
 
 	for (int i = 0; i < SOME_NUM; i ++) {
@@ -36,6 +38,8 @@ int main () {
 		if (temp->next == NULL) {break;}
 		temp = temp->next;
 	}
+*/
+	node_address_to_array(root, address_of, SOME_NUM);
 
 	// CE: address of last node (7, defined on line 17) changes on each printout: ???
 	std::cout << "address_of[i]: " << std::endl;
@@ -43,7 +47,7 @@ int main () {
 		std::cout << address_of[i] << std::endl;
 	}
 
-	temp = NULL;
+	//temp = NULL;
 	delete[] address_of;
 
 	deallocate(& root);
@@ -77,6 +81,17 @@ void insert_new_at_front(node * * head, int user_input) {
 	temp->data = user_input;
 	temp->next = * head;
 	* head = temp;
+	temp = NULL;
+}
+
+void node_address_to_array (node * head, int * * array, const int a_length) {
+	node * temp = head;
+	for (int i = 0; i < a_length; i++) {
+		* array[i] = &temp->data;
+		// if linked list ends before array loop, break out: 
+		if (temp->next == NULL) {break;}
+		temp = temp->next; // or (*temp).next
+	}
 	temp = NULL;
 }
 
