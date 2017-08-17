@@ -53,5 +53,24 @@ void print_int_array (int * a, const int a_lgth) {
 		std::cout << a[i] << " ";
 	}
 	std::cout << std::endl;
-};
+}
 
+
+
+//===	===	===
+
+void printStrs(int count, const char** pointer)
+{
+  for(int i = 0; i < count; ++i)
+    cout << pointer[i];
+}
+
+int main()
+{
+  const char* a = "This is one string";
+  const char* b = "This is another";
+
+  const char* ptrs[2] = {a,b};
+
+  printStrs( 2 , ptrs );  // we're not giving it a string, we're giving it a pointer to an array of strings
+}
