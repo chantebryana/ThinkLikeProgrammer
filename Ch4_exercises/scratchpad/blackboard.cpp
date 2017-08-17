@@ -1,37 +1,13 @@
-// CE: trying to put node-address-to-array functionality into its own black box: 
-
-void node_address_to_array (node * head, int * * array, const int a_length);
-
-int main() {
-	...
-	node_address_to_array(root, address_of, SOME_NUM); // CE: does (& address_of) even work? refer to history of insertion_sort.cpp to try to figure it out
-// CE: I guess i don't need (& address_of) -- i could maybe just do it plain and the function would still directly manipulate the array (at least, based on notes for insertion_sort.cpp)
-// CE: ah, but there may be one difference, which is that the array in insertion_sort.cpp was just a single pointer (int * p_int_array = new int[ARRAY_SIZE];) whereas the array in linked_list_sort_b.cpp is a double pointer (int * * address_of = new int * [SOME_NUM];) --> that would seem to have an impact on the function definition side, not on the function calling side, though (that's the difference)
-	...
-}
-
-void node_address_to_array (node * head, int * * array, const int a_length) {
-	node * temp = head;
+void print_array(int * * array, const int a_length) {
+	std::cout << std::endl << "address_of[i]: " << std::endl;
 	for (int i = 0; i < a_length; i++) {
-		array[i] = &temp->data;
-		// if linked list ends before array loop, break out: 
-		if (temp->next == NULL) {break;}
-		temp = temp->next; // or (*temp).next
+		std::cout << array[i] << std::endl;
 	}
-	temp = NULL;
 }
 
-
-// ===	===	===
-// out-in-the-open code: 
-	const int SOME_NUM = 10;
-	int * * address_of = new int * [SOME_NUM];
-	node * temp = root;
-
-	for (int i = 0; i < SOME_NUM; i ++) {
-		address_of[i] = &temp->data;
-		// if linked list ends before array loop, break out: 
-		if (temp->next == NULL) {break;}
-		temp = temp->next;
+//	===	===	===
+// raw code: 
+	std::cout << "address_of[i]: " << std::endl;
+	for (int i = 0; i < SOME_NUM; i++) {
+		std::cout << address_of[i] << std::endl;
 	}
-
