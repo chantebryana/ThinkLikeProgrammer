@@ -25,86 +25,26 @@ int main () {
 	process_user_input(& root, user_input);
 	print_node(root);
 	print_address(root);
-	//int * address_of = new int;
-	//address_of = (& root->data);
-	//std::cout << "address_of: " << address_of << std::endl;
-	//delete address_of;
-/*
-	int * address_of_0 = new int;
-	int * address_of_1 = new int;
-	int * address_of_2 = new int;
-	int * address_of_3 = new int;
+
+	const int SOME_NUM = 4;
+	int * * address_of = new int * [SOME_NUM];
 	node * temp = root;
 
-	address_of_0 = &temp->data;
-	temp = temp->next;
-	address_of_1 = &temp->data;
-	temp = temp->next;
-	address_of_2 = &temp->data;
-	temp = temp->next;
-	address_of_3 = &temp->data;
-	temp = temp->next;
-
-	std::cout << "address_of_x: " << std::endl;
-	std::cout << address_of_0 << " " << std::endl;
-	std::cout << address_of_1 << " " << std::endl;
-	std::cout << address_of_2 << " " << std::endl;
-	std::cout << address_of_3 << " " << std::endl;
-
-	temp = NULL;
-	delete address_of_0;
-	delete address_of_1;
-	delete address_of_2;
-	delete address_of_3;
-*/
-
-const int SOME_NUM = 4;
-int ** address_of = new int*[SOME_NUM];
-//int address_of[SOME_NUM];
-//int brief;
-int * brief = new int;
-node * temp = root;
-
-//(*temp).data
-//temp->data
-
-for (int i = 0; i < SOME_NUM; i ++) {
-	address_of[i] = &temp->data;
-	//brief = &temp->data;
-	//address_of[i] = brief;
-	//address_of[i] = i;
-	temp = temp->next;
-	//if (temp->next == NULL) {break;}
-}
-
-//std::cout << "brief: " << brief << std::endl;
-
-std::cout << "address_of[i]: " << std::endl;
-for (int i = 0; i < SOME_NUM; i++) {
-	std::cout << address_of[i] << std::endl;
-}
-
-temp = NULL;
-delete brief;
-delete[] address_of;
-
-
-/*
-	node * temp = root;
-	const int SOME_NUM = 7;
-	int * node_address = new int [SOME_NUM];
-	for (int i = 0; i < SOME_NUM; i++) {
-		node_address[i] = (temp);
+	for (int i = 0; i < SOME_NUM; i ++) {
+		address_of[i] = &temp->data;
 		temp = temp->next;
-		if (temp == NULL) {break;}
+		//if (temp->next == NULL) {break;}
 	}
-	temp = NULL;
 
+	// CE: address of last node (7, defined on line 17) changes on each printout: ???
+	std::cout << "address_of[i]: " << std::endl;
 	for (int i = 0; i < SOME_NUM; i++) {
-		std::cout << node_address[i] << " ";
+		std::cout << address_of[i] << std::endl;
 	}
-	std::cout << std::endl;
-*/
+
+	temp = NULL;
+	delete[] address_of;
+
 	deallocate(& root);
 	return 0;
 }
