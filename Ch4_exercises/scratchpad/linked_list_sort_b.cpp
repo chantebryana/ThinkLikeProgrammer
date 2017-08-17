@@ -8,7 +8,7 @@ struct node {
 
 void process_user_input (node * * head, int new_data);
 void insert_new_at_front(node * * head, int user_input);
-int find_length_linked_list(node * head);
+int find_list_length(node * head);
 void node_address_to_array (node * head, int * * array, const int a_length);
 void print_node(node * head);
 void print_address(node * head);
@@ -30,19 +30,14 @@ int main () {
 	print_node(root);
 	print_address(root);
 
-	const int A_LGTH = find_length_linked_list(root);
+	// this section: save the addresses of each node pointer to an array, using a dynamic array length variable: 
+	const int A_LGTH = find_list_length(root);
 	std::cout << "linked list length: " << A_LGTH << std::endl;
-
-	// this section: save the addresses of each node pointer to an array: 
-	const int SOME_NUM = 10; // CE: static number for now: hope to make this dynamic in the near future (use buffer?)
-	//int * * address_of = new int * [SOME_NUM];
 	int * * address_of = new int * [A_LGTH];
-	//node_address_to_array(root, address_of, SOME_NUM);
 	node_address_to_array(root, address_of, A_LGTH);
 
 	// print out the results onto the console: 
 	// CE: address of last node (7, defined on line 17) changes on each printout: ???
-	//print_array(address_of, SOME_NUM);
 	print_array(address_of, A_LGTH);
 
 	// deallocate heap memory: 
@@ -81,7 +76,7 @@ void insert_new_at_front(node * * head, int user_input) {
 	temp = NULL;
 }
 
-int find_length_linked_list(node * head) {
+int find_list_length(node * head) {
 	int counter = 0;
 	while (head->next != NULL) {
 		counter += 1;
