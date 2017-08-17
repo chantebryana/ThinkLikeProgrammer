@@ -11,7 +11,7 @@ void insert_new_at_front(node * * head, int user_input);
 void node_address_to_array (node * head, int * * array, const int a_length);
 void print_node(node * head);
 void print_address(node * head);
-void print_array(int * array, const int a_length);
+void print_array(int * * array, const int a_length);
 void deallocate(node * * head);
 
 int main () {
@@ -42,7 +42,7 @@ int main () {
 		std::cout << address_of[i] << std::endl;
 	}
 */
-	print_array(* address_of, SOME_NUM);
+	print_array(address_of, SOME_NUM);
 
 	delete[] address_of;
 
@@ -113,7 +113,7 @@ void print_address(node * head) {
 	}
 }
 
-void print_array(int * array, const int a_length) {
+void print_array(int * * array, const int a_length) {
 	std::cout << std::endl << "address_of[i]: " << std::endl;
 	for (int i = 0; i < a_length; i++) {
 		std::cout << array[i] << std::endl;
