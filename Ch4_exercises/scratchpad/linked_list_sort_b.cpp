@@ -36,16 +36,10 @@ int main () {
 
 	// print out the results onto the console: 
 	// CE: address of last node (7, defined on line 17) changes on each printout: ???
-/*
-	std::cout << "address_of[i]: " << std::endl;
-	for (int i = 0; i < SOME_NUM; i++) {
-		std::cout << address_of[i] << std::endl;
-	}
-*/
 	print_array(address_of, SOME_NUM);
 
+	// deallocate heap memory: 
 	delete[] address_of;
-
 	deallocate(& root);
 	return 0;
 }
