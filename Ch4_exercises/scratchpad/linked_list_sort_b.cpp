@@ -65,6 +65,8 @@ int ** address_of = new int*[SOME_NUM];
 int * brief = new int;
 node * temp = root;
 
+//(*temp).data
+//temp->data
 
 for (int i = 0; i < SOME_NUM; i ++) {
 	address_of[i] = &temp->data;
