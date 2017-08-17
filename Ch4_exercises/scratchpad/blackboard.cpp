@@ -1,5 +1,7 @@
 // CE: trying to put node-address-to-array functionality into its own black box: 
 
+void node_address_to_array (node * head, int * * array, const int a_length);
+
 int main() {
 	...
 	node_address_to_array(root, address_of, SOME_NUM); // CE: does (& address_of) even work? refer to history of insertion_sort.cpp to try to figure it out
@@ -11,11 +13,25 @@ int main() {
 void node_address_to_array (node * head, int * * array, const int a_length) {
 	node * temp = head;
 	for (int i = 0; i < a_length; i++) {
-		* array[i] = &temp->data;
+		array[i] = &temp->data;
 		// if linked list ends before array loop, break out: 
 		if (temp->next == NULL) {break;}
 		temp = temp->next; // or (*temp).next
 	}
 	temp = NULL;
 }
+
+
+// ===	===	===
+// out-in-the-open code: 
+	const int SOME_NUM = 10;
+	int * * address_of = new int * [SOME_NUM];
+	node * temp = root;
+
+	for (int i = 0; i < SOME_NUM; i ++) {
+		address_of[i] = &temp->data;
+		// if linked list ends before array loop, break out: 
+		if (temp->next == NULL) {break;}
+		temp = temp->next;
+	}
 

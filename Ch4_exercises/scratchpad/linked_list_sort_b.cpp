@@ -87,7 +87,7 @@ void insert_new_at_front(node * * head, int user_input) {
 void node_address_to_array (node * head, int * * array, const int a_length) {
 	node * temp = head;
 	for (int i = 0; i < a_length; i++) {
-		* array[i] = &temp->data;
+		array[i] = &temp->data;
 		// if linked list ends before array loop, break out: 
 		if (temp->next == NULL) {break;}
 		temp = temp->next; // or (*temp).next
