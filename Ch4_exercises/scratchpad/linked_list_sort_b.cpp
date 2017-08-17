@@ -6,7 +6,7 @@ struct node {
 	node * next;
 } ;
 
-void process_user_input (node * * head, int new_data);
+void process_user_input (node * * head, int new_data); // JE remove new_data
 void insert_new_at_front(node * * head, int user_input);
 int find_list_length(node * head);
 void node_address_to_array (node * head, int * * array, const int a_length);
@@ -23,10 +23,10 @@ int main () {
 	print_node(root);
 
 	// this section: have user dynamically populate the linked list pointed to by root, and print out the results onto the console: 
-	int user_input;
+	int user_input; // JE remove this declaration
 	std::cout << "__ADD DATA TO LINKED LIST \'ROOT\'__" << std::endl;
 	std::cout << "enter a series of non-zero integers; enter a char to quit: " << std::endl;
-	process_user_input(& root, user_input);
+	process_user_input(& root, user_input); // JE no arg user_input
 	print_node(root);
 	print_address(root);
 
@@ -52,8 +52,9 @@ int main () {
 
 
 
-void process_user_input(node * * head, int new_data) {
+void process_user_input(node * * head, int new_data) { // JE no arg new_data
 	int quit = 0;
+	// int new_data; // JE declare this here
 	while (!quit) {
 		std::cin >> new_data;
 		if (new_data != 0) {
@@ -73,7 +74,7 @@ void insert_new_at_front(node * * head, int user_input) {
 	temp->data = user_input;
 	temp->next = * head;
 	* head = temp;
-	temp = NULL;
+	temp = NULL; // JE no need to set to null: will do automatically when function's over | value of temp is irrelivant after it goes out of scope
 }
 
 int find_list_length(node * head) {
@@ -94,7 +95,7 @@ void node_address_to_array (node * head, int * * array, const int a_length) {
 		if (temp->next == NULL) {break;}
 		temp = temp->next; // or (*temp).next
 	}
-	temp = NULL;
+	temp = NULL; // JE no need to set to null: will do automatically when function's over | value of temp is irrelivant after it goes out of scope
 }
 
 void print_node(node * head) {
@@ -115,7 +116,7 @@ void print_address(node * head) {
 			std::cout << (& head->data) << std::endl;
 			head = head->next;
 		}
-		std::cout << (& head) << std::endl;
+		std::cout << (& head) << std::endl; //CE: this needs to be & head->data
 	}
 }
 
