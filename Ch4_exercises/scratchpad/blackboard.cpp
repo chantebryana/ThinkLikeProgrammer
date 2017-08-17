@@ -23,7 +23,10 @@ node * root = new node;
 int * * address_of = new int * [SOME_NUM];
 
 node_address_to_array(root, address_of, SOME_NUM);
+//DON'T WORK: 
 print_array(* address_of, SOME_NUM);
+//DOES WORK: 
+print_array(address_of, SOME_NUM);
 
 void node_address_to_array (node * head, int * * array, const int a_length) {
 	node * temp = head;
@@ -36,7 +39,15 @@ void node_address_to_array (node * head, int * * array, const int a_length) {
 	temp = NULL;
 }
 
+//DON'T WORK: 
 void print_array(int * array, const int a_length) {
+	std::cout << std::endl << "address_of[i]: " << std::endl;
+	for (int i = 0; i < a_length; i++) {
+		std::cout << array[i] << std::endl;
+	}
+}
+//DOES WORK: 
+void print_array(int * * array, const int a_length) {
 	std::cout << std::endl << "address_of[i]: " << std::endl;
 	for (int i = 0; i < a_length; i++) {
 		std::cout << array[i] << std::endl;
