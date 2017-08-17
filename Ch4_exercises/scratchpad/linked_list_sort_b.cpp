@@ -9,10 +9,12 @@ struct node {
 void process_user_input (node * * head, int new_data); // JE remove new_data
 void insert_new_at_front(node * * head, int user_input);
 int find_list_length(node * head);
-void node_address_to_array (node * head, int * * array, const int a_length);
+//void node_address_to_array (node * head, int * * array, const int a_length);
+void node_address_to_array (node * head, node * * array, const int a_length);
 void print_node(node * head);
 void print_address(node * head);
-void print_array(int * * array, const int a_length);
+//void print_array(int * * array, const int a_length);
+void print_array(node * * array, const int a_length);
 void deallocate(node * * head);
 
 int main () {
@@ -33,7 +35,8 @@ int main () {
 	// this section: save the addresses of each node pointer to an array, using a dynamic array length variable: 
 	const int A_LGTH = find_list_length(root);
 	std::cout << "linked list length: " << A_LGTH << std::endl;
-	int * * address_of = new int * [A_LGTH];
+	//int * * address_of = new int * [A_LGTH];
+	node * * address_of = new node * [A_LGTH];
 	node_address_to_array(root, address_of, A_LGTH);
 
 	// print out the results onto the console: 
@@ -86,10 +89,12 @@ int find_list_length(node * head) {
 	return counter;
 }
 
-void node_address_to_array (node * head, int * * array, const int a_length) {
+//void node_address_to_array (node * head, int * * array, const int a_length) {
+void node_address_to_array (node * head, node * * array, const int a_length) {
 	node * temp = head;
 	for (int i = 0; i < a_length; i++) {
-		array[i] = &temp->data;
+		//array[i] = &temp->data;
+		array[i] = temp;
 		// if linked list ends before array loop, break out: 
 		if (temp->next == NULL) {break;}
 		temp = temp->next; // or (*temp).next
@@ -120,7 +125,8 @@ void print_address(node * head) {
 	}
 }
 
-void print_array(int * * array, const int a_length) {
+//void print_array(int * * array, const int a_length) {
+void print_array(node * * array, const int a_length) {
 	std::cout << std::endl << "address_of[i]: " << std::endl;
 	for (int i = 0; i < a_length; i++) {
 		std::cout << array[i] << std::endl;
