@@ -8,6 +8,7 @@ struct node {
 
 void process_user_input (node * * head, int new_data);
 void insert_new_at_front(node * * head, int user_input);
+int find_length_linked_list(node * head);
 void node_address_to_array (node * head, int * * array, const int a_length);
 void print_node(node * head);
 void print_address(node * head);
@@ -28,6 +29,8 @@ int main () {
 	process_user_input(& root, user_input);
 	print_node(root);
 	print_address(root);
+
+	std::cout << "linked list length: " << find_length_linked_list(root) << std::endl;
 
 	// this section: save the addresses of each node pointer to an array: 
 	const int SOME_NUM = 10; // CE: static number for now: hope to make this dynamic in the near future (use buffer?)
@@ -72,6 +75,16 @@ void insert_new_at_front(node * * head, int user_input) {
 	temp->next = * head;
 	* head = temp;
 	temp = NULL;
+}
+
+int find_length_linked_list(node * head) {
+	int counter = 0;
+	while (head->next != NULL) {
+		counter += 1;
+		head = head->next;
+	}
+	counter += 1;
+	return counter;
 }
 
 void node_address_to_array (node * head, int * * array, const int a_length) {
