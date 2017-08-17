@@ -93,10 +93,10 @@ int find_list_length(node * head) {
 void node_address_to_array (node * head, node * * array, const int a_length) {
 	node * temp = head;
 	for (int i = 0; i < a_length; i++) {
-		//array[i] = &temp->data;
-		array[i] = temp;
+		//array[i] = &temp->data;  //JE '->' operator automatically shows data (not pointers), so I needed reference-of ('&') to get pointer instead
+		array[i] = temp; // JE: because i'm not using '->' operator, I don't need to add '&': this assigns pointer to temp (ie, address of variable) to array element
 		// if linked list ends before array loop, break out: 
-		if (temp->next == NULL) {break;}
+		if (temp->next == NULL) {break;} // CE: pry don't need this anymore
 		temp = temp->next; // or (*temp).next
 	}
 	temp = NULL; // JE no need to set to null: will do automatically when function's over | value of temp is irrelivant after it goes out of scope
