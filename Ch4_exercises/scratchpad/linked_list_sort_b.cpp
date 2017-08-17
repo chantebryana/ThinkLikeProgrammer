@@ -30,16 +30,20 @@ int main () {
 	print_node(root);
 	print_address(root);
 
-	std::cout << "linked list length: " << find_length_linked_list(root) << std::endl;
+	const int A_LGTH = find_length_linked_list(root);
+	std::cout << "linked list length: " << A_LGTH << std::endl;
 
 	// this section: save the addresses of each node pointer to an array: 
 	const int SOME_NUM = 10; // CE: static number for now: hope to make this dynamic in the near future (use buffer?)
-	int * * address_of = new int * [SOME_NUM];
-	node_address_to_array(root, address_of, SOME_NUM);
+	//int * * address_of = new int * [SOME_NUM];
+	int * * address_of = new int * [A_LGTH];
+	//node_address_to_array(root, address_of, SOME_NUM);
+	node_address_to_array(root, address_of, A_LGTH);
 
 	// print out the results onto the console: 
 	// CE: address of last node (7, defined on line 17) changes on each printout: ???
-	print_array(address_of, SOME_NUM);
+	//print_array(address_of, SOME_NUM);
+	print_array(address_of, A_LGTH);
 
 	// deallocate heap memory: 
 	delete[] address_of;
