@@ -37,7 +37,6 @@ int main () {
 	node_address_to_array(root, address_of, A_LGTH);
 
 	// print out the results onto the console: 
-	// CE: address of last node (7, defined on line 17) changes on each printout: ???
 	print_array(address_of, A_LGTH);
 
 	// deallocate heap memory: 
@@ -109,6 +108,7 @@ void print_node(node * head) {
 	}
 }
 
+// JE: don't want to point to data, want to point to nodes themselves:
 void print_address(node * head) {
 	if (head != NULL) {
 		std::cout << "data addresses: " << std::endl;
@@ -116,7 +116,7 @@ void print_address(node * head) {
 			std::cout << (& head->data) << std::endl;
 			head = head->next;
 		}
-		std::cout << (& head) << std::endl; //CE: this needs to be & head->data
+		std::cout << (& head->data) << std::endl; 
 	}
 }
 
