@@ -26,14 +26,15 @@ int main () {
 	print_node(root);
 	print_address(root);
 
-	const int SOME_NUM = 4;
+	const int SOME_NUM = 10;
 	int * * address_of = new int * [SOME_NUM];
 	node * temp = root;
 
 	for (int i = 0; i < SOME_NUM; i ++) {
 		address_of[i] = &temp->data;
+		// if linked list ends before array loop, break out: 
+		if (temp->next == NULL) {break;}
 		temp = temp->next;
-		//if (temp->next == NULL) {break;}
 	}
 
 	// CE: address of last node (7, defined on line 17) changes on each printout: ???
