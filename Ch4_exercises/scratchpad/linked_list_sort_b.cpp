@@ -20,6 +20,7 @@ int main () {
 
 	print_node(root);
 
+	// this section: have user dynamically populate the linked list pointed to by root, and print out the results onto the console: 
 	int user_input;
 	std::cout << "__ADD DATA TO LINKED LIST \'ROOT\'__" << std::endl;
 	std::cout << "enter a series of non-zero integers; enter a char to quit: " << std::endl;
@@ -27,27 +28,18 @@ int main () {
 	print_node(root);
 	print_address(root);
 
-	const int SOME_NUM = 10;
+	// this section: save the addresses of each node pointer to an array: 
+	const int SOME_NUM = 10; // CE: static number for now: hope to make this dynamic in the near future (use buffer?)
 	int * * address_of = new int * [SOME_NUM];
-/*
-	node * temp = root;
-
-	for (int i = 0; i < SOME_NUM; i ++) {
-		address_of[i] = &temp->data;
-		// if linked list ends before array loop, break out: 
-		if (temp->next == NULL) {break;}
-		temp = temp->next;
-	}
-*/
 	node_address_to_array(root, address_of, SOME_NUM);
 
+	// print out the results onto the console: 
 	// CE: address of last node (7, defined on line 17) changes on each printout: ???
 	std::cout << "address_of[i]: " << std::endl;
 	for (int i = 0; i < SOME_NUM; i++) {
 		std::cout << address_of[i] << std::endl;
 	}
 
-	//temp = NULL;
 	delete[] address_of;
 
 	deallocate(& root);
