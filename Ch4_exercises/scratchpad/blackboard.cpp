@@ -42,7 +42,7 @@ node * temp = root;
 for (int i = 0; i < SOME_NUM; i ++) {
 	address_of[i] = &temp->data;
 	temp = temp->next;
-	if (temp->next == NULL) {break;}
+	//if (temp->next == NULL) {break;}
 }
 
 std::cout << "address_of[i]: " << std::endl;
@@ -52,3 +52,14 @@ for (int i = 0; i < SOME_NUM; i++) {
 
 temp = NULL;
 delete[] address_of;
+
+// 
+// Assume these are initialized to 0 outside of this snippet
+char a[100];
+char b[100];
+b[0] = 42;  // Some value for us to use
+
+int* a_ptr = (int*)&a[0];    // Store the address of a[0] in a_ptr
+int* b_ptr = (int*)&b[0];    // Store the address of b[0] in b_ptr
+
+
