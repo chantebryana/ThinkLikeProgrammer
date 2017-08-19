@@ -10,6 +10,7 @@ void process_user_input (node * * head);
 void insert_new_at_front(node * * head, int user_input);
 int find_list_length(node * head);
 void node_address_to_array (node * head, node * * array, const int a_length);
+//node * * array_ify(node * head, int * size_buff);
 void print_node(node * head);
 void print_address(node * head);
 void print_array(node * * array, const int a_length);
@@ -35,11 +36,15 @@ int main () {
 	node * * address_of = new node * [A_LGTH];
 	node_address_to_array(root, address_of, A_LGTH);
 
+	// int size_buff
+	// node * * array_of_node_address[] = array_ify(root, & size_buff);
+
 	// print out the results onto the console: 
 	print_array(address_of, A_LGTH);
+	// print_array(array_of_node_address, size_buff);
 
 	// deallocate heap memory: 
-	delete[] address_of;
+	delete[] address_of; // CE nu-uh
 	deallocate(& root);
 	return 0;
 }
@@ -91,6 +96,23 @@ void node_address_to_array (node * head, node * * array, const int a_length) {
 	}
 }
 
+/*
+// save memory addresses of each linked list node into an array on the heap: 
+node * * array_ify(node * head, int * size_buff) {
+	// dynamically find the value of size_buff, based on the length of the linked list: 
+	* size_buff = find_list_length(head);
+
+	// create a new heap array, then populate it with the addresses of each node in linked list: 
+	node * * a_of_node_address = new node * [* size_buff];
+	for (int i = 0; i < * size_buff, i++) {
+		a_of_node_address[i] = head;
+		head = head->next;
+	}
+	// return array of node addresses back to use in main: 
+	return a_of_node_address;
+}
+*/
+
 void print_node(node * head) {
 	if (head != NULL) {
 		std::cout << "data: ";
@@ -102,16 +124,13 @@ void print_node(node * head) {
 	}
 }
 
-// JE: don't want to point to data, want to point to nodes themselves:
 void print_address(node * head) {
 	if (head != NULL) {
 		std::cout << "data addresses: " << std::endl;
 		while (head->next != 0) {
-			//std::cout << (& head->data) << std::endl;
 			std::cout << head << std::endl;
 			head = head->next;
 		}
-		//std::cout << (& head->data) << std::endl; 
 		std::cout << head << std::endl;
 	}
 }
