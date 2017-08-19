@@ -9,7 +9,6 @@ struct node {
 void process_user_input (node * * head);
 void insert_new_at_front(node * * head, int user_input);
 int find_list_length(node * head);
-//void node_address_to_array (node * head, node * * array, const int a_length);
 node * * array_ify(node * head, int * size_buff);
 void print_node(node * head);
 void print_address(node * head);
@@ -29,24 +28,15 @@ int main () {
 	process_user_input(& root);
 	print_node(root);
 	print_address(root);
-/*
-	// this section: save the addresses of each node pointer to an array, using a dynamic array length variable: 
-	const int A_LGTH = find_list_length(root);
-	std::cout << "linked list length: " << A_LGTH << std::endl;
-	node * * address_of = new node * [A_LGTH];
-	node_address_to_array(root, address_of, A_LGTH);
-*/
+
+	// this section: save the addresses of each node to an array; function uses size buffer (the value of which will be assigned within function and is dynamic depending on the length of linked list) and returns the array of addresses: 
 	int size_buff;
-	//node * * array_of_node_address[] = array_ify(root, & size_buff);
 	node * * array_of_node_address = array_ify(root, & size_buff);
 
 	// print out the results onto the console: 
-	// print_array(address_of, A_LGTH);
 	print_array(array_of_node_address, size_buff);
-	//print_array(array_of_node_address, & size_buff);
 
 	// deallocate heap memory: 
-	//delete[] address_of; // CE nu-uh
 	deallocate(& root);
 	return 0;
 }
@@ -56,7 +46,7 @@ int main () {
 
 
 
-
+// take user input (new_data) and assign it as a new node at the front of the linked list (head; by calling insert_new_at_front), creates end statement or error statements as needed (non-zero integers are valid inputs, chars end the user input loop): 
 void process_user_input(node * * head) {
 	int quit = 0;
 	int new_data;
@@ -74,6 +64,7 @@ void process_user_input(node * * head) {
 	}
 }
 
+// inserts new node at front of linked list; called within process_user_input: 
 void insert_new_at_front(node * * head, int user_input) {
 	node * temp = new node;
 	temp->data = user_input;
@@ -81,6 +72,7 @@ void insert_new_at_front(node * * head, int user_input) {
 	* head = temp;
 }
 
+// finds the length of linked list, to be used in array_ify (iterates through each node of linked list, increasing the counter one by one until reaching the end of the list): 
 int find_list_length(node * head) {
 	int counter = 0;
 	while (head->next != NULL) {
@@ -90,14 +82,6 @@ int find_list_length(node * head) {
 	counter += 1;
 	return counter;
 }
-/*
-void node_address_to_array (node * head, node * * array, const int a_length) {
-	for (int i = 0; i < a_length; i++) {
-		array[i] = head; 
-		head = head->next;
-	}
-}
-*/
 
 // save memory addresses of each linked list node into an array on the heap: 
 node * * array_ify(node * head, int * size_buff) {
@@ -114,6 +98,7 @@ node * * array_ify(node * head, int * size_buff) {
 	return a_of_node_address;
 }
 
+// prints the data contained within linked list head (iterates through each node of linked list, printing each head->data to the console one by one until reaching the end of the list): 
 void print_node(node * head) {
 	if (head != NULL) {
 		std::cout << "data: ";
@@ -125,6 +110,7 @@ void print_node(node * head) {
 	}
 }
 
+// prints the address of each node within the linked list head (iterates through each node of linked list, printing the address/reference of each node to the console one by one until reaching the end of the list): 
 void print_address(node * head) {
 	if (head != NULL) {
 		std::cout << "data addresses: " << std::endl;
@@ -136,6 +122,7 @@ void print_address(node * head) {
 	}
 }
 
+// prints each element of array to console: 
 void print_array(node * * array, const int a_length) {
 	std::cout << std::endl << "address_of[i]: " << std::endl;
 	for (int i = 0; i < a_length; i++) {
@@ -143,6 +130,7 @@ void print_array(node * * array, const int a_length) {
 	}
 }
 
+// deallocate heap memory used up by linked list head: 
 void deallocate(node * * head) {
 	while (* head) {
 		node * temp;
