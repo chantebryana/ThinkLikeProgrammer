@@ -22,9 +22,7 @@ int main () {
 
 	print_node(root);
 
-	// this section: have user dynamically populate the linked list pointed to by root, and print out the results onto the console: 
-	std::cout << "__ADD DATA TO LINKED LIST \'ROOT\'__" << std::endl;
-	std::cout << "enter a series of non-zero integers; enter a char to quit: " << std::endl;
+	// this section: have user dynamically populate the linked list pointed to by root, and print out the results (value of data and address of each node) onto the console: 
 	process_user_input(& root);
 	print_node(root);
 	print_address(root);
@@ -48,6 +46,8 @@ int main () {
 
 // take user input (new_data) and assign it as a new node at the front of the linked list (head; by calling insert_new_at_front), creates end statement or error statements as needed (non-zero integers are valid inputs, chars end the user input loop): 
 void process_user_input(node * * head) {
+	std::cout << "__ADD DATA TO LINKED LIST \'ROOT\'__" << std::endl;
+	std::cout << "enter a series of non-zero integers; enter a char to quit: " << std::endl;
 	int quit = 0;
 	int new_data;
 	while (!quit) {
