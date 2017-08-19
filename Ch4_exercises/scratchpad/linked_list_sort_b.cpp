@@ -9,11 +9,9 @@ struct node {
 void process_user_input (node * * head);
 void insert_new_at_front(node * * head, int user_input);
 int find_list_length(node * head);
-//void node_address_to_array (node * head, int * * array, const int a_length);
 void node_address_to_array (node * head, node * * array, const int a_length);
 void print_node(node * head);
 void print_address(node * head);
-//void print_array(int * * array, const int a_length);
 void print_array(node * * array, const int a_length);
 void deallocate(node * * head);
 
@@ -89,7 +87,6 @@ int find_list_length(node * head) {
 	return counter;
 }
 
-//void node_address_to_array (node * head, int * * array, const int a_length) {
 void node_address_to_array (node * head, node * * array, const int a_length) {
 	node * temp = head;
 	for (int i = 0; i < a_length; i++) {
@@ -126,7 +123,6 @@ void print_address(node * head) {
 	}
 }
 
-//void print_array(int * * array, const int a_length) {
 void print_array(node * * array, const int a_length) {
 	std::cout << std::endl << "address_of[i]: " << std::endl;
 	for (int i = 0; i < a_length; i++) {
