@@ -85,12 +85,11 @@ int find_list_length(node * head) {
 }
 
 void node_address_to_array (node * head, node * * array, const int a_length) {
-	node * temp = head;
 	for (int i = 0; i < a_length; i++) {
 		//array[i] = &temp->data;  //JE '->' operator automatically shows data (not pointers), so I needed reference-of ('&') to get pointer instead
-		array[i] = temp; // JE: because i'm not using '->' operator, I don't need to add '&': this assigns pointer to temp (ie, address of variable) to array element
+		array[i] = head; // JE: because i'm not using '->' operator, I don't need to add '&': this assigns pointer to head (ie, address of variable) to array element
 	//CE my question about above line is why didn't that work when i tried that before: i know that array was different data type, but i still don't understand why it only pointed to the same address
-		temp = temp->next; // or (*temp).next
+		head = head->next;
 	}
 }
 
