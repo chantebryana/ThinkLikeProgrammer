@@ -110,10 +110,12 @@ void print_address(node * head) {
 	if (head != NULL) {
 		std::cout << "data addresses: " << std::endl;
 		while (head->next != 0) {
-			std::cout << (& head->data) << std::endl;
+			//std::cout << (& head->data) << std::endl;
+			std::cout << head << std::endl;
 			head = head->next;
 		}
-		std::cout << (& head->data) << std::endl; 
+		//std::cout << (& head->data) << std::endl; 
+		std::cout << head << std::endl;
 	}
 }
 
