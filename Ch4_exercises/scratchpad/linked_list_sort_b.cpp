@@ -36,12 +36,14 @@ int main () {
 	node * * address_of = new node * [A_LGTH];
 	node_address_to_array(root, address_of, A_LGTH);
 */
-	int size_buff
-	node * * array_of_node_address[] = array_ify(root, & size_buff);
+	int size_buff;
+	//node * * array_of_node_address[] = array_ify(root, & size_buff);
+	node * * array_of_node_address = array_ify(root, & size_buff);
 
 	// print out the results onto the console: 
 	// print_array(address_of, A_LGTH);
 	print_array(array_of_node_address, size_buff);
+	//print_array(array_of_node_address, & size_buff);
 
 	// deallocate heap memory: 
 	//delete[] address_of; // CE nu-uh
@@ -104,7 +106,7 @@ node * * array_ify(node * head, int * size_buff) {
 
 	// create a new heap array, then populate it with the addresses of each node in linked list: 
 	node * * a_of_node_address = new node * [* size_buff];
-	for (int i = 0; i < * size_buff, i++) {
+	for (int i = 0; i < * size_buff; i++) {
 		a_of_node_address[i] = head;
 		head = head->next;
 	}
