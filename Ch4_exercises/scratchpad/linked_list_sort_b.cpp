@@ -23,7 +23,6 @@ int main () {
 	print_node(root);
 
 	// this section: have user dynamically populate the linked list pointed to by root, and print out the results onto the console: 
-	//int user_input; // JE remove this declaration
 	std::cout << "__ADD DATA TO LINKED LIST \'ROOT\'__" << std::endl;
 	std::cout << "enter a series of non-zero integers; enter a char to quit: " << std::endl;
 	process_user_input(& root);
@@ -33,7 +32,6 @@ int main () {
 	// this section: save the addresses of each node pointer to an array, using a dynamic array length variable: 
 	const int A_LGTH = find_list_length(root);
 	std::cout << "linked list length: " << A_LGTH << std::endl;
-	//int * * address_of = new int * [A_LGTH];
 	node * * address_of = new node * [A_LGTH];
 	node_address_to_array(root, address_of, A_LGTH);
 
@@ -74,7 +72,6 @@ void insert_new_at_front(node * * head, int user_input) {
 	temp->data = user_input;
 	temp->next = * head;
 	* head = temp;
-	temp = NULL; // JE no need to set to null: will do automatically when function's over | value of temp is irrelivant after it goes out of scope
 }
 
 int find_list_length(node * head) {
@@ -93,11 +90,8 @@ void node_address_to_array (node * head, node * * array, const int a_length) {
 		//array[i] = &temp->data;  //JE '->' operator automatically shows data (not pointers), so I needed reference-of ('&') to get pointer instead
 		array[i] = temp; // JE: because i'm not using '->' operator, I don't need to add '&': this assigns pointer to temp (ie, address of variable) to array element
 	//CE my question about above line is why didn't that work when i tried that before: i know that array was different data type, but i still don't understand why it only pointed to the same address
-		// if linked list ends before array loop, break out: 
-		if (temp->next == NULL) {break;} // CE: pry don't need this anymore
 		temp = temp->next; // or (*temp).next
 	}
-	temp = NULL; // JE no need to set to null: will do automatically when function's over | value of temp is irrelivant after it goes out of scope
 }
 
 void print_node(node * head) {
