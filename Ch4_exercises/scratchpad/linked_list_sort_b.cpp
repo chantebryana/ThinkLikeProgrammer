@@ -44,7 +44,7 @@ int main () {
 
 	node * new_root = new node;
 	new_root = list_ify (array_of_node_address, array_length);
-	print_node(new_root);
+	//print_node(new_root);
 
 	// deallocate heap memory: 
 	deallocate(& root);
@@ -163,16 +163,18 @@ void print_node_next(node * head) {
 
 // very first attempt to convert array back to linked list:
 node * list_ify (node * * a_of_node_address, int size) {
-	std::cout << "head_from_array: ";
+	std::cout << "head_from_array:" << std::endl;
 	node * head_from_array = new node;
-	head_from_array = a_of_node_address[0]; // don't know if I need different pointer layers
-	std::cout << head_from_array << " ";
+	//head_from_array = a_of_node_address[0]; // don't know if I need different pointer layers
+	//std::cout << head_from_array << std::endl;
 	for (int i = 1; i < size; i++) {
 		head_from_array->next = a_of_node_address[i];
-		std::cout << head_from_array << " ";
+		std::cout << head_from_array << std::endl;
 		head_from_array = head_from_array->next;
 	}
-	std::cout << std::endl;
+	//head_from_array->next = a_of_node_address[size-1];
+	head_from_array->next = NULL;
+	std::cout << head_from_array << std::endl;
 	return head_from_array;
 }
 
