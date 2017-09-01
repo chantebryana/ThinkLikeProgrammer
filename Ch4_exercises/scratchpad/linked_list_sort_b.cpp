@@ -37,6 +37,10 @@ int main () {
 	// print out the results onto the console: 
 	print_array(array_of_node_address, size_buff);
 
+	// find length of array_of_node_address:
+	int array_length = find_array_length(array_of_node_address);
+	std::cout << "array_length: " << array_length << std::endl;
+
 	// deallocate heap memory: 
 	deallocate(& root);
 	return 0;
@@ -93,6 +97,7 @@ int find_array_length(node * * array) {
 	while (array[count] != 0) {
 		count ++;
 	}
+	count ++;
 	return count;
 }
 
