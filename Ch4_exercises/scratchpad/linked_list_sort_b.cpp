@@ -12,6 +12,7 @@ int find_list_length(node * head);
 node * * array_ify(node * head, int * size_buff);
 void print_node(node * head);
 void print_address(node * head);
+void print_node_next(node * head);
 void print_array(node * * array, const int a_length);
 void deallocate(node * * head);
 
@@ -26,6 +27,7 @@ int main () {
 	process_user_input(& root);
 	print_node(root);
 	print_address(root);
+	print_node_next(root);
 
 	// this section: save the addresses of each node to an array; function uses size buffer (the value of which will be assigned within function and is dynamic depending on the length of linked list) and returns the array of addresses: 
 	int size_buff;
@@ -119,6 +121,19 @@ void print_address(node * head) {
 			head = head->next;
 		}
 		std::cout << head << std::endl;
+	}
+}
+
+// try to print head->next instead of head->data or address of head
+void print_node_next(node * head) {
+	if (head != NULL) {
+		std::cout << "root->next: " << std::endl;
+		std::cout << head << std::endl;
+		while (head->next != 0) {
+			std::cout << head->next << std::endl;
+			head = head->next;
+		}
+		std::cout << head->next << std::endl;
 	}
 }
 
