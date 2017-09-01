@@ -9,6 +9,7 @@ struct node {
 void process_user_input (node * * head);
 void insert_new_at_front(node * * head, int user_input);
 int find_list_length(node * head);
+int find_array_length(node * * array);
 node * * array_ify(node * head, int * size_buff);
 void print_node(node * head);
 void print_address(node * head);
@@ -85,17 +86,29 @@ int find_list_length(node * head) {
 	return counter;
 }
 
+// (temporary?) helper function: find length of array: 
+// this would only work if array is null-terminated, which it may be if I have to explicitly define the null pointer at the end of linked list:
+int find_array_length(node * * array) {
+	int count = 0;
+	while (array[count] != 0) {
+		count ++;
+	}
+	return count;
+}
+
 // save memory addresses of each linked list node into an array on the heap: 
 node * * array_ify(node * head, int * size_buff) {
 	// dynamically find the value of size_buff, based on the length of the linked list: 
-	* size_buff = find_list_length(head);
+	// adds one extra element to array, to automatically populate last element with null, which matches the final node->next value in linked list:
+	* size_buff = find_list_length(head) + 1;
 
 	// create a new heap array, then populate it with the addresses of each node in linked list: 
 	node * * a_of_node_address = new node * [* size_buff];
-	for (int i = 0; i < * size_buff; i++) {
+	for (int i = 0; i < * size_buff-1; i++) {
 		a_of_node_address[i] = head;
 		head = head->next;
 	}
+	//a_of_node_address[size_buff-1] = 0;
 	// return array of node addresses back to use in main: 
 	return a_of_node_address;
 }
