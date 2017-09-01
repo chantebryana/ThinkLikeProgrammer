@@ -30,6 +30,7 @@ int find_array_length(node * * array) {
 	while (array[count] != 0) {
 		count ++;
 	}
+	count ++;
 	return count;
 }
 

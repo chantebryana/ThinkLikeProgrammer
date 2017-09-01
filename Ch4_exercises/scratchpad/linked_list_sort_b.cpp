@@ -14,6 +14,7 @@ node * * array_ify(node * head, int * size_buff);
 void print_node(node * head);
 void print_address(node * head);
 void print_node_next(node * head);
+node * list_ify (node * * a_of_node_address, int size);
 void print_array(node * * array, const int a_length);
 void deallocate(node * * head);
 
@@ -41,8 +42,13 @@ int main () {
 	int array_length = find_array_length(array_of_node_address);
 	std::cout << "array_length: " << array_length << std::endl;
 
+	node * new_root = new node;
+	new_root = list_ify (array_of_node_address, array_length);
+	print_node(new_root);
+
 	// deallocate heap memory: 
 	deallocate(& root);
+	deallocate(& new_root);
 	return 0;
 }
 
@@ -153,6 +159,21 @@ void print_node_next(node * head) {
 		}
 		std::cout << head->next << std::endl;
 	}
+}
+
+// very first attempt to convert array back to linked list:
+node * list_ify (node * * a_of_node_address, int size) {
+	std::cout << "head_from_array: ";
+	node * head_from_array = new node;
+	head_from_array = a_of_node_address[0]; // don't know if I need different pointer layers
+	std::cout << head_from_array << " ";
+	for (int i = 1; i < size; i++) {
+		head_from_array->next = a_of_node_address[i];
+		std::cout << head_from_array << " ";
+		head_from_array = head_from_array->next;
+	}
+	std::cout << std::endl;
+	return head_from_array;
 }
 
 // prints each element of array to console: 
