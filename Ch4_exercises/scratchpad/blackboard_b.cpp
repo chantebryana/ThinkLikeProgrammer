@@ -34,17 +34,23 @@ int main () {
 
 
 void insert_new_at_front(node * * head, int * a) {
-	node * temp1 = new node;
+/*
+	// node * temp1 = new node;
 	node * temp2 = new node;
-	// temp->data = datum;
-	// temp->next = * head;
-	// * head = temp;	
-
-	temp1->data = a[0];
+	// temp1->data = a[0];
 	temp2->data = a[1];
-	temp1->next = temp2;
+	// temp1->next = temp2;
 	temp2->next = * head;
-	* head = temp1;
+	// * head = temp1;
+	* head = temp2;
+*/
+	for (int i = 0; i < 2; i++) {
+		node * temp = new node;
+		temp->data = a[i];
+		temp->next = * head;
+		* head = temp;
+		temp = NULL;
+	}
 }
 
 
