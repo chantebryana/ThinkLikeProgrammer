@@ -45,11 +45,12 @@ void insert_new_at_front(node * * head, int * a) {
 	* head = temp2;
 */
 	for (int i = 0; i < 2; i++) {
-		node * temp = new node;
+		node * temp = new node; // using temp over again in this loop doesn't rewrite existing memory b/c I allocate new memory for it each time
 		temp->data = a[i];
 		temp->next = * head;
 		* head = temp;
-		temp = NULL;
+		//temp = NULL;
+		// delete temp;
 	}
 }
 
