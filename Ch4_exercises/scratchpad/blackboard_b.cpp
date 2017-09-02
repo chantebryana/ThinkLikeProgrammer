@@ -8,12 +8,12 @@ struct node {
 
 // void insert_new_at_front(node * * head, int * a, int length);
 void print_node(node * head);
-void insert_new_at_front(node * * head, int * a);
+void insert_new_at_front(node * * head, int * a, int s);
 void deallocate(node * * head);
 
 int main () {
-	int size = 2;
-	int array[size] = {1,2};
+	int size = 6;
+	int array[size] = {1,2, 3, 4, 5, 6};
 	node * root = new node;
 	root->data = 0;
 	root->next = NULL;
@@ -23,7 +23,7 @@ int main () {
 	std::cout << root->data << std::endl;
 	std::cout << root->next << std::endl;
 
-	insert_new_at_front(& root, array);
+	insert_new_at_front(& root, array, size);
 	print_node(root);
 
 	deallocate(& root);
@@ -33,24 +33,12 @@ int main () {
 
 
 
-void insert_new_at_front(node * * head, int * a) {
-/*
-	// node * temp1 = new node;
-	node * temp2 = new node;
-	// temp1->data = a[0];
-	temp2->data = a[1];
-	// temp1->next = temp2;
-	temp2->next = * head;
-	// * head = temp1;
-	* head = temp2;
-*/
-	for (int i = 0; i < 2; i++) {
-		node * temp = new node; // using temp over again in this loop doesn't rewrite existing memory b/c I allocate new memory for it each time
+void insert_new_at_front(node * * head, int * a, int s) {
+	for (int i = 0; i < s; i++) {
+		node * temp = new node; 
 		temp->data = a[i];
 		temp->next = * head;
 		* head = temp;
-		//temp = NULL;
-		// delete temp;
 	}
 }
 
