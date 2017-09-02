@@ -9,6 +9,7 @@ struct node {
 // void insert_new_at_front(node * * head, int * a, int length);
 void print_node(node * head);
 void insert_new_at_front(node * * head, int * a, int s);
+void print_node_next(node * head);
 void deallocate(node * * head);
 
 int main () {
@@ -18,13 +19,14 @@ int main () {
 	root->data = 0;
 	root->next = NULL;
 
-	std::cout << & root << std::endl;
-	std::cout << root << std::endl;
-	std::cout << root->data << std::endl;
-	std::cout << root->next << std::endl;
+	//std::cout << & root << std::endl;
+	//std::cout << root << std::endl;
+	//std::cout << root->data << std::endl;
+	//std::cout << root->next << std::endl;
 
 	insert_new_at_front(& root, array, size);
 	print_node(root);
+	print_node_next(root);
 
 	deallocate(& root);
 	return 0;
@@ -61,6 +63,19 @@ void print_node(node * head) {
 			head = head->next;
 		}
 		std::cout << head->data << std::endl;
+	}
+}
+
+// try to print head->next instead of head->data or address of head
+void print_node_next(node * head) {
+	if (head != NULL) {
+		std::cout << "root->next: " << std::endl;
+		std::cout << head << std::endl;
+		while (head->next != 0) {
+			std::cout << head->next << std::endl;
+			head = head->next;
+		}
+		std::cout << head->next << std::endl;
 	}
 }
 
