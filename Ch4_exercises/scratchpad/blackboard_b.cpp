@@ -6,17 +6,24 @@ struct node {
 	node * next;
 } ;
 
-void insert_new_at_front(node * * head, int * a, int length);
+// void insert_new_at_front(node * * head, int * a, int length);
 void print_node(node * head);
+void insert_new_at_front(node * * head, int * a);
 void deallocate(node * * head);
 
 int main () {
-	int size = 5;
-	int array[size] = {1,2,3,4,5};
+	int size = 2;
+	int array[size] = {1,2};
 	node * root = new node;
+	root->data = 0;
 	root->next = NULL;
 
-	insert_new_at_front(& root, array, size);
+	std::cout << & root << std::endl;
+	std::cout << root << std::endl;
+	std::cout << root->data << std::endl;
+	std::cout << root->next << std::endl;
+
+	insert_new_at_front(& root, array);
 	print_node(root);
 
 	deallocate(& root);
@@ -25,6 +32,23 @@ int main () {
 
 
 
+
+void insert_new_at_front(node * * head, int * a) {
+	node * temp1 = new node;
+	node * temp2 = new node;
+	// temp->data = datum;
+	// temp->next = * head;
+	// * head = temp;	
+
+	temp1->data = a[0];
+	temp2->data = a[1];
+	temp1->next = temp2;
+	temp2->next = * head;
+	* head = temp1;
+}
+
+
+/*
 void insert_new_at_front(node * * head, int * a, int length) {
 	node * temp = new node;
 	for (int i = 0; i < length; i++) {
@@ -33,7 +57,7 @@ void insert_new_at_front(node * * head, int * a, int length) {
 		* head = temp;
 	}
 }
-
+*/
 void print_node(node * head) {
 	if (head != NULL) {
 		std::cout << "data: ";
