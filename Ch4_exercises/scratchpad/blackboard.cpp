@@ -11,7 +11,7 @@ void print_node_next(node * head) {
 		std::cout << head->next << std::endl;
 	}
 }
-
+/*
 // very first attempt to convert array back to linked list:
 node * list_ify (node * * a_of_node_address, int size) {
 	node * head_from_array = new node;
@@ -20,6 +20,23 @@ node * list_ify (node * * a_of_node_address, int size) {
 		head_from_array->next = a_of_node_address[i];
 		head_from_array = head_from_array->next;
 	}
+	return head_from_array;
+}
+*/
+// very first attempt to convert array back to linked list:
+node * list_ify (node * * a_of_node_address, int size) {
+	std::cout << "head_from_array:" << std::endl;
+	node * head_from_array = new node;
+	//head_from_array = a_of_node_address[0]; // don't know if I need different pointer layers
+	//std::cout << head_from_array << std::endl;
+	for (int i = 1; i < size; i++) {
+		head_from_array->next = a_of_node_address[i];
+		std::cout << head_from_array << std::endl;
+		head_from_array = head_from_array->next;
+	}
+	//head_from_array->next = a_of_node_address[size-1];
+	head_from_array->next = NULL;
+	std::cout << head_from_array << std::endl;
 	return head_from_array;
 }
 
