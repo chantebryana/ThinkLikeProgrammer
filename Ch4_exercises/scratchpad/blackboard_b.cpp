@@ -70,7 +70,8 @@ node * array_to_node (node * * a_nn, int s) {
 		std::cout << next_a->next << "|" << a_nn[i] << std::endl;
 		next_a = next_a->next;
 	}
-	return next_a;
+	//return next_a;
+	return a_nn[0];
 }
 
 void insert_new_at_front(node * * head, int * a, int s) {
