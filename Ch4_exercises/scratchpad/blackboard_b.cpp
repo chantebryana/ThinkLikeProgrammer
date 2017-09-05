@@ -36,6 +36,7 @@ int main () {
 	//root_from_array = array_to_node(array_of_node_next, size);
 	root = array_to_node(array_of_node_next, size);
 	//print_node_next(root_from_array);
+	std::cout << root << std::endl;
 	print_node_next(root);
 
 	//deallocate(& root_from_array);
@@ -105,7 +106,7 @@ void print_node(node * head) {
 
 // try to print head->next instead of head->data or address of head
 void print_node_next(node * head) {
-	if (head != NULL) {
+	//if (head != NULL) {
 		std::cout << "root->next: " << std::endl;
 		std::cout << head << std::endl;
 		while (head->next != 0) {
@@ -113,7 +114,7 @@ void print_node_next(node * head) {
 			head = head->next;
 		}
 		std::cout << head->next << std::endl;
-	}
+	//}
 }
 
 void print_array(node * * a, int s) {
