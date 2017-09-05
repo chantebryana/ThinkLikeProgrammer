@@ -38,6 +38,13 @@ int main () {
 	// print out the results onto the console: 
 	print_array(array_of_node_address, size_buff);
 
+	// Jim's swap:
+	node * temp = array_of_node_address[0];
+	//std::cout << temp << std::endl;
+	array_of_node_address[0] = array_of_node_address[size_buff-2];
+	array_of_node_address[size_buff-2] = temp;
+	//print_array(array_of_node_address, size_buff);
+
 	// array-to-linked-list:
 	std::cout << "__ARRAY-TO-LINKED-LIST__" << std::endl;
 	root = list_ify(array_of_node_address, size_buff);
@@ -161,7 +168,7 @@ void print_node_next(node * head) {
 
 // second attempt at array-to-linked-list:
 node * list_ify(node * * a_nn, int s) {
-	node * next_a = new node;
+	node * next_a;// = new node;
 	next_a = a_nn[0];
 	std::cout << next_a << std::endl;
 	for (int i = 1; i < s; i++) {
