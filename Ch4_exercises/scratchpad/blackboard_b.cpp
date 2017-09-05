@@ -41,12 +41,13 @@ int main () {
 
 
 node * * node_next_to_array (node * head, int s) {
-	node * * a_of_node_next = new node * [s];
+	node * * a_of_node_next = new node * [s+2];
 	a_of_node_next[0] = head;
-	for (int i = 1; i < s; i++) {
+	for (int i = 1; i < s+1; i++) {
 		a_of_node_next[i] = head->next;
 		head = head->next;
 	}
+	a_of_node_next[s+1] = head->next;
 	return a_of_node_next;
 }
 
@@ -97,7 +98,7 @@ void print_node_next(node * head) {
 
 void print_array(node * * a, int s) {
 	std::cout << "array: " << std::endl;
-	for (int i = 0; i < s; i++) {
+	for (int i = 0; i < s + 2; i++) {
 		std::cout << a[i] << std::endl;
 	}
 }
