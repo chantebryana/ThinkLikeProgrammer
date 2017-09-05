@@ -10,6 +10,7 @@ struct node {
 void print_node(node * head);
 void insert_new_at_front(node * * head, int * a, int s);
 node * * node_next_to_array (node * head, int s);
+node * array_to_node (node * * a_nn, int s);
 void print_node_next(node * head);
 void print_array(node * * a, int s);
 void deallocate(node * * head);
@@ -31,7 +32,8 @@ int main () {
 	print_node_next(root);
 	node * * array_of_node_next = node_next_to_array(root, size);
 	print_array(array_of_node_next, size);
-
+	node * root_from_array = array_to_node (array_of_node_next, size);
+	print_node(root_from_array);
 
 	deallocate(& root);
 	return 0;
@@ -54,6 +56,17 @@ node * * node_next_to_array (node * head, int s) {
 	return a_of_node_next;
 }
 
+node * array_to_node (node * * a_nn, int s) {
+	node * next_a = new node;
+	next_a = a_nn[0];
+	std::cout << next_a << std::endl;
+	for (int i = 1; i < s+2; i++) {
+		next_a->next = a_nn[i];
+		std::cout << next_a->next << std::endl;
+		next_a = next_a->next;
+	}
+	return next_a;
+}
 
 void insert_new_at_front(node * * head, int * a, int s) {
 	for (int i = 0; i < s; i++) {
