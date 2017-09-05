@@ -36,7 +36,8 @@ int main () {
 	//root_from_array = array_to_node(array_of_node_next, size);
 	root = array_to_node(array_of_node_next, size);
 	//print_node_next(root_from_array);
-	std::cout << root << std::endl;
+	//std::cout << root << std::endl;
+	print_node(root);
 	print_node_next(root);
 
 	//deallocate(& root_from_array);
@@ -64,10 +65,10 @@ node * * node_next_to_array (node * head, int s) {
 node * array_to_node (node * * a_nn, int s) {
 	node * next_a = new node;
 	next_a = a_nn[0];
-	std::cout << next_a << "|" << a_nn[0] << std::endl;
+	//std::cout << next_a << "|" << a_nn[0] << std::endl;
 	for (int i = 1; i < s+2; i++) {
 		next_a->next = a_nn[i];
-		std::cout << next_a->next << "|" << a_nn[i] << std::endl;
+		//std::cout << next_a->next << "|" << a_nn[i] << std::endl;
 		next_a = next_a->next;
 	}
 	//return next_a;

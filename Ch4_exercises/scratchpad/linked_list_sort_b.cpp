@@ -14,7 +14,8 @@ node * * array_ify(node * head, int * size_buff);
 void print_node(node * head);
 void print_address(node * head);
 void print_node_next(node * head);
-node * list_ify (node * * a_of_node_address, int size);
+//node * list_ify (node * * a_of_node_address, int size);
+node * list_ify(node * * a_nn, int s);
 void print_array(node * * array, const int a_length);
 void deallocate(node * * head);
 
@@ -39,16 +40,20 @@ int main () {
 	print_array(array_of_node_address, size_buff);
 
 	// find length of array_of_node_address:
-	int array_length = find_array_length(array_of_node_address);
-	std::cout << "array_length: " << array_length << std::endl;
+	// int array_length = find_array_length(array_of_node_address);
+	// std::cout << "array_length: " << array_length << std::endl;
 
-	node * new_root = new node;
-	new_root = list_ify (array_of_node_address, array_length);
+	// node * new_root = new node;
+	//new_root = list_ify (array_of_node_address, array_length);
+	root = list_ify(array_of_node_address, size_buff);
+	print_node(root);
+	print_address(root);
+	print_node_next(root);
 	//print_node(new_root);
 
 	// deallocate heap memory: 
 	deallocate(& root);
-	deallocate(& new_root);
+	//deallocate(& new_root);
 	return 0;
 }
 
@@ -119,7 +124,7 @@ node * * array_ify(node * head, int * size_buff) {
 		a_of_node_address[i] = head;
 		head = head->next;
 	}
-	//a_of_node_address[size_buff-1] = 0;
+	a_of_node_address[*size_buff-1] = head;
 	// return array of node addresses back to use in main: 
 	return a_of_node_address;
 }
@@ -160,7 +165,7 @@ void print_node_next(node * head) {
 		std::cout << head->next << std::endl;
 	}
 }
-
+/*
 // very first attempt to convert array back to linked list:
 node * list_ify (node * * a_of_node_address, int size) {
 	std::cout << "head_from_array:" << std::endl;
@@ -176,6 +181,19 @@ node * list_ify (node * * a_of_node_address, int size) {
 	head_from_array->next = NULL;
 	std::cout << head_from_array << std::endl;
 	return head_from_array;
+}
+*/
+
+node * list_ify(node * * a_nn, int s) {
+	node * next_a = new node;
+	next_a = a_nn[0];
+	std::cout << next_a << std::endl;
+	for (int i = 1; i < s; i++) {
+		next_a->next = a_nn[i];
+		std::cout << next_a->next << std::endl;
+		next_a = next_a->next;
+	}
+	return a_nn[0];
 }
 
 // prints each element of array to console: 
