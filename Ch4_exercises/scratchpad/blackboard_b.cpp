@@ -39,15 +39,18 @@ int main () {
 
 
 
-
+// practice assigning values of node->next instead of node or node->data into elements of heap array: this should hopefully make array-to-linked-list assignment slightly easier:
 node * * node_next_to_array (node * head, int s) {
-	node * * a_of_node_next = new node * [s+2];
-	a_of_node_next[0] = head;
-	for (int i = 1; i < s+1; i++) {
-		a_of_node_next[i] = head->next;
+	// jank fix: add 2 to size b/c there are 2 more memory addresses of node than there are elements of array; should actually determine size by measuring size of node (not array):
+	node * * a_of_node_next = new node * [s+2]; 
+	// manually assign memory address of head pointer to first element of array:
+	a_of_node_next[0] = head; 
+	// iterate forward through node to assign values of next pointers to new heap array:
+	for (int i = 1; i < s+2; i++) {
+		a_of_node_next[i] = head->next; 
 		head = head->next;
 	}
-	a_of_node_next[s+1] = head->next;
+	// return heap array:
 	return a_of_node_next;
 }
 
@@ -98,7 +101,7 @@ void print_node_next(node * head) {
 
 void print_array(node * * a, int s) {
 	std::cout << "array: " << std::endl;
-	for (int i = 0; i < s + 2; i++) {
+	for (int i = 0; i < s + 2; i++) { // because the 's' size in node_next_to_array is manually iterated by 2, I have to do the same here
 		std::cout << a[i] << std::endl;
 	}
 }
