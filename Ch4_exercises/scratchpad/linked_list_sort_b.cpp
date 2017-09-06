@@ -54,6 +54,8 @@ int main () {
 	print_node_next(root);
 
 	qsort(array_of_node_address, size_buff, sizeof(node *), compare_node);
+	root = list_ify(array_of_node_address, size_buff);
+	print_array(array_of_node_address, size_buff);
 	print_node(root);
 
 	// deallocate heap memory: 
