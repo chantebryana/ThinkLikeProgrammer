@@ -16,6 +16,7 @@ void print_address(node * head);
 void print_node_next(node * head);
 node * list_ify(node * * a_nn, int s);
 void print_array(node * * array, const int a_length);
+int compare_node(const void * void_a, const void * void_b);
 void deallocate(node * * head);
 
 int main () {
@@ -51,6 +52,9 @@ int main () {
 	print_node(root);
 	print_address(root);
 	print_node_next(root);
+
+	qsort(array_of_node_address, size_buff, sizeof(node *), compare_node);
+	print_node(root);
 
 	// deallocate heap memory: 
 	deallocate(& root);
@@ -185,6 +189,19 @@ void print_array(node * * array, const int a_length) {
 	std::cout << std::endl << "address_of[i]: " << std::endl;
 	for (int i = 0; i < a_length; i++) {
 		std::cout << array[i] << std::endl;
+	}
+}
+
+int compare_node(const void * void_a, const void * void_b) {
+	node * prev = (node *)void_a;
+	node * next = (node *)void_b;
+
+	if ((prev->data) < (next->data)) {
+		return -1;
+	} else if ((prev->data) > (next->data)) {
+		return 1;
+	} else { // prev->data == next->data
+		return 0;
 	}
 }
 
