@@ -20,9 +20,9 @@ int compare_node(const void * void_a, const void * void_b);
 void deallocate(node * * head);
 
 int main () {
-	node * root = new node;
-	root->data = 7;
-	root->next = NULL;
+	node * root = NULL;// = new node;
+	//root->data = NULL;
+	//root->next = NULL;
 
 	print_node(root);
 
