@@ -195,12 +195,15 @@ void print_array(node * * array, const int a_length) {
 int compare_node(const void * void_a, const void * void_b) {
 	node * * prev = (node * *)void_a;
 	node * * next = (node * *)void_b;
-return -1;
+// return -1;
 	if (((*prev)->data) < ((*next)->data)) {
+		std::cout << (*prev)->data << " < " << (*next)->data << std::endl;
 		return -1;
 	} else if (((*prev)->data) > ((*next)->data)) {
+		std::cout << (*prev)->data << " > " << (*next)->data << std::endl;
 		return 1;
 	} else { // prev->data == next->data
+		std::cout << (*prev)->data << " == " << (*next)->data << std::endl;
 		return 0;
 	}
 }
