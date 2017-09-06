@@ -20,17 +20,13 @@ int compare_node(const void * void_a, const void * void_b);
 void deallocate(node * * head);
 
 int main () {
-	node * root = NULL;// = new node;
-	//root->data = NULL;
-	//root->next = NULL;
-
-	print_node(root);
+	// set root to NULL; will be populated via user-input:
+	node * root = NULL;
 
 	// this section: have user dynamically populate the linked list pointed to by root, and print out the results (value of data and address of each node) onto the console: 
 	process_user_input(& root);
 	print_node(root);
 	print_address(root);
-	print_node_next(root);
 
 	// this section: save the addresses of each node to an array; function uses size buffer (the value of which will be assigned within function and is dynamic depending on the length of linked list) and returns the array of addresses: 
 	int size_buff;
@@ -39,20 +35,18 @@ int main () {
 	// print out the results onto the console: 
 	print_array(array_of_node_address, size_buff);
 
-	// Jim's swap:
+	// Jim's manual swap:
 	node * temp = array_of_node_address[0];
-	//std::cout << temp << std::endl;
 	array_of_node_address[0] = array_of_node_address[size_buff-1];
 	array_of_node_address[size_buff-1] = temp;
-	//print_array(array_of_node_address, size_buff);
 
 	// array-to-linked-list:
 	std::cout << "__ARRAY-TO-LINKED-LIST__" << std::endl;
 	root = list_ify(array_of_node_address, size_buff);
 	print_node(root);
 	print_address(root);
-	print_node_next(root);
 
+	// sort contents of root using qsort and array_of_node_address; apply change to root and print out results:
 	qsort(array_of_node_address, size_buff, sizeof(node *), compare_node);
 	root = list_ify(array_of_node_address, size_buff);
 	print_array(array_of_node_address, size_buff);
@@ -172,14 +166,14 @@ void print_node_next(node * head) {
 	}
 }
 
-// second attempt at array-to-linked-list:
+// take memory addresses saved in array and assign to head and node->next of linked list:
 node * list_ify(node * * a_nn, int s) {
 	node * next_a;// = new node;
 	next_a = a_nn[0];
-	std::cout << next_a << std::endl;
+	//std::cout << next_a << std::endl;
 	for (int i = 1; i < s; i++) {
 		next_a->next = a_nn[i];
-		std::cout << next_a->next << std::endl;
+		//std::cout << next_a->next << std::endl;
 		next_a = next_a->next;
 	}
 	next_a->next = NULL;
@@ -194,18 +188,19 @@ void print_array(node * * array, const int a_length) {
 	}
 }
 
+// comparison function to be used within qsort. using memory addresses stored in array, points to nodes of linked list and decides whether to rearrange them or not: 
 int compare_node(const void * void_a, const void * void_b) {
 	node * * prev = (node * *)void_a;
 	node * * next = (node * *)void_b;
 // return -1;
 	if (((*prev)->data) < ((*next)->data)) {
-		std::cout << (*prev)->data << " < " << (*next)->data << std::endl;
+		//std::cout << (*prev)->data << " < " << (*next)->data << std::endl;
 		return -1;
 	} else if (((*prev)->data) > ((*next)->data)) {
-		std::cout << (*prev)->data << " > " << (*next)->data << std::endl;
+		//std::cout << (*prev)->data << " > " << (*next)->data << std::endl;
 		return 1;
 	} else { // prev->data == next->data
-		std::cout << (*prev)->data << " == " << (*next)->data << std::endl;
+		//std::cout << (*prev)->data << " == " << (*next)->data << std::endl;
 		return 0;
 	}
 }
