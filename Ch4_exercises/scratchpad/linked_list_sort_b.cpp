@@ -41,8 +41,8 @@ int main () {
 	// Jim's swap:
 	node * temp = array_of_node_address[0];
 	//std::cout << temp << std::endl;
-	array_of_node_address[0] = array_of_node_address[size_buff-2];
-	array_of_node_address[size_buff-2] = temp;
+	array_of_node_address[0] = array_of_node_address[size_buff-1];
+	array_of_node_address[size_buff-1] = temp;
 	//print_array(array_of_node_address, size_buff);
 
 	// array-to-linked-list:
@@ -116,15 +116,15 @@ int find_array_length(node * * array) {
 node * * array_ify(node * head, int * size_buff) {
 	// dynamically find the value of size_buff, based on the length of the linked list: 
 	// adds one extra element to array, to automatically populate last element with null, which matches the final node->next value in linked list:
-	* size_buff = find_list_length(head) + 1;
+	* size_buff = find_list_length(head);
 
 	// create a new heap array, then populate it with the addresses of each node in linked list: 
 	node * * a_of_node_address = new node * [* size_buff];
-	for (int i = 0; i < * size_buff-1; i++) {
+	for (int i = 0; i < * size_buff; i++) {
 		a_of_node_address[i] = head;
 		head = head->next;
 	}
-	a_of_node_address[*size_buff-1] = head;
+	//a_of_node_address[*size_buff-1] = head;
 	// return array of node addresses back to use in main: 
 	return a_of_node_address;
 }
@@ -176,6 +176,7 @@ node * list_ify(node * * a_nn, int s) {
 		std::cout << next_a->next << std::endl;
 		next_a = next_a->next;
 	}
+	next_a->next = NULL;
 	return a_nn[0];
 }
 
