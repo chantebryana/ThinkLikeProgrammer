@@ -9,11 +9,10 @@ struct node {
 void process_user_input (node * * head);
 void insert_new_at_front(node * * head, int user_input);
 int find_list_length(node * head);
-int find_array_length(node * * array);
 node * * array_ify(node * head, int * size_buff);
 void print_node(node * head);
 void print_address(node * head);
-void print_node_next(node * head);
+// void print_node_next(node * head);
 node * list_ify(node * * a_nn, int s);
 void print_array(node * * array, const int a_length);
 int compare_node(const void * void_a, const void * void_b);
@@ -101,21 +100,9 @@ int find_list_length(node * head) {
 	return counter;
 }
 
-// (temporary?) helper function: find length of array: 
-// this would only work if array is null-terminated, which it may be if I have to explicitly define the null pointer at the end of linked list:
-int find_array_length(node * * array) {
-	int count = 0;
-	while (array[count] != 0) {
-		count ++;
-	}
-	count ++;
-	return count;
-}
-
 // save memory addresses of each linked list node into an array on the heap: 
 node * * array_ify(node * head, int * size_buff) {
 	// dynamically find the value of size_buff, based on the length of the linked list: 
-	// adds one extra element to array, to automatically populate last element with null, which matches the final node->next value in linked list:
 	* size_buff = find_list_length(head);
 
 	// create a new heap array, then populate it with the addresses of each node in linked list: 
@@ -124,7 +111,6 @@ node * * array_ify(node * head, int * size_buff) {
 		a_of_node_address[i] = head;
 		head = head->next;
 	}
-	//a_of_node_address[*size_buff-1] = head;
 	// return array of node addresses back to use in main: 
 	return a_of_node_address;
 }
@@ -153,6 +139,7 @@ void print_address(node * head) {
 	}
 }
 
+/*
 // try to print head->next instead of head->data or address of head
 void print_node_next(node * head) {
 	if (head != NULL) {
@@ -165,15 +152,14 @@ void print_node_next(node * head) {
 		std::cout << head->next << std::endl;
 	}
 }
+*/
 
 // take memory addresses saved in array and assign to head and node->next of linked list:
 node * list_ify(node * * a_nn, int s) {
-	node * next_a;// = new node;
+	node * next_a;
 	next_a = a_nn[0];
-	//std::cout << next_a << std::endl;
 	for (int i = 1; i < s; i++) {
 		next_a->next = a_nn[i];
-		//std::cout << next_a->next << std::endl;
 		next_a = next_a->next;
 	}
 	next_a->next = NULL;
@@ -192,15 +178,11 @@ void print_array(node * * array, const int a_length) {
 int compare_node(const void * void_a, const void * void_b) {
 	node * * prev = (node * *)void_a;
 	node * * next = (node * *)void_b;
-// return -1;
 	if (((*prev)->data) < ((*next)->data)) {
-		//std::cout << (*prev)->data << " < " << (*next)->data << std::endl;
 		return -1;
 	} else if (((*prev)->data) > ((*next)->data)) {
-		//std::cout << (*prev)->data << " > " << (*next)->data << std::endl;
 		return 1;
 	} else { // prev->data == next->data
-		//std::cout << (*prev)->data << " == " << (*next)->data << std::endl;
 		return 0;
 	}
 }
