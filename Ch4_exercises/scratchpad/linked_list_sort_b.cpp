@@ -40,6 +40,7 @@ int main () {
 	array_of_node_address[size_buff-1] = temp;
 
 	// array-to-linked-list:
+	// this section: take memory addresses stored in each element of array, and assign them to the pointers located within linked list; print out results: 
 	std::cout << "__ARRAY-TO-LINKED-LIST__" << std::endl;
 	root = list_ify(array_of_node_address, size_buff);
 	print_node(root);
