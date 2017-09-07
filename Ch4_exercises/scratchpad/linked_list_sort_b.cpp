@@ -170,6 +170,7 @@ node * list_ify(node * * a_nn, int s) {
 	// return memory address pointed to by element zero of array (can't return next_a because right now it's pointing to the end of linked list):
 	//node * head_address[1] = {};
 	//head_address[0] = a_nn[0];
+	// save value of head pointer, then deallocate heap array memory allocated in array_ify: 
 	node * head_address = a_nn[0];
 	delete[] a_nn;
 	return head_address;
