@@ -1,137 +1,132 @@
 #include <iostream> // cin, cout
-#include <cstdlib> // qsort plus much more
+#include <cstdlib> 
+#include <string> // string
 
-struct node {
-	int data;
-	node * next;
+struct run_node {
+	std::string name;
+	//float time_sec;
+	int time_sec;
+	run_node * next;
 } ;
 
-// void insert_new_at_front(node * * head, int * a, int length);
-void print_node(node * head);
-void insert_new_at_front(node * * head, int * a, int s);
-node * * node_next_to_array (node * head, int s);
-node * array_to_node (node * * a_nn, int s);
-void print_node_next(node * head);
-void print_array(node * * a, int s);
-void deallocate(node * * head);
+void print_node(run_node * existing_node);
+int find_list_length(run_node * head);
+run_node * * array_ify(run_node * head, int * size_buff);
+run_node * list_ify(run_node * * a_nn, int s);
+int compare_node(const void * void_a, const void * void_b);
+void deallocate(run_node * * existing_node);
+
+
 
 int main () {
-	int size = 6;
-	int array[size] = {1,2, 3, 4, 5, 6};
-	node * root = new node;
-	root->data = 0;
-	root->next = NULL;
+	run_node * run_200m;
+	run_node * node1 = new run_node;
+	run_node * node2 = new run_node;
+	run_node * node3 = new run_node;
+	node1->name = "Bianca"; node1->time_sec = 25;
+	node2->name = "Akmal"; node2->time_sec = 27;	
+	node3->name = "Maurice"; node3->time_sec = 26;
+	run_200m = node1;
+	node1->next = node2;
+	node2->next = node3;
+	node3->next = NULL;
 
-	//std::cout << & root << std::endl;
-	//std::cout << root << std::endl;
-	//std::cout << root->data << std::endl;
-	//std::cout << root->next << std::endl;
+	node1 = node2 = node3 = NULL;
 
-	insert_new_at_front(& root, array, size);
-	print_node(root);
-	print_node_next(root);
-	node * * array_of_node_next = node_next_to_array(root, size);
-	print_array(array_of_node_next, size);
-	//node * root_from_array = new node;
-	//root_from_array = array_to_node(array_of_node_next, size);
-	root = array_to_node(array_of_node_next, size);
-	//print_node_next(root_from_array);
-	//std::cout << root << std::endl;
-	print_node(root);
-	print_node_next(root);
+	std::cout << "unsorted list:" << std::endl;
+	print_node(run_200m);
 
-	//deallocate(& root_from_array);
-	deallocate(& root);
+	int size_buff;
+	run_node * * array_of_node_address = array_ify(run_200m, & size_buff);
+
+	qsort(array_of_node_address, size_buff, sizeof(run_node *), compare_node);
+	run_200m = list_ify(array_of_node_address, size_buff);
+	std::cout << std::endl << "sorted list: " << std::endl;
+	print_node(run_200m);
+
+	deallocate(& run_200m);
 	return 0;
 }
 
 
 
-// practice assigning values of node->next instead of node or node->data into elements of heap array: this should hopefully make array-to-linked-list assignment slightly easier:
-node * * node_next_to_array (node * head, int s) {
-	// jank fix: add 2 to size b/c there are 2 more memory addresses of node than there are elements of array; should actually determine size by measuring size of node (not array):
-	node * * a_of_node_next = new node * [s+2]; 
-	// manually assign memory address of head pointer to first element of array:
-	a_of_node_next[0] = head; 
-	// iterate forward through node to assign values of next pointers to new heap array:
-	for (int i = 1; i < s+2; i++) {
-		a_of_node_next[i] = head->next; 
-		head = head->next;
+
+
+void print_node(run_node * existing_node) {
+	if(existing_node != NULL) { // makes sure existing_node holds information
+		while (existing_node->next != 0){ // goes through the linked list till the end
+			std::cout << "runner: " << existing_node->name << ", time(sec): " << existing_node->time_sec << std::endl;
+			existing_node = existing_node->next;
+		}
+		// prints out the final chunk of data: 
+		std::cout << "runner: " << existing_node->name << ", time(sec): " << existing_node->time_sec << std::endl;
 	}
-	// return heap array:
-	return a_of_node_next;
 }
 
-node * array_to_node (node * * a_nn, int s) {
-	node * next_a = new node;
+// finds the length of linked list, to be used in array_ify (iterates through each node of linked list, increasing the counter one by one until reaching the end of the list): 
+int find_list_length(run_node * head) {
+	int counter = 0;
+	while (head->next != NULL) {
+		counter += 1;
+		head = head->next;
+	}
+	counter += 1;
+	return counter;
+}
+
+// save memory addresses of each linked list node into an array on the heap: 
+run_node * * array_ify(run_node * head, int * size_buff) {
+	// dynamically find the value of size_buff, based on the length of the linked list: 
+	* size_buff = find_list_length(head);
+
+	// create a new heap array, then populate it with the addresses of each node in linked list: 
+	run_node * * a_of_node_address = new run_node * [* size_buff];
+	for (int i = 0; i < * size_buff; i++) {
+		a_of_node_address[i] = head;
+		head = head->next;
+	}
+	// return array of node addresses back to use in main: 
+	return a_of_node_address;
+}
+
+// take memory addresses saved in array and assign to head and node->next of linked list:
+run_node * list_ify(run_node * * a_nn, int s) {
+	run_node * next_a;
+	// assign head pointer to memory address stored in element zero of array:
 	next_a = a_nn[0];
-	//std::cout << next_a << "|" << a_nn[0] << std::endl;
-	for (int i = 1; i < s+2; i++) {
+	// iterate through remainder of array and linked list, assigning corresponding memory addresses to linked list nodes:
+	for (int i = 1; i < s; i++) {
 		next_a->next = a_nn[i];
-		//std::cout << next_a->next << "|" << a_nn[i] << std::endl;
 		next_a = next_a->next;
 	}
-	//return next_a;
+	// manually assign final node->next to NULL to terminate linked list:
+	next_a->next = NULL;
+	// return memory address pointed to by element zero of array (can't return next_a because right now it's pointing to the end of linked list):
 	return a_nn[0];
 }
 
-void insert_new_at_front(node * * head, int * a, int s) {
-	for (int i = 0; i < s; i++) {
-		node * temp = new node; 
-		temp->data = a[i];
-		temp->next = * head;
-		* head = temp;
+// comparison function to be used within qsort. using memory addresses stored in array, points to nodes of linked list and decides whether to rearrange them or not: 
+int compare_node(const void * void_a, const void * void_b) {
+	// set void pointers to node * * to correspond with array datatype:
+	run_node * * prev = (run_node * *)void_a;
+	run_node * * next = (run_node * *)void_b;
+	// standard sorting check: is prev >, <, or == next?:
+	if (((*prev)->time_sec) < ((*next)->time_sec)) {
+		return -1;
+	} else if (((*prev)->time_sec) > ((*next)->time_sec)) {
+		return 1;
+	} else { // prev->time_sec == next->time_sec
+		return 0;
 	}
 }
 
-
-/*
-void insert_new_at_front(node * * head, int * a, int length) {
-	node * temp = new node;
-	for (int i = 0; i < length; i++) {
-		temp->data = a[i];
-		temp->next = * head;
-		* head = temp;
-	}
-}
-*/
-void print_node(node * head) {
-	if (head != NULL) {
-		std::cout << "data: ";
-		while (head->next != 0) {
-			std::cout << head->data << " ";
-			head = head->next;
-		}
-		std::cout << head->data << std::endl;
+void deallocate(run_node * * existing_node) {
+	while (* existing_node) {
+		run_node * placeholder;
+		placeholder = * existing_node;
+		* existing_node = (* existing_node)->next;
+		delete placeholder;
+		// don't need to explicity delete * existing_node b/c it's already set to NULL thanks to the while loop
 	}
 }
 
-// try to print head->next instead of head->data or address of head
-void print_node_next(node * head) {
-	//if (head != NULL) {
-		std::cout << "root->next: " << std::endl;
-		std::cout << head << std::endl;
-		while (head->next != 0) {
-			std::cout << head->next << std::endl;
-			head = head->next;
-		}
-		std::cout << head->next << std::endl;
-	//}
-}
-
-void print_array(node * * a, int s) {
-	std::cout << "array: " << std::endl;
-	for (int i = 0; i < s + 2; i++) { // because the 's' size in node_next_to_array is manually iterated by 2, I have to do the same here
-		std::cout << a[i] << std::endl;
-	}
-}
-
-// deallocate heap memory used up by linked list head: 
-void deallocate(node * * head) {
-	while (* head) {
-		node * temp;
-		temp = * head;
-		* head = (* head)->next;
-		delete temp;
-	}
-}
