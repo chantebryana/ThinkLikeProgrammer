@@ -27,9 +27,10 @@ int main() {
 	insert_new_after_name(& run_200m, "Maurice", "Gustov", 25.63);
 	//insert_new_after_name( & null_node, "Bill", "Susan", 26.9);
 	//insert_new_after_name(& run_200m, "Arthur", "Phuong", 26.73);
+	
+	// section below sorts the linked list based on time_sec: takes linked list, finds length of linked list and saving to size_buff and saves memory address pointers into an array (array_ify), sorts the array (based on time_sec node) using qsort, uses list_ify to translate the sorted array back to the linked list, then prints the results to the screen: 
 	int size_buff;
 	run_node * * array_of_node_address = array_ify(run_200m, & size_buff);
-
 	qsort(array_of_node_address, size_buff, sizeof(run_node *), compare_node);
 	run_200m = list_ify(array_of_node_address, size_buff);
 	print_node(run_200m);

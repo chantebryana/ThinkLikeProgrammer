@@ -121,6 +121,7 @@ run_node * * array_ify(run_node * head, int * size_buff) {
 	* size_buff = find_list_length(head);
 
 	// create a new heap array, then populate it with the addresses of each node in linked list: 
+	// (heap memory allocated to a_of_node_address will be deallocated in list_ify):
 	run_node * * a_of_node_address = new run_node * [* size_buff];
 	for (int i = 0; i < * size_buff; i++) {
 		a_of_node_address[i] = head;
@@ -142,8 +143,11 @@ run_node * list_ify(run_node * * a_nn, int s) {
 	}
 	// manually assign final node->next to NULL to terminate linked list:
 	next_a->next = NULL;
-	// return memory address pointed to by element zero of array (can't return next_a because right now it's pointing to the end of linked list):
-	return a_nn[0];
+
+	// assign pointer to head of linked list to head_address; deallocate heap memory used up by a_nn (allocated in array_ify); return pointer to head of linked list (can't return next_a because right now it's pointing to the end of linked list):
+	run_node * head_address = a_nn[0];
+	delete[] a_nn;
+	return head_address;
 }
 
 // comparison function to be used within qsort. using memory addresses stored in array, points to nodes of linked list and decides whether to rearrange them or not: 
