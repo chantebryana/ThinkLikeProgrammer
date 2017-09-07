@@ -4,8 +4,8 @@
 
 struct run_node {
 	std::string name;
-	//float time_sec;
-	int time_sec;
+	float time_sec;
+	//int time_sec;
 	run_node * next;
 } ;
 
@@ -23,9 +23,9 @@ int main () {
 	run_node * node1 = new run_node;
 	run_node * node2 = new run_node;
 	run_node * node3 = new run_node;
-	node1->name = "Bianca"; node1->time_sec = 25;
-	node2->name = "Akmal"; node2->time_sec = 27;	
-	node3->name = "Maurice"; node3->time_sec = 26;
+	node1->name = "Bianca"; node1->time_sec = 27.57;
+	node2->name = "Akmal"; node2->time_sec = 26.09;	
+	node3->name = "Maurice"; node3->time_sec = 26.01;
 	run_200m = node1;
 	node1->next = node2;
 	node2->next = node3;
