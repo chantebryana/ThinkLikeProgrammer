@@ -33,7 +33,7 @@ int main () {
 
 	// print out the results onto the console: 
 	print_array(array_of_node_address, size_buff);
-
+/*
 	// Jim's manual swap:
 	node * temp = array_of_node_address[0];
 	array_of_node_address[0] = array_of_node_address[size_buff-1];
@@ -45,11 +45,11 @@ int main () {
 	root = list_ify(array_of_node_address, size_buff);
 	print_node(root);
 	print_address(root);
-
+*/
 	// sort contents of root using qsort and array_of_node_address; apply change to root and print out results:
 	qsort(array_of_node_address, size_buff, sizeof(node *), compare_node);
 	root = list_ify(array_of_node_address, size_buff);
-	print_array(array_of_node_address, size_buff);
+	//print_array(array_of_node_address, size_buff);
 	print_node(root);
 
 	// deallocate heap memory: 
@@ -168,7 +168,12 @@ node * list_ify(node * * a_nn, int s) {
 	// manually assign final node->next to NULL to terminate linked list:
 	next_a->next = NULL;
 	// return memory address pointed to by element zero of array (can't return next_a because right now it's pointing to the end of linked list):
-	return a_nn[0];
+	//node * head_address[1] = {};
+	//head_address[0] = a_nn[0];
+	node * head_address = a_nn[0];
+	delete[] a_nn;
+	return head_address;
+	//return a_nn[0];
 }
 
 // prints each element of array to console: 
