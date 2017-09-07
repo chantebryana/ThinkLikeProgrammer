@@ -1,18 +1,26 @@
-// qsort integration pseudocode!
+// http://www.cplusplus.com/reference/cstdlib/rand/
+/* rand example: guess the number */
+#include <stdio.h>      /* printf, scanf, puts, NULL */
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 
-qsort(array, SIZE, sizeof(node *), compare_node;
+int main ()
+{
+  int iSecret, iGuess;
 
-int compare_node(const void * void_a, const void * void_b) // elements are pulled from array, But values of array are pointers in memory to the same data elements contained in linked list!!!  so i can manipulate/compare ll even though i'm passing array elements.
-// node * or node * * ??? perhaps if i'm referencing an element of array, i only need one node * (not ** ) ??
-node * prev = (node *)void_a;
-node * next = (node *)void_b;
+  /* initialize random seed: */
+  srand (time(NULL));
 
-if (prev->data < next->data) {
-	return -1;
-} else if (prev->data > next->data) {
-	return 1;
-} else { // prev->data == next->data
-	return 0;
+  /* generate secret number between 1 and 10: */
+  iSecret = rand() % 10 + 1;
+
+  do {
+    printf ("Guess the number (1 to 10): ");
+    scanf ("%d",&iGuess);
+    if (iSecret<iGuess) puts ("The secret number is lower");
+    else if (iSecret>iGuess) puts ("The secret number is higher");
+  } while (iSecret!=iGuess);
+
+  puts ("Congratulations, you guessed it!");
+  return 0;
 }
-
-
