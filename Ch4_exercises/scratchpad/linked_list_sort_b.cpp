@@ -157,12 +157,16 @@ void print_node_next(node * head) {
 // take memory addresses saved in array and assign to head and node->next of linked list:
 node * list_ify(node * * a_nn, int s) {
 	node * next_a;
+	// assign head pointer to memory address stored in element zero of array:
 	next_a = a_nn[0];
+	// iterate through remainder of array and linked list, assigning corresponding memory addresses to linked list nodes:
 	for (int i = 1; i < s; i++) {
 		next_a->next = a_nn[i];
 		next_a = next_a->next;
 	}
+	// manually assign final node->next to NULL to terminate linked list:
 	next_a->next = NULL;
+	// return memory address pointed to by element zero of array (can't return next_a because right now it's pointing to the end of linked list):
 	return a_nn[0];
 }
 
@@ -176,8 +180,10 @@ void print_array(node * * array, const int a_length) {
 
 // comparison function to be used within qsort. using memory addresses stored in array, points to nodes of linked list and decides whether to rearrange them or not: 
 int compare_node(const void * void_a, const void * void_b) {
+	// set void pointers to node * * to correspond with array datatype:
 	node * * prev = (node * *)void_a;
 	node * * next = (node * *)void_b;
+	// standard sorting check: is prev >, <, or == next?:
 	if (((*prev)->data) < ((*next)->data)) {
 		return -1;
 	} else if (((*prev)->data) > ((*next)->data)) {
