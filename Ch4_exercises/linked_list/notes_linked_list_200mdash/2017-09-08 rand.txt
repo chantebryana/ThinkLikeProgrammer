@@ -1,0 +1,16 @@
+research random number generation
+c++ rand()
+read:
+http://www.cplusplus.com/reference/cstdlib/rand/
+glance at:
+http://www.cplusplus.com/reference/random/
+http://www.cplusplus.com/reference/random/random_device/
+
+
+random float
+https://stackoverflow.com/questions/686353/c-random-float-number-generation
+
+use rand() on numbers 100 times the floats, then divide the results by 100 so that they have decimals in the right spots
+
+decide to play around with rand() for its own sake before I try to implement it in my program (and use floats, structs, etc)
+

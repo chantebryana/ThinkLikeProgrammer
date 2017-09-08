@@ -1,0 +1,49 @@
+2017/09/07 Thursday
+post-sort 200m dash brainstorms
+
+What's my next step for 200m dash? I've got code that sorts LL (which has also given me, without really realizing it, much more experience w/ pointers), which was a big next step for 200m dash game/project.
+
+Look back at old notes to revisit my initial conception of 200m dash game/project, and I had to go all the way back to 03 August! 10 whole pages ago. Woah! It's not even in my current batch of notes, but in the stapled-already-scanned bundle.  Time is wonk.
+
+I've got a program that creates a linked list of nodes, and allows me to add new players at the beginning, middle, or end of the list.  I can also use qsort to sort the linked list of nodes in order of how fast they are.
+
+Moving forward, I'd want the ability to flip a coin.  Maybe to raondomly select a node from the linked list?  Or to have the user select which player should challenge? Definitely have a way to track 1 node previous from the player chosen, so that the two of them can 'race'. I suppose those features make up the bulk of the main game.  Oh, I'll also want to reassign the time_sec portion of each of the player's nodes.
+
+What about this thought?  Maybe I should reintroduce Ranking?  B/c each mini race will depend on who wins to adjust the ranking, not necessarily on what the specific time outcome was.  So, actually, the time_sec portion of each node adds more than the bare minimum complexity...Unless I were to have a feature that pitted ALL the players against the others in one big race? Because it's a 200m dash and can expand and contract as much as needed.  
+
+===	===	===
+
+Brainstorming terminal layout: 
+
+runners: 
+  1st Bianca
+  2nd Akmal
+  3rd Maurice
+  4th Aziz
+  5th Susan
+Select a challenger: __  [Aziz] <- user selection
+OK! 4th Place Aziz challenges 3rd Place Maurice!
+Get ready...Get set...Go!
+  >>> Race Race Race <<<
+200 m dash challenge over.
+  Aziz ran in [27.1] sec 
+  Maurice ran in [28.7] sec
+Aziz wins!  Aziz advances one ranking!  [New layout:]
+  1st Bianca
+  2nd Akmal
+  3rd Aziz
+  4th Maurice
+  5th Susan
+Select a challenger: __ <-start the loop over again
+
+===	===	===
+
+Supporting code to make an external layout like this work: 
+
+Consider giving the user multiple options.  Single challenger (2-person race). Whole group race. View rankings. Add node datapoint that shows teh time_sec of the most recent race? And view time stats? (Average run time, difference in time between first and last runners?)
+
+Background functions: accept user input.  Func that figures out random run times of challenger. Function that determines a winner. Resort roster using array_ify, qsort, list_ify. Print user selection and print outs and race progress and race outcomes to the screen. Loop through to go back to 'Select a challenger' prompt after a race is completed. Consider printing out user selection options (runner name, whole group, show stats, quit program, etc?) So many considerations. 
+
+I'm excited about looking to find coin flip functionality in C++ and also in thinking about how to assign a random racing time to each racer (within a predefined range: say, 33 sec through 20 sec).
+
+Any considerations to weight the outcomes at all, based on previous run times? That seems like it would complicate things in the wrong direction -> I want to play around with pointers, not with chance-generation.
