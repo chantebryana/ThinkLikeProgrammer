@@ -36,10 +36,6 @@ int main ()
 int coin_toss() {
 	// initialize random seed based on the current time in miliseconds: 
   srand (time(NULL));
-	// toss that coin!
-	// int coin = rand() % 2;
-	// return results of coin toss:
-	// return coin;
 	// toss a metaphorical coin and return results: 
 	return rand() % 2;
 }
