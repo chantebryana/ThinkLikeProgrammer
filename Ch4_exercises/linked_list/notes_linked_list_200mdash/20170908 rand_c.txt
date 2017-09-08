@@ -1,2 +1,14 @@
 2017/09/08 FRIDAY
 
+whew, that was too complicated.  I should make a note to ask Jim about git pull vs git fetch and whatever merge step needs to happen afterwards.  
+
+ok, now where was i on actual real work (and not random meanderings)?  do I want to work on server stuff with Jim?  that would be a great way to fill time and do something different and leverege Jim's help and knowledge and insight.  but i'm sort of kind of working on some existing stuff right now and do i want to lose track of my progress on those projects / lines of thought? also, maybe i'm just a little bit peeved that jim springs this up on me seemingly out of nowhere, even though i've been kind of asking him for a while and he's historically been unresponsive.  but i know that's not necessarily productive because jim's been distracted and i've been distracted and communication is nebulous and Jim's volunteering himself to be just freaking awesome and I shouldn't shirk at that....
+
+i guess for now i'll keep on with rand() and digital notetaking, and maybe i'll see how i feel after Jim's done with shower and whatever else he's busingying himself with, and we'll just go from there.  it would be super great to bill a little extra time this cycle: i'm short and it would be so rad to build up some time!!!  but i guess i also don't want to be caught off guard and all that.... plus maybe i've got stuff i'd like to do this evening?? i don't know??
+
+===	===	===
+
+how to fit coin toss into linked_list.cpp and linked_list.h??  
+
+perhaps i could get the ball rolling by writing a simple coin toss function?
+
