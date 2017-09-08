@@ -18,14 +18,20 @@ int main ()
 	dec = (float)(iSecret) / 100;
 	std::cout << dec << std::endl;
 
-	double a = 3.1415926534;
-	double b = 2006.0;
-	double c = 1.0e-10;
-
-	std::cout.precision(2);
-
-	std::cout << "fixed:\n" << std::fixed;
-	std::cout << a << std::endl << b << std::endl << c << std::endl << dec << std::endl << iSecret << std::endl;
+	iGuess = rand() % 2;
+	std::cout << iGuess << std::endl;
+	iGuess = rand() % 2;
+	std::cout << iGuess << std::endl;
+	iGuess = rand() % 2;
+	std::cout << iGuess << std::endl;
+	iGuess = rand() % 2;
+	std::cout << iGuess << std::endl;
+	iGuess = rand() % 2;
+	std::cout << iGuess << std::endl;
+	iGuess = rand() % 2;
+	std::cout << iGuess << std::endl;
+	iGuess = rand() % 2;
+	std::cout << iGuess << std::endl;
 
   return 0;
 }
