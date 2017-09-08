@@ -14,22 +14,22 @@ int main ()
 
   /* generate secret number between 1 and 10: */
 	float dec;
-  iSecret = rand() % 990 + 10;
+  iSecret = rand() % 1300 + 2000;
 	dec = (float)(iSecret) / 100;
 	std::cout << dec << std::endl;
-  iSecret = rand() % 990 + 10;
+  iSecret = rand() % 1300 + 2000;
 	dec = (float)(iSecret) / 100;
 	std::cout << dec << std::endl;
-  iSecret = rand() % 990 + 10;
+  iSecret = rand() % 1300 + 2000;
 	dec = (float)(iSecret) / 100;
 	std::cout << dec << std::endl;
-  iSecret = rand() % 990 + 10;
+  iSecret = rand() % 1300 + 2000;
 	dec = (float)(iSecret) / 100;
 	std::cout << dec << std::endl;
-  iSecret = rand() % 990 + 10;
+  iSecret = rand() % 1300 + 2000;
 	dec = (float)(iSecret) / 100;
 	std::cout << dec << std::endl;
-  iSecret = rand() % 990 + 10;
+  iSecret = rand() % 1300 + 2000;
 	dec = (float)(iSecret) / 100;
 	std::cout << dec << std::endl;
 
