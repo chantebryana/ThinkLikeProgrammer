@@ -24,6 +24,7 @@ int main ()
 	iGuess = rand() % 2;
 	std::cout << iGuess << std::endl;
 */
+	// flip a coin then print out the results:
 	int coin = coin_toss();
 	std::cout << coin << std::endl;
 
@@ -33,7 +34,10 @@ int main ()
 
 
 int coin_toss() {
+	// initialize random seed based on the current time in miliseconds: 
   srand (time(NULL));
+	// toss that coin!
 	int coin = rand() % 2;
+	// return results of coin toss:
 	return coin;
 }
