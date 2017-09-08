@@ -17,30 +17,15 @@ int main ()
   iSecret = rand() % 1300 + 2000;
 	dec = (float)(iSecret) / 100;
 	std::cout << dec << std::endl;
-  iSecret = rand() % 1300 + 2000;
-	dec = (float)(iSecret) / 100;
-	std::cout << dec << std::endl;
-  iSecret = rand() % 1300 + 2000;
-	dec = (float)(iSecret) / 100;
-	std::cout << dec << std::endl;
-  iSecret = rand() % 1300 + 2000;
-	dec = (float)(iSecret) / 100;
-	std::cout << dec << std::endl;
-  iSecret = rand() % 1300 + 2000;
-	dec = (float)(iSecret) / 100;
-	std::cout << dec << std::endl;
-  iSecret = rand() % 1300 + 2000;
-	dec = (float)(iSecret) / 100;
-	std::cout << dec << std::endl;
 
-/*
-  do {
-    printf ("Guess the number (1 to 10): ");
-    scanf ("%d",&iGuess);
-    if (iSecret<iGuess) puts ("The secret number is lower");
-    else if (iSecret>iGuess) puts ("The secret number is higher");
-  } while (iSecret!=iGuess);
-*/
-  puts ("Congratulations, you guessed it!");
+	double a = 3.1415926534;
+	double b = 2006.0;
+	double c = 1.0e-10;
+
+	std::cout.precision(2);
+
+	std::cout << "fixed:\n" << std::fixed;
+	std::cout << a << std::endl << b << std::endl << c << std::endl << dec << std::endl << iSecret << std::endl;
+
   return 0;
 }
