@@ -4,11 +4,13 @@
 
 struct run_node {
 	std::string name;
-	float time_sec;
+	// float time_sec;
+	int rank;
 	run_node * next;
 } ;
-
-void print_node(run_node * existing_node) {
+/*
+// prints linked list: runner and time_sec nodes:
+void print_node_time(run_node * existing_node) {
 	if(existing_node != NULL) { // makes sure existing_node holds information
 		while (existing_node->next != 0){ // goes through the linked list till the end
 			std::cout << "runner: " << existing_node->name << ", time(sec): " << existing_node->time_sec << std::endl;
@@ -18,7 +20,19 @@ void print_node(run_node * existing_node) {
 		std::cout << "runner: " << existing_node->name << ", time(sec): " << existing_node->time_sec << std::endl;
 	}
 }
-
+*/
+// prints linked list: runner and rank nodes: 
+void print_node_rank(run_node * existing_node) {
+	if(existing_node != NULL) { // makes sure existing_node holds information
+		while (existing_node->next != 0){ // goes through the linked list till the end
+			std::cout << "runner: " << existing_node->name << ", rank: " << existing_node->rank << std::endl;
+			existing_node = existing_node->next;
+		}
+		// prints out the final chunk of data: 
+		std::cout << "runner: " << existing_node->name << ", rank: " << existing_node->rank << std::endl;
+	}
+}
+/*
 void insert_new_at_front(run_node * * existing_node, std::string new_name, float new_time) {
 	run_node * conductor = new run_node;
 	conductor->name = new_name;
@@ -103,7 +117,7 @@ int insert_new_after_name(run_node * * existing_node, std::string insert_after_t
 			return did_insertion_work;
 		};
 }
-
+*/
 // finds the length of linked list, to be used in array_ify (iterates through each node of linked list, increasing the counter one by one until reaching the end of the list): 
 int find_list_length(run_node * head) {
 	int counter = 0;
@@ -149,9 +163,9 @@ run_node * list_ify(run_node * * a_nn, int s) {
 	delete[] a_nn;
 	return head_address;
 }
-
-// comparison function to be used within qsort. using memory addresses stored in array, points to nodes of linked list and decides whether to rearrange them or not: 
-int compare_node(const void * void_a, const void * void_b) {
+/*
+// comparison function (based on time_sec) to be used within qsort. using memory addresses stored in array, points to nodes of linked list and decides whether to rearrange them or not: 
+int compare_node_time(const void * void_a, const void * void_b) {
 	// set void pointers to node * * to correspond with array datatype:
 	run_node * * prev = (run_node * *)void_a;
 	run_node * * next = (run_node * *)void_b;
@@ -161,6 +175,21 @@ int compare_node(const void * void_a, const void * void_b) {
 	} else if (((*prev)->time_sec) > ((*next)->time_sec)) {
 		return 1;
 	} else { // prev->time_sec == next->time_sec
+		return 0;
+	}
+}
+*/
+// comparison function (based on rank) to be used within qsort. using memory addresses stored in array, points to nodes of linked list and decides whether to rearrange them or not: 
+int compare_node_rank(const void * void_a, const void * void_b) {
+	// set void pointers to node * * to correspond with array datatype:
+	run_node * * prev = (run_node * *)void_a;
+	run_node * * next = (run_node * *)void_b;
+	// standard sorting check: is prev >, <, or == next?:
+	if (((*prev)->rank) < ((*next)->rank)) {
+		return -1;
+	} else if (((*prev)->rank) > ((*next)->rank)) {
+		return 1;
+	} else { // prev->rank == next->rank
 		return 0;
 	}
 }

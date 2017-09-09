@@ -12,3 +12,14 @@ how to fit coin toss into linked_list.cpp and linked_list.h??
 
 perhaps i could get the ball rolling by writing a simple coin toss function?
 
+===	===	===
+
+ok, what would i do to make more progress on 200 m dash linked_list.cpp? I would like to integrate coin toss into my existing code, and to make my setup more like a properly working game, rather than some jank smatterings of code. but I can't do that all at once -- I need some proper steps to be implemented in the proper order before I can set all that up...
+
+ok, so I've got my linked list of players (which maybe i should fit into a separate function just so that main is a little cleaner looking). then i'd want to print out reports and instructions onto the terminal for the user to see. then i'd want to ask the user to select which player to play. then i'd want to take that selection to inititate the race and to find a winner based on a random coin toss (and to print relevant reports and outcomes onto the screen).  and then i'd want the linked list to get updated (if needed) with the new ranking order, based on the results of the most recent race. and then, of course, to loop the code around so that the user could pick another player to run a challenge race and to start the whole loop over again. 
+
+So that, I think, is the bare minimum.  And all of that is a hefty amount of work -- at the very least, I can't simply flip a switch right now and get it all to work right away. and i'm happy to begin chipping away at it, but i also don't want to leave it in a place where i'd leave a huge mess if i ended it today and maybe if i didn't get back to it in a while...  
+
+Hmm, hoo -- I guess before I can even flip a coin i'd need to alter the struct so that I've got rankings instead of time_sec. I would like to re-implement time_sec, but to crank out my bare-minimum proof of concept I definitely don't need it.  hopefully that doesn't mess up my qsort -- i don't think it will, but i'll need to check on it to make sure.
+
+
