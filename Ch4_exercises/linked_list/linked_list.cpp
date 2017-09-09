@@ -21,7 +21,7 @@ int main() {
 
 	node1 = node2 = node3 = NULL;
 
-	run_node * null_node = NULL;
+	//run_node * null_node = NULL;
 
 	print_node_rank(run_200m);
 	std::cout << std::endl;
