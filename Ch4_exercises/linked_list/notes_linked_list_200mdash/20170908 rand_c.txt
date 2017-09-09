@@ -22,4 +22,72 @@ So that, I think, is the bare minimum.  And all of that is a hefty amount of wor
 
 Hmm, hoo -- I guess before I can even flip a coin i'd need to alter the struct so that I've got rankings instead of time_sec. I would like to re-implement time_sec, but to crank out my bare-minimum proof of concept I definitely don't need it.  hopefully that doesn't mess up my qsort -- i don't think it will, but i'll need to check on it to make sure.
 
+	X	print_node
+	X	insert_new_at_front
+	X	insert_new_at_end
+	X	insert_new_after_name
+	X	compare_node_time
+
+===	===	===
+
+I would need to create a function that acts as brains for user selection. register which player the user selected, pick out the player just ahead of the user selection, have some special brains for the first-ranking runner, and display an error message if the user makes an invalid selection.
+
+Hmmm, in some ways, the thought of walking down this path tonight is a litle exhausting to think about.  But on the other hand, if I just put in one more time interval I've got 6 hours in for today, which will be one small way to make up for lost time on previous days. and I'm kind of on a roll -- at least I'm not exhausted.  I could maintain my vein of low-key-fun-coding-for-fun-and-no-stress by conceptualizing what I'd do here on my notepad, and then slowly turning that into real code on my .cpp file (even though it's a blackboard .cpp file -- sometimes you need non-kosher pseudocode before it turns into the real thing.  remember, this is my paper notes!)
+
+void user_selection(run_node * head) {
+	std::cout << std::endl << "A runner can challenge the runner just ahead of them to try to advance up." << std::endl << "User, type in the name of a runner to challenge: " << std::endl;
+	std::string user_selection;
+	std::cin >> user_selection;
+	// iterate through linked list, keeping track of current node and 1-previous node: 
+	if (head != NULL) {
+		run_node * next_one = new run_node;
+		next_one = head->next;
+		while (head->next != 0) {
+			if (next_one->name == user_selection) {
+				std::string opponent = head->name;
+			}
+			head = head->next;
+		}
+	}
+	std::cout << user_selection << " challenges " << opponent << std::endl;
+}
+
+xxx	xxx	xxx
+
+__ THIS CODE ACTUALLY WORKED __
+   (even though it's ugly)
+
+void user_selection(run_node * head) {
+	std::cout << std::endl << "A runner can challenge the runner just ahead of them to try to advance up." << std::endl << "User, type in the name of a runner to challenge: " << std::endl;
+	std::string user_selection;
+	std::cin >> user_selection;
+	std::string opponent = "";
+	// iterate through linked list, keeping track of current node and 1-previous node: 
+	if (head != NULL) {
+		run_node * next_one = new run_node;
+		next_one = head->next;
+		while (head->next != 0) {
+			if (next_one->name == user_selection) {
+				opponent = head->name;
+			}
+			next_one = next_one->next;
+			head = head->next;
+		}
+	}
+	std::cout << user_selection << " challenges " << opponent << std::endl;
+}
+
+xxx	xxx	xxx
+
+==	==	==
+
+OK, it's been another time segment. where am i at and how do i feel? i think i'm beginning to feel a bit pooped, to be honest. and even though there's loads more i can do to even get to the 'bare minimum', i think i may finally decide to end things for the day. it's 8:15pm -- not necessarily that late, but no need to push it when i've already logged more than my time-goal for the day. 
+
+So...making progress on linked list 200 meter dash game.  kinda fun, but definitely a side project -- don't get too wrapped up in it at the expense of more pressing projects.   the weekend looks like it's quickly filling right up: katey on saturday, and probably austin (maybe others) on sunday. so much for getting any real coding in over the weekend.  but i can consider weekend specifics in a moment -- for now i want to consider my game plan as i close up on my 200m dash code and look ahead to rumbly yumbly cookies on monday.  
+
+Re run 200 m, i think i would keep plugging away at setting up a user interface. nothing too sexy, but enough to enable some interaction so that the linked list can actually change dynamically, and so taht i can review any statistical changes as players move around the roster.  nothing too fancy, but enough to make dynamic changes to / accesses of the linked list, which thereby forces me to play more with pointers!!
+
+re cookies, i think i would begin with some of the thougths listed out on the cookies note document.  evaluate where i was and then go from there, making a concerted effort to break down a problem if i feel too overwhelmed / if my brain gets too exhausted.  and keeping in mind that this is all for fun and no pressure and no pain and no work -- not yet anyways -- just fun!!
+
+OK, wrap it all up!!!!  Good good day, for sure!
 
