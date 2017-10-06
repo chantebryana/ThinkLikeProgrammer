@@ -14,6 +14,7 @@ class run_class {
 	public: 
 		run_class();
 		~run_class();
+		void insert_new_at_front(runners new_runner);
 		void print_node_rank(runners existing_node);
 	private: 
 		typedef run_node * runners;
@@ -25,3 +26,38 @@ class run_class {
 		void deallocate(runners * existing_node);		
 } ;
 
+//
+//
+//
+//
+
+run_class::run_class() {
+	_head = NULL;
+}
+
+void run_class::add_runner(runner new_runner){
+	runner * 
+}
+
+// prints linked list: runner and rank nodes: 
+void run_class::print_node_rank(runners existing_node) {
+	if(existing_node != NULL) { // makes sure existing_node holds information
+		while (existing_node->next != 0){ // goes through the linked list till the end
+			std::cout << "runner: " << existing_node->name << ", rank: " << existing_node->rank << std::endl;
+			existing_node = existing_node->next;
+		}
+		// prints out the final chunk of data: 
+		std::cout << "runner: " << existing_node->name << ", rank: " << existing_node->rank << std::endl;
+	}
+}
+
+// finds the length of linked list, to be used in array_ify (iterates through each node of linked list, increasing the counter one by one until reaching the end of the list): 
+int run_class::find_list_length(runners _head) {
+	int counter = 0;
+	while (_head->next != NULL) {
+		counter += 1;
+		_head = _head->next;
+	}
+	counter += 1;
+	return counter;
+}
