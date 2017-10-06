@@ -14,6 +14,8 @@ class run_class {
 	public: 
 		run_class();
 		~run_class();
+		//void add_record(run_node new_runner);
+		void insert_new_at_front(std::string new_name, int rank);
 	private: 
 		typedef run_node * runners;
 		runners _head;
@@ -44,7 +46,22 @@ void run_class::deallocate(runners * _head) {
 run_class::~run_class() {
 	deallocate(& _head);
 }
+/*
+void run_class::add_record(run_node new_student) {
+	run_node * new_node = new run_node;
+	new_node->
+}
+*/
 
+void run_class::insert_new_at_front(std::string new_name, int new_rank) {
+	runners temp = new runners;
+	temp->name = new_name;
+	temp->rank = new_rank;
+	temp->next = * _head;
+
+	* _head = temp;
+	temp = NULL;
+}
 /*
 >>
 >>>>
