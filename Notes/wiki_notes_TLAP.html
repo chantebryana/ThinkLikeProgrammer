@@ -124,6 +124,8 @@ Error message and password prompt
 
 <li>$:/isEncrypted</li>
 
+<li>$:/state/EditorToolbarDropdown-272459670</li>
+
 <li>$:/state/sidebar</li>
 
 <li>$:/state/tab/sidebar--1835078512</li>
@@ -8348,6 +8350,9 @@ Error message and password prompt
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
+<div created="20171006211316176" modified="20171006211316176" title="$:/state/EditorToolbarDropdown-272459670">
+<pre>(619,179,28,24)</pre>
+</div>
 <div created="20171006150649164" modified="20171006150649164" title="$:/state/sidebar">
 <pre>no</pre>
 </div>
@@ -8512,8 +8517,87 @@ Error message and password prompt
     }
 }</pre>
 </div>
-<div created="20171006150643520" modified="20171006150715083" tags="Journal" title="6th October 2017">
-<pre>My first TLAP tiddly journal! Let's see if it works!</pre>
+<div created="20171006163317169" modified="20171006211319183" tags="Ch4 [[200m Race]] Journal Ch5 Classes [[Linked List]]" title="6th October 2017">
+<pre>My first TLAP tiddly journal! Let's see if it works!
+
+Cool. 
+
+!!!Ch 4 Linked List 200m Dash
+
+OK, So I'm treating myself to a little variety, at least until Jim wakes up and maybe has energy to answer some runcible questions. Where was I at last time I touched this project? I know that I was working on 200 meter racing game
+
+Looking at notes found here `/home/ruby/Projects/ThinkLikeProgrammer/Ch4_exercises/linked_list/notes_linked_list_200mdash`, it appears that I last really touched this project nearly a month ago. Crazy how time flies. But September was also a bad month: very little progress. Some thoughts as I was closing things up last time: 
+
+&lt;&lt;&lt;
+Re run 200 m, i think i would keep plugging away at setting up a user interface. nothing too sexy, but enough to enable some interaction so that the linked list can actually change dynamically, and so taht i can review any statistical changes as players move around the roster.  nothing too fancy, but enough to make dynamic changes to / accesses of the linked list, which thereby forces me to play more with pointers!!
+&lt;&lt;&lt;
+
+&quot;Bare minimum&quot; setup: 
+
+&lt;&lt;&lt;
+ok, so I've got my linked list of players (which maybe i should fit into a separate function just so that main is a little cleaner looking). then i'd want to print out reports and instructions onto the terminal for the user to see. then i'd want to ask the user to select which player to play. then i'd want to take that selection to inititate the race and to find a winner based on a random coin toss (and to print relevant reports and outcomes onto the screen).  and then i'd want the linked list to get updated (if needed) with the new ranking order, based on the results of the most recent race. and then, of course, to loop the code around so that the user could pick another player to run a challenge race and to start the whole loop over again. 
+&lt;&lt;&lt;
+
+```
+void user_selection(run_node * head) {
+  std::cout &lt;&lt; std::endl &lt;&lt; &quot;A runner can challenge the runner just ahead of them to try to advance up.&quot; &lt;&lt; std::endl &lt;&lt; &quot;User, type in the name of a runner to challenge: &quot; &lt;&lt; std::endl;
+  std::string user_selection;
+  std::cin &gt;&gt; user_selection;
+  // iterate through linked list, keeping track of current node and 1-previous node: 
+  if (head != NULL) {
+    run_node * next_one = new run_node;
+    next_one = head-&gt;next;
+    while (head-&gt;next != 0) {
+      if (next_one-&gt;name == user_selection) {
+        std::string opponent = head-&gt;name;
+      }
+      head = head-&gt;next;
+    }
+  }
+  std::cout &lt;&lt; user_selection &lt;&lt; &quot; challenges &quot; &lt;&lt; opponent &lt;&lt; std::endl;
+}
+```
+---
+
+Man, is it super lame that I'm not inspired by this 200m dash game? The next steps seem out of proportion with the apparent knowledge gain I'd receive: lots of steps in unrelated areas to get incrementally increased exposure to linked list infrastructure. And I'm sure there are ways I could beef up the game or program to get more out of it, but I guess I find myself wondering if even that makes sense. Since it's been so long since I've entered this project, maybe it just makes sense to invest my mental resources and excitement levels into new domains, like classes?! Hmm, perhaps I'll reopen TLAP textbook and explore what I could play with in there? 
+
+---
+
+!!!Ch5 Classes
+
+So I skimmed / reviewed chapter 5 of TLAP, and also looked over files linked with `string_main.cpp` in `5-3_class_v-l_string` folder of chapter 5 of TLAP file structure. I'm remembering some of the bare bones structure of classes, and refreshing my mind of some of the bits that I did to manipulate arrays on heap memory using a class. I haven't yet tackled operator overloading, but I still think those are dumb and I'm happy to continue to shelve those for now. But I //would// like to use a linked list object in a new class object. I should think more about that during my next time segment. 
+
+Whew! Nearly an entire morning shift devoted to recapping and remembering where I was, as well as evaluating where I'd like to go next (with its own subsequent research and remembering down a different path). Part of me wonders whether it's worth it: I don't want to devote that much time in C++, but in order to prevent this morning's efforts from being a waste, it //would// make sense for me to definitely spend today on continuing my efforts, and maybe even the next day or two extra to continuing the momentum. So I guess a flip side to this time-sharing consideration could be to give myself the last week of the month to spend on C++? That way I've got a more extended period of time to dive into the problem, but I'm still only devoting about 1/4 of my time (the rest of it going to runcible). It's an idea, but maybe a little screwy since I may spend more time on C++ now than I had originally intended.
+
+But enough of that. For now, I should keep diving into the project of classes so as to keep the momentum rolling forward and to avoid wasting my limited time!
+
+So, as mentioned a couple of paragraphs above, I want to skip over operator overloading for now: d-u-m-b! But I do want to play with linked lists in classes. The author keeps using student records as a convenient avenue to play with and explore linked lists within a class setting (ha! students and class, funny). And Jim used that example when trying to explain linked lists and qsort to me some weeks ago. Perhaps I should continue with that setup? The worry, though, is that the code would be too similar to the author's examples in the book -- maybe I should play with a different type of program? What does the author suggest in the end-of-chapter exercises? Hmm, it looks like he has me playing with student records: in fact, that he has me manipulating a student record program that I was supposedly supposed to have made while exploring chapter 4. I don't think I ever did that, but maybe it wouldn't be bad to start? Whew! It sounds like a lot of work! 
+
+Perhaps as kind of a first step and to further refresh my memory I'll explore the example that the author outlines in the book: I'm not even sure if I've properly read this part of the chapter yet, and if I have, I'm sure there's plenty I don't understand as well as I should.
+
+---
+
+Aah, looking more at chapter 5 example problem. The double-class setup has an interesting effect. It takes the first class, which was designed to manipulate an array, and it turns it into a linked list by taking the array elements and then adding a `next` to the end of it, thereby converting the data into a linked list data type. Instead of having `_grade`, `_studentID`, and `_name` as elements of an array (an array of arrays?), the `studentCollection` class takes those array elements and converts them into nodes of a linked list. Of course, the behind-the-scenes brains of `studentCollection` makes this possible, but it is interesting to observe how encapsulation can work in practice: to see how a class that deals with one problem can be generic enough to also handle a whole different type of setup. Fascinating. 
+
+I hope my assessment of reality is correct and that I'm not unintentionally blowing smoke out my ass.
+
+Whew, ok. Just finished traipsing along through the second pretend problem in chapter 5. The details seem a little more cogent this time around, at least I think so. The destructor function, for instance, is something that I've absolutely made on my own (the hard way, after much toil and suffering), and was something I was mindful of while the author conveniently left it out of scope. But...where does all this leave me now? How can I create a little linked list class setup that will test a different but obtainable problem set? A linked list of student records is pretty straightforward. I suppose, since I've put some work in it already, I //could// manipulate my 200m dash to be structured as a class instead of a struct? That, in a way, would follow the spirit of what the author's set up in his examples, since it seems like he kind of wants students / readers to jump off from the structs that were created in the previous chapter. :-\ I could also be creating a bunch of work for not really a good reason, if there's a simpler route that I could follow as more closely suggested by the book. 
+
+(I suppose manipulating 200m dash into a class could make more sense because then I could choose to continue to manipulate that code and round out that project should I so choose. And that would be kind of nice: to keep that door open.)
+
+What would a good `typedef` of `run_node` be? `run_node`is such a handy term already, but I can also understand wanting to encapsulate that type of thing in its own (locked) black box. 
+
+Whew, there sure are lots of layers. Maybe I should try this one piece at a time instead of all at once??? But that's the beauty of the sandbox: I get to mix and match and play around with what feels right and what's too much, without the commitment. But I suppose I should take a moment to breathe before getting on with it. Which items should I begin with? Well, I know that I need a constructor and a destructor. It would also be nice to have a get and a set to verify that things are working. And since the book jumps ahead and streamlines so many steps, it would be good form for me to do some of these by hand both to further solidify the lessons and also to make sure I understand reading between the lines (and thereby understand what classes are doing). 
+
+Adding a Node (pg 128 TLAP): how exactly does `studentData` work? How is that declared in main? Maybe I should go back to the earlier example problem of the chapter to try to piece things together? Perhaps I create an array of values in `main`, and then pass that parameter in `add_record` (again in `main`)? That way a single parameter could contain all three datapoints for our runners node ... or something?
+
+A few final notes: 
+
+Referenced this page ( http://www.cplusplus.com/forum/beginner/143506/ ) while working linked lists and classes. Not sure if it's valuable, but logging just in case. 
+
+Finished up today's work attempting to create some sort of `add_new` function. Still far from a workable solution. Maybe I can begin tackling this next time? I'll  put some thought into whether I want to play coding a little bit over the weekend, or whether that task should wait till Monday.
+
+But for now, I'll sign off! Fun for coding!</pre>
 </div>
 
 </div>
