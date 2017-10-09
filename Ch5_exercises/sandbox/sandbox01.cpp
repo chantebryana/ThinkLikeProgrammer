@@ -15,7 +15,7 @@ class run_class {
 		run_class();
 		~run_class();
 		//void add_record(run_node new_runner);
-		void insert_new_at_front(std::string new_name, int rank);
+		void insert_new_at_front(std::string new_name, int new_rank);
 	private: 
 		typedef run_node * runners;
 		runners _head;
