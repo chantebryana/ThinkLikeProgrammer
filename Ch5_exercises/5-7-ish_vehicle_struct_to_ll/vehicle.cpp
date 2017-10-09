@@ -1,6 +1,10 @@
 //#include <string>
+#include <iostream>
+#include <cstdlib>
 #include <ctime>
 #include "./vehicle.h"
+
+
 
 //
 //
@@ -106,13 +110,13 @@ void Vehicle_hoard::add_record(Vehicle new_vehicle){
 }
 
 // prints contents of linked list:
-void print() {
-	if(_head != NULL) {
-		while(_head->next !=0) {
-			std::cout << _head->vehicle_data << std::endl;
-			_head = _head->next;
+void Vehicle_hoard::print(Vehicle list_node) {
+	if(list_node != NULL) {
+		while(list_node->next !=0) {
+			std::cout << list_node->vehicle_data << std::endl;
+			list_node = list_node->next;
 		}
-		std::cout << _head->vehicle_data << std::endl;
+		std::cout << list_node->vehicle_data << std::endl;
 	}
 }
 
