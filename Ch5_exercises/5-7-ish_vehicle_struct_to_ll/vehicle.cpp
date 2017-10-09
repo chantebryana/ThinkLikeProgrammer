@@ -1,6 +1,6 @@
 //#include <string>
-#include <iostream>
-#include <cstdlib>
+//#include <iostream>
+//#include <cstdlib>
 #include <ctime>
 #include "./vehicle.h"
 
@@ -108,7 +108,7 @@ void Vehicle_hoard::add_record(Vehicle new_vehicle){
 	temp->next = _head;
 	_head = temp;
 }
-
+/*
 // prints contents of linked list:
 void Vehicle_hoard::print(Vehicle list_node) {
 	if(list_node != NULL) {
@@ -119,6 +119,15 @@ void Vehicle_hoard::print(Vehicle list_node) {
 		std::cout << list_node->vehicle_data << std::endl;
 	}
 }
+*/
 
+// returns LL record based on year:
+Vehicle Vehicle_hoard::retreive_record(int yr) {
+	vehicle_node * temp = _head;
+	while (temp->vehicle_data._year() != yr) {
+		temp = temp->next;
+	}
+	return temp->vehicle_data;
+}
 
 
