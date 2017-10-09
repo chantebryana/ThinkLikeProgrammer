@@ -2,6 +2,11 @@
 #include <ctime>
 #include "./vehicle.h"
 
+//
+//
+//
+//
+// helper functions for Vehicle class: 
 // constructor: 
 Vehicle::Vehicle() {
 	set_mfgr("");
@@ -65,4 +70,29 @@ int Vehicle::age_of_vehicle() {
 	return current_year() - _year;
 }
 
+//
+//
+//
+//
+// helper functions for Vehicle_hoard class:
 
+// constructor: 
+Vehicle_hoard::Vehicle_hoard() {
+	_head = NULL;
+}
+
+// destructor helper function:
+// adapted from Ch4_exercises/linked_list/linked_list.h:
+void Vehicle_hoard::deallocate(vehicle_node * * _head) {
+	while (* _head) {
+		vehicle_node * temp;
+		temp = * _head;
+		* _head = (* _head)->next;
+		delete temp;
+	}
+}
+
+// destructor: 
+Vehicle_hoard::~Vehicle_hoard() {
+	deallocate(& _head);
+}
