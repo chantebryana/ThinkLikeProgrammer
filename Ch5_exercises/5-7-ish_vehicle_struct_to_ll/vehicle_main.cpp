@@ -14,6 +14,20 @@ int main() {
 	std::cout << car.output_string() << "\n";
 	// output age of vehicle (today minus vehicle year):
 	std::cout << "Age of vehicle: " <<  car.age_of_vehicle() << " year(s)" << std::endl;
+
+	Vehicle car2;
+	car2.set_mfgr("Jeep");
+	car2.set_model("Liberty Sport");
+	car2.set_year(2002);
+	// output struct's contents:
+	std::cout << car2.output_string() << "\n";
+	// output age of vehicle (today minus vehicle year):
+	std::cout << "Age of vehicle: " <<  car2.age_of_vehicle() << " year(s)" << std::endl;
+
+	Vehicle_hoard lotsa_cars;
+	lotsa_cars.add_record(car);
+	lotsa_cars.add_record(car2);
+
 	return 0;
 }
 
