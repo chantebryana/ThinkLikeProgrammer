@@ -44,6 +44,7 @@ class Vehicle_hoard {
 		Vehicle_hoard();
 		~Vehicle_hoard();
 		void add_record(Vehicle new_vehicle);
+		void print();
 	private: 
 		// (I'm not doing typedef: dumb and confusing to me)
 		vehicle_node * _head;

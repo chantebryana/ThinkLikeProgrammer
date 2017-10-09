@@ -27,6 +27,7 @@ int main() {
 	Vehicle_hoard lotsa_cars;
 	lotsa_cars.add_record(car);
 	lotsa_cars.add_record(car2);
+	print();
 
 	return 0;
 }

@@ -105,7 +105,16 @@ void Vehicle_hoard::add_record(Vehicle new_vehicle){
 	_head = temp;
 }
 
-
+// prints contents of linked list:
+void print() {
+	if(_head != NULL) {
+		while(_head->next !=0) {
+			std::cout << _head->vehicle_data << std::endl;
+			_head = _head->next;
+		}
+		std::cout << _head->vehicle_data << std::endl;
+	}
+}
 
 
 
