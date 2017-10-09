@@ -96,3 +96,16 @@ void Vehicle_hoard::deallocate(vehicle_node * * _head) {
 Vehicle_hoard::~Vehicle_hoard() {
 	deallocate(& _head);
 }
+
+// add new node to linked list:
+void Vehicle_hoard::add_record(vehicle_node * new_vehicle){
+	vehicle_node * temp = new vehicle_node;
+	temp->vehicle_data = new_vehicle;
+	temp->next = _head;
+	_head = temp;
+}
+
+
+
+
+
