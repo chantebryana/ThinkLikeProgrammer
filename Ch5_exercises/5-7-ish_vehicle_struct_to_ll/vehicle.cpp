@@ -122,6 +122,8 @@ void Vehicle_hoard::print(Vehicle list_node) {
 */
 
 // returns LL record based on year:
+// (need something like the following in main() to actually output node data)
+// std::cout << lotsa_cars.retreive_record(1999).output_string() << "\n";
 Vehicle Vehicle_hoard::retreive_record(int yr) {
 	vehicle_node * temp = _head;
 	while (temp->vehicle_data.get_year() != yr) {
