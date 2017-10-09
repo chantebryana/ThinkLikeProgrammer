@@ -98,7 +98,6 @@ Vehicle_hoard::~Vehicle_hoard() {
 }
 
 // add new node to linked list:
-//void Vehicle_hoard::add_record(vehicle_node * new_vehicle){
 void Vehicle_hoard::add_record(Vehicle new_vehicle){
 	vehicle_node * temp = new vehicle_node;
 	temp->vehicle_data = new_vehicle;

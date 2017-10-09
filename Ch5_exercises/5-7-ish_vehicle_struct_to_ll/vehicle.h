@@ -43,8 +43,6 @@ class Vehicle_hoard {
 	public: 
 		Vehicle_hoard();
 		~Vehicle_hoard();
-		//void add_record(vehicle_node * new_vehicle); 
-		// JE: the next line compiles w/o errors
 		void add_record(Vehicle new_vehicle);
 	private: 
 		// (I'm not doing typedef: dumb and confusing to me)
