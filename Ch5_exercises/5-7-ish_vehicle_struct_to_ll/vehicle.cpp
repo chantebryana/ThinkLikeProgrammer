@@ -124,7 +124,7 @@ void Vehicle_hoard::print(Vehicle list_node) {
 // returns LL record based on year:
 Vehicle Vehicle_hoard::retreive_record(int yr) {
 	vehicle_node * temp = _head;
-	while (temp->vehicle_data._year() != yr) {
+	while (temp->vehicle_data.get_year() != yr) {
 		temp = temp->next;
 	}
 	return temp->vehicle_data;
