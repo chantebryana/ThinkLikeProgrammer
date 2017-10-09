@@ -1,5 +1,6 @@
 #include <string> 
 
+// manipulate single struct of vehicle data:
 class Vehicle {
 	public: 
 		// constructor: 
@@ -30,4 +31,22 @@ class Vehicle {
 		// private supporting method for age_of_vehicle:
 		int current_year();
 };
+
+// manipulate linked list of vehicle data:
+// based on pgs 119 & 126 of TLAP ch 5:
+class Vehicle_hoard {
+	private: 
+		struct vehicle_node {
+			Vehicle vehicle_data;
+			vehicle_node * next;
+		} ;
+	public: 
+		Vehicle_hoard();
+		~Vehicle_hoard();
+		// void add_record(vehicle_node * new_vehicle);
+	private: 
+		// (I'm not doing typedef: dumb and confusing to me)
+		vehicle_node * _head;
+		void deallocate(vehicle_node * * _head);
+} ;
 
