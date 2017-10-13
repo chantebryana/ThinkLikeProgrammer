@@ -126,10 +126,18 @@ void Vehicle_hoard::print(Vehicle list_node) {
 // std::cout << lotsa_cars.retreive_record(1999).output_string() << "\n";
 Vehicle Vehicle_hoard::retreive_record(int yr) {
 	vehicle_node * temp = _head;
-	while (temp->vehicle_data.get_year() != yr) {
+	// create smarter while conditions to account for NULL pointer (ie, if list is empty or user's argument doesn't match list values)
+	// (note that order matters: 'temp != NULL' must go before 'temp->vehcile_data.get_year() != yr' b/c of C++'s short-circuit evaluation)
+	while (temp != NULL && temp->vehicle_data.get_year() != yr) {
 		temp = temp->next;
 	}
-	return temp->vehicle_data;
+	// smarter return condition: if temp points to NULL, return dummy record, else return the appropriate vehicle node (the value pointed to based on while loop logic): 
+	if (temp == NULL ) {
+		Vehicle dummy_vehicle("", "", -1);
+		return dummy_vehicle;
+	} else {
+		return temp->vehicle_data;
+	}
 }
 
 

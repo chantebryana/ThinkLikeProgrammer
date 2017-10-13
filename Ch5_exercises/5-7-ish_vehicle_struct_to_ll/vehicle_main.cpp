@@ -29,6 +29,7 @@ int main() {
 	lotsa_cars.add_record(car2);
 	//print(lotsa_cars);
 	std::cout << lotsa_cars.retreive_record(1999).output_string() << "\n";
+	std::cout << lotsa_cars.retreive_record(1985).output_string() << "\n";
 
 
 	return 0;
