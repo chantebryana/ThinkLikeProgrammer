@@ -24,12 +24,17 @@ int main() {
 	// output age of vehicle (today minus vehicle year):
 	std::cout << "Age of vehicle: " <<  car2.age_of_vehicle() << " year(s)" << std::endl;
 
+	// simpler way to assign new Vehicle nodes (re p 130 of TLAP):
+	Vehicle car3("Ford", "Crown Victoria", 2008);
+
 	Vehicle_hoard lotsa_cars;
 	lotsa_cars.add_record(car);
 	lotsa_cars.add_record(car2);
+	lotsa_cars.add_record(car3);
 	//print(lotsa_cars);
 	std::cout << lotsa_cars.retreive_record(1999).output_string() << "\n";
 	std::cout << lotsa_cars.retreive_record(1985).output_string() << "\n";
+	std::cout << lotsa_cars.retreive_record(2008).output_string() << "\n";
 
 
 	return 0;
