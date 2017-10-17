@@ -36,6 +36,14 @@ int main() {
 	std::cout << lotsa_cars.retreive_record(1985).output_string() << "\n";
 	std::cout << lotsa_cars.retreive_record(2008).output_string() << "\n";
 
+/*
+	// remove a single node from the linked list (p 130 TLAP): 
+	lotsa_cars.remove_record(2002);
+	// print lotsa_cars after removing a record: 
+	std::cout << lotsa_cars.retreive_record(1999).output_string() << "\n";
+	std::cout << lotsa_cars.retreive_record(2002).output_string() << "\n";
+	std::cout << lotsa_cars.retreive_record(2008).output_string() << "\n";
+*/
 
 	return 0;
 }

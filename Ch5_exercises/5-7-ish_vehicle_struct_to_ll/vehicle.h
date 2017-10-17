@@ -46,6 +46,7 @@ class Vehicle_hoard {
 		void add_record(Vehicle new_vehicle);
 		//void print(Vehicle list_node);
 		Vehicle retreive_record(int yr);
+		void remove_record(int yr);
 	private: 
 		// (I'm not doing typedef: dumb and confusing to me)
 		vehicle_node * _head;

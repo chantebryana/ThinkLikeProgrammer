@@ -140,4 +140,22 @@ Vehicle Vehicle_hoard::retreive_record(int yr) {
 	}
 }
 
+// remove a single node from linked list, using the year as the metric to retreive a vehicle (since I never created an id variable, and to do that now would be a distraction from my other main goals): 
+void Vehicle_hoard::remove_record(int yr) {
+	vehicle_node * temp = _head;
+	if (temp->vehicle_data.get_year() == yr) {
+		// remove node
+		// set _head to next node
+	} else {
+		temp = temp->next;
+		vehicle_node * previous = _head;
+		while (temp->vehicle_data.get_year() != yr) {
+			temp = temp->next;
+			previous = previous->next;
+		}
+		// remove node
+		// connect previous node to next node
+	}
+}
+
 
