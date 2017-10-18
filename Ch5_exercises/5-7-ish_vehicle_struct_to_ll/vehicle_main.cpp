@@ -47,9 +47,9 @@ int main() {
 	Vehicle_hoard extra_cars;
 	extra_cars = copied_list(lotsa_cars);
 	// print extra_cars after performing a deep copy: 
-	std::cout << lotsa_cars.retreive_record(1999).output_string() << "\n";
-	std::cout << lotsa_cars.retreive_record(2002).output_string() << "\n";
-	std::cout << lotsa_cars.retreive_record(2008).output_string() << "\n";
+	std::cout << extra_cars.retreive_record(1999).output_string() << "\n";
+	std::cout << extra_cars.retreive_record(2002).output_string() << "\n";
+	std::cout << extra_cars.retreive_record(2008).output_string() << "\n";
 
 	return 0;
 }
