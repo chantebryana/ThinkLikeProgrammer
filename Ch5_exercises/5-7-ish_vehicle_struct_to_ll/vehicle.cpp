@@ -140,6 +140,8 @@ Vehicle Vehicle_hoard::retreive_record(int yr) {
 	}
 }
 
+/*
+//CE's attempt: 
 // remove a single node from linked list, using the year as the metric to retreive a vehicle (since I never created an id variable, and to do that now would be a distraction from my other main goals): 
 void Vehicle_hoard::remove_record(int yr) {
 	vehicle_node * temp = _head;
@@ -158,6 +160,29 @@ void Vehicle_hoard::remove_record(int yr) {
 		// remove node
 		// connect previous node to next node
 	}
+}
+*/
+
+//TLAP's code: 
+void Vehicle_hoard::remove_record(int yr) {
+	vehicle_node * temp = _head;
+	vehicle_node * previous = NULL;
+	while (temp != NULL && temp->vehicle_data.get_year() != yr) {
+		previous = temp;
+		temp = temp->next;
+	}
+	// if temp is NULL (if list is empty or int yr doesn't match any year nodes), return without deleting any nodes: 
+	if (temp == NULL) {
+		return;
+	}
+	// if deleting first node (special case since nothing for previous to point to): 
+	if (previous == NULL) {
+		_head = _head->next;
+	} else { // (if deleting any middle or end nodes)
+		previous->next = temp->next;
+	}
+	// after performing any special steps related to the location of the node to be deleted, finally delete the dang thing from heap memory!
+	delete temp;
 }
 
 

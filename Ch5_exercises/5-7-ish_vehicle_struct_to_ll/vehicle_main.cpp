@@ -38,7 +38,7 @@ int main() {
 
 
 	// remove a single node from the linked list (p 130 TLAP): 
-	lotsa_cars.remove_record(2008);
+	lotsa_cars.remove_record(2002);
 	// print lotsa_cars after removing a record: 
 	std::cout << lotsa_cars.retreive_record(1999).output_string() << "\n";
 	std::cout << lotsa_cars.retreive_record(2002).output_string() << "\n";
