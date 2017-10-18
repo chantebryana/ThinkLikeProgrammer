@@ -47,6 +47,7 @@ class Vehicle_hoard {
 		//void print(Vehicle list_node);
 		Vehicle retreive_record(int yr);
 		void remove_record(int yr);
+		vehicle_node copied_list(const vehicle_node original);
 	private: 
 		// (I'm not doing typedef: dumb and confusing to me)
 		vehicle_node * _head;

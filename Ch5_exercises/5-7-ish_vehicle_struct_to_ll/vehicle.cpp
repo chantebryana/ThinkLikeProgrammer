@@ -163,4 +163,31 @@ void Vehicle_hoard::remove_record(int yr) {
 	delete temp;
 }
 
+// TLAP deep copy: 
+Vehicle_hoard::vehicle_node Vehicle_hoard::copied_list(const vehicle_node original) {
+	// if list is empty, return before performing deep copy:
+	if (original == NULL) {
+		return NULL;
+	}
+	// create new node / list on heap memory:
+	vehicle_node * new_list = new vehicle_node;
+	// copy the first node's data prior to the loop (b/c for that node we have to modify our new list's head pointer):
+	new_list->vehicle_data = original->vehicle_data;
+	// old_loop_ptr and new_loop_ptr: set up two pointers for tracking through the two lists: 
+	// old_loop_ptr traverses the incoming list (original):
+	vehicle_node * old_loop_ptr = original->next;
+	// new_loop_ptr traverses the new, copied list. it always points to the last node we created (the node prior to where we'll add the next node):
+	vehicle_node * new_loop_ptr = new_list;
+	// traverse the linked list and make copies to the new list!
+	while (old_loop_ptr != NULL) {
+		new_loop_ptr->next = new vehicle_node;
+		new_loop_ptr = new_loop_ptr->next;
+		new_loop_ptr->vehicle_data = old_loop_ptr->vehicle_data;
+		old_loop_ptr = old_loop_ptr->next;
+	}
+	// terminate the end of the new list by pointing next to NULL: 
+	new_loop_ptr->next = NULL;
+	// return the new, deep copied list:
+	return new_list;
+}
 
