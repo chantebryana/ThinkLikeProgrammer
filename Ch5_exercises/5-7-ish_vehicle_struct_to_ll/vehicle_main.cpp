@@ -46,42 +46,6 @@ int main() {
 
 	Vehicle_hoard extra_cars;
 	extra_cars = copied_list(lotsa_cars);
-
-/*
-tried compiling and got all sorts of errors. See terminal printout below: 
-
-ruby@rubyVM:~/Projects/ThinkLikeProgrammer/Ch5_exercises/5-7-ish_vehicle_struct_to_ll$ make
-mkdir -p bin
-g++ -c vehicle.cpp -o bin/vehicle.o
-vehicle.cpp: In member function ‘Vehicle_hoard::vehicle_node Vehicle_hoard::copied_list(Vehicle_hoard::vehicle_node)’:
-vehicle.cpp:169:15: error: no match for ‘operator==’ (operand types are ‘const Vehicle_hoard::vehicle_node’ and ‘long int’)
-  if (original == NULL) {
-               ^
-In file included from /usr/include/_G_config.h:15:0,
-                 from /usr/include/libio.h:31,
-                 from /usr/include/stdio.h:74,
-                 from /usr/include/c++/6/cstdio:42,
-                 from /usr/include/c++/6/ext/string_conversions.h:43,
-                 from /usr/include/c++/6/bits/basic_string.h:5417,
-                 from /usr/include/c++/6/string:52,
-                 from ./vehicle.h:1,
-                 from vehicle.cpp:5:
-vehicle.cpp:170:10: error: could not convert ‘0l’ from ‘long int’ to ‘Vehicle_hoard::vehicle_node’
-   return NULL;
-          ^
-vehicle.cpp:175:35: error: base operand of ‘->’ has non-pointer type ‘const Vehicle_hoard::vehicle_node’
-  new_list->vehicle_data = original->vehicle_data;
-                                   ^~
-vehicle.cpp:178:40: error: base operand of ‘->’ has non-pointer type ‘const Vehicle_hoard::vehicle_node’
-  vehicle_node * old_loop_ptr = original->next;
-                                        ^~
-vehicle.cpp:191:9: error: could not convert ‘new_list’ from ‘Vehicle_hoard::vehicle_node*’ to ‘Vehicle_hoard::vehicle_node’
-  return new_list;
-         ^~~~~~~~
-Makefile:4: recipe for target 'vehicle.o' failed
-make: *** [vehicle.o] Error 1
-
-*/
 	// print extra_cars after performing a deep copy: 
 	std::cout << lotsa_cars.retreive_record(1999).output_string() << "\n";
 	std::cout << lotsa_cars.retreive_record(2002).output_string() << "\n";
