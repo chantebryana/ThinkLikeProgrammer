@@ -140,30 +140,8 @@ Vehicle Vehicle_hoard::retreive_record(int yr) {
 	}
 }
 
-/*
-//CE's attempt: 
-// remove a single node from linked list, using the year as the metric to retreive a vehicle (since I never created an id variable, and to do that now would be a distraction from my other main goals): 
-void Vehicle_hoard::remove_record(int yr) {
-	vehicle_node * temp = _head;
-	if (temp->vehicle_data.get_year() == yr) {
-		// connects the pointer in _head to the node past the deleted one:
-		_head->next = temp->next;
-		//temp = NULL; // CE: do I need to do this? does this avoid memory leak?
-		delete temp; // CE: I think this is what's needed to avoid memory leak; also same memory depth as is shows in deallocate() --> hopefully it works.
-	} else {
-		temp = temp->next;
-		vehicle_node * previous = _head;
-		while (temp->vehicle_data.get_year() != yr) {
-			temp = temp->next;
-			previous = previous->next;
-		}
-		// remove node
-		// connect previous node to next node
-	}
-}
-*/
-
 //TLAP's code: 
+// remove a single node from linked list, using the year as the metric to retreive a vehicle (since I never created an id variable, and to do that now would be a distraction from my other main goals): 
 void Vehicle_hoard::remove_record(int yr) {
 	vehicle_node * temp = _head;
 	vehicle_node * previous = NULL;
