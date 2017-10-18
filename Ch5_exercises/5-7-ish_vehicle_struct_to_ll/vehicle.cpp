@@ -144,8 +144,10 @@ Vehicle Vehicle_hoard::retreive_record(int yr) {
 void Vehicle_hoard::remove_record(int yr) {
 	vehicle_node * temp = _head;
 	if (temp->vehicle_data.get_year() == yr) {
-		// remove node
-		// set _head to next node
+		// connects the pointer in _head to the node past the deleted one:
+		_head->next = temp->next;
+		//temp = NULL; // CE: do I need to do this? does this avoid memory leak?
+		delete temp; // CE: I think this is what's needed to avoid memory leak; also same memory depth as is shows in deallocate() --> hopefully it works.
 	} else {
 		temp = temp->next;
 		vehicle_node * previous = _head;
