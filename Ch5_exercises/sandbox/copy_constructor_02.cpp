@@ -12,7 +12,7 @@ class String {
 		String(const char * str = NULL); // constructor
 		~String() { delete [] s; } // destructor
 		// CE: why doesn't this need a proper variable to pass as arg after '&'?
-		String(const String & old_str); // copy constructor
+		//String(const String & old_str); // copy constructor
 		void print() {std::cout << s << std::endl; } // function to print string
 		void change(const char * ); // function to change
 } ;
@@ -31,7 +31,7 @@ void String::change(const char * str) {
 	s = new char[size+1];
 	strcpy(s, str);
 }
-
+/*
 // copy constructor: 
 // CE: so & old_str is the whole class object, which includes the private variables * s and size, along with maybe the public functions (and public variables if there were any). 
 String::String(const String & old_str) { 
@@ -39,7 +39,7 @@ String::String(const String & old_str) {
 	s = new char[size + 1];
 	strcpy(s, old_str.s);
 }
-
+*/
 int main() {
 	String str1("GeeksQuiz");
 	String str2 = str1; // CE: deep copies pointer to str1 over to str2 variable using copy constructor defined above
