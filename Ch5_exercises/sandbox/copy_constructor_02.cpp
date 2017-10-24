@@ -12,7 +12,7 @@ class String {
 		String(const char * str = NULL); // constructor
 		~String() { delete [] s; } // destructor
 		// CE: why doesn't this need a proper variable to pass as arg after '&'?
-		String(const String & ); // copy constructor
+		String(const String & old_str); // copy constructor
 		void print() {std::cout << s << std::endl; } // function to print string
 		void change(const char * ); // function to change
 } ;
@@ -42,7 +42,7 @@ String::String(const String & old_str) {
 
 int main() {
 	String str1("GeeksQuiz");
-	String str2 = str1;
+	String str2 = str1; // CE: deep copies pointer to str1 over to str2 variable using copy constructor defined above
 
 	str1.print(); // what gets printed?
 	str2.print();
@@ -52,14 +52,5 @@ int main() {
 	str1.print(); // what gets printed now?
 	str2.print();	
 
-/*
-ruby@rubyVM:~/Projects/ThinkLikeProgrammer/Ch5_exercises/sandbox$ g++ copy_constructor_02.cpp -o ../bin/copy_constructor_02
-ruby@rubyVM:~/Projects/ThinkLikeProgrammer/Ch5_exercises/sandbox$ ../bin/copy_constructor_02
-GeeksQuiz
-GeeksQuiz
-GeeksQuiz
-GeeksforGeeks
-
-*/
 	return 0;
 }
