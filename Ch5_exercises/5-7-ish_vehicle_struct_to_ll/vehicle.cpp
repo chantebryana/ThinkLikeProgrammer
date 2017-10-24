@@ -162,7 +162,7 @@ void Vehicle_hoard::remove_record(int yr) {
 	// after performing any special steps related to the location of the node to be deleted, finally delete the dang thing from heap memory!
 	delete temp;
 }
-
+/*
 // TLAP deep copy: 
 Vehicle_hoard::vehicle_node Vehicle_hoard::copied_list(const vehicle_node original) {
 	// if list is empty, return before performing deep copy:
@@ -190,4 +190,4 @@ Vehicle_hoard::vehicle_node Vehicle_hoard::copied_list(const vehicle_node origin
 	// return the new, deep copied list:
 	return new_list;
 }
-
+*/
