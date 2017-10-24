@@ -47,10 +47,15 @@ class Vehicle_hoard {
 		//void print(Vehicle list_node);
 		Vehicle retreive_record(int yr);
 		void remove_record(int yr);
-		//vehicle_node copied_list(const vehicle_node original);
+		// operator overload:
+		Vehicle_hoard & operator = (const Vehicle_hoard & rhs);
+		// copy constructor:
+		Vehicle_hoard(const Vehicle_hoard & original);
 	private: 
 		// (I'm not doing typedef: dumb and confusing to me)
 		vehicle_node * _head;
 		void deallocate(vehicle_node * * _head);
+		// private method for deep copy constructor:
+		vehicle_node copied_list(const vehicle_node original);
 } ;
 
