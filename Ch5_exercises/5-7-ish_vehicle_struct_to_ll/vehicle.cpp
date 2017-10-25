@@ -164,7 +164,7 @@ void Vehicle_hoard::remove_record(int yr) {
 }
 
 // TLAP deep copy: 
-Vehicle_hoard::vehicle_node Vehicle_hoard::copied_list(const vehicle_node original) {
+Vehicle_hoard::vehicle_node Vehicle_hoard::copied_list(const vehicle_node original) { // JE: check on pointers and type def's of various elements withint this function
 	// if list is empty, return before performing deep copy:
 	if (original == NULL) {
 		return NULL;
