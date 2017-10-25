@@ -33,7 +33,7 @@ Line::Line(const Line & obj) {
 	ptr = new int; 
 	* ptr = * obj.ptr; // copy the value. CE: how can 'ptr' have dot-notation?
 	// this is how: http://www.geeksforgeeks.org/c-classes-and-objects/
-	std::cout << "typedef of obj: " << typeid(obj).name() << std::endl;
+	//std::cout << "typedef of obj: " << typeid(obj).name() << std::endl;
 	// CE: returns: typedef of obj: 4Line 
 	// CE: whatever that is...?
 }
@@ -48,13 +48,15 @@ int Line::getLength (void) {
 }
 
 // non-class function (uses functions definied within class):
-void display(Line obj) {
+//void display(Line obj) {
+void display(Line & obj) {
 	std::cout << "Length of line: " << obj.getLength() << std::endl;
 }
 
 
 int main() {
-	Line line1(10);
+	//Line line1(10);
+	Line line1 = 10;
 	Line line2 = line1; // this also calls copy constructor
 	display(line1);
 	display(line2);
