@@ -49,7 +49,29 @@ Runs::Runs() {
 	_head = NULL;
 }
 
-void Runs::delete_runner(run_node * & list_ptr) { 
+Runs::run_node * Runs::copied_list(const run_node * original) {
+	if (original == NULL) {
+		return NULL;
+	}
+	run_node * new_list = new run_node;
+	new_list->run_record = original->run_record;
+	run_node * old_loop_ptr = original->next;
+	run_node * new_loop_ptr = new_list;
+	while (old_loop_ptr != NULL) {
+		new_loop_ptr->next = new run_node;
+		new_loop_ptr = new_loop_ptr->next;
+		new_loop_ptr->run_record = old_loop_ptr->run_record;
+		old_loop_ptr = old_loop_ptr->next;
+	}
+	new_loop_ptr->next = NULL;
+	return new_list;
+}
+
+Runs::Runs(const Runs & original) {
+	_head = copied_list(original._head);
+}
+
+void Runs::delete_record(run_node * & list_ptr) { 
 	while (_head != NULL) {
 		run_node * temp = list_ptr;
 		list_ptr = list_ptr->next;
@@ -58,7 +80,7 @@ void Runs::delete_runner(run_node * & list_ptr) {
 }
 
 Runs::~Runs() {
-	delete_runner(_head);
+	delete_record(_head);
 }
 
 void Runs::add_record(Run new_record) {
@@ -86,24 +108,10 @@ void Runs::print(Runs runners, std::string name) {
 }
 */
 
-Runs::run_node * Runs::copied_list(const run_node * original) {
-	if (original == NULL) {
-		return NULL;
+Runs & Runs::operator=(const Runs & rhs) {
+	if (this != & rhs) {
+		delete_record(_head);
+		_head = copied_list(rhs._head);
 	}
-	run_node * new_list = new run_node;
-	new_list->run_record = original->run_record;
-	run_node * old_loop_ptr = original->next;
-	run_node * new_loop_ptr = new_list;
-	while (old_loop_ptr != NULL) {
-		new_loop_ptr->next = new run_node;
-		new_loop_ptr = new_loop_ptr->next;
-		new_loop_ptr->run_record = old_loop_ptr->run_record;
-		old_loop_ptr = old_loop_ptr->next;
-	}
-	new_loop_ptr->next = NULL;
-	return new_list;
-}
-
-Runs::Runs(const Runs & original) {
-	_head = copied_list(original._head);
+	return * this;
 }
