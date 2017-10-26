@@ -13,7 +13,8 @@ class Line {
 	public: 
 		int getLength (void);
 		Line (int len); // simple constructor
-		Line (const Line &obj); // copy constructor
+		//Line (const Line &obj); // copy constructor
+		Line (const Line * * obj);
 		~Line(); // destructor
 
 	private: 
@@ -28,15 +29,22 @@ Line::Line(int len) {
 	* ptr = len;
 }
 
-Line::Line(const Line & obj) {
+//Line::Line(const Line & obj) {
+Line::Line(const Line * * obj) {
 	std::cout << "Copy constructor allocating ptr." << std::endl;
 	ptr = new int; 
 	* ptr = * obj.ptr; // copy the value. CE: how can 'ptr' have dot-notation?
 	// this is how: http://www.geeksforgeeks.org/c-classes-and-objects/
-	//std::cout << "typedef of obj: " << typeid(obj).name() << std::endl;
-	// CE: returns: typedef of obj: 4Line 
-	// CE: whatever that is...?
 }
+/*
+try to run with * * and get this error in terminal: 
+
+ruby@rubyVM:~/Projects/ThinkLikeProgrammer/Ch5_exercises/sandbox$ g++ copy_constructor_01.cpp -o ../bin/copy_constructor_01
+copy_constructor_01.cpp: In constructor ‘Line::Line(const Line**)’:
+copy_constructor_01.cpp:36:16: error: request for member ‘ptr’ in ‘obj’, which is of non-class type ‘const Line**’
+  * ptr = * obj.ptr; // copy the value. CE: how can 'ptr' have dot-notation?
+                ^~~
+*/
 
 Line::~Line(void) {
 	std::cout << "Freeing memory!" << std::endl;
