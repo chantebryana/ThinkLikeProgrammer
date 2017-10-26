@@ -14,6 +14,8 @@ int main() {
 	std::cout << runner2.output_string() << std::endl;
 
 	Runs runners_a;
+	runners_a.add_run_data(runner1);
+	runners_a.add_run_data(runner2);
 
 	return 0;
 }

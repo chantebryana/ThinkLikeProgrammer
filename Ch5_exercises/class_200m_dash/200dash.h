@@ -28,12 +28,11 @@ class Runs {
 	public: 
 		Runs();
 		~Runs();
-		void add_runner(Run new_runner);
+		void add_run_data(Run new_run_data);
 		Run retreive_runner(std::string name);
 	private: 
 		run_node * _head;
-		//void delete_runner(run_node & list_ptr);
-		void delete_runner(run_node * & list_ptr); // CE I don't think this is right, but just in case...
+		void delete_runner(run_node * & list_ptr); 
 } ;
 
 

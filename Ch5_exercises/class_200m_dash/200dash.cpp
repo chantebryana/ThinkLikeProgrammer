@@ -49,8 +49,7 @@ Runs::Runs() {
 	_head = NULL;
 }
 
-//void Runs::delete_runner(run_node & list_ptr) {
-void Runs::delete_runner(run_node * & list_ptr) { // CE ditto: this is pry broke, but just in case
+void Runs::delete_runner(run_node * & list_ptr) { 
 	while (_head != NULL) {
 		run_node * temp = list_ptr;
 		list_ptr = list_ptr->next;
@@ -61,3 +60,11 @@ void Runs::delete_runner(run_node * & list_ptr) { // CE ditto: this is pry broke
 Runs::~Runs() {
 	delete_runner(_head);
 }
+
+void Runs::add_run_data(Run new_run_data) {
+	run_node * temp = new run_node;
+	temp->run_data = new_run_data;
+	temp->next = _head;
+	_head = temp;
+}
+
