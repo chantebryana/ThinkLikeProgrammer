@@ -10,25 +10,34 @@ int main() {
 	runner1.set_time(25.57);
 	std::cout << runner1.output_string() << std::endl;
 
-	//Run runner2;
-	//runner2("Eun", 2, 26.01);
-/*
-	two-line assignment creates this error in terminal: 
-		ruby@rubyVM:~/Projects/ThinkLikeProgrammer/Ch5_exercises/class_200m_dash$ make
-		mkdir -p bin
-		g++ -c 200dash.cpp -o bin/200dash.o
-		g++ bin/200dash.o 200dash_main.cpp -o bin/200dash_main
-		200dash_main.cpp: In function ‘int main()’:
-		200dash_main.cpp:14:25: error: no match for call to ‘(Run) (const char [4], int, double)’
-			runner2("Eun", 2, 26.01);
-				                     ^
-		makefile:8: recipe for target '200dash_main' failed
-		make: *** [200dash_main] Error 1
-*/
 	Run runner2("Eun", 2, 26.01);
-	// one-line initialization works: here's the output: "2 Eun 26.010000"
-
 	std::cout << runner2.output_string() << std::endl;
+
+	Runs runners_a;
+/*
+attempt to construct a linked list class at this point created the following errors in terminal: 
+
+	ruby@rubyVM:~/Projects/ThinkLikeProgrammer/Ch5_exercises/class_200m_dash$ make
+	mkdir -p bin
+	g++ -c 200dash.cpp -o bin/200dash.o
+	200dash.cpp: In member function ‘void Runs::delete_runner(Runs::run_node&)’:
+	200dash.cpp:55:21: error: cannot convert ‘Runs::run_node’ to ‘Runs::run_node*’ in initialization
+		 run_node * temp = list_ptr;
+			                 ^~~~~~~~
+	200dash.cpp:56:22: error: base operand of ‘->’ has non-pointer type ‘Runs::run_node’
+		 list_ptr = list_ptr->next;
+			                  ^~
+	200dash.cpp: In destructor ‘Runs::~Runs()’:
+	200dash.cpp:62:21: error: no matching function for call to ‘Runs::delete_runner(Runs::run_node*&)’
+		delete_runner(_head);
+			                 ^
+	200dash.cpp:52:6: note: candidate: void Runs::delete_runner(Runs::run_node&)
+	 void Runs::delete_runner(run_node & list_ptr) {
+			  ^~~~
+	200dash.cpp:52:6: note:   no known conversion for argument 1 from ‘Runs::run_node*’ to ‘Runs::run_node&’
+	makefile:4: recipe for target '200dash.o' failed
+	make: *** [200dash.o] Error 1
+*/
 
 	return 0;
 }
