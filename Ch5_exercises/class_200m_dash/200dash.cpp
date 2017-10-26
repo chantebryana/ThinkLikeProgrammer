@@ -91,20 +91,21 @@ void Runs::add_front(Run new_record) {
 }
 
 void Runs::add_end(Run new_record) {
-	run_node * temp = new run_node;
+	run_node * new_node = new run_node;
 	run_node * placeholder;
 
-	temp->run_record = new_record;
-	temp->next = NULL;
+	new_node->run_record = new_record;
+	new_node->next = NULL;
 
 	if (_head == NULL) {
-		_head = temp;
+		_head = new_node;
 	} else {
-		placeholder = temp;
+		placeholder = new_node;
+		std::cout << placeholder;
 		while (placeholder->next != NULL) {
 			placeholder = placeholder->next;
 		}
-		placeholder->next = temp;
+		placeholder->next = new_node;
 	}
 }
 

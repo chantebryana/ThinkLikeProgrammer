@@ -8,18 +8,18 @@ int main() {
 	runner1.set_name("Guillermo");
 	runner1.set_rank(1);
 	runner1.set_time(25.57);
-	std::cout << runner1.output_string() << std::endl;
+	//std::cout << runner1.output_string() << std::endl;
 
 	Run runner2("Eun", 2, 26.01);
-	std::cout << runner2.output_string() << std::endl;
+	//std::cout << runner2.output_string() << std::endl;
 
 	Runs runners_a;
-	runners_a.add_front(runner1);
-	runners_a.add_end(runner2);
+	//runners_a.add_front(runner1);
+	runners_a.add_end(runner1);
 	//runners_a.print(runners_a, "Guillermo");
 	std::cout << runners_a.retreive_record("Guillermo").output_string() << std::endl;
 	std::cout << runners_a.retreive_record("Eun").output_string() << std::endl;
-	std::cout << runners_a.retreive_record("Mehtab").output_string() << std::endl;
+	//std::cout << runners_a.retreive_record("Mehtab").output_string() << std::endl;
 
 	//Runs runners_b = runners_a; // this works
 	//Runs runners_b(runners_a); // or this works
