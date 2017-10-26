@@ -24,7 +24,9 @@ int main() {
 	//Runs runners_b = runners_a;
 	//Runs runners_b(runners_a);
 	Runs runners_b;
-	runners_b = runners_a;
+	//runners_b = runners_a;
+	runners_b(runners_a);
+	runners_b(& runners_a);
 	std::cout << runners_b.retreive_record("Guillermo").output_string() << std::endl;
 	std::cout << runners_b.retreive_record("Eun").output_string() << std::endl;
 
