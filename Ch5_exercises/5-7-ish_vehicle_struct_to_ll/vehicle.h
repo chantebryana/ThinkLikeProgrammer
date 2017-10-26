@@ -51,12 +51,10 @@ class Vehicle_hoard {
 		Vehicle_hoard & operator = (const Vehicle_hoard & rhs);
 		// copy constructor:
 		Vehicle_hoard(const Vehicle_hoard & original);
-		//Vehicle_hoard(const Vehicle_hoard * * original);
 	private: 
 		// (I'm not doing typedef: dumb and confusing to me)
 		vehicle_node * _head;
-		void deallocate(vehicle_node * * _head); // JE: I could just have vehicle_node * _head
-		//void deallocate(vehicle_node * & list_ptr);
+		void deallocate(vehicle_node * * _head); 
 		// private method for deep copy constructor:
 		vehicle_node * copied_list(const vehicle_node * original);
 } ;

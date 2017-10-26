@@ -95,15 +95,7 @@ void Vehicle_hoard::deallocate(vehicle_node * * _head) {
 		delete temp;
 	}
 }
-/*
-void Vehicle_hoard::deallocate(vehicle_node * & list_ptr) {
-	while (list_ptr != NULL) {
-		vehicle_node * temp = list_ptr;
-		list_ptr = (list_ptr)->next;
-		delete temp;
-	}
-}
-*/
+
 // destructor: 
 Vehicle_hoard::~Vehicle_hoard() {
 	deallocate(& _head);
@@ -202,29 +194,12 @@ Vehicle_hoard::vehicle_node * Vehicle_hoard::copied_list(const vehicle_node * or
 // operator overload function: 
 Vehicle_hoard & Vehicle_hoard::operator=(const Vehicle_hoard & rhs) {
 	if (this != & rhs) {
-		//deallocate(_head);
 		deallocate(& _head); // JE do this if I keep * * in deallocate
 		_head = copied_list(rhs._head);
 	}
 	return * this;
 }
-/*
-terminal error report when line 205 was running (deallocate(_head);):
 
-ruby@rubyVM:~/Projects/ThinkLikeProgrammer/Ch5_exercises/5-7-ish_vehicle_struct_to_ll$ make
-mkdir -p bin
-g++ -c vehicle.cpp -o bin/vehicle.o
-vehicle.cpp: In member function ‘Vehicle_hoard& Vehicle_hoard::operator=(const Vehicle_hoard&)’:
-vehicle.cpp:205:19: error: no matching function for call to ‘Vehicle_hoard::deallocate(Vehicle_hoard::vehicle_node*&)’
-   deallocate(_head);
-                   ^
-vehicle.cpp:90:6: note: candidate: void Vehicle_hoard::deallocate(Vehicle_hoard::vehicle_node**)
- void Vehicle_hoard::deallocate(vehicle_node * * _head) {
-      ^~~~~~~~~~~~~
-vehicle.cpp:90:6: note:   no known conversion for argument 1 from ‘Vehicle_hoard::vehicle_node*’ to ‘Vehicle_hoard::vehicle_node**’
-Makefile:4: recipe for target 'vehicle.o' failed
-make: *** [vehicle.o] Error 1
-*/
 // copy constructor: 
 Vehicle_hoard::Vehicle_hoard(const Vehicle_hoard & original) {
 	_head = copied_list(original._head);
