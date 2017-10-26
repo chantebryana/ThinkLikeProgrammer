@@ -92,7 +92,7 @@ void Runs::add_front(Run new_record) {
 
 void Runs::add_end(Run new_record) {
 	run_node * new_node = new run_node;
-	run_node * placeholder;
+	//run_node * placeholder;
 
 	new_node->run_record = new_record;
 	new_node->next = NULL;
@@ -100,9 +100,12 @@ void Runs::add_end(Run new_record) {
 	if (_head == NULL) {
 		_head = new_node;
 	} else {
-		placeholder = new_node;
-		std::cout << placeholder;
+		//placeholder = new_node;
+		run_node * placeholder = new_node;
+		//std::cout << placeholder << std::endl;
+		// CE: this while() loop never performs. placeholder->next must equal NULL from the beginning.
 		while (placeholder->next != NULL) {
+			std::cout << placeholder->next << std::endl;
 			placeholder = placeholder->next;
 		}
 		placeholder->next = new_node;
