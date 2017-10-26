@@ -14,8 +14,8 @@ int main() {
 	//std::cout << runner2.output_string() << std::endl;
 
 	Runs runners_a;
-	//runners_a.add_front(runner1);
-	runners_a.add_end(runner1);
+	runners_a.add_front(runner1);
+	//runners_a.add_end(runner1);
 	runners_a.add_end(runner2);
 	//runners_a.print(runners_a, "Guillermo");
 	std::cout << runners_a.retreive_record("Guillermo").output_string() << std::endl;
