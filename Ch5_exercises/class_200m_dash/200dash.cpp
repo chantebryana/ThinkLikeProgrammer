@@ -83,11 +83,29 @@ Runs::~Runs() {
 	delete_record(_head);
 }
 
-void Runs::add_record(Run new_record) {
+void Runs::add_front(Run new_record) {
 	run_node * temp = new run_node;
 	temp->run_record = new_record;
 	temp->next = _head;
 	_head = temp;
+}
+
+void Runs::add_end(Run new_record) {
+	run_node * temp = new run_node;
+	run_node * placeholder;
+
+	temp->run_record = new_record;
+	temp->next = NULL;
+
+	if (_head == NULL) {
+		_head = temp;
+	} else {
+		placeholder = temp;
+		while (placeholder->next != NULL) {
+			placeholder = placeholder->next;
+		}
+		placeholder->next = temp;
+	}
 }
 
 Run Runs::retreive_record(std::string name) {

@@ -14,8 +14,8 @@ int main() {
 	std::cout << runner2.output_string() << std::endl;
 
 	Runs runners_a;
-	runners_a.add_record(runner1);
-	runners_a.add_record(runner2);
+	runners_a.add_front(runner1);
+	runners_a.add_end(runner2);
 	//runners_a.print(runners_a, "Guillermo");
 	std::cout << runners_a.retreive_record("Guillermo").output_string() << std::endl;
 	std::cout << runners_a.retreive_record("Eun").output_string() << std::endl;
@@ -24,7 +24,7 @@ int main() {
 	//Runs runners_b = runners_a; // this works
 	//Runs runners_b(runners_a); // or this works
 	Runs runners_b;
-	runners_b = runners_a;
+	runners_b = runners_a; // this works with overloaded operator
 	std::cout << runners_b.retreive_record("Guillermo").output_string() << std::endl;
 	std::cout << runners_b.retreive_record("Eun").output_string() << std::endl;
 

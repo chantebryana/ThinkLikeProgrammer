@@ -29,7 +29,8 @@ class Runs {
 		Runs();
 		Runs(const Runs & original);
 		~Runs();
-		void add_record(Run new_record);
+		void add_front(Run new_record);
+		void add_end(Run new_record);
 		Run retreive_record(std::string name);
 		//void print(Runs runners, std::string name);
 		Runs & operator=(const Runs & rhs);
