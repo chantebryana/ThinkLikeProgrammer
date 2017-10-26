@@ -16,17 +16,12 @@ int main() {
 	Runs runners_a;
 	runners_a.add_record(runner1);
 	runners_a.add_record(runner2);
-	std::cout << runners_a.retreive_record("Guillermo").output_string() << std::endl;
-	std::cout << runners_a.retreive_record("Eun").output_string() << std::endl;
-	std::cout << runners_a.retreive_record("Mehtab").output_string() << std::endl;
-/*
-ruby@rubyVM:~/Projects/ThinkLikeProgrammer/Ch5_exercises/class_200m_dash$ ./bin/200dash_main 
-"1 Guillermo 25.570000"
-"2 Eun 26.010000"
-"1 Guillermo 25.570000"
-"2 Eun 26.010000"
-"-1  -1.000000"
+	runners_a.print(runners_a, "Guillermo");
+	//std::cout << runners_a.retreive_record("Guillermo").output_string() << std::endl;
+	//std::cout << runners_a.retreive_record("Eun").output_string() << std::endl;
+	//std::cout << runners_a.retreive_record("Mehtab").output_string() << std::endl;
 
-*/
 	return 0;
 }
+
+

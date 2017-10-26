@@ -81,3 +81,7 @@ Run Runs::retreive_record(std::string name) {
 	}
 }
 
+void Runs::print(Runs runners, std::string name) {
+	std::cout << runners.retreive_record(name).output_string() << std::endl;
+}
+

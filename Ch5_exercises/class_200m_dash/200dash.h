@@ -30,6 +30,7 @@ class Runs {
 		~Runs();
 		void add_record(Run new_record);
 		Run retreive_record(std::string name);
+		void print(Runs runners, std::string name);
 	private: 
 		run_node * _head;
 		void delete_runner(run_node * & list_ptr); 
