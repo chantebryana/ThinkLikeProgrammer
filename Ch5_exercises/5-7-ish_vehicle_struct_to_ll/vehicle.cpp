@@ -95,7 +95,15 @@ void Vehicle_hoard::deallocate(vehicle_node * * _head) {
 		delete temp;
 	}
 }
-
+/*
+void Vehicle_hoard::deallocate(vehicle_node * & list_ptr) {
+	while (list_ptr != NULL) {
+		vehicle_node * temp = list_ptr;
+		list_ptr = (list_ptr)->next;
+		delete temp;
+	}
+}
+*/
 // destructor: 
 Vehicle_hoard::~Vehicle_hoard() {
 	deallocate(& _head);
@@ -164,7 +172,7 @@ void Vehicle_hoard::remove_record(int yr) {
 }
 
 // TLAP deep copy: 
-Vehicle_hoard::vehicle_node Vehicle_hoard::copied_list(const vehicle_node original) { // JE: check on pointers and type def's of various elements withint this function
+Vehicle_hoard::vehicle_node * Vehicle_hoard::copied_list(const vehicle_node * original) { // JE: check on pointers and type def's of various elements withint this function
 	// if list is empty, return before performing deep copy:
 	if (original == NULL) {
 		return NULL;
@@ -195,7 +203,7 @@ Vehicle_hoard::vehicle_node Vehicle_hoard::copied_list(const vehicle_node origin
 Vehicle_hoard & Vehicle_hoard::operator=(const Vehicle_hoard & rhs) {
 	if (this != & rhs) {
 		deallocate(_head);
-		_head = copied_list(rhs._head)
+		_head = copied_list(rhs._head);
 	}
 	return * this;
 }
