@@ -16,10 +16,14 @@ int main() {
 	Runs runners_a;
 	runners_a.add_record(runner1);
 	runners_a.add_record(runner2);
-	runners_a.print(runners_a, "Guillermo");
-	//std::cout << runners_a.retreive_record("Guillermo").output_string() << std::endl;
-	//std::cout << runners_a.retreive_record("Eun").output_string() << std::endl;
-	//std::cout << runners_a.retreive_record("Mehtab").output_string() << std::endl;
+	//runners_a.print(runners_a, "Guillermo");
+	std::cout << runners_a.retreive_record("Guillermo").output_string() << std::endl;
+	std::cout << runners_a.retreive_record("Eun").output_string() << std::endl;
+	std::cout << runners_a.retreive_record("Mehtab").output_string() << std::endl;
+
+	Runs runners_b = runners_a;
+	std::cout << runners_b.retreive_record("Guillermo").output_string() << std::endl;
+	std::cout << runners_b.retreive_record("Eun").output_string() << std::endl;
 
 	return 0;
 }

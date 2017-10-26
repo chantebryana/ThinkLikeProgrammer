@@ -80,8 +80,30 @@ Run Runs::retreive_record(std::string name) {
 		return temp->run_record;
 	}
 }
-
+/*
 void Runs::print(Runs runners, std::string name) {
 	std::cout << runners.retreive_record(name).output_string() << std::endl;
 }
+*/
 
+Runs::run_node * Runs::copied_list(const run_node * original) {
+	if (original == NULL) {
+		return NULL;
+	}
+	run_node * new_list = new run_node;
+	new_list->run_record = original->run_record;
+	run_node * old_loop_ptr = original->next;
+	run_node * new_loop_ptr = new_list;
+	while (old_loop_ptr != NULL) {
+		new_loop_ptr->next = new run_node;
+		new_loop_ptr = new_loop_ptr->next;
+		new_loop_ptr->run_record = old_loop_ptr->run_record;
+		old_loop_ptr = old_loop_ptr->next;
+	}
+	new_loop_ptr->next = NULL;
+	return new_list;
+}
+
+Runs::Runs(const Runs & original) {
+	_head = copied_list(original._head);
+}
