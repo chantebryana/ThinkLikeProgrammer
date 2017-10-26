@@ -22,14 +22,14 @@ class Run {
 class Runs {
 	private: 
 		struct run_node {
-			Run run_data;
+			Run run_record;
 			run_node * next;
 		} ;
 	public: 
 		Runs();
 		~Runs();
-		void add_run_data(Run new_run_data);
-		Run retreive_runner(std::string name);
+		void add_record(Run new_record);
+		Run retreive_record(std::string name);
 	private: 
 		run_node * _head;
 		void delete_runner(run_node * & list_ptr); 

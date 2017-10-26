@@ -61,10 +61,23 @@ Runs::~Runs() {
 	delete_runner(_head);
 }
 
-void Runs::add_run_data(Run new_run_data) {
+void Runs::add_record(Run new_record) {
 	run_node * temp = new run_node;
-	temp->run_data = new_run_data;
+	temp->run_record = new_record;
 	temp->next = _head;
 	_head = temp;
+}
+
+Run Runs::retreive_record(std::string name) {
+	run_node * temp = _head;
+	while (temp != NULL && temp->run_record.get_name() != name) {
+		temp = temp->next;
+	}
+	if (temp == NULL) {
+		Run dummy_runner("", -1, -1.0);
+		return dummy_runner;
+	} else {
+		return temp->run_record;
+	}
 }
 
