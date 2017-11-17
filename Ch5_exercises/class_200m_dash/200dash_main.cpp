@@ -28,7 +28,7 @@ int main() {
 	std::cout << runners_b.retreive_record("Guillermo").output_string() << std::endl;
 	std::cout << runners_b.retreive_record("Eun").output_string() << std::endl;
 
-	size_of_list();
+	runners_a.size_of_list();
 
 	return 0;
 }

@@ -137,12 +137,12 @@ void Runs::print_all() {
 void Runs::size_of_list() {
 	run_node * temp = _head;
 	int counter = 0;
-	while (temp != NULL) {
+	while (temp->next != NULL) {
 		counter ++;
 		temp = temp->next;
 	}
 	counter ++;
-	std::cout << "size of list: " << counter << "." << std::endl;
+	std::cout << "size of list: " << counter << " node(s)." << std::endl;
 }
 Runs & Runs::operator=(const Runs & rhs) {
 	if (this != & rhs) {
