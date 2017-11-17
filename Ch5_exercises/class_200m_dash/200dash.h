@@ -33,6 +33,8 @@ class Runs {
 		void add_end(Run new_record);
 		Run retreive_record(std::string name);
 		//void print(Runs runners, std::string name);
+		//void print_all();
+		void size_of_list();
 		Runs & operator=(const Runs & rhs);
 	private: 
 		run_node * _head;

@@ -124,7 +124,26 @@ void Runs::print(Runs runners, std::string name) {
 	std::cout << runners.retreive_record(name).output_string() << std::endl;
 }
 */
+/*
+void Runs::print_all() {
+	run_node * temp = _head;
+	while (temp->next != NULL) {
+		std::cout << temp->_rank << ". " << temp->_name << ": " << temp->_time << " sec" << std::endl;
+		temp = temp->next;
+	}
+}
+*/
 
+void Runs::size_of_list() {
+	run_node * temp = _head;
+	int counter = 0;
+	while (temp != NULL) {
+		counter ++;
+		temp = temp->next;
+	}
+	counter ++;
+	std::cout << "size of list: " << counter << "." << std::endl;
+}
 Runs & Runs::operator=(const Runs & rhs) {
 	if (this != & rhs) {
 		delete_record(_head);
